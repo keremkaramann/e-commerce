@@ -8,9 +8,9 @@ const PageContent = () => {
   ];
   const imagePaths2 = [
     "/src/assets/carouselImg/shop-hero-2-product-slide-2.png",
+    "/src/assets/carouselImg/shop-hero-1-product-slide-1.jpg",
     "/src/assets/carouselImg/shop-hero-2-product-slide-2.png",
-    "/src/assets/carouselImg/shop-hero-2-product-slide-2.png",
-    "/src/assets/carouselImg/shop-hero-2-product-slide-2.png",
+    "/src/assets/carouselImg/shop-hero-1-product-slide-1.jpg",
   ];
   return (
     <>
