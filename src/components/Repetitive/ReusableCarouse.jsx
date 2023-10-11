@@ -35,7 +35,7 @@ function ReusableSwiper({ imagePaths }) {
               alt={`card ${index + 1}`}
               className=" xs:object-cover xs:h-screen mdCstm:h-auto"
             />
-            <div className="text-white absolute z-50 xs:top-[34%] mdCstm:top-[25%] xs:left-10 mdCstm:left-28 xs:text-center mdCstm:text-left">
+            <div className="text-white absolute z-50 xs:top-[34%] mdCstm:top-[25%] xs:left-10 mdCstm:left-36 xs:text-center mdCstm:text-left">
               <h5 className="text-bold text-base xs:mb-3 mdCstm:mb-8">
                 SUMMER 2020
               </h5>

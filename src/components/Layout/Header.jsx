@@ -18,6 +18,7 @@ const Header = () => {
     "/src/assets/carouselImg/shop-hero-1-product-slide-1.jpg",
     "/src/assets/carouselImg/shop-hero-2-product-slide-2.png",
   ];
+
   return (
     <>
       <header>
@@ -61,7 +62,6 @@ const Header = () => {
           </div>
           <div className="font-bold text-sm text-secondary-text flex gap-3">
             <Link to="/">Home</Link>
-
             <a href="" className="flex gap-1">
               Shop <FiChevronDown className="text-lg" />
             </a>
@@ -84,6 +84,46 @@ const Header = () => {
         </nav>
       </header>
       <ReusableSwiper imagePaths={imagePaths} />
+      <section className="pt-20 pb-20 bg-[#FAFAFA]">
+        <div className="text-center">
+          <h2 className="font-bold text-2xl mb-4 ">EDITOR'S PICK</h2>
+          <p className="text-secondary-text text-sm mb-10">
+            Problems trying to resolve the conflict between
+          </p>
+        </div>
+        <div className="flex gap-4 justify-center flex-wrap">
+          <div className="relative">
+            <img src="/src/assets/editorImg/filter.png" alt="" />
+            <button className="px-16 py-3 bg-white font-bold absolute bottom-7 left-7">
+              MEN
+            </button>
+          </div>
+          <div className="relative">
+            <img src="/src/assets/editorImg/filter (1).png" alt="" />
+            <button className="px-9 py-3 bg-white font-bold absolute bottom-7 left-5">
+              WOMEN
+            </button>
+          </div>
+          <div>
+            <div className="relative">
+              <img
+                src="/src/assets/editorImg/filter (2).png"
+                alt=""
+                className="mb-4"
+              />
+              <button className="px-6 py-3 bg-white font-bold absolute bottom-7 left-5">
+                ACCESSORIES
+              </button>
+            </div>
+            <div className="relative">
+              <img src="/src/assets/editorImg/filter (3).png" alt="" />
+              <button className="px-10 py-3 bg-white font-bold absolute bottom-7 left-5">
+                KIDS
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
     </>
   );
 };
