@@ -10,6 +10,7 @@ export default {
         "cs-Lgblue": "#243c5a",
         "secondary-text": "#737373",
         "primary-blue": "#23A6F0",
+        "success-color": "#2DC071",
       },
     },
     screens: {
