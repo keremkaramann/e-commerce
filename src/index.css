@@ -16,6 +16,9 @@ a {
     font-family: "Montserrat", sans-serif;
   }
 }
+.color-picker {
+  @apply w-4 h-4 rounded-lg cursor-pointer;
+}
 .swiper-button-prev,
 .swiper-button-next {
   color: white;

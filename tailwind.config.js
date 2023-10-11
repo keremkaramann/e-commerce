@@ -11,6 +11,8 @@ export default {
         "secondary-text": "#737373",
         "primary-blue": "#23A6F0",
         "success-color": "#2DC071",
+        "dark-navy": "#252B42",
+        "alert-color": "#E77C40",
       },
     },
     screens: {
