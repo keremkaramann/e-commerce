@@ -4,8 +4,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-
-import { Autoplay, Pagination, Navigation, EffectCube } from "swiper/modules";
+import "swiper/css/effect-fade";
+import { Autoplay, Pagination, Navigation, EffectFade } from "swiper/modules";
 
 function ReusableSwiper({ imagePaths }) {
   return (
@@ -13,18 +13,13 @@ function ReusableSwiper({ imagePaths }) {
       pagination={{
         type: "progressbar",
       }}
-      cubeEffect={{
-        shadow: true,
-        slideShadows: true,
-        shadowOffset: 20,
-        shadowScale: 0.94,
-      }}
+      effect={"fade"}
       autoplay={{
-        delay: 2500,
+        delay: 3500,
         disableOnInteraction: false,
       }}
       navigation={true}
-      modules={[Pagination, Navigation, Autoplay, EffectCube]}
+      modules={[Pagination, Navigation, Autoplay, EffectFade]}
       className="mySwiper"
     >
       {imagePaths.map((path, index) => (

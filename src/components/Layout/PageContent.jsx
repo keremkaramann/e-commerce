@@ -6,6 +6,12 @@ const PageContent = () => {
     "/src/assets/carouselImg/shop-hero-1-product-slide-1.jpg",
     "/src/assets/carouselImg/shop-hero-2-product-slide-2.png",
   ];
+  const imagePaths2 = [
+    "/src/assets/carouselImg/shop-hero-2-product-slide-2.png",
+    "/src/assets/carouselImg/shop-hero-2-product-slide-2.png",
+    "/src/assets/carouselImg/shop-hero-2-product-slide-2.png",
+    "/src/assets/carouselImg/shop-hero-2-product-slide-2.png",
+  ];
   return (
     <>
       <ReusableSwiper imagePaths={imagePaths} />
@@ -63,7 +69,7 @@ const PageContent = () => {
             Problems trying to resolve the conflict between
           </p>
         </div>
-        <div className="flex gap-5 justify-center flex-wrap px-20">
+        <div className="flex gap-5 justify-center flex-wrap px-32">
           <ProductCard
             url={"/src/assets/productCardImg/product-cover-5.png"}
             content={"Graphic design"}
@@ -105,6 +111,7 @@ const PageContent = () => {
             department={"English Department"}
           />
         </div>
+        <ReusableSwiper imagePaths={imagePaths2} />
       </section>
     </>
   );
