@@ -6,7 +6,7 @@ const Footer = () => {
       <div className="bg-[#FAFAFA] pt-16 pb-16">
         <div className="max-w-1/2 w-full mx-auto flex justify-between mb-16">
           <h1 className="font-bold text-2xl">Bandage</h1>
-          <div className="flex gap-3 text-cs-footer-blue text-2xl">
+          <div className="flex gap-3 text-primary-blue text-2xl">
             <a href="">
               <BsFacebook />
             </a>
@@ -19,7 +19,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="bg-white pt-10 pb-10">
-          <div className="max-w-1/2 w-full mx-auto flex xs:gap-10 mdCstm:gap-20 xs:justify-center mdCstm:justify-between flex-wrap">
+          <div className="max-w-1/2 w-full mx-auto flex xs:gap-10 mdCstm:gap-16 xs:justify-center mdCstm:justify-between flex-wrap">
             <div className="font-bold leading-8">
               <h5 className="text-[#252B42]">Company Info</h5>
               <div className="text-secondary-text text-sm leading-8">
@@ -99,7 +99,7 @@ const Footer = () => {
                   />
                   <button
                     type="submit"
-                    className="bg-cs-footer-blue text-white px-4 text-sm font-light rounded-sm py-4"
+                    className="bg-primary-blue text-white px-4 text-sm font-light rounded-sm py-4"
                   >
                     Subscribe
                   </button>

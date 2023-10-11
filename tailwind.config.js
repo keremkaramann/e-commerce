@@ -9,7 +9,7 @@ export default {
       colors: {
         "cs-Lgblue": "#243c5a",
         "secondary-text": "#737373",
-        "cs-footer-blue": "#23A6F0",
+        "primary-blue": "#23A6F0",
       },
     },
     screens: {
