@@ -1,5 +1,6 @@
 import ProductCard from "../Repetitive/ProductCard";
 import ReusableSwiper from "../Repetitive/ReusableCarouse";
+import productData from "../data";
 
 const PageContent = () => {
   const imagePaths = [
@@ -12,6 +13,7 @@ const PageContent = () => {
     "/src/assets/carouselImg/shop-hero-2-product-slide-2.png",
     "/src/assets/carouselImg/shop-hero-1-product-slide-1.jpg",
   ];
+
   return (
     <>
       <ReusableSwiper imagePaths={imagePaths} />
@@ -70,46 +72,17 @@ const PageContent = () => {
           </p>
         </div>
         <div className="flex gap-5 justify-center flex-wrap px-32">
-          <ProductCard
-            url={"/src/assets/productCardImg/product-cover-5.png"}
-            content={"Graphic design"}
-            department={"English Department"}
-          />
-          <ProductCard
-            url={"/src/assets/productCardImg/product4.png"}
-            content={"Graphic design"}
-            department={"English Department"}
-          />
-          <ProductCard
-            url={"/src/assets/productCardImg/product3.png"}
-            content={"Graphic design"}
-            department={"English Department"}
-          />
-          <ProductCard
-            url={"/src/assets/productCardImg/product2.png"}
-            content={"Graphic design"}
-            department={"English Department"}
-          />
-          <ProductCard
-            url={"/src/assets/productCardImg/product2.png"}
-            content={"Graphic design"}
-            department={"English Department"}
-          />
-          <ProductCard
-            url={"/src/assets/productCardImg/product2.png"}
-            content={"Graphic design"}
-            department={"English Department"}
-          />
-          <ProductCard
-            url={"/src/assets/productCardImg/product2.png"}
-            content={"Graphic design"}
-            department={"English Department"}
-          />
-          <ProductCard
-            url={"/src/assets/productCardImg/product2.png"}
-            content={"Graphic design"}
-            department={"English Department"}
-          />
+          {productData.map((product, index) => {
+            const { url, content, department } = product;
+            return (
+              <ProductCard
+                key={index}
+                url={url}
+                content={content}
+                department={department}
+              />
+            );
+          })}
         </div>
         <ReusableSwiper imagePaths={imagePaths2} />
       </section>
