@@ -20,6 +20,9 @@ export default {
       xs: "290px",
       mdCstm: "1120px",
     },
+    gridTemplateColumns: {
+      products: "grid-template-columns: repeat(4, minmax(auto,auto));",
+    },
   },
   plugins: [],
 };

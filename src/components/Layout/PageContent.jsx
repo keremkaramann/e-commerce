@@ -71,7 +71,11 @@ const PageContent = () => {
             Problems trying to resolve the conflict between
           </p>
         </div>
-        <div className="flex gap-5 justify-center flex-wrap px-32">
+
+        <div
+          className="flex gap-5 justify-center px-30 flex-wrap"
+          style={{ maxWidth: "1060px", margin: "0 auto " }}
+        >
           {productData.map((product, index) => {
             const { url, content, department } = product;
             return (
