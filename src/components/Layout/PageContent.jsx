@@ -1,7 +1,8 @@
 import ProductCard from "../Repetitive/ProductCard";
 import ReusableSwiper from "../Repetitive/ReusableCarouse";
 import productData from "../data";
-
+import Posts from "../Repetitive/Posts";
+import { imagePosts } from "../../data/postsData";
 const PageContent = () => {
   const imagePaths = [
     "/src/assets/carouselImg/shop-hero-1-product-slide-1.jpg",
@@ -123,6 +124,26 @@ const PageContent = () => {
                 <button className="btn2Sm">READ MORE</button>
               </div>
             </div>
+          </div>
+        </div>
+        <div className="mt-32 mb-32">
+          <div className="leading-10 text-center mb-20">
+            <h6 className="text-primary-blue text-sm font-bold mb-5">
+              Practice Advice
+            </h6>
+            <h2 className="font-bold text-[2.5rem] mb-5">Practice Advice</h2>
+            <p className="text-secondary-text text-sm">
+              Problems trying to resolve the conflict between
+            </p>
+            <p className="text-secondary-text text-sm">
+              the two major realms of Classical physics: Newtonian mechanics
+            </p>
+          </div>
+          <div className="flex justify-center gap-5 flex-wrap">
+            {imagePosts.map((posts, i) => {
+              const { url } = posts;
+              return <Posts key={i} url={url} />;
+            })}
           </div>
         </div>
       </section>
