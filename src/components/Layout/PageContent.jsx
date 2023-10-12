@@ -85,6 +85,42 @@ const PageContent = () => {
           })}
         </div>
         <ReusableSwiper imagePaths={imagePaths2} />
+        <div className="flex justify-evenly gap-5 flex-wrap">
+          <div className="xs:order-last mdCstm:order-1 xs:p-5 mdCstm:p-0 xs:hidden mdCstm:block">
+            <img
+              src="/src/assets/generalImg/asian-woman-man-with-winter-clothes 1.png"
+              alt=""
+            />
+          </div>
+          <div className="xs:order-last mdCstm:order-0 xs:p-5 mdCstm:p-0 xs:block mdCstm:hidden">
+            <img
+              src="/src/assets/generalImg/asian-woman-man-with-winter-clothes 2.png"
+              alt=""
+            />
+          </div>
+          <div className="mt-20 p-5 xs:leading-[2.5rem] mdCstm:leading-[4rem] flex flex-col justify-center xs:order-1 mdCstm:order-0 xs:text-center mdCstm:text-left">
+            <h5 className="text-muted-color text-bold">SUMMER 2020</h5>
+            <h2 className="font-bold text-[2.5rem] text-dark-navy mb-5 mt-5">
+              Part of the Neural <br /> Universe
+            </h2>
+            <p className="leading-8 text-secondary-text text-xl">
+              We know how large objects will act, <br /> but things on a small
+              scale.
+            </p>
+            <div className="xs:hidden mdCstm:block">
+              <div className="flex gap-3 mt-10 xs:flex-col mdCstm:flex-row">
+                <button className="btn1">BUY NOW</button>
+                <button className="btn2">READ MORE</button>
+              </div>
+            </div>
+            <div className="xs:block mdCstm:hidden">
+              <div className="flex gap-3 mt-10 xs:flex-col mdCstm:flex-row items-center">
+                <button className="btn1Sm">BUY NOW</button>
+                <button className="btn2Sm">READ MORE</button>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
     </>
   );

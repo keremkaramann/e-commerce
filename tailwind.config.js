@@ -13,6 +13,7 @@ export default {
         "success-color": "#2DC071",
         "dark-navy": "#252B42",
         "alert-color": "#E77C40",
+        "muted-color": "#BDBDBD",
       },
     },
     screens: {

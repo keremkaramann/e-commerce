@@ -19,6 +19,26 @@ a {
 .color-picker {
   @apply w-4 h-4 rounded-lg cursor-pointer;
 }
+.btn1 {
+  @apply px-10 py-4 text-white text-sm bg-success-color border-solid 
+              border-[1px] border-success-color rounded
+               hover:text-success-color hover:bg-white ease-in-out duration-500;
+}
+.btn2 {
+  @apply px-8 py-4 text-success-color text-sm border-solid rounded
+              border-[1px] border-success-color hover:text-white hover:bg-success-color ease-in-out duration-500;
+}
+.btn1Sm {
+  @apply px-4 w-1/2 py-4 text-white text-sm bg-primary-blue border-solid 
+              border-[1px] border-primary-blue rounded
+               hover:text-primary-blue hover:bg-white ease-in-out duration-500;
+}
+.btn2Sm {
+  @apply px-4 w-1/2 py-4 text-primary-blue text-sm bg-white border-solid 
+              border-[1px] border-primary-blue rounded
+               hover:text-white hover:bg-primary-blue ease-in-out duration-500;
+}
+
 .swiper-button-prev,
 .swiper-button-next {
   color: white;
