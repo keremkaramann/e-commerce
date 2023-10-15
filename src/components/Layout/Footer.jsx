@@ -19,7 +19,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="bg-white pt-10 pb-10 ">
-          <div className="max-w-1/2 w-full mx-auto flex xs:gap-10 mdCstm:gap-16 xs:justify-center mdCstm:justify-between flex-wrap xs:flex-col xs:px-6 mdCstm:flex-row mdCstm:px-0">
+          <div className="max-w-1/2 w-full mx-auto flex xs:gap-10 mdCstm:gap-16 xs:justify-center mdCstm:justify-between flex-wrap xs:flex-col xs:px-6 middle:flex-row middle:px-0">
             <div className="font-bold leading-8">
               <h5 className="text-[#252B42]">Company Info</h5>
               <div className="text-secondary-text text-sm leading-8">

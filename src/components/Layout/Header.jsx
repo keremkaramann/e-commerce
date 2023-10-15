@@ -17,7 +17,7 @@ const Header = ({ bgColor, justify }) => {
     <>
       <header>
         <div
-          className={`flex ${justify} p-5 text-white font-bold text-sm items-center bg-${bgColor}`}
+          className={`flex ${justify} p-5 text-white font-bold text-sm items-center ${bgColor}`}
         >
           <div className="flex gap-4">
             <div className="text-white">

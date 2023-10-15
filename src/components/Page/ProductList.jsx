@@ -60,7 +60,7 @@ const ProductList = () => {
 
   return (
     <div>
-      <Header bgColor={"products-bg"} justify={"justify-around"} />
+      <Header bgColor={"bg-products-bg"} justify={"justify-around"} />
       <section className=" bg-[#FAFAFA] py-5">
         <div className=" flex items-center justify-between mx-auto p-5 w-full max-w-[1200px] xs:flex-col mdCstm:flex-row">
           <h1 className="text-dark-navy text-2xl font-bold xs:mb-10 mdCstm:mb-0">
@@ -84,10 +84,10 @@ const ProductList = () => {
             return (
               <div
                 key={index}
-                className="bg-cover bg-center mdCstm:h-[223px] mdCstm:w-[223px] xs:h-[300px] xs:w-4/5 bg-no-repeat relative"
+                className="bg-cover bg-center middle:h-[223px] middle:w-[223px] xs:h-[300px] xs:w-4/5 bg-no-repeat relative"
                 style={{ backgroundImage: `url(${urls})` }}
               >
-                <div className="bg-[#2121214b] mdCstm:h-[223px] mdCstm:w-[223px] text-white">
+                <div className="bg-[#2121214b] middle:h-[223px] middle:w-[223px] text-white">
                   <div className="absolute top-[40%] left-[35%] text-center">
                     <p className="font-bold mb-3">CLOTHS</p>
                     <p className="text-sm">5 Items</p>
@@ -180,7 +180,7 @@ const ProductList = () => {
             </IconButton>
           </ButtonGroup>
         </div>
-        <div className="flex mdCstm:justify-around items-center bg-[#FAFAFA] p-20 flex-wrap gap-8 xs:justify-center xs:flex-col mdCstm:flex-row">
+        <div className="flex mdCstm:justify-around items-center bg-[#FAFAFA] p-20 flex-wrap gap-8 xs:justify-center xs:flex-col middle:flex-row">
           {imgBrands.map((url, index) => {
             return <img key={index} src={url} alt="" />;
           })}
