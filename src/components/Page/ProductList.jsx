@@ -1,3 +1,4 @@
+import React from "react";
 import { useState } from "react";
 import Footer from "../Layout/Footer";
 import Header from "../Layout/Header";
@@ -6,10 +7,31 @@ import { HiViewGrid } from "react-icons/hi";
 import { BsListCheck } from "react-icons/bs";
 import productListData from "../../data/ProductList";
 import ProductCard from "../Repetitive/ProductCard";
+import { IconButton, ButtonGroup } from "@material-tailwind/react";
 
 const ProductList = () => {
   const [isGridClicked, setGridClicked] = useState(true);
   const [isListClicked, setListClicked] = useState(false);
+
+  const [active, setActive] = useState(1);
+
+  const getItemProps = (index) => ({
+    className:
+      active === index
+        ? "bg-primary-blue text-white px-6 py-9 border-[#BDBDBD]"
+        : "px-6 py-9 border-[#BDBDBD] text-primary-blue",
+    onClick: () => setActive(index),
+  });
+
+  const next = () => {
+    if (active === 3) return;
+    setActive(active + 1);
+  };
+
+  const prev = () => {
+    if (active === 1) return;
+    setActive(active - 1);
+  };
 
   const handleGridClick = () => {
     setGridClicked(true);
@@ -70,7 +92,7 @@ const ProductList = () => {
         <div className="flex justify-center"></div>
       </section>
       <section>
-        <div className="flex justify-around items-center py-10 xs:flex-col xs:gap-5">
+        <div className="flex justify-around items-center py-10 xs:flex-col xs:gap-5 mdCstm:flex-row mdCstm:gap-0">
           <p className="text-sm text-secondary-text font-bold">
             Showing all 12 results
           </p>
@@ -130,6 +152,25 @@ const ProductList = () => {
               />
             );
           })}
+        </div>
+        <div className="flex justify-center text-center mb-12">
+          <ButtonGroup variant="outlined" className="shadow-lg rounded ">
+            <IconButton
+              onClick={prev}
+              className="px-10 py-9 border-[#BDBDBD] text-muted-color bg-[#F3F3F3] "
+            >
+              <p>First</p>
+            </IconButton>
+            <IconButton {...getItemProps(1)}>1</IconButton>
+            <IconButton {...getItemProps(2)}>2</IconButton>
+            <IconButton {...getItemProps(3)}>3</IconButton>
+            <IconButton
+              onClick={next}
+              className="px-10 py-9 text-center border-[#BDBDBD] text-primary-blue"
+            >
+              <p> Next</p>
+            </IconButton>
+          </ButtonGroup>
         </div>
       </section>
       <Footer />
