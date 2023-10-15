@@ -12,12 +12,12 @@ import {
 } from "react-icons/bs";
 import { AiOutlineShoppingCart, AiOutlineHeart } from "react-icons/ai";
 
-const Header = ({ bgColor }) => {
+const Header = ({ bgColor, justify }) => {
   return (
     <>
       <header>
         <div
-          className={`flex justify-between p-5 text-white font-bold text-sm items-center bg-${bgColor}`}
+          className={`flex ${justify} p-5 text-white font-bold text-sm items-center bg-${bgColor}`}
         >
           <div className="flex gap-4">
             <div className="text-white">
@@ -52,7 +52,7 @@ const Header = ({ bgColor }) => {
             </a>
           </div>
         </div>
-        <nav className="p-5 flex items-center justify-between">
+        <nav className={`p-5 flex ${justify} items-center`}>
           <div>
             <h1 className="text-2xl font-bold">Bandage</h1>
           </div>

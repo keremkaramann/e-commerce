@@ -4,7 +4,7 @@ import PageContent from "../Layout/PageContent";
 const Home = () => {
   return (
     <div>
-      <Header bgColor={"dark-navy"} />
+      <Header bgColor={"dark-navy"} justify={"justify-between"} />
       <PageContent />
       <Footer />
     </div>
