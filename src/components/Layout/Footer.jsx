@@ -3,8 +3,8 @@ import { BsFacebook } from "react-icons/bs";
 const Footer = () => {
   return (
     <footer>
-      <div className="bg-[#FAFAFA] pt-16 pb-16">
-        <div className="max-w-1/2 w-full mx-auto flex justify-between mb-16">
+      <div className="mdCstm:pt-16 mdCstm:pb-16 xs:pt-10 xs:pb-10 xs:bg-white mdCstm:bg-[#FAFAFA]">
+        <div className="max-w-1/2 w-full mx-auto flex justify-between mb-16 xs:flex-col xs:px-6 xs:gap-3 mdCstm:flex-row mdCstm:gap-0">
           <h1 className="font-bold text-2xl">Bandage</h1>
           <div className="flex gap-3 text-primary-blue text-2xl">
             <a href="">
@@ -18,8 +18,8 @@ const Footer = () => {
             </a>
           </div>
         </div>
-        <div className="bg-white pt-10 pb-10">
-          <div className="max-w-1/2 w-full mx-auto flex xs:gap-10 mdCstm:gap-16 xs:justify-center mdCstm:justify-between flex-wrap">
+        <div className="bg-white pt-10 pb-10 ">
+          <div className="max-w-1/2 w-full mx-auto flex xs:gap-10 mdCstm:gap-16 xs:justify-center mdCstm:justify-between flex-wrap xs:flex-col xs:px-6 mdCstm:flex-row mdCstm:px-0">
             <div className="font-bold leading-8">
               <h5 className="text-[#252B42]">Company Info</h5>
               <div className="text-secondary-text text-sm leading-8">
@@ -111,7 +111,7 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <div className="max-w-1/2 w-full mx-auto text-secondary-text text-sm font-bold">
+        <div className="max-w-1/2 w-full mx-auto text-secondary-text text-sm font-bold mdCstm::px-0 xs:px-6">
           <p className="mt-10">Made With Love By Finland All Right Reserved </p>
         </div>
       </div>
