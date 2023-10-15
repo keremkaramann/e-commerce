@@ -28,7 +28,7 @@ const Posts = ({ url }) => {
             <TfiAlarmClock className="text-primary-blue " />
             <p className="text-secondary-text text-xs">22 April 2021</p>
           </div>
-          <div className="flex flex justify-between items-center gap-1">
+          <div className="flex justify-between items-center gap-1">
             <AiOutlineAreaChart className="text-[#23856D]" />
             <p className="text-secondary-text text-xs">22 April 2021</p>
           </div>

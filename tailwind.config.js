@@ -14,6 +14,7 @@ export default {
         "dark-navy": "#252B42",
         "alert-color": "#E77C40",
         "muted-color": "#BDBDBD",
+        "products-bg": "#23856D",
       },
     },
     screens: {
