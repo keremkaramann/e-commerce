@@ -3,7 +3,12 @@ import Footer from "../Layout/Footer";
 import { BsChevronRight } from "react-icons/bs";
 import TeamCard from "../Repetitive/TeamCard";
 import { teamData } from "../../data/teamData";
-
+import {
+  AiOutlineInstagram,
+  AiOutlineTwitter,
+  AiFillFacebook,
+  AiFillLinkedin,
+} from "react-icons/ai";
 const Team = () => {
   return (
     <div>
@@ -77,6 +82,35 @@ const Team = () => {
             const { url } = item;
             return <TeamCard key={index} url={url} />;
           })}
+        </div>
+      </section>
+      <section className="text-center xs:p-5 middle:p-0">
+        <h2 className="font-bold text-dark-navy text-[2.5rem] mb-10">
+          Start your 14 days free trial
+        </h2>
+        <p className="text-sm text-secondary-text mb-10 w-full max-w-md mx-auto">
+          Met minim Mollie non desert Alamo est sit cliquey dolor do met sent.
+          RELIT official consequent.
+        </p>
+        <button
+          className=" mb-10 rounded border-[1px] border-primary-blue bg-primary-blue 
+        duration-500 text-white text-sml px-9 py-3 hover:text-primary-blue hover:bg-white"
+        >
+          Try it free now
+        </button>
+        <div className="flex gap-6 text-4xl justify-center mb-10">
+          <a href="">
+            <AiOutlineTwitter className="text-[#21A6DF]" />
+          </a>
+          <a href="">
+            <AiFillFacebook className="text-[#395185]" />
+          </a>
+          <a href="">
+            <AiOutlineInstagram className="text-black" />
+          </a>
+          <a href="">
+            <AiFillLinkedin className="text-[#0A66C2]" />
+          </a>
         </div>
       </section>
       <Footer />
