@@ -72,9 +72,12 @@ const Team = () => {
             Meet Our Team
           </h1>
         </div>
-        {teamData.map((url, index) => {
-          return <TeamCard key={index} url={url} />;
-        })}
+        <div className="flex justify-center gap-6 flex-wrap max-w-[1060px] mx-auto w-full">
+          {teamData.map((item, index) => {
+            const { url } = item;
+            return <TeamCard key={index} url={url} />;
+          })}
+        </div>
       </section>
       <Footer />
     </div>
