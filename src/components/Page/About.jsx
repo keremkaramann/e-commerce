@@ -1,5 +1,6 @@
 import TeamAboutHeader from "../Repetitive/TeamAboutNavbar";
 import Footer from "../Layout/Footer";
+import Counter from "../Repetitive/Counter";
 const About = () => {
   return (
     <div>
@@ -25,6 +26,23 @@ const About = () => {
         <div>
           <img src="/src/assets/about/none.png" alt="" />
         </div>
+      </section>
+      <section className="flex items-center justify-evenly mt-24 mb-24">
+        <div>
+          <p className="text-[#E74040] font-sm mb-10">Problems trying</p>
+          <h3 className="font-bold text-2xl text-dark-navy w-[380px]">
+            Met minim Mollie non desert Alamo est sit cliquey dolor do met sent.
+          </h3>
+        </div>
+        <div>
+          <p className="text-sm text-secondary-text w-[520px] ">
+            Problems trying to resolve the conflict between the two major realms
+            of Classical physics: Newtonian mechanics
+          </p>
+        </div>
+      </section>
+      <section>
+        <Counter to={15} from={0} />
       </section>
       <Footer />
     </div>
