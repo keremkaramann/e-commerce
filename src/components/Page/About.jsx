@@ -41,8 +41,31 @@ const About = () => {
           </p>
         </div>
       </section>
-      <section>
-        <Counter to={15} from={0} />
+      <section className="flex justify-evenly mb-40 mt-24">
+        <div className="flex flex-col items-center">
+          <div className="flex font-bold text-dark-navy text-[3.4rem]">
+            <Counter to={15} from={0} />K
+          </div>
+          <p className="counterP">Happy Customers</p>
+        </div>
+        <div className="flex flex-col items-center">
+          <div className="flex font-bold text-dark-navy text-[3.4rem]">
+            <Counter to={150} from={0} />K
+          </div>
+          <p className="counterP">Monthly Visitors</p>
+        </div>
+        <div className="flex flex-col items-center">
+          <div className="flex font-bold text-dark-navy text-[3.4rem]">
+            <Counter to={15} from={0} />
+          </div>
+          <p className="counterP">Countries Worldwide</p>
+        </div>
+        <div className="flex flex-col items-center">
+          <div className="flex font-bold text-dark-navy text-[3.4rem]">
+            <Counter to={100} from={0} />+
+          </div>
+          <p className="counterP">Top Partners</p>
+        </div>
       </section>
       <Footer />
     </div>
