@@ -1,7 +1,19 @@
 import TeamAboutHeader from "../Repetitive/TeamAboutNavbar";
 import Footer from "../Layout/Footer";
 import Counter from "../Repetitive/Counter";
+import TeamCard from "../Repetitive/TeamCard";
 const About = () => {
+  const TeamCardData = [
+    {
+      url: "/src/assets/teamsHeader/teamCard/team-1-user-3 (1).jpg",
+    },
+    {
+      url: "/src/assets/teamsHeader/teamCard/team-1-user-1 (2).jpg",
+    },
+    {
+      url: "/src/assets/teamsHeader/teamCard/team-1-user-1 (1).jpg",
+    },
+  ];
   return (
     <div>
       <TeamAboutHeader />
@@ -69,6 +81,25 @@ const About = () => {
       </section>
       <section className="flex justify-center mb-40 p-10">
         <img src="/src/assets/about/Video card.png" alt="" />
+      </section>
+      <section>
+        <div className="text-center mt-14 mb-5">
+          <h1 className="font-bold text-[2.5rem] text-dark-navy">
+            Meet Our Team
+          </h1>
+        </div>
+        <div className="text-center mb-32">
+          <p className="text-sm text-secondary-text">
+            Problems trying to resolve the conflict between <br /> the two major
+            realms of Classical physics: Newtonian mechanics
+          </p>
+        </div>
+        <div className="flex justify-center gap-6 flex-wrap max-w-[1060px] mx-auto w-full mb-20">
+          {TeamCardData.map((item, index) => {
+            const { url } = item;
+            return <TeamCard key={index} url={url} />;
+          })}
+        </div>
       </section>
       <Footer />
     </div>
