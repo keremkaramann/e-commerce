@@ -125,9 +125,10 @@ const About = () => {
             return <img key={index} src={url} alt="" />;
           })}
         </div>
-        <div className="xs:flex-none middle:flex xs:flex-wrap middle:flex-nowrap">
-          <div className="bg-[#297dc8] text-white">
-            <div className="max-w-full h-auto middle:p-40 xs:p-10 xs:mr-0 middle:mr-20 xs:text-center middle:text-right">
+        {/* className="xs:p-10 mt-28 xs:mr-0 middle:mr-20 xs:text-center middle:text-right" */}
+        <div className="xs:flex-none middle:flex">
+          <div className="bg-[#297dc8] text-white max-w-[900px] w-full mx-auto flex justify-center items-center">
+            <div className="xs:p-12 middle:p-5 xs:text-center middle:text-left">
               <h5 className="font-bold mb-5">WORK WITH US</h5>
               <h1 className="font-bold mb-5 text-[2.5rem]">
                 Now Let’s grow Yours
