@@ -61,7 +61,7 @@ const Header = ({ bgColor, justify }) => {
             <a href="/products" className="flex gap-1">
               Shop <FiChevronDown className="text-lg" />
             </a>
-            <a href="">About</a>
+            <a href="/about">About</a>
             <a href="">Blog</a>
             <a href="">Contact</a>
             <a href="">Pages</a>

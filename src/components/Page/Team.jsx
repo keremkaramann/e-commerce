@@ -1,14 +1,15 @@
 import TeamAboutNavbar from "../Repetitive/TeamAboutNavbar";
 import Footer from "../Layout/Footer";
-import { BsChevronRight } from "react-icons/bs";
 import TeamCard from "../Repetitive/TeamCard";
 import { teamData } from "../../data/teamData";
+import { BsChevronRight } from "react-icons/bs";
 import {
   AiOutlineInstagram,
   AiOutlineTwitter,
   AiFillFacebook,
   AiFillLinkedin,
 } from "react-icons/ai";
+
 const Team = () => {
   return (
     <div>
