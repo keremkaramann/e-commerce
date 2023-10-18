@@ -67,6 +67,9 @@ const About = () => {
           <p className="counterP">Top Partners</p>
         </div>
       </section>
+      <section className="flex justify-center mb-40 p-10">
+        <img src="/src/assets/about/Video card.png" alt="" />
+      </section>
       <Footer />
     </div>
   );
