@@ -111,7 +111,7 @@ const About = () => {
             return <TeamCard key={index} url={url} />;
           })}
         </div>
-        <div className="text-center bg-[#FAFAFA] pt-20 pb-10 xs:p-10">
+        <div className="text-center bg-[#FAFAFA] middle:pt-40 middle:pb-10 xs:p-10">
           <h2 className="font-bold text-dark-navy text-[2.5rem] mb-10">
             Big Companies Are Here
           </h2>
