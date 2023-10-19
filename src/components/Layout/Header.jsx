@@ -64,7 +64,7 @@ const Header = ({ justify }) => {
             <a href="/about">About</a>
             <a href="">Blog</a>
             <a href="/contact">Contact</a>
-            <a href="">Pages</a>
+            <a href="/product">Pages</a>
           </div>
           <div className="flex gap-5 text-primary-blue items-center font-bold">
             <div className="flex items-center gap-1">
