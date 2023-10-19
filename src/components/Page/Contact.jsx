@@ -6,6 +6,9 @@ import {
   AiFillFacebook,
   AiFillLinkedin,
 } from "react-icons/ai";
+import { BsTelephone } from "react-icons/bs";
+import { ImLocation } from "react-icons/im";
+import { IoIosMail } from "react-icons/io";
 const Contact = () => {
   return (
     <section>
@@ -42,6 +45,64 @@ const Contact = () => {
         </div>
         <div className="xs:p-4 middle:p-0">
           <img src="/src/assets/contactgb.png" alt="" />
+        </div>
+      </div>
+      <div className="mb-20 mt-20">
+        <div className="font-bold text-dark-navy text-center mb-12">
+          <h6 className="text-sm">VISIT OUR OFFICE</h6>
+          <h2 className="text-[2.5rem] ">
+            We help small businesses <br /> with big ideas
+          </h2>
+        </div>
+        <div className="flex justify-evenly mt-32">
+          <div className="text-center py-[5.7rem] px-14">
+            <div className="flex justify-center">
+              <BsTelephone className="text-primary-blue text-7xl text-center mb-3" />
+            </div>
+            <div className="text-sm text-dark-navy font-bold">
+              <p>georgia.young@example.com</p>
+              <p className="mb-3 mt-1">georgia.young@ple.com</p>
+              <p className="mb-3">Get Support</p>
+            </div>
+            <button
+              className="hover:bg-primary-blue hover:text-white duration-500 text-primary-blue border-[1px]
+             border-primary-blue px-7 py-3 rounded-full"
+            >
+              Submit Request
+            </button>
+          </div>
+          <div className="text-center bg-dark-navy py-[5.7rem] px-14">
+            <div className="flex justify-center">
+              <ImLocation className="text-primary-blue text-7xl text-center mb-3" />
+            </div>
+            <div className="text-sm text-white font-bold">
+              <p>georgia.young@example.com</p>
+              <p className="mb-3 mt-1">georgia.young@ple.com</p>
+              <p className="mb-3">Get Support</p>
+            </div>
+            <button
+              className="hover:bg-primary-blue hover:text-white duration-500 text-primary-blue border-[1px]
+             border-primary-blue px-7 py-3 rounded-full"
+            >
+              Submit Request
+            </button>
+          </div>
+          <div className="text-center py-[5.7rem] px-14">
+            <div className="flex justify-center">
+              <IoIosMail className="text-primary-blue text-7xl text-center mb-3" />
+            </div>
+            <div className="text-sm text-dark-navy font-bold">
+              <p>georgia.young@example.com</p>
+              <p className="mb-3 mt-1">georgia.young@ple.com</p>
+              <p className="mb-3">Get Support</p>
+            </div>
+            <button
+              className="hover:bg-primary-blue hover:text-white duration-500 text-primary-blue border-[1px]
+             border-primary-blue px-7 py-3 rounded-full"
+            >
+              Submit Request
+            </button>
+          </div>
         </div>
       </div>
       <Footer />
