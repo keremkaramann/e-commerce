@@ -120,7 +120,7 @@ const Product = () => {
         </div>
         <div className="border-b-2 border-[#ECECEC] mb-12 w-[79%] mx-auto"></div>
         <div className="max-w-[1170px] w-full mx-auto">
-          <div className="flex gap-8 xs:flex-wrap xs:justify-center middle:justify-normal xs:p-6 middle:p-0">
+          <div className="flex gap-8 xs:flex-wrap xs:justify-center middle:justify-normal xs:p-6 middle:p-2">
             <div>
               <img src="/src/assets/productImg.png" alt="" />
             </div>
@@ -205,8 +205,14 @@ const Product = () => {
       </div>
 
       <div className="bg-[#FAFAFA] py-14">
-        <div className="flex justify-center mb-10 ml-5 w-[600px]">
-          <h3 className="xs:ml-5 middle:ml-14 text-dark-navy text-2xl font-bold ">
+        <div className="mb-10 max-w-[1060px] flex justify-center mx-auto gap-14">
+          <h3 className="text-dark-navy text-2xl font-bold ">
+            BESTSELLER PRODUCTS
+          </h3>
+          <h3 className="text-dark-navy text-2xl font-bold invisible xs:hidden middle:block">
+            BESTSELLER PRODUCTS
+          </h3>
+          <h3 className="text-dark-navy text-2xl font-bold invisible xs:hidden middle:block">
             BESTSELLER PRODUCTS
           </h3>
         </div>
