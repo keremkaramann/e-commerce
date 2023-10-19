@@ -11,6 +11,8 @@ import {
 } from "react-icons/ai";
 import Example from "../Repetitive/ProductCaoursel";
 import { useState } from "react";
+import bestSellerData from "../../data/bestseller";
+import BestSellerCard from "../Repetitive/BestSellerProductCard";
 
 const Product = () => {
   const colorOptions = [
@@ -104,6 +106,26 @@ const Product = () => {
             <AiOutlineShoppingCart className="addToChart" />
             <AiFillEye className="addToChart" />
           </div>
+        </div>
+      </div>
+      <div className="bg-[#FAFAFA] py-14">
+        <div className="flex justify-start mb-10 ml-5">
+          <h3 className="ml-14 text-dark-navy text-2xl font-bold ">
+            BESTSELLER PRODUCTS
+          </h3>
+        </div>
+        <div className="border-b-2 border-muted-color mb-12 w-[90%] mx-auto"></div>
+        <div className="flex justify-center gap-6 flex-wrap max-w-[1060px] mx-auto w-full">
+          {bestSellerData.map(({ key, url, content, department }) => {
+            return (
+              <BestSellerCard
+                key={key}
+                url={url}
+                content={content}
+                department={department}
+              />
+            );
+          })}
         </div>
       </div>
       <Brands />
