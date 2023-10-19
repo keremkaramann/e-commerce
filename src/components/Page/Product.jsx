@@ -61,7 +61,7 @@ const Product = () => {
           </div>
         </div>
       </div>
-      <div className="bg-[#FAFAFA] flex justify-center xs:gap-5 middle:gap-20 flex-wrap">
+      <div className="bg-[#FAFAFA] flex justify-center xs:gap-5 middle:gap-20 flex-wrap pb-12">
         <div>
           <Example />
         </div>
@@ -108,9 +108,105 @@ const Product = () => {
           </div>
         </div>
       </div>
+
+      <div className="bg-white pb-14">
+        <div className="text-secondary-text text-sm flex justify-center gap-10 py-10">
+          <p className="font-semibold">Description</p>
+          <p className="font-bold">Additional Information</p>
+          <div className="flex gap-1">
+            <p className="font-bold">Reviews</p>
+            <p>(0)</p>
+          </div>
+        </div>
+        <div className="border-b-2 border-[#ECECEC] mb-12 w-[90%] mx-auto"></div>
+        <div className="max-w-[1170px] w-full mx-auto">
+          <div className="flex gap-8 xs:flex-wrap xs:justify-center middle:justify-normal xs:p-6 middle:p-0">
+            <div>
+              <img src="/src/assets/productImg.png" alt="" />
+            </div>
+            <div className="middle:w-[28%] xs:w-full">
+              <h3 className="text-dark-navy font-bold text-2xl mb-8">
+                the quick fox jumps over
+              </h3>
+              <div className="text-sm text-secondary-text">
+                <p className="mb-4">
+                  Met minim Mollie non desert Alamo est sit cliquey dolor do met
+                  sent. RELIT official consequent door ENIM RELIT Mollie.
+                  Excitation venial consequent sent nostrum met.
+                </p>
+                <p className="mb-4">
+                  Met minim Mollie non desert Alamo est sit cliquey dolor do met
+                  sent. RELIT official consequent door ENIM RELIT Mollie.
+                  Excitation venial consequent sent nostrum met.
+                </p>
+                <p>
+                  Met minim Mollie non desert Alamo est sit cliquey dolor do met
+                  sent. RELIT official consequent door ENIM RELIT Mollie.
+                  Excitation venial consequent sent nostrum met.
+                </p>
+              </div>
+            </div>
+            <div>
+              <div className="mb-5">
+                <h3 className="text-dark-navy font-bold text-2xl mb-8">
+                  the quick fox jumps over
+                </h3>
+                <div className="flex mb-2 gap-3 text-secondary-text ">
+                  <BsChevronRight />
+                  <p className="text-sm font-bold">
+                    the quick fox jumps over the lazy dog
+                  </p>
+                </div>
+                <div className="flex mb-2 gap-3 text-secondary-text ">
+                  <BsChevronRight />
+                  <p className="text-sm font-bold">
+                    the quick fox jumps over the lazy dog
+                  </p>
+                </div>
+                <div className="flex mb-2 gap-3 text-secondary-text ">
+                  <BsChevronRight />
+                  <p className="text-sm font-bold">
+                    the quick fox jumps over the lazy dog
+                  </p>
+                </div>
+                <div className="flex mb-2 gap-3 text-secondary-text ">
+                  <BsChevronRight />
+                  <p className="text-sm font-bold">
+                    the quick fox jumps over the lazy dog
+                  </p>
+                </div>
+              </div>
+              <div>
+                <h3 className="text-dark-navy font-bold text-2xl mb-8">
+                  the quick fox jumps over
+                </h3>
+                <div className="flex mb-2 gap-3 text-secondary-text ">
+                  <BsChevronRight />
+                  <p className="text-sm font-bold">
+                    the quick fox jumps over the lazy dog
+                  </p>
+                </div>
+                <div className="flex mb-2 gap-3 text-secondary-text ">
+                  <BsChevronRight />
+                  <p className="text-sm font-bold">
+                    the quick fox jumps over the lazy dog
+                  </p>
+                </div>
+                <div className="flex mb-2 gap-3 text-secondary-text ">
+                  <BsChevronRight className="text-lg" />
+                  <p className="text-sm font-bold">
+                    the quick fox jumps over the lazy dog
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div className="bg-[#FAFAFA] py-14">
         <div className="flex justify-start mb-10 ml-5">
-          <h3 className="ml-14 text-dark-navy text-2xl font-bold ">
+          <h3 className="xs:ml-5 middle:ml-14 text-dark-navy text-2xl font-bold ">
             BESTSELLER PRODUCTS
           </h3>
         </div>
