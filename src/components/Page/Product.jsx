@@ -118,7 +118,7 @@ const Product = () => {
             <p>(0)</p>
           </div>
         </div>
-        <div className="border-b-2 border-[#ECECEC] mb-12 w-[90%] mx-auto"></div>
+        <div className="border-b-2 border-[#ECECEC] mb-12 w-[79%] mx-auto"></div>
         <div className="max-w-[1170px] w-full mx-auto">
           <div className="flex gap-8 xs:flex-wrap xs:justify-center middle:justify-normal xs:p-6 middle:p-0">
             <div>
@@ -205,12 +205,12 @@ const Product = () => {
       </div>
 
       <div className="bg-[#FAFAFA] py-14">
-        <div className="flex justify-start mb-10 ml-5">
+        <div className="flex justify-center mb-10 ml-5 w-[600px]">
           <h3 className="xs:ml-5 middle:ml-14 text-dark-navy text-2xl font-bold ">
             BESTSELLER PRODUCTS
           </h3>
         </div>
-        <div className="border-b-2 border-muted-color mb-12 w-[90%] mx-auto"></div>
+        <div className="border-b-2 border-muted-color mb-12 w-[72%] mx-auto"></div>
         <div className="flex justify-center gap-6 flex-wrap max-w-[1060px] mx-auto w-full">
           {bestSellerData.map(({ key, url, content, department }) => {
             return (
