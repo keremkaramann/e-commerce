@@ -17,7 +17,7 @@ const Header = ({ justify }) => {
     <>
       <header>
         <div
-          className={`flex ${justify} p-5 text-white font-bold text-sm items-center bg-dark-navy`}
+          className={`flex ${justify} p-5 text-white font-bold text-sm items-center bg-dark-navy flex-wrap`}
         >
           <div className="flex gap-4">
             <div className="text-white">
@@ -52,11 +52,11 @@ const Header = ({ justify }) => {
             </a>
           </div>
         </div>
-        <nav className={`p-5 flex ${justify} items-center`}>
+        <nav className={`p-5 flex ${justify} items-center flex-wrap`}>
           <div>
             <h1 className="text-2xl font-bold">Bandage</h1>
           </div>
-          <div className="font-bold text-sm text-secondary-text flex gap-3">
+          <div className="font-bold text-sm text-secondary-text flex gap-3 flex-wrap">
             <Link to="/">Home</Link>
             <a href="/products" className="flex gap-1">
               Shop <FiChevronDown className="text-lg" />
