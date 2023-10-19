@@ -47,15 +47,15 @@ const Contact = () => {
           <img src="/src/assets/contactgb.png" alt="" />
         </div>
       </div>
-      <div className="mb-20 mt-20">
+      <div className="mb-20 mt-20 xs:bg-[#F6F6F6] middle:bg-white xs:py-20 xs:px-2  middle:py-0 middle:px-0">
         <div className="font-bold text-dark-navy text-center mb-12">
           <h6 className="text-sm">VISIT OUR OFFICE</h6>
           <h2 className="text-[2.5rem] ">
             We help small businesses <br /> with big ideas
           </h2>
         </div>
-        <div className="flex justify-evenly mt-32">
-          <div className="text-center py-[5.7rem] px-14">
+        <div className="flex justify-center xs:mt-10 middle:mt-28 xs:flex-wrap middle:flex-nowrap xs:gap-10 middle:gap:0">
+          <div className="text-center py-[5.7rem] px-14 xs:bg-white">
             <div className="flex justify-center">
               <BsTelephone className="text-primary-blue text-7xl text-center mb-3" />
             </div>
@@ -87,7 +87,7 @@ const Contact = () => {
               Submit Request
             </button>
           </div>
-          <div className="text-center py-[5.7rem] px-14">
+          <div className="text-center py-[5.7rem] px-14 xs:bg-white">
             <div className="flex justify-center">
               <IoIosMail className="text-primary-blue text-7xl text-center mb-3" />
             </div>
