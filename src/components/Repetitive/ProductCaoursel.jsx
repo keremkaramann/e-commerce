@@ -36,7 +36,7 @@ export default function Example() {
   /* className="w-[43%]" */
 
   return (
-    <div className="max-w-[510px] w-full">
+    <div className="xs:max-w-[300px] middle:max-w-[510px] w-full">
       <Swiper
         modules={[Virtual, Navigation, Pagination, EffectFade]}
         onSwiper={setSwiperRef}
@@ -45,6 +45,7 @@ export default function Example() {
         centeredSlides={true}
         navigation={true}
         virtual
+        spaceBetween={10}
       >
         <SwiperSlide>
           <img src="/src/assets/product/carousel-item.png" alt="" />

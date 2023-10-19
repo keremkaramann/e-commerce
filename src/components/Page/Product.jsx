@@ -59,11 +59,11 @@ const Product = () => {
           </div>
         </div>
       </div>
-      <div className="bg-[#FAFAFA] flex justify-center gap-20">
+      <div className="bg-[#FAFAFA] flex justify-center xs:gap-5 middle:gap-20 flex-wrap">
         <div>
           <Example />
         </div>
-        <div className="w-[40%]">
+        <div className=" xs:w-full middle:w-[40%] xs:p-10 middle:p-0">
           <h4 className="dark-navy text-lg mb-3 mt-3">Floating Phone</h4>
           <div className="flex items-center gap-2 text-2xl text-[#F3CD03] mb-4">
             <AiFillStar />
@@ -96,7 +96,7 @@ const Product = () => {
               ></li>
             ))}
           </ul>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 xs:flex-wrap middle:flex-nowrap">
             <button className="px-4 py-2 rounded border-[1px] bg-primary-blue border-primary-blue text-white hover:bg-white hover:text-primary-blue duration-500">
               Select Options
             </button>
