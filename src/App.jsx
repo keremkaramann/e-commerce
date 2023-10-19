@@ -4,6 +4,7 @@ import { Switch } from "react-router-dom";
 import { Route } from "react-router-dom";
 import Team from "./components/Page/Team";
 import About from "./components/Page/About";
+import Contact from "./components/Page/Contact";
 function App() {
   return (
     <>
@@ -19,6 +20,9 @@ function App() {
         </Route>
         <Route path="/about">
           <About />
+        </Route>
+        <Route path="/contact">
+          <Contact />
         </Route>
       </Switch>
     </>

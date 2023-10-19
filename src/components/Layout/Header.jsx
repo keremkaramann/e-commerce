@@ -63,7 +63,7 @@ const Header = ({ bgColor, justify }) => {
             </a>
             <a href="/about">About</a>
             <a href="">Blog</a>
-            <a href="">Contact</a>
+            <a href="/contact">Contact</a>
             <a href="">Pages</a>
           </div>
           <div className="flex gap-5 text-primary-blue items-center font-bold">
