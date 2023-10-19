@@ -12,12 +12,12 @@ import {
 } from "react-icons/bs";
 import { AiOutlineShoppingCart, AiOutlineHeart } from "react-icons/ai";
 
-const Header = ({ bgColor, justify }) => {
+const Header = ({ justify }) => {
   return (
     <>
       <header>
         <div
-          className={`flex ${justify} p-5 text-white font-bold text-sm items-center ${bgColor}`}
+          className={`flex ${justify} p-5 text-white font-bold text-sm items-center bg-dark-navy`}
         >
           <div className="flex gap-4">
             <div className="text-white">

@@ -1,4 +1,4 @@
-import TeamAboutHeader from "../Repetitive/TeamAboutNavbar";
+import Header from "../Layout/Header";
 import Footer from "../Layout/Footer";
 import Counter from "../Repetitive/Counter";
 import TeamCard from "../Repetitive/TeamCard";
@@ -27,7 +27,7 @@ const About = () => {
 
   return (
     <div>
-      <TeamAboutHeader />
+      <Header justify={"justify-between"} />
       <section className="flex items-center justify-evenly xs:flex-wrap middle:flex-nowrap xs:p-10">
         <div className="xs:text-center middle:text-start">
           <h5 className="font-bold text-lg text-dark-navy mb-10 xs:hidden middle:block">
