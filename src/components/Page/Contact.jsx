@@ -105,6 +105,22 @@ const Contact = () => {
           </div>
         </div>
       </div>
+      <div className="text-center mt-10 mb-40">
+        <div className="flex justify-center mb-5 mt-5">
+          <img src="/src/assets/contactArrow.png" alt="" />
+        </div>
+        <div className="font-bold text-dark-navy">
+          <h5 className="mb-5">WE Can't WAIT TO MEET YOU</h5>
+          <h1 className="text-[3.5rem] mb-5">Let’s Talk</h1>
+        </div>
+        <button
+          className="text-sm font-bold rounded-lg border-[1px]
+         border-primary-blue text-white bg-primary-blue px-10 py-4 hover:text-primary-blue
+          hover:bg-white duration-500"
+        >
+          Try it free now
+        </button>
+      </div>
       <Footer />
     </section>
   );
