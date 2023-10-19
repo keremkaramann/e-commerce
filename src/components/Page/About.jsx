@@ -102,7 +102,7 @@ const About = () => {
             return <TeamCard key={index} url={url} />;
           })}
         </div>
-        <div className="text-center bg-[#FAFAFA] middle:pt-40 middle:pb-10 xs:p-10">
+        <div className="text-center bg-[#FAFAFA] middle:pt-20 middle:pb-10 xs:p-10">
           <h2 className="font-bold text-dark-navy text-[2.5rem] mb-10">
             Big Companies Are Here
           </h2>
@@ -112,7 +112,6 @@ const About = () => {
           </p>
         </div>
         <Brands />
-        {/* className="xs:p-10 mt-28 xs:mr-0 middle:mr-20 xs:text-center middle:text-right" */}
         <div className="xs:flex-none middle:flex">
           <div className="bg-[#297dc8] text-white max-w-[900px] w-full mx-auto flex justify-center items-center">
             <div className="xs:p-12 middle:p-5 xs:text-center middle:text-left">

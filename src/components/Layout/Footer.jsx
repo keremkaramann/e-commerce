@@ -3,7 +3,7 @@ import { BsFacebook } from "react-icons/bs";
 const Footer = () => {
   return (
     <footer>
-      <div className="mdCstm:pt-16 mdCstm:pb-10 xs:pt-10 xs:pb-10 xs:bg-white mdCstm:bg-[#FAFAFA]">
+      <div className="mdCstm:pt-14 mdCstm:pb-10 xs:pt-10 xs:pb-10 xs:bg-white mdCstm:bg-[#FAFAFA]">
         <div className="max-w-1/2 w-full mx-auto flex justify-between mb-16 xs:flex-col xs:px-6 xs:gap-3 mdCstm:flex-row mdCstm:gap-0">
           <h1 className="font-bold text-2xl">Bandage</h1>
           <div className="flex gap-3 text-primary-blue text-2xl">

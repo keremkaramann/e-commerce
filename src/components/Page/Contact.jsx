@@ -105,7 +105,7 @@ const Contact = () => {
           </div>
         </div>
       </div>
-      <div className="text-center mt-10 mb-40">
+      <div className="text-center mt-10 mb-32">
         <div className="flex justify-center mb-5 mt-5">
           <img src="/src/assets/contactArrow.png" alt="" />
         </div>
