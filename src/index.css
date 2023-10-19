@@ -19,6 +19,12 @@ a {
 .color-picker {
   @apply w-4 h-4 rounded-lg cursor-pointer;
 }
+.color-picker2 {
+  @apply w-7 h-7 rounded-full cursor-pointer;
+}
+.addToChart {
+  @apply text-4xl rounded-full border-[1px] bg-white p-2 border-muted-color text-dark-navy cursor-pointer;
+}
 .btn1 {
   @apply px-10 py-4 text-white text-sm bg-success-color border-solid 
               border-[1px] border-success-color rounded
