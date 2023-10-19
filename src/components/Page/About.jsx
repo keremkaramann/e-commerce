@@ -2,6 +2,7 @@ import Header from "../Layout/Header";
 import Footer from "../Layout/Footer";
 import Counter from "../Repetitive/Counter";
 import TeamCard from "../Repetitive/TeamCard";
+import Brands from "../Repetitive/Brands";
 
 const About = () => {
   const TeamCardData = [
@@ -15,16 +16,6 @@ const About = () => {
       url: "/src/assets/teamsHeader/teamCard/team-1-user-1 (1).jpg",
     },
   ];
-
-  const imgBrands = [
-    "/src/assets/brands/fa-brands-1.png",
-    "/src/assets/brands/fa-brands-2.png",
-    "/src/assets/brands/fa-brands-3.png",
-    "/src/assets/brands/fa-brands-4.png",
-    "/src/assets/brands/fa-brands-5.png",
-    "/src/assets/brands/fa-brands-6.png",
-  ];
-
   return (
     <div>
       <Header justify={"justify-between"} />
@@ -120,11 +111,7 @@ const About = () => {
             realms of Classical physics: Newtonian mechanics{" "}
           </p>
         </div>
-        <div className="flex mdCstm:justify-around items-center bg-[#FAFAFA] p-20 pb-40 flex-wrap gap-8 xs:justify-center xs:flex-col middle:flex-row">
-          {imgBrands.map((url, index) => {
-            return <img key={index} src={url} alt="" />;
-          })}
-        </div>
+        <Brands />
         {/* className="xs:p-10 mt-28 xs:mr-0 middle:mr-20 xs:text-center middle:text-right" */}
         <div className="xs:flex-none middle:flex">
           <div className="bg-[#297dc8] text-white max-w-[900px] w-full mx-auto flex justify-center items-center">
