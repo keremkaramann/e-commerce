@@ -61,6 +61,3 @@ a {
 :root {
   --swiper-theme-color: #fff;
 }
-.swiper-pagination-progressbar {
-  background: rgba(255, 255, 255, 0.5);
-}

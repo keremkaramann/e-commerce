@@ -82,7 +82,15 @@ const About = () => {
         </div>
       </section>
       <section className="flex justify-center mb-40 p-10">
-        <img src="/src/assets/about/Video card.png" alt="" />
+        <iframe
+          class="w-full aspect-video rounded-xl"
+          width="990"
+          height="540"
+          src="https://www.youtube.com/embed/7bOptq-NPJQ"
+          frameborder="0"
+          allowfullscreen
+          title="YouTube Video"
+        ></iframe>
       </section>
       <section>
         <div className="text-center mt-14 mb-5 ">
