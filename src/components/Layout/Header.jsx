@@ -109,6 +109,7 @@ const Header = () => {
             <div className="flex items-center gap-8 text-secondary-text text-3xl flex-col py-14">
               <a href="/">Home</a>
               <a href="/products">Product</a>
+              <a href="/team">Team</a>
               <a href="/about">About</a>
               <a href="/contact">Contact</a>
             </div>
