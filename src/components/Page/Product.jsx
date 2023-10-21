@@ -85,7 +85,7 @@ const Product = () => {
             Excitation venial consequent sent nostrum met.
           </p>
           <div className="border-b-2 border-muted-color w-3/4 mb-8"></div>
-          <ul className="flex gap-2 mb-20">
+          <ul className="flex gap-2 xs:mb-14 middle:mb-20">
             {colorOptions.map((colorOption, index) => (
               <li
                 key={index}
@@ -110,7 +110,7 @@ const Product = () => {
       </div>
 
       <div className="bg-white pb-14">
-        <div className="text-secondary-text text-sm flex justify-center gap-10 py-10">
+        <div className="text-secondary-text text-sm flex justify-center xs:gap-5 middle:gap-10 py-10">
           <p className="font-semibold">Description</p>
           <p className="font-bold">Additional Information</p>
           <div className="flex gap-1">
@@ -118,7 +118,9 @@ const Product = () => {
             <p>(0)</p>
           </div>
         </div>
-        <div className="border-b-2 border-[#ECECEC] mb-12 w-[79%] mx-auto"></div>
+        <div className="xs:hidden middle:block">
+          <div className="border-b-2 border-[#ECECEC] mb-12 w-[79%] mx-auto"></div>
+        </div>
         <div className="max-w-[1170px] w-full mx-auto">
           <div className="flex gap-8 xs:flex-wrap xs:justify-center middle:justify-normal xs:p-6 middle:p-2">
             <div>
@@ -217,7 +219,7 @@ const Product = () => {
           </h3>
         </div>
         <div className="border-b-2 border-muted-color mb-12 w-[72%] mx-auto"></div>
-        <div className="flex justify-center gap-6 flex-wrap max-w-[1060px] mx-auto w-full">
+        <div className="flex justify-center gap-6 flex-wrap max-w-[1060px] mx-auto w-full xs:px-3 middle:px-1">
           {bestSellerData.map(({ key, url, content, department }) => {
             return (
               <BestSellerCard

@@ -36,7 +36,7 @@ export default function Example() {
   /* className="w-[43%]" */
 
   return (
-    <div className="xs:max-w-[300px] middle:max-w-[510px] w-full">
+    <div className="xs:max-w-[320px] xs:w-full middle:max-w-[510px] w-full">
       <Swiper
         modules={[Virtual, Navigation, Pagination, EffectFade]}
         onSwiper={setSwiperRef}
