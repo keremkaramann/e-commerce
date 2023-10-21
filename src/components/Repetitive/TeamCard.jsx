@@ -6,7 +6,7 @@ import {
 import { BsFacebook } from "react-icons/bs";
 const TeamCard = ({ url }) => {
   return (
-    <div className="mb-20">
+    <div className="xs:mb-10 middle:mb-20">
       <img src={url} alt="" />
       <div className="text-center mb-5 mt-5">
         <p className="font-bold text-dark-navy mb-5">Username</p>

@@ -45,12 +45,12 @@ const Team = () => {
         </div>
       </section>
       <section className="xs:block middle:hidden">
-        <div className="mb-16 flex gap-2 flex-col justify-center">
+        <div className="mb-16 flex flex-col justify-center">
           <img
             src="/src/assets/teamsHeader/responsiveImg/team1mb.png"
             alt="teams"
           />
-          <div className="flex gap-2 flex-wrap justify-center">
+          <div className="flex justify-center flex-wrap mx-auto gap-1 mt-3">
             <img
               src="/src/assets/teamsHeader/responsiveImg/team2mb.png"
               alt="teams"
@@ -60,7 +60,7 @@ const Team = () => {
               alt=""
             />
           </div>
-          <div className="flex gap-2 justify-center flex-wrap">
+          <div className="flex justify-center flex-wrap gap-1 mt-3 mx-auto">
             <img
               src="/src/assets/teamsHeader/responsiveImg/unsplash_1-aA2Fadydc.png"
               alt=""
