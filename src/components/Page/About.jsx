@@ -37,11 +37,11 @@ const About = () => {
             Get Quote Now
           </button>
         </div>
-        <div className="xs:mt-14 middle:mt-0">
+        <div className="xs:mt-20 middle:mt-0">
           <img src="/src/assets/about/none.png" alt="" />
         </div>
       </section>
-      <section className="flex items-center justify-evenly mt-24 mb-24 xs:flex-wrap middle:flex-nowrap">
+      <section className="flex items-center justify-evenly xs:mt-12 middle:mt-24 mb-24 xs:flex-wrap middle:flex-nowrap">
         <div className="xs:p-10 middle:p-0 xs:text-center middle:text-start">
           <p className="text-[#E74040] font-sm mb-10">Problems trying</p>
           <h3 className="font-bold text-2xl text-dark-navy middle:w-[380px] xs:w-full">
@@ -81,14 +81,14 @@ const About = () => {
           <p className="counterP">Top Partners</p>
         </div>
       </section>
-      <section className="flex justify-center mb-40 p-10">
+      <section className="flex justify-center xs:mb-32 middle:mb-40 p-10">
         <iframe
-          class="w-full aspect-video rounded-xl"
+          className="w-full aspect-video rounded-xl"
           width="990"
           height="540"
           src="https://www.youtube.com/embed/7bOptq-NPJQ"
-          frameborder="0"
-          allowfullscreen
+          frameBorder="0"
+          allowFullScreen
           title="YouTube Video"
         ></iframe>
       </section>
@@ -110,7 +110,7 @@ const About = () => {
             return <TeamCard key={index} url={url} />;
           })}
         </div>
-        <div className="text-center bg-[#FAFAFA] middle:pt-20 middle:pb-10 xs:p-10">
+        <div className="text-center bg-[#FAFAFA] xs:pt-28 middle:pt-20 pb-5 xs:px-10">
           <h2 className="font-bold text-dark-navy text-[2.5rem] mb-10">
             Big Companies Are Here
           </h2>

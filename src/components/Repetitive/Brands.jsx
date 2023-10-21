@@ -8,7 +8,7 @@ const Brands = () => {
     "/src/assets/brands/fa-brands-6.png",
   ];
   return (
-    <div className="flex mdCstm:justify-around items-center bg-[#FAFAFA] p-20 pb-20 flex-wrap xs:gap-12 middle:gap-8 xs:justify-center xs:flex-col middle:flex-row">
+    <div className="flex mdCstm:justify-around items-center bg-[#FAFAFA] p-28 flex-wrap xs:gap-12 middle:gap-8 xs:justify-center xs:flex-col middle:flex-row">
       {imgBrands.map((url, index) => {
         return <img key={index} src={url} alt="" />;
       })}

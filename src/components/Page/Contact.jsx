@@ -47,7 +47,7 @@ const Contact = () => {
           <img src="/src/assets/contactgb.png" alt="" />
         </div>
       </div>
-      <div className="mb-20 mt-20 xs:bg-[#F6F6F6] middle:bg-white xs:py-20 xs:px-2  middle:py-0 middle:px-0">
+      <div className="mb-20 mt-20 xs:bg-[#F6F6F6] middle:bg-white xs:pt-20 xs:pb-0 xs:px-2  middle:pt-0 middle:px-0">
         <div className="font-bold text-dark-navy text-center mb-12">
           <h6 className="text-sm">VISIT OUR OFFICE</h6>
           <h2 className="text-[2.5rem] ">
