@@ -28,7 +28,7 @@ const PageContent = () => {
           </p>
         </div>
         <div className="flex gap-4 justify-center flex-wrap">
-          <div className="relative">
+          <div className="relative xs:px-2 middle:px-0">
             <img
               src="/src/assets/editorImg/filter.png"
               alt=""
@@ -43,7 +43,7 @@ const PageContent = () => {
               MEN
             </button>
           </div>
-          <div className="relative">
+          <div className="relative xs:px-2 middle:px-0">
             <img
               src="/src/assets/editorImg/filter (1).png"
               alt=""
@@ -59,7 +59,7 @@ const PageContent = () => {
             </button>
           </div>
           <div>
-            <div className="relative">
+            <div className="relative xs:px-2 middle:px-0">
               <img
                 src="/src/assets/editorImg/filter (2).png"
                 alt=""
@@ -74,7 +74,7 @@ const PageContent = () => {
                 ACCESSORIES
               </button>
             </div>
-            <div className="relative">
+            <div className="relative xs:px-2 middle:px-0">
               <img
                 src="/src/assets/editorImg/filter (3).png"
                 alt=""
@@ -93,7 +93,7 @@ const PageContent = () => {
         </div>
       </section>
       <section>
-        <div className="text-center">
+        <div className="text-center xs:px-3 middle:px-0">
           <h4 className="text-secondary-text text-lg mb-4 pt-16">
             Featured Products
           </h4>

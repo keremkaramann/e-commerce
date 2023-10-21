@@ -32,7 +32,11 @@ const ProductCard = ({ url, content, department, price }) => {
 
   return (
     <div>
-      <img src={url} alt="product-img" />
+      <img
+        src={url}
+        alt="product-img"
+        className="xs:px-3 middle:px-0 xs:w-[340px] middle:w-full xs:max-h-[500px] middle:h-auto"
+      />
       <div className="text-center mt-5 mb-20">
         <p className="text-dark-navy font-bold">{content} </p>
         <p className="text-secondary-text font-bold text-sm mt-5 mb-5">
