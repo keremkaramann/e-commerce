@@ -29,13 +29,31 @@ const PageContent = () => {
         </div>
         <div className="flex gap-4 justify-center flex-wrap">
           <div className="relative">
-            <img src="/src/assets/editorImg/filter.png" alt="" />
+            <img
+              src="/src/assets/editorImg/filter.png"
+              alt=""
+              className="xs:hidden middle:block"
+            />
+            <img
+              src="/src/assets/editorImg/1mobile.png"
+              alt=""
+              className="xs:block middle:hidden"
+            />
             <button className="px-16 py-3 bg-white font-bold absolute bottom-7 left-7">
               MEN
             </button>
           </div>
           <div className="relative">
-            <img src="/src/assets/editorImg/filter (1).png" alt="" />
+            <img
+              src="/src/assets/editorImg/filter (1).png"
+              alt=""
+              className="xs:hidden middle:block"
+            />
+            <img
+              src="/src/assets/editorImg/2mobile.png"
+              alt=""
+              className="xs:block middle:hidden"
+            />
             <button className="px-9 py-3 bg-white font-bold absolute bottom-7 left-5">
               WOMEN
             </button>
@@ -45,14 +63,28 @@ const PageContent = () => {
               <img
                 src="/src/assets/editorImg/filter (2).png"
                 alt=""
-                className="mb-4"
+                className="mb-4 xs:hidden middle:block"
+              />
+              <img
+                src="/src/assets/editorImg/3mobil.png"
+                alt=""
+                className="mb-4 xs:block middle:hidden"
               />
               <button className="px-6 py-3 bg-white font-bold absolute bottom-7 left-5">
                 ACCESSORIES
               </button>
             </div>
             <div className="relative">
-              <img src="/src/assets/editorImg/filter (3).png" alt="" />
+              <img
+                src="/src/assets/editorImg/filter (3).png"
+                alt=""
+                className="xs:hidden middle:block"
+              />
+              <img
+                src="/src/assets/editorImg/4mobile.png"
+                alt=""
+                className="xs:block middle:hidden"
+              />
               <button className="px-10 py-3 bg-white font-bold absolute bottom-7 left-5">
                 KIDS
               </button>
@@ -136,7 +168,7 @@ const PageContent = () => {
               the two major realms of Classical physics: Newtonian mechanics
             </p>
           </div>
-          <div className="flex justify-center gap-5 flex-wrap">
+          <div className="flex justify-center xs:gap-10 middle:gap-5 flex-wrap">
             {imagePosts.map((posts, i) => {
               const { url } = posts;
               return <Posts key={i} url={url} />;

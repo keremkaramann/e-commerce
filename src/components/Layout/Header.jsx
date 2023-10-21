@@ -1,6 +1,7 @@
 import { TfiEmail } from "react-icons/tfi";
 import { FiChevronDown } from "react-icons/fi";
 import { Route, Switch, Link } from "react-router-dom";
+
 import {
   BsInstagram,
   BsYoutube,
@@ -12,7 +13,7 @@ import {
 } from "react-icons/bs";
 import { AiOutlineShoppingCart, AiOutlineHeart } from "react-icons/ai";
 import { HiOutlineBars3BottomRight } from "react-icons/hi2";
-import { motion } from "framer-motion";
+
 const Header = () => {
   const navHandler = () => {
     const nav = document.querySelector(".mobile-nav");
