@@ -13,7 +13,7 @@ import {
 const Team = () => {
   return (
     <div>
-      <Header justify={"justify-between"} />
+      <Header />
       <section className="text-center mt-12 mb-12 font-bold">
         <h5 className="text-xl text-secondary-text mb-5">WHAT WE DO</h5>
         <h1 className=" xs:text-[2.5rem] middle:text-[3.6rem] text-dark-navy mb-5 xs:p-5 middle:p-0">

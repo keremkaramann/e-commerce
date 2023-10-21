@@ -4,7 +4,7 @@ import PageContent from "../Layout/PageContent";
 const Home = () => {
   return (
     <div>
-      <Header justify={"justify-between"} />
+      <Header />
       <PageContent />
       <Footer />
     </div>

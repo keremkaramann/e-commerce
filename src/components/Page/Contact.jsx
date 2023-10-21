@@ -12,7 +12,7 @@ import { IoIosMail } from "react-icons/io";
 const Contact = () => {
   return (
     <section>
-      <Header justify={"justify-between"} />
+      <Header />
       <div className="flex justify-evenly xs:flex-wrap middle:flex-nowrap">
         <div className="flex flex-col justify-center middle:w-2/5 xs:w-full xs:text-center middle:text-start xs:p-5 middle:p-0">
           <h5 className="font-bold text-dark-navy mb-10">CONTACT US</h5>

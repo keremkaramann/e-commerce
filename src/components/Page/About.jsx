@@ -18,7 +18,7 @@ const About = () => {
   ];
   return (
     <div>
-      <Header justify={"justify-between"} />
+      <Header />
       <section className="flex items-center justify-evenly xs:flex-wrap middle:flex-nowrap xs:p-10">
         <div className="xs:text-center middle:text-start">
           <h5 className="font-bold text-lg text-dark-navy mb-10 xs:hidden middle:block">

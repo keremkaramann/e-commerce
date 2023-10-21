@@ -46,7 +46,7 @@ const Product = () => {
 
   return (
     <section>
-      <Header justify={"justify-between"} />
+      <Header />
       <div className="bg-[#FAFAFA] py-5">
         <div className="flex items-center mx-auto p-5 w-full max-w-[1200px] xs:flex-col middle:flex-row">
           <div></div>

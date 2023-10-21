@@ -52,7 +52,7 @@ const ProductList = () => {
   ];
   return (
     <div>
-      <Header justify={"justify-between"} />
+      <Header />
       <section className=" bg-[#FAFAFA] py-5">
         <div className=" flex items-center justify-between mx-auto p-5 w-full max-w-[1200px] xs:flex-col mdCstm:flex-row">
           <h1 className="text-dark-navy text-2xl font-bold xs:mb-10 mdCstm:mb-0">
