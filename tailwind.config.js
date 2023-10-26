@@ -17,6 +17,9 @@ module.exports = withMT({
         "muted-color": "#BDBDBD",
         "products-bg": "#23856D",
       },
+      animation: {
+        shake: "shake 0.2s ease 2",
+      },
     },
     screens: {
       xs: "290px",

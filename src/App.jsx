@@ -6,6 +6,7 @@ import Team from "./components/Page/Team";
 import About from "./components/Page/About";
 import Contact from "./components/Page/Contact";
 import Product from "./components/Page/Product";
+import SignUp from "./components/Page/SignUp";
 function App() {
   return (
     <>
@@ -27,6 +28,9 @@ function App() {
         </Route>
         <Route path="/contact">
           <Contact />
+        </Route>
+        <Route path="/signup">
+          <SignUp />
         </Route>
       </Switch>
     </>
