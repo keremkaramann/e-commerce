@@ -3,7 +3,6 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 import instance from "../instance";
 import { toast } from "react-toastify";
-import axios from "axios";
 import Footer from "../Layout/Footer";
 import Header from "../Layout/Header";
 
@@ -11,6 +10,7 @@ const SignUp = () => {
   const [store, useStore] = useState(false);
   const [loading, useLoading] = useState(false);
   const history = useHistory();
+
   const {
     register,
     handleSubmit,
@@ -56,6 +56,7 @@ const SignUp = () => {
 
     console.log(postData);
     useLoading(true);
+
     instance
       .post("/signup", postData)
       .then((resp) => {
