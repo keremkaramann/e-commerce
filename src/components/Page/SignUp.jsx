@@ -47,7 +47,7 @@ const SignUp = () => {
               type="text"
               id="name"
               {...register("name", {
-                required: "Full Name Required!",
+                required: "Full Name is Required!",
                 minLength: {
                   value: 3,
                   message: "Full Name has to be at least 3 characters!",
@@ -74,7 +74,7 @@ const SignUp = () => {
               type="email"
               id="email"
               {...register("email", {
-                required: "Email address required!",
+                required: "Email address is required!",
                 pattern: {
                   value: /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/,
                   message: "Please enter a valid email address.",
@@ -96,13 +96,21 @@ const SignUp = () => {
             <input
               type="password"
               id="password"
-              {...register("password")}
+              {...register("password", {
+                required: "Password is Required!",
+                pattern: {
+                  value:
+                    /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+                  message:
+                    "Password needs to be min 8 character including numbers, lower case, upper case and special character!",
+                },
+              })}
               className="bg-gray-200 focus:bg-white p-3 rounded-lg"
               placeholder="***************"
             />
             {errors.password && (
               <p className="text-red-600 font-bold text-sm animate-shake">
-                {errors.email?.password}
+                {errors.password?.message}
               </p>
             )}
           </div>
@@ -129,10 +137,21 @@ const SignUp = () => {
                 <input
                   type="text"
                   id="storeName"
-                  {...register("store.name")}
+                  {...register("store.name", {
+                    required: "Store Name is Required!",
+                    minLength: {
+                      value: 3,
+                      message: "Store Name has to be at least 3 characters!",
+                    },
+                  })}
                   className="bg-gray-200 focus:bg-white p-3 rounded-lg"
                   placeholder="Store Name"
                 />
+                {errors.store?.name && (
+                  <p className="text-red-600 font-bold text-sm animate-shake">
+                    {errors.store.name?.message}
+                  </p>
+                )}
               </div>
               <div className="flex gap-2 flex-col mb-6">
                 <label htmlFor="tax_no" className="text-dark-navy font-bold">
@@ -141,10 +160,21 @@ const SignUp = () => {
                 <input
                   type="text"
                   id="tax_no"
-                  {...register("store.tax_no")}
+                  {...register("store.tax_no", {
+                    required: "Store Tax ID is Required!",
+                    pattern: {
+                      value: /^T\d{4}V\d{6}$/,
+                      message: "Store Tax ID is has to be valid number!",
+                    },
+                  })}
                   className="bg-gray-200 focus:bg-white p-3 rounded-lg"
                   placeholder="TXXXXVXXXXXX"
                 />
+                {errors.store?.tax_no && (
+                  <p className="text-red-600 font-bold text-sm animate-shake">
+                    {errors.store.tax_no?.message}
+                  </p>
+                )}
               </div>
               <div className="flex gap-2 flex-col mb-6">
                 <label
@@ -156,10 +186,21 @@ const SignUp = () => {
                 <input
                   type="text"
                   id="bank_account"
-                  {...register("store.bank_account")}
+                  {...register("store.bank_account", {
+                    required: "IBAN Number is required!",
+                    pattern: {
+                      value: /^(TR|tr)[0-9]{2}\s?([0-9]{4}\s?){5}[0-9]{2}$/,
+                      message: "Please enter a valid IBAN NUMBER",
+                    },
+                  })}
                   className="bg-gray-200 focus:bg-white p-3 rounded-lg"
                   placeholder="IBAN Address"
                 />
+                {errors.store?.bank_account && (
+                  <p className="text-red-600 font-bold text-sm animate-shake">
+                    {errors.store.bank_account?.message}
+                  </p>
+                )}
               </div>
             </>
           )}
