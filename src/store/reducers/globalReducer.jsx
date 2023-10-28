@@ -1,4 +1,9 @@
-import { SET_THEME, SET_LANGUAGE } from "../actions/globalRedAction";
+import {
+  ROLES,
+  CATEGORIES,
+  SET_THEME,
+  SET_LANGUAGE,
+} from "../actions/globalRedAction";
 
 const globalInitialState = {
   roles: [],
@@ -6,6 +11,7 @@ const globalInitialState = {
   theme: "",
   language: "",
 };
+
 const globalReducer = (state = globalInitialState, action) => {
   switch (action.type) {
     default:

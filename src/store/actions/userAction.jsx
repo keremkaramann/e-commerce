@@ -1,6 +1,6 @@
-export const USER = "USER";
+export const USER_ACT = "USER";
 
 export const user = (id) => ({
-  type: USER,
+  type: USER_ACT,
   payload: id,
 });

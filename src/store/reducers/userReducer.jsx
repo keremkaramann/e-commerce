@@ -1,13 +1,14 @@
-import { user } from "../actions/userAction";
+import { USER_ACT } from "../actions/userAction";
 
-const globalReducerInitialState = {
+const userInitialState = {
   user: {},
 };
-const globalReducer = (state = globalReducerInitialState, action) => {
+
+const userReducer = (state = userInitialState, action) => {
   switch (action.type) {
     default:
       return state;
   }
 };
 
-export default globalReducer;
+export default userReducer;

@@ -8,7 +8,7 @@ import {
 const productInitialState = {
   productList: [],
   totalProductCount: 0,
-  pageCount: 0,
+  pageCount: 1120,
   activePage: 0,
   fetchState: NOT_FETCHED,
 };
