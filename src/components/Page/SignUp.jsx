@@ -59,7 +59,6 @@ const SignUp = () => {
       };
     }
 
-    console.log(postData);
     useLoading(true);
 
     instance
@@ -105,7 +104,6 @@ const SignUp = () => {
     instance
       .get("/roles")
       .then((res) => {
-        console.log(res.data);
         setCustomers(res.data);
         const customerRole = res.data.find((role) => role.code === "customer");
         if (customerRole) {
@@ -216,12 +214,12 @@ const SignUp = () => {
             )}
           </div>
           <div className="flex gap-2 flex-col mb-6">
-            <label htmlFor="password" className="text-dark-navy font-bold">
+            <label htmlFor="password2" className="text-dark-navy font-bold">
               Confirm Password
             </label>
             <input
               type={showPassword ? "text" : "password"}
-              id="password"
+              id="password2"
               {...register("confirmPassword", {
                 required: "Password needs to match exactly!!",
                 validate: (value) => {
