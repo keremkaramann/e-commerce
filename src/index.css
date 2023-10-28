@@ -44,6 +44,10 @@ a {
               border-[1px] border-primary-blue rounded
                hover:text-white hover:bg-primary-blue ease-in-out duration-500;
 }
+.signUpBtn {
+  @apply px-8 py-3 text-white text-sm bg-primary-blue border-solid 
+              border-[1px] border-primary-blue rounded;
+}
 .counterP {
   @apply font-bold text-secondary-text;
 }

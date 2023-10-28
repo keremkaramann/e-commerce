@@ -357,9 +357,7 @@ const SignUp = () => {
             <div className="flex justify-end">
               <button
                 type="submit"
-                className="px-8 py-3 text-white text-sm bg-primary-blue border-solid 
-              border-[1px] border-primary-blue rounded
-               "
+                className="signUpBtn"
                 disabled={!isValid || loading}
               >
                 Submit
