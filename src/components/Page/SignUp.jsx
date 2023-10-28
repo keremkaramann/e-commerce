@@ -5,14 +5,16 @@ import instance from "../instance";
 import { toast } from "react-toastify";
 import Footer from "../Layout/Footer";
 import Header from "../Layout/Header";
-
+import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 const SignUp = () => {
   const [store, useStore] = useState(false);
   const [loading, useLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const history = useHistory();
 
   const {
     register,
+    watch,
     handleSubmit,
     formState: { errors, isValid },
   } = useForm({
@@ -152,12 +154,12 @@ const SignUp = () => {
               </p>
             )}
           </div>
-          <div className="flex gap-2 flex-col mb-6">
+          <div className="flex gap-2 flex-col mb-6 relative">
             <label htmlFor="password" className="text-dark-navy font-bold">
               Password
             </label>
             <input
-              type="password"
+              type={showPassword ? "text" : "password"}
               id="password"
               {...register("password", {
                 required: "Password is Required!",
@@ -171,9 +173,51 @@ const SignUp = () => {
               className="bg-gray-200 focus:bg-white p-3 rounded-lg"
               placeholder="***************"
             />
+            {showPassword ? (
+              <button
+                type="button"
+                className="text-xl absolute top-[58%] right-3 text-red-600"
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                <AiFillEye />
+              </button>
+            ) : (
+              <button
+                type="button"
+                className="text-xl absolute top-[58%] right-3 text-dark-navy"
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                <AiFillEyeInvisible />
+              </button>
+            )}
             {errors.password && (
               <p className="text-red-600 font-bold text-sm animate-shake">
                 {errors.password?.message}
+              </p>
+            )}
+          </div>
+          <div className="flex gap-2 flex-col mb-6">
+            <label htmlFor="password" className="text-dark-navy font-bold">
+              Confirm Password
+            </label>
+            <input
+              type={showPassword ? "text" : "password"}
+              id="password"
+              {...register("confirmPassword", {
+                required: "Password needs to match exactly!!",
+                validate: (value) => {
+                  return (
+                    value === watch("password") || "Passwords do not match!!"
+                  );
+                },
+              })}
+              className="bg-gray-200 focus:bg-white p-3 rounded-lg"
+              placeholder="***************"
+            />
+
+            {errors.confirmPassword && (
+              <p className="text-red-600 font-bold text-sm animate-shake">
+                {errors.confirmPassword?.message}
               </p>
             )}
           </div>

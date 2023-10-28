@@ -81,8 +81,9 @@ const Header = () => {
             <div className="flex gap-5 text-primary-blue items-center font-bold">
               <div className="flex items-center gap-1">
                 <BsPerson className="text-normal" />
+                Login /
                 <a href="/signup" className="text-sm">
-                  Login / Register
+                  Register
                 </a>
               </div>
               <BsSearch className="text-normal" />
