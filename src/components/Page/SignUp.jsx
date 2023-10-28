@@ -1,18 +1,18 @@
 import { useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { useEffect } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import instance from "../instance";
 import { toast } from "react-toastify";
 import Footer from "../Layout/Footer";
 import Header from "../Layout/Header";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
+
 const SignUp = () => {
-  const [store, useStore] = useState(false);
-  const [loading, useLoading] = useState(false);
-  const [customers, setCustomers] = useState();
-  const [showPassword, setShowPassword] = useState(false);
   const history = useHistory();
+  const [store, useStore] = useState(false);
+  const [customers, setCustomers] = useState();
+  const [loading, useLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const {
     register,
