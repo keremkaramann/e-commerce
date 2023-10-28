@@ -1,7 +1,7 @@
 import { NOT_FETCHED } from "../actions/productAction";
 
 const productInitialState = {
-  productList: [{}],
+  productList: [],
   totalProductCount: 0,
   pageCount: 0,
   activePage: 0,

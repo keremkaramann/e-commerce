@@ -1,5 +1,5 @@
 const shoppingInitialState = {
-  cart: [{}],
+  cart: [],
   payment: {},
   address: {},
 };

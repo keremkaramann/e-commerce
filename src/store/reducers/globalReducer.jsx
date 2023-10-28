@@ -1,6 +1,6 @@
 const globalInitialState = {
-  roles: [{}],
-  categories: [{}],
+  roles: [],
+  categories: [],
   theme: "",
   language: "",
 };

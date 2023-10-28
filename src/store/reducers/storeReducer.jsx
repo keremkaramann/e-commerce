@@ -1,5 +1,5 @@
 const storeInitialState = {
-  storeOwners: [{}],
+  storeOwners: [],
 };
 const storeReducer = (state = storeInitialState, action) => {
   switch (action.type) {
