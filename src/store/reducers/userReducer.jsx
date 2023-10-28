@@ -1,3 +1,5 @@
+import { user } from "../actions/userAction";
+
 const globalReducerInitialState = {
   user: {},
 };

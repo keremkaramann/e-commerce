@@ -1,3 +1,5 @@
+import { SET_THEME, SET_LANGUAGE } from "../actions/globalRedAction";
+
 const globalInitialState = {
   roles: [],
   categories: [],

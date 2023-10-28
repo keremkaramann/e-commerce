@@ -1,3 +1,5 @@
+import { STORE_OWNERS } from "../actions/storeAction";
+
 const storeInitialState = {
   storeOwners: [],
 };

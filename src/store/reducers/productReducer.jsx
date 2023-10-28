@@ -1,4 +1,9 @@
-import { NOT_FETCHED } from "../actions/productAction";
+import {
+  NOT_FETCHED,
+  FETCHING,
+  FETCHED,
+  FAILED,
+} from "../actions/productAction";
 
 const productInitialState = {
   productList: [],
