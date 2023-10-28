@@ -6,9 +6,11 @@ import { toast } from "react-toastify";
 import Footer from "../Layout/Footer";
 import Header from "../Layout/Header";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
+import { useEffect } from "react";
 const SignUp = () => {
   const [store, useStore] = useState(false);
   const [loading, useLoading] = useState(false);
+  const [customers, setCustomers] = useState();
   const [showPassword, setShowPassword] = useState(false);
   const history = useHistory();
 
@@ -98,6 +100,18 @@ const SignUp = () => {
     e.target.reset();
   };
 
+  useEffect(() => {
+    instance
+      .get("/roles")
+      .then((res) => {
+        console.log(res.data);
+        setCustomers(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
   return (
     <div>
       <Header />
@@ -176,7 +190,7 @@ const SignUp = () => {
             {showPassword ? (
               <button
                 type="button"
-                className="text-xl absolute top-[58%] right-3 text-red-600"
+                className="text-2xl absolute top-[54%] right-3 text-red-600"
                 onClick={() => setShowPassword(!showPassword)}
               >
                 <AiFillEye />
@@ -184,7 +198,7 @@ const SignUp = () => {
             ) : (
               <button
                 type="button"
-                className="text-xl absolute top-[58%] right-3 text-dark-navy"
+                className="text-2xl absolute top-[54%] right-3 text-dark-navy"
                 onClick={() => setShowPassword(!showPassword)}
               >
                 <AiFillEyeInvisible />
@@ -214,7 +228,6 @@ const SignUp = () => {
               className="bg-gray-200 focus:bg-white p-3 rounded-lg"
               placeholder="***************"
             />
-
             {errors.confirmPassword && (
               <p className="text-red-600 font-bold text-sm animate-shake">
                 {errors.confirmPassword?.message}
@@ -231,8 +244,13 @@ const SignUp = () => {
               className="bg-gray-200 focus:bg-white p-3 rounded-lg"
               onChange={handleRoleChange}
             >
-              <option value="customer">Customer</option>
-              <option value="store">Store</option>
+              {customers?.map((customer, index) => {
+                return (
+                  <option value={customer} key={index}>
+                    {customer.code}
+                  </option>
+                );
+              })}
             </select>
           </div>
           {store && (
