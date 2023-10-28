@@ -1,12 +1,12 @@
 import { useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { useEffect } from "react";
 import { useState } from "react";
 import instance from "../instance";
 import { toast } from "react-toastify";
 import Footer from "../Layout/Footer";
 import Header from "../Layout/Header";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
-import { useEffect } from "react";
 const SignUp = () => {
   const [store, useStore] = useState(false);
   const [loading, useLoading] = useState(false);
@@ -18,13 +18,14 @@ const SignUp = () => {
     register,
     watch,
     handleSubmit,
+    setValue,
     formState: { errors, isValid },
   } = useForm({
     defaultValues: {
       name: "",
       email: "",
       password: "",
-      role_id: "customer",
+      role_id: "",
       store: {
         name: "",
         tax_no: "",
@@ -35,8 +36,8 @@ const SignUp = () => {
   });
 
   const handleRoleChange = (e) => {
-    const selectedRole = e.target.value;
-    useStore(selectedRole === "store");
+    const selectedRoleId = e.target.value;
+    useStore(selectedRoleId === "2");
   };
 
   const handleForm = (data, e) => {
@@ -47,7 +48,7 @@ const SignUp = () => {
       role_id: data.role_id,
     };
 
-    if (data.role_id === "store") {
+    if (data.role_id === "2") {
       postData = {
         ...postData,
         store: {
@@ -106,6 +107,10 @@ const SignUp = () => {
       .then((res) => {
         console.log(res.data);
         setCustomers(res.data);
+        const customerRole = res.data.find((role) => role.code === "customer");
+        if (customerRole) {
+          setValue("role_id", customerRole.id);
+        }
       })
       .catch((err) => {
         console.log(err);
@@ -132,7 +137,7 @@ const SignUp = () => {
                   message: "Full Name has to be at least 3 characters!",
                 },
                 pattern: {
-                  value: /^[A-Za-z ]+$/,
+                  value: /^[A-Za-zıöÖİğĞşŞçÇ ]+$/,
                   message: "Please enter only letters (A-Z, a-z).",
                 },
               })}
@@ -242,11 +247,15 @@ const SignUp = () => {
               name="role_id"
               id="role_id"
               className="bg-gray-200 focus:bg-white p-3 rounded-lg"
+              {...register("role_id")}
+              value={
+                customers?.find((customer) => customer.name === "customer")?.id
+              }
               onChange={handleRoleChange}
             >
               {customers?.map((customer, index) => {
                 return (
-                  <option value={customer} key={index}>
+                  <option value={customer.id} key={index}>
                     {customer.code}
                   </option>
                 );
