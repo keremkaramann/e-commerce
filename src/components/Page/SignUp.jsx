@@ -248,9 +248,6 @@ const SignUp = () => {
               id="role_id"
               className="bg-gray-200 focus:bg-white p-3 rounded-lg"
               {...register("role_id")}
-              value={
-                customers?.find((customer) => customer.name === "customer")?.id
-              }
               onChange={handleRoleChange}
             >
               {customers?.map((customer, index) => {
