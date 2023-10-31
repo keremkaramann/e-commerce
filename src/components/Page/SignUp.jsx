@@ -107,7 +107,6 @@ const SignUp = () => {
         const reversedData = res.data.reverse();
         setCustomers(reversedData);
         const customerRole = res.data.find((role) => role.code === "customer");
-        console.log(customerRole);
         if (customerRole) {
           setValue("role_id", customerRole.id.toString());
         }
