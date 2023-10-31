@@ -94,7 +94,7 @@ const SignUp = () => {
             theme: "light",
           })
           .finally(() => {
-            useLoading(false);
+            setLoading(false);
           });
       });
     e.target.reset();
@@ -104,10 +104,12 @@ const SignUp = () => {
     instance
       .get("/roles")
       .then((res) => {
-        setCustomers(res.data);
+        const reversedData = res.data.reverse();
+        setCustomers(reversedData);
         const customerRole = res.data.find((role) => role.code === "customer");
+        console.log(customerRole);
         if (customerRole) {
-          setValue("role_id", customerRole.id);
+          setValue("role_id", customerRole.id.toString());
         }
       })
       .catch((err) => {

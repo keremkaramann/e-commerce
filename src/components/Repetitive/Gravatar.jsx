@@ -1,4 +1,3 @@
-import React from "react";
 import CryptoJS from "crypto-js";
 
 const GravatarImage = ({ email }) => {
@@ -12,7 +11,7 @@ const GravatarImage = ({ email }) => {
     <img
       src={gravatarUrl}
       alt="User Gravatar"
-      className="rounded-full w-4/12"
+      className="rounded-full w-3/12"
     />
   );
 };
