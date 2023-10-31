@@ -7,6 +7,7 @@ import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 const Login = () => {
   const [loading, useLoading] = useState(false);
   const [showPassword, useShowPassword] = useState(false);
+
   const {
     register,
     handleSubmit,
@@ -18,6 +19,7 @@ const Login = () => {
     },
     mode: "all",
   });
+
   const handleForm = (data, e) => {};
   return (
     <>
