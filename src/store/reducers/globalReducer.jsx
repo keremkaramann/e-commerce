@@ -14,6 +14,8 @@ const globalInitialState = {
 
 const globalReducer = (state = globalInitialState, action) => {
   switch (action.type) {
+    case ROLES:
+      return { ...state, roles: action.payload };
     default:
       return state;
   }

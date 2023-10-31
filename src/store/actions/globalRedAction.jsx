@@ -1,3 +1,5 @@
+import instance from "../../components/instance";
+
 export const ROLES = "ROLES";
 export const SET_THEME = "SET_THEME";
 export const CATEGORIES = "CATEGORIES";
@@ -22,3 +24,14 @@ export const setLanguage = (language) => ({
   type: SET_LANGUAGE,
   payload: language,
 });
+
+export const fetchRoles = () => (dispatch) => {
+  instance
+    .get("/roles")
+    .then((res) => {
+      dispatch(roles(res.data));
+    })
+    .catch((err) => {
+      console.error("Error fetching roles:", err);
+    });
+};
