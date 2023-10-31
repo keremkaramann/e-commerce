@@ -1,7 +1,7 @@
 import { TfiEmail } from "react-icons/tfi";
 import { FiChevronDown } from "react-icons/fi";
 import { NavLink } from "react-router-dom";
-
+import GravatarImage from "../Repetitive/Gravatar";
 import {
   BsInstagram,
   BsYoutube,
@@ -85,10 +85,10 @@ const Header = () => {
               <div className="flex items-center gap-1">
                 {userLoginData && userLoginData.name ? (
                   <>
-                    <p className="text-sm text-dark-navy">Welcome </p>
-                    <p className="text-sm text-secondary-text italic">
+                    <p className="text-sm text-secondary-text italic mr-2">
                       {userLoginData?.name}
                     </p>
+                    <GravatarImage email={userLoginData.email} size={50} />
                   </>
                 ) : (
                   <>
