@@ -13,8 +13,11 @@ import {
 } from "react-icons/bs";
 import { AiOutlineShoppingCart, AiOutlineHeart } from "react-icons/ai";
 import { HiOutlineBars3BottomRight } from "react-icons/hi2";
+import { useSelector } from "react-redux";
 
 const Header = () => {
+  const userLoginData = useSelector((store) => store.user.user);
+
   const navHandler = () => {
     const nav = document.querySelector(".mobile-nav");
     if (nav.classList.contains("hidden")) {
@@ -80,13 +83,24 @@ const Header = () => {
             </div>
             <div className="flex gap-5 text-primary-blue items-center font-bold">
               <div className="flex items-center gap-1">
-                <BsPerson className="text-normal" />
-                <NavLink className="text-sm" to="/login">
-                  Login /
-                </NavLink>
-                <NavLink className="text-sm" to="/signup">
-                  Register
-                </NavLink>
+                {userLoginData && userLoginData.name ? (
+                  <>
+                    <p className="text-sm text-dark-navy">Welcome </p>
+                    <p className="text-sm text-secondary-text italic">
+                      {userLoginData?.name}
+                    </p>
+                  </>
+                ) : (
+                  <>
+                    <BsPerson className="text-normal" />
+                    <NavLink className="text-sm" to="/login">
+                      Login /
+                    </NavLink>
+                    <NavLink className="text-sm" to="/signup">
+                      Register
+                    </NavLink>
+                  </>
+                )}
               </div>
               <BsSearch className="text-normal" />
               <AiOutlineShoppingCart className="text-normal" />

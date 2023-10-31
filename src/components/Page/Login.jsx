@@ -1,13 +1,17 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import Footer from "../Layout/Footer";
 import Header from "../Layout/Header";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
+import { handleLogin } from "../../store/actions/userAction";
 
 const Login = () => {
+  const history = useHistory();
   const [loading, useLoading] = useState(false);
   const [showPassword, useShowPassword] = useState(false);
-
+  const dispatch = useDispatch();
   const {
     register,
     handleSubmit,
@@ -20,7 +24,11 @@ const Login = () => {
     mode: "all",
   });
 
-  const handleForm = (data, e) => {};
+  const handleForm = (data, e) => {
+    useLoading(true);
+    dispatch(handleLogin(data, history));
+    useLoading(false);
+  };
   return (
     <>
       <Header />
