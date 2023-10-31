@@ -9,9 +9,9 @@ import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 
 const SignUp = () => {
   const history = useHistory();
-  const [store, useStore] = useState(false);
+  const [store, setStore] = useState(false);
   const [customers, setCustomers] = useState();
-  const [loading, useLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
   const {
@@ -37,7 +37,7 @@ const SignUp = () => {
 
   const handleRoleChange = (e) => {
     const selectedRoleId = e.target.value;
-    useStore(selectedRoleId === "2");
+    setStore(selectedRoleId === "2");
   };
 
   const handleForm = (data, e) => {
@@ -59,7 +59,7 @@ const SignUp = () => {
       };
     }
 
-    useLoading(true);
+    setLoading(true);
 
     instance
       .post("/signup", postData)
@@ -116,11 +116,11 @@ const SignUp = () => {
   }, []);
 
   return (
-    <div>
+    <>
       <Header />
       <section className="xs:w-full middle:w-1/2  xs:p-10 middle:p-0 mx-auto mt-20 mb-20">
         <h2 className="mb-10 font-bold text-4xl text-dark-navy">Sign Up</h2>
-        <form onSubmit={handleSubmit(handleForm)} className="">
+        <form onSubmit={handleSubmit(handleForm)}>
           <div className="flex gap-2 flex-col mb-6">
             <label htmlFor="name" className="text-dark-navy font-bold ">
               Name
@@ -367,7 +367,7 @@ const SignUp = () => {
         </form>
       </section>
       <Footer />
-    </div>
+    </>
   );
 };
 export default SignUp;

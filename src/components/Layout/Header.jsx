@@ -1,6 +1,6 @@
 import { TfiEmail } from "react-icons/tfi";
 import { FiChevronDown } from "react-icons/fi";
-import { Route, Switch, Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import {
   BsInstagram,
@@ -69,24 +69,24 @@ const Header = () => {
               <h1 className="text-2xl font-bold text-dark-navy">Bandage</h1>
             </div>
             <div className="font-bold text-sm text-secondary-text flex gap-3 flex-wrap">
-              <Link to="/">Home</Link>
-              <a href="/products" className="flex gap-1">
+              <NavLink to="/">Home</NavLink>
+              <NavLink to="/products" className="flex gap-1">
                 Shop <FiChevronDown className="text-lg" />
-              </a>
-              <a href="/about">About</a>
-              <a href="/team">Team</a>
-              <a href="/contact">Contact</a>
-              <a href="/product">Pages</a>
+              </NavLink>
+              <NavLink to="/about">About</NavLink>
+              <NavLink to="/team">Team</NavLink>
+              <NavLink to="/contact">Contact</NavLink>
+              <NavLink to="/product">Pages</NavLink>
             </div>
             <div className="flex gap-5 text-primary-blue items-center font-bold">
               <div className="flex items-center gap-1">
                 <BsPerson className="text-normal" />
-                <a href="/login" className="text-sm">
+                <NavLink className="text-sm" to="/login">
                   Login /
-                </a>
-                <a href="/signup" className="text-sm">
+                </NavLink>
+                <NavLink className="text-sm" to="/signup">
                   Register
-                </a>
+                </NavLink>
               </div>
               <BsSearch className="text-normal" />
               <AiOutlineShoppingCart className="text-normal" />
@@ -110,11 +110,11 @@ const Header = () => {
           </div>
           <div className="mobile-nav hidden duration-300 ease-in-out">
             <div className="flex items-center gap-8 text-secondary-text text-3xl flex-col py-14">
-              <a href="/">Home</a>
-              <a href="/products">Product</a>
-              <a href="/team">Team</a>
-              <a href="/about">About</a>
-              <a href="/contact">Contact</a>
+              <NavLink to="/">Home</NavLink>
+              <NavLink to="/products">Product</NavLink>
+              <NavLink to="/team">Team</NavLink>
+              <NavLink to="/about">About</NavLink>
+              <NavLink to="/contact">Contact</NavLink>
             </div>
           </div>
         </nav>
