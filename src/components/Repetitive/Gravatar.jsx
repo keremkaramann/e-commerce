@@ -8,11 +8,7 @@ const GravatarImage = ({ email }) => {
   const gravatarUrl = `https://www.gravatar.com/avatar/${sha256Email}`;
 
   return (
-    <img
-      src={gravatarUrl}
-      alt="User Gravatar"
-      className="rounded-full w-3/12"
-    />
+    <img src={gravatarUrl} alt="User Avatar" className="rounded-full w-3/12" />
   );
 };
 

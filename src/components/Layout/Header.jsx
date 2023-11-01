@@ -2,6 +2,7 @@ import { TfiEmail } from "react-icons/tfi";
 import { FiChevronDown } from "react-icons/fi";
 import { NavLink } from "react-router-dom";
 import GravatarImage from "../Repetitive/Gravatar";
+import { useSelector } from "react-redux";
 import {
   BsInstagram,
   BsYoutube,
@@ -13,8 +14,6 @@ import {
 } from "react-icons/bs";
 import { AiOutlineShoppingCart, AiOutlineHeart } from "react-icons/ai";
 import { HiOutlineBars3BottomRight } from "react-icons/hi2";
-import { useSelector } from "react-redux";
-import { useEffect } from "react";
 
 const Header = () => {
   const userLoginData = useSelector((store) => store.user.user);

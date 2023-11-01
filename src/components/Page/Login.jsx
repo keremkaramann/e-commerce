@@ -24,7 +24,7 @@ const Login = () => {
     mode: "all",
   });
 
-  const handleForm = (data, e) => {
+  const handleForm = (data) => {
     useLoading(true);
     dispatch(handleLogin(data, history));
     useLoading(false);

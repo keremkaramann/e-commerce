@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import { NavLink } from "react-router-dom";
 import Footer from "../Layout/Footer";
 import Header from "../Layout/Header";
 import { BsChevronRight } from "react-icons/bs";
@@ -60,9 +61,9 @@ const ProductList = () => {
           </h1>
           <div></div>
           <div className="flex gap-3">
-            <a href="/" className="text-dark-navy text-sm font-bold">
+            <NavLink className="text-dark-navy text-sm font-bold" to="/">
               Home
-            </a>
+            </NavLink>
             <BsChevronRight className="text-muted-color font-bold text-lg" />
             <a href="/products" className="text-muted-color text-sm font-bold">
               Shop
