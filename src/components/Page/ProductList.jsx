@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import Footer from "../Layout/Footer";
 import Header from "../Layout/Header";
 import { BsChevronRight } from "react-icons/bs";
@@ -145,12 +145,14 @@ const ProductList = () => {
           {productListData.map((product, index) => {
             const { url, content, department } = product;
             return (
-              <ProductCard
-                key={index}
-                url={url}
-                content={content}
-                department={department}
-              />
+              <Link to={`/product/${index}`} key={index}>
+                <ProductCard
+                  key={index}
+                  url={url}
+                  content={content}
+                  department={department}
+                />
+              </Link>
             );
           })}
         </div>

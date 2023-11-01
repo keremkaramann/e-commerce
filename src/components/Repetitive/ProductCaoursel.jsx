@@ -33,7 +33,6 @@ export default function Example() {
   const slideTo = (index) => {
     swiperRef.slideTo(index - 1, 0);
   };
-  /* className="w-[43%]" */
 
   return (
     <div className="xs:max-w-[320px] xs:w-full middle:max-w-[510px] w-full">

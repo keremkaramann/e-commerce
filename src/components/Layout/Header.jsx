@@ -79,7 +79,6 @@ const Header = () => {
               <NavLink to="/about">About</NavLink>
               <NavLink to="/team">Team</NavLink>
               <NavLink to="/contact">Contact</NavLink>
-              <NavLink to="/product">Pages</NavLink>
             </div>
             <div className="flex gap-5 text-primary-blue items-center font-bold">
               <div className="flex items-center gap-1">

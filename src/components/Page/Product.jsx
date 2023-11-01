@@ -1,6 +1,7 @@
 import Header from "../Layout/Header";
 import Footer from "../Layout/Footer";
 import Brands from "../Repetitive/Brands";
+import { useParams } from "react-router-dom";
 import { BsChevronRight } from "react-icons/bs";
 import {
   AiFillStar,
@@ -15,6 +16,7 @@ import bestSellerData from "../../data/bestseller";
 import BestSellerCard from "../Repetitive/BestSellerProductCard";
 
 const Product = () => {
+  const { id } = useParams();
   const colorOptions = [
     {
       name: "Primary",
