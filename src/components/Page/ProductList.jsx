@@ -143,9 +143,9 @@ const ProductList = () => {
           }`}
         >
           {productListData.map((product, index) => {
-            const { url, content, department } = product;
+            const { url, content, department, id } = product;
             return (
-              <Link to={`/product/${index}`} key={index}>
+              <Link to={`/product/${id}`} key={index}>
                 <ProductCard
                   key={index}
                   url={url}

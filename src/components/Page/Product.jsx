@@ -1,6 +1,7 @@
 import Header from "../Layout/Header";
 import Footer from "../Layout/Footer";
 import Brands from "../Repetitive/Brands";
+import { NavLink } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { BsChevronRight } from "react-icons/bs";
 import {
@@ -10,13 +11,14 @@ import {
   AiFillEye,
   AiOutlineShoppingCart,
 } from "react-icons/ai";
-import Example from "../Repetitive/ProductCaoursel";
+import ProductCarousel from "../Repetitive/ProductCaoursel";
 import { useState } from "react";
 import bestSellerData from "../../data/bestseller";
 import BestSellerCard from "../Repetitive/BestSellerProductCard";
 
 const Product = () => {
   const { id } = useParams();
+  console.log(id);
   const colorOptions = [
     {
       name: "Primary",
@@ -53,9 +55,9 @@ const Product = () => {
         <div className="flex items-center mx-auto p-5 w-full max-w-[1200px] xs:flex-col middle:flex-row">
           <div></div>
           <div className="flex gap-3">
-            <a href="/" className="text-dark-navy text-sm font-bold">
+            <NavLink className="text-dark-navy text-sm font-bold" to="/">
               Home
-            </a>
+            </NavLink>
             <BsChevronRight className="text-muted-color font-bold text-lg" />
             <a href="/products" className="text-muted-color text-sm font-bold">
               Shop
@@ -65,7 +67,7 @@ const Product = () => {
       </div>
       <div className="bg-[#FAFAFA] flex justify-center xs:gap-5 middle:gap-20 flex-wrap pb-12">
         <div>
-          <Example />
+          <ProductCarousel id={id} />
         </div>
         <div className=" xs:w-full middle:w-[40%] xs:p-10 middle:p-0">
           <h4 className="dark-navy text-lg mb-3 mt-3">Floating Phone</h4>

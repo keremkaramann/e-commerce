@@ -1,13 +1,13 @@
 import React, { useRef, useState } from "react";
 import { Virtual, Navigation, Pagination, EffectFade } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-
+import productListData from "../../data/ProductList";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/effect-fade";
 
-export default function Example() {
+export default function Example({ id }) {
   const [swiperRef, setSwiperRef] = useState(null);
   const appendNumber = useRef(500);
   const prependNumber = useRef(1);

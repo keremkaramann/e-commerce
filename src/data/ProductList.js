@@ -1,4 +1,4 @@
-const productListData = [
+const productListDataWithIds = [
   {
     url: "/src/assets/productListPage/1.png",
     content: "Graphic design",
@@ -80,4 +80,8 @@ const productListData = [
     department: "English Department",
   },
 ];
+const productListData = productListDataWithIds.map((item, index) => ({
+  id: index + 1,
+  ...item,
+}));
 export default productListData;
