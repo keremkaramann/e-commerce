@@ -18,7 +18,7 @@ import BestSellerCard from "../Repetitive/BestSellerProductCard";
 
 const Product = () => {
   const { id } = useParams();
-  console.log(id);
+
   const colorOptions = [
     {
       name: "Primary",

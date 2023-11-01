@@ -15,7 +15,6 @@ export default function Example({ id }) {
   const [slides, setSlides] = useState(
     Array.from({ length: 500 }).map((_, index) => `Slide ${index + 1}`)
   );
-
   const prepend = () => {
     setSlides([
       `Slide ${prependNumber.current - 2}`,
@@ -34,6 +33,13 @@ export default function Example({ id }) {
     swiperRef.slideTo(index - 1, 0);
   };
 
+  let mock;
+  productListData.forEach((data) => {
+    if (data.id === id) {
+      mock = data.url;
+    }
+  });
+
   return (
     <div className="xs:max-w-[320px] xs:w-full middle:max-w-[510px] w-full">
       <Swiper
@@ -47,10 +53,10 @@ export default function Example({ id }) {
         spaceBetween={10}
       >
         <SwiperSlide>
-          <img src="/src/assets/product/carousel-item.png" alt="" />
+          <img src={mock} alt="" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="/src/assets/product/carousel-inner.png" alt="" />
+          <img src={mock} alt="" />
         </SwiperSlide>
       </Swiper>
 
