@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import instance from "../instance";
+
 import { toast } from "react-toastify";
 import Footer from "../Layout/Footer";
 import Header from "../Layout/Header";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
+import { API } from "../../endpoint/instance";
 
 const SignUp = () => {
   const history = useHistory();
@@ -61,8 +62,7 @@ const SignUp = () => {
 
     setLoading(true);
 
-    instance
-      .post("/signup", postData)
+    API.post("/signup", postData)
       .then((resp) => {
         console.log("Response: ", resp.data);
         toast.warn(

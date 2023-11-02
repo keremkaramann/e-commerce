@@ -1,4 +1,4 @@
-import instance from "../../components/instance";
+import { API } from "../../endpoint/instance";
 
 export const ROLES = "ROLES";
 export const SET_THEME = "SET_THEME";
@@ -26,8 +26,7 @@ export const setLanguage = (language) => ({
 });
 
 export const fetchRoles = () => (dispatch) => {
-  instance
-    .get("/roles")
+  API.get("/roles")
     .then((res) => {
       dispatch(roles(res.data));
     })

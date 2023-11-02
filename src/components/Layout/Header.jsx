@@ -1,6 +1,6 @@
 import { TfiEmail } from "react-icons/tfi";
 import { FiChevronDown } from "react-icons/fi";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import GravatarImage from "../Repetitive/Gravatar";
 import { useSelector } from "react-redux";
 import {
@@ -69,7 +69,9 @@ const Header = () => {
         <nav className="p-5  xs:hidden middle:block">
           <div className={`flex justify-between items-center flex-wrap`}>
             <div>
-              <h1 className="text-2xl font-bold text-dark-navy">Bandage</h1>
+              <Link to="/">
+                <h1 className="text-2xl font-bold text-dark-navy">Bandage</h1>
+              </Link>
             </div>
             <div className="font-bold text-sm text-secondary-text flex gap-3 flex-wrap">
               <NavLink to="/">Home</NavLink>
@@ -84,10 +86,10 @@ const Header = () => {
               <div className="flex items-center gap-1">
                 {userLoginData && userLoginData.name ? (
                   <>
+                    <GravatarImage email={userLoginData.email} size={50} />
                     <p className="text-sm text-secondary-text italic mr-2">
                       {userLoginData?.name}
                     </p>
-                    <GravatarImage email={userLoginData.email} size={50} />
                   </>
                 ) : (
                   <>

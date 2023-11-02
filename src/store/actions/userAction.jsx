@@ -1,5 +1,5 @@
-import instance from "../../components/instance";
 import { toast } from "react-toastify";
+import { API } from "../../endpoint/instance";
 
 export const USER_ACT = "USER";
 
@@ -9,8 +9,7 @@ export const user = (id) => ({
 });
 
 export const handleLogin = (data, history) => (dispatch) => {
-  instance
-    .post("/login", data)
+  API.post("/login", data)
     .then((res) => {
       dispatch(user(res.data));
       const token = res.data.token;
