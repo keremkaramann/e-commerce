@@ -101,8 +101,7 @@ const SignUp = () => {
   };
 
   useEffect(() => {
-    instance
-      .get("/roles")
+    API.get("/roles")
       .then((res) => {
         const reversedData = res.data.reverse();
         setCustomers(reversedData);

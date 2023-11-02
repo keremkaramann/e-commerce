@@ -1,9 +1,9 @@
 import { toast } from "react-toastify";
-import { API } from "../../endpoint/instance";
+import { API, renewAPI } from "../../endpoint/instance";
 
 export const USER_ACT = "USER";
 
-export const user = (id) => ({
+export const setUser = (id) => ({
   type: USER_ACT,
   payload: id,
 });
@@ -11,9 +11,10 @@ export const user = (id) => ({
 export const handleLogin = (data, history) => (dispatch) => {
   API.post("/login", data)
     .then((res) => {
-      dispatch(user(res.data));
+      dispatch(setUser(res.data));
       const token = res.data.token;
       localStorage.setItem("token", token);
+      renewAPI();
       history.push("/");
       toast.success(`Welcome ${res.data.name}`, {
         position: "top-right",

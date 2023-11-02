@@ -1,3 +1,6 @@
+import { useEffect } from "react";
+import { API, renewAPI } from "../../endpoint/instance";
+import { useDispatch } from "react-redux";
 import { TfiEmail } from "react-icons/tfi";
 import { FiChevronDown } from "react-icons/fi";
 import { NavLink, Link } from "react-router-dom";
@@ -14,10 +17,11 @@ import {
 } from "react-icons/bs";
 import { AiOutlineShoppingCart, AiOutlineHeart } from "react-icons/ai";
 import { HiOutlineBars3BottomRight } from "react-icons/hi2";
+import { setUser } from "../../../src/store/actions/userAction";
 
 const Header = () => {
   const userLoginData = useSelector((store) => store.user.user);
-
+  const dispatch = useDispatch();
   const navHandler = () => {
     const nav = document.querySelector(".mobile-nav");
     if (nav.classList.contains("hidden")) {
@@ -26,6 +30,21 @@ const Header = () => {
       nav.classList.add("hidden");
     }
   };
+
+  useEffect(() => {
+    const getToken = localStorage.getItem("token");
+    if (getToken) {
+      API.get("/verify")
+        .then((res) => {
+          dispatch(setUser(res.data));
+          renewAPI();
+        })
+        .catch((err) => {
+          localStorage.removeItem("token");
+          renewAPI();
+        });
+    }
+  }, []);
 
   return (
     <>
@@ -90,6 +109,7 @@ const Header = () => {
                     <p className="text-sm text-secondary-text italic mr-2">
                       {userLoginData?.name}
                     </p>
+                    <p className="text-sm text-secondary-text">Logout</p>
                   </>
                 ) : (
                   <>
