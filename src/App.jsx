@@ -8,6 +8,7 @@ import Contact from "./components/Page/Contact";
 import Product from "./components/Page/Product";
 import SignUp from "./components/Page/SignUp";
 import Login from "./components/Page/Login";
+import Error from "./components/Page/Error";
 function App() {
   return (
     <>
@@ -35,6 +36,9 @@ function App() {
         </Route>
         <Route path="/login">
           <Login />
+        </Route>
+        <Route path="*">
+          <Error />
         </Route>
       </Switch>
     </>
