@@ -53,16 +53,20 @@ export default function Example({ id }) {
         spaceBetween={10}
       >
         <SwiperSlide>
-          <img src={mock} alt="" />
+          <img src={mock} alt="" className="w-[510px] h-[400px]" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src={mock} alt="" />
+          <img
+            src="/src/assets/product/carousel-inner.png"
+            alt=""
+            className=""
+          />
         </SwiperSlide>
       </Swiper>
 
       <p className="append-buttons mt-4">
         <button onClick={() => slideTo(0)} className="prepend-2-slides mr-4">
-          <img src="/src/assets/product/single-product-1-thumb-1.jpg" alt="" />
+          <img src={mock} alt="" className="w-[100px] h-[75px]" />
         </button>
         <button onClick={() => slideTo(2)} className="prepend-slide">
           <img src="/src/assets/product/single-product-1-thumb-2.jpg" alt="" />

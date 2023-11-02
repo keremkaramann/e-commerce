@@ -28,7 +28,8 @@ export const handleLogin = (data, history) => (dispatch) => {
       });
     })
     .catch((err) => {
-      toast.error(`${err}`, {
+      console.log("Login Error Msg:", err);
+      toast.error("Register First!!", {
         position: "top-center",
         autoClose: 3000,
         hideProgressBar: false,
