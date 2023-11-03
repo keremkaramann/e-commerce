@@ -1,12 +1,15 @@
 import { useEffect } from "react";
-import { API, renewAPI } from "../../endpoint/instance";
-import { useDispatch } from "react-redux";
+import { renewAPI } from "../../endpoint/instance";
+
+import { useSelector, useDispatch } from "react-redux";
 import { TfiEmail } from "react-icons/tfi";
 import { FiChevronDown } from "react-icons/fi";
 import { NavLink, Link } from "react-router-dom";
 import GravatarImage from "../Repetitive/Gravatar";
-import { useSelector } from "react-redux";
-import { handleLogout, setUser } from "../../../src/store/actions/userAction";
+import {
+  handleLogout,
+  handleVerify,
+} from "../../../src/store/actions/userAction";
 import {
   BsInstagram,
   BsYoutube,
@@ -38,18 +41,7 @@ const Header = () => {
   };
 
   useEffect(() => {
-    const getToken = localStorage.getItem("token");
-    if (getToken) {
-      API.get("/verify")
-        .then((res) => {
-          dispatch(setUser(res.data));
-          renewAPI();
-        })
-        .catch((err) => {
-          localStorage.removeItem("token");
-          renewAPI();
-        });
-    }
+    dispatch(handleVerify());
   }, []);
 
   return (

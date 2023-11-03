@@ -1,25 +1,27 @@
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
-
+import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import Footer from "../Layout/Footer";
 import Header from "../Layout/Header";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { API } from "../../endpoint/instance";
+import { fetchRoles } from "../../store/actions/globalRedAction";
 
 const SignUp = () => {
   const history = useHistory();
   const [store, setStore] = useState(false);
-  const [customers, setCustomers] = useState();
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+
+  const dispatch = useDispatch();
+  const getRoles = useSelector((store) => store.global.roles);
 
   const {
     register,
     watch,
     handleSubmit,
-    setValue,
     formState: { errors, isValid },
   } = useForm({
     defaultValues: {
@@ -101,18 +103,7 @@ const SignUp = () => {
   };
 
   useEffect(() => {
-    API.get("/roles")
-      .then((res) => {
-        const reversedData = res.data.reverse();
-        setCustomers(reversedData);
-        const customerRole = res.data.find((role) => role.code === "customer");
-        if (customerRole) {
-          setValue("role_id", customerRole.id.toString());
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    dispatch(fetchRoles());
   }, []);
 
   return (
@@ -248,7 +239,7 @@ const SignUp = () => {
               {...register("role_id")}
               onChange={handleRoleChange}
             >
-              {customers?.map((customer, index) => {
+              {getRoles?.map((customer, index) => {
                 return (
                   <option value={customer.id} key={index}>
                     {customer.code}

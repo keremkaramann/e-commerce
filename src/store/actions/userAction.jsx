@@ -51,3 +51,18 @@ export const handleLogout = () => (dispatch) => {
   localStorage.removeItem("token");
   dispatch(logout());
 };
+
+export const handleVerify = () => (dispatch) => {
+  const getToken = localStorage.getItem("token");
+  if (getToken) {
+    API.get("/verify")
+      .then((res) => {
+        dispatch(setUser(res.data));
+        renewAPI();
+      })
+      .catch((err) => {
+        localStorage.removeItem("token");
+        renewAPI();
+      });
+  }
+};

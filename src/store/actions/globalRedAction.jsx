@@ -28,7 +28,8 @@ export const setLanguage = (language) => ({
 export const fetchRoles = () => (dispatch) => {
   API.get("/roles")
     .then((res) => {
-      dispatch(roles(res.data));
+      const reversedData = res.data.reverse();
+      dispatch(roles(reversedData));
     })
     .catch((err) => {
       console.error("Error fetching roles:", err);
