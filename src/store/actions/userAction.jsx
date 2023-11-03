@@ -2,10 +2,15 @@ import { toast } from "react-toastify";
 import { API, renewAPI } from "../../endpoint/instance";
 
 export const USER_ACT = "USER";
+export const LOGOUT = "LOGOUT";
 
 export const setUser = (id) => ({
   type: USER_ACT,
   payload: id,
+});
+
+export const logout = () => ({
+  type: LOGOUT,
 });
 
 export const handleLogin = (data, history) => (dispatch) => {
@@ -40,4 +45,9 @@ export const handleLogin = (data, history) => (dispatch) => {
         theme: "colored",
       });
     });
+};
+
+export const handleLogout = () => (dispatch) => {
+  localStorage.removeItem("token");
+  dispatch(logout());
 };

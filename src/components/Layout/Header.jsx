@@ -6,6 +6,7 @@ import { FiChevronDown } from "react-icons/fi";
 import { NavLink, Link } from "react-router-dom";
 import GravatarImage from "../Repetitive/Gravatar";
 import { useSelector } from "react-redux";
+import { handleLogout, setUser } from "../../../src/store/actions/userAction";
 import {
   BsInstagram,
   BsYoutube,
@@ -17,11 +18,11 @@ import {
 } from "react-icons/bs";
 import { AiOutlineShoppingCart, AiOutlineHeart } from "react-icons/ai";
 import { HiOutlineBars3BottomRight } from "react-icons/hi2";
-import { setUser } from "../../../src/store/actions/userAction";
 
 const Header = () => {
   const userLoginData = useSelector((store) => store.user.user);
   const dispatch = useDispatch();
+
   const navHandler = () => {
     const nav = document.querySelector(".mobile-nav");
     if (nav.classList.contains("hidden")) {
@@ -29,6 +30,11 @@ const Header = () => {
     } else {
       nav.classList.add("hidden");
     }
+  };
+
+  const logoutHandler = () => {
+    dispatch(handleLogout());
+    renewAPI();
   };
 
   useEffect(() => {
@@ -109,7 +115,18 @@ const Header = () => {
                     <p className="text-sm text-secondary-text italic mr-2">
                       {userLoginData?.name}
                     </p>
-                    <p className="text-sm text-secondary-text">Logout</p>
+                    <NavLink
+                      className="text-sm text-secondary-text"
+                      to="/login"
+                    >
+                      Login /
+                    </NavLink>
+                    <p
+                      onClick={logoutHandler}
+                      className="text-sm text-secondary-text cursor-pointer"
+                    >
+                      Logout
+                    </p>
                   </>
                 ) : (
                   <>
