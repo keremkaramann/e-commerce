@@ -13,7 +13,7 @@ const Contact = () => {
   return (
     <section>
       <Header />
-      <div className="flex justify-evenly xs:flex-wrap middle:flex-nowrap">
+      <div className="flex justify-evenly xs:flex-wrap middle:flex-nowrap px-4">
         <div className="flex flex-col justify-center middle:w-2/5 xs:w-full xs:text-center middle:text-start xs:p-5 middle:p-0">
           <h5 className="font-bold text-dark-navy mb-10">CONTACT US</h5>
           <h1 className="font-bold text-dark-navy middle:text-[3.6rem] xs:text-[2.5rem] mb-10">
