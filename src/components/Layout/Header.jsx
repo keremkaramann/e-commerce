@@ -115,17 +115,11 @@ const Header = () => {
                     <p className="text-sm text-secondary-text italic mr-2">
                       {userLoginData?.name}
                     </p>
-                    <NavLink
-                      className="text-sm text-secondary-text"
-                      to="/login"
-                    >
-                      Login /
-                    </NavLink>
                     <p
                       onClick={logoutHandler}
                       className="text-sm text-secondary-text cursor-pointer"
                     >
-                      Logout
+                      / Logout
                     </p>
                   </>
                 ) : (
