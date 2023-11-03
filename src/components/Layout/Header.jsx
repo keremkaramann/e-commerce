@@ -1,15 +1,10 @@
-import { useEffect } from "react";
 import { renewAPI } from "../../endpoint/instance";
-
 import { useSelector, useDispatch } from "react-redux";
 import { TfiEmail } from "react-icons/tfi";
 import { FiChevronDown } from "react-icons/fi";
 import { NavLink, Link } from "react-router-dom";
 import GravatarImage from "../Repetitive/Gravatar";
-import {
-  handleLogout,
-  handleVerify,
-} from "../../../src/store/actions/userAction";
+import { handleLogout } from "../../../src/store/actions/userAction";
 import {
   BsInstagram,
   BsYoutube,
@@ -39,10 +34,6 @@ const Header = () => {
     dispatch(handleLogout());
     renewAPI();
   };
-
-  useEffect(() => {
-    dispatch(handleVerify());
-  }, []);
 
   return (
     <>

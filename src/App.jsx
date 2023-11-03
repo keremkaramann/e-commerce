@@ -1,3 +1,6 @@
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { handleVerify } from "./store/actions/userAction";
 import Home from "./components/Page/Home";
 import ProductList from "./components/Page/ProductList";
 import { Switch } from "react-router-dom";
@@ -10,6 +13,12 @@ import SignUp from "./components/Page/SignUp";
 import Login from "./components/Page/Login";
 import Error from "./components/Page/Error";
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(handleVerify());
+  }, []);
+
   return (
     <>
       <Switch>

@@ -26,7 +26,7 @@ export const setLanguage = (language) => ({
 });
 
 export const fetchRoles = () => (dispatch) => {
-  API.get("/roles")
+  API.get("roles")
     .then((res) => {
       const reversedData = res.data.reverse();
       dispatch(roles(reversedData));

@@ -4,9 +4,9 @@ import { API, renewAPI } from "../../endpoint/instance";
 export const USER_ACT = "USER";
 export const LOGOUT = "LOGOUT";
 
-export const setUser = (id) => ({
+export const setUser = (data) => ({
   type: USER_ACT,
-  payload: id,
+  payload: data,
 });
 
 export const logout = () => ({
@@ -14,12 +14,26 @@ export const logout = () => ({
 });
 
 export const handleLogin = (data, history) => (dispatch) => {
-  API.post("/login", data)
+  const token = localStorage.getItem("token");
+  if (token) {
+    toast.error("Already Logged in!!", {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
+    history.push("/");
+    return;
+  }
+  API.post("login", data)
     .then((res) => {
       dispatch(setUser(res.data));
-      const token = res.data.token;
-      localStorage.setItem("token", token);
-      renewAPI();
+      localStorage.setItem("token", res.data.token);
+      renewAPI(res.data.token);
       history.push("/");
       toast.success(`Welcome ${res.data.name}`, {
         position: "top-right",
@@ -55,10 +69,10 @@ export const handleLogout = () => (dispatch) => {
 export const handleVerify = () => (dispatch) => {
   const getToken = localStorage.getItem("token");
   if (getToken) {
-    API.get("/verify")
+    API.get("verify")
       .then((res) => {
         dispatch(setUser(res.data));
-        renewAPI();
+        renewAPI(res.data.token);
       })
       .catch((err) => {
         localStorage.removeItem("token");

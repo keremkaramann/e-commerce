@@ -64,7 +64,7 @@ const SignUp = () => {
 
     setLoading(true);
 
-    API.post("/signup", postData)
+    API.post("signup", postData)
       .then((resp) => {
         console.log("Response: ", resp.data);
         toast.warn(
