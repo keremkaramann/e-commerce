@@ -1,5 +1,4 @@
-import React from "react";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 import Footer from "../Layout/Footer";
 import Header from "../Layout/Header";
@@ -10,8 +9,12 @@ import productListData from "../../data/ProductList";
 import ProductCard from "../Repetitive/ProductCard";
 import { IconButton, ButtonGroup } from "@material-tailwind/react";
 import Brands from "../Repetitive/Brands";
+import { fetchCategories } from "../../store/actions/globalRedAction";
+import { useDispatch } from "react-redux";
 
 const ProductList = () => {
+  const dispatch = useDispatch();
+
   const [isGridClicked, setGridClicked] = useState(true);
   const [isListClicked, setListClicked] = useState(false);
 
@@ -51,6 +54,9 @@ const ProductList = () => {
     "/src/assets/cardContentImg/4.jpg",
     "/src/assets/cardContentImg/5.jpg",
   ];
+  useEffect(() => {
+    dispatch(fetchCategories());
+  }, []);
   return (
     <div>
       <Header />

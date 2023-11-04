@@ -12,13 +12,12 @@ import Product from "./components/Page/Product";
 import SignUp from "./components/Page/SignUp";
 import Login from "./components/Page/Login";
 import Error from "./components/Page/Error";
-import { fetchCategories } from "./store/actions/globalRedAction";
+
 function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(handleVerify());
-    dispatch(fetchCategories());
   }, []);
 
   return (
