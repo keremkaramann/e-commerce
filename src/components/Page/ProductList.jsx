@@ -15,6 +15,9 @@ import { useDispatch, useSelector } from "react-redux";
 const ProductList = () => {
   const dispatch = useDispatch();
   const categoriesData = useSelector((store) => store.global.categories);
+  const sortedCategories = categoriesData.sort((a, b) => b.rating - a.rating);
+  const slicedCategories = categoriesData.slice(0, 5);
+
   const [isGridClicked, setGridClicked] = useState(true);
   const [isListClicked, setListClicked] = useState(false);
 
@@ -72,7 +75,7 @@ const ProductList = () => {
       </section>
       <section>
         <div className="flex justify-center gap-3 flex-wrap bg-[#FAFAFA] pb-10">
-          {categoriesData.map((categoryData) => {
+          {slicedCategories?.map((categoryData) => {
             const { id, img, title, gender } = categoryData;
             return (
               <div
@@ -80,7 +83,7 @@ const ProductList = () => {
                 className="bg-cover bg-center middle:h-[223px] middle:w-[223px] xs:h-[300px] xs:w-4/5 bg-no-repeat relative"
                 style={{ backgroundImage: `url(${img})` }}
               >
-                <Link to={`/shopping/:${gender}/:${title}`}>
+                <Link to={`/shopping/${gender}/${title}`}>
                   <div className="bg-[#2121214b] middle:h-[223px] middle:w-[223px] text-white">
                     <div className="absolute top-[40%] left-[35%] text-center">
                       <p className="font-bold mb-3">{title}</p>
