@@ -1,22 +1,24 @@
 import React, { useEffect, useState } from "react";
 import { NavLink, Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchCategories } from "../../store/actions/globalRedAction";
+//pages
 import Footer from "../Layout/Footer";
 import Header from "../Layout/Header";
+import ProductCard from "../Repetitive/ProductCard";
+import productListData from "../../data/ProductList";
+import Brands from "../Repetitive/Brands";
+//icons
 import { BsChevronRight } from "react-icons/bs";
 import { HiViewGrid } from "react-icons/hi";
 import { BsListCheck } from "react-icons/bs";
-import productListData from "../../data/ProductList";
-import ProductCard from "../Repetitive/ProductCard";
 import { IconButton, ButtonGroup } from "@material-tailwind/react";
-import Brands from "../Repetitive/Brands";
-import { fetchCategories } from "../../store/actions/globalRedAction";
-import { useDispatch, useSelector } from "react-redux";
 
 const ProductList = () => {
   const dispatch = useDispatch();
   const categoriesData = useSelector((store) => store.global.categories);
   const sortedCategories = categoriesData.sort((a, b) => b.rating - a.rating);
-  const slicedCategories = categoriesData.slice(0, 5);
+  const slicedCategories = sortedCategories.slice(0, 5);
 
   const [isGridClicked, setGridClicked] = useState(true);
   const [isListClicked, setListClicked] = useState(false);
