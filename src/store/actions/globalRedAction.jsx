@@ -35,3 +35,13 @@ export const fetchRoles = () => (dispatch) => {
       console.error("Error fetching roles:", err);
     });
 };
+export const fetchCategories = () => (dispatch) => {
+  API.get("categories")
+    .then((res) => {
+      console.log("categor", res.data);
+      dispatch(categories(res.data));
+    })
+    .catch((err) => {
+      console.error("Error fetching roles:", err);
+    });
+};
