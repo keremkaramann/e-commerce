@@ -10,11 +10,11 @@ import ProductCard from "../Repetitive/ProductCard";
 import { IconButton, ButtonGroup } from "@material-tailwind/react";
 import Brands from "../Repetitive/Brands";
 import { fetchCategories } from "../../store/actions/globalRedAction";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const ProductList = () => {
   const dispatch = useDispatch();
-
+  const categoriesData = useSelector((store) => store.global.categories);
   const [isGridClicked, setGridClicked] = useState(true);
   const [isListClicked, setListClicked] = useState(false);
 
@@ -79,19 +79,21 @@ const ProductList = () => {
       </section>
       <section>
         <div className="flex justify-center gap-3 flex-wrap bg-[#FAFAFA] pb-10">
-          {imgCover.map((urls, index) => {
+          {categoriesData.map((categoryData) => {
+            const { id, img, title, gender } = categoryData;
             return (
               <div
-                key={index}
+                key={id}
                 className="bg-cover bg-center middle:h-[223px] middle:w-[223px] xs:h-[300px] xs:w-4/5 bg-no-repeat relative"
-                style={{ backgroundImage: `url(${urls})` }}
+                style={{ backgroundImage: `url(${img})` }}
               >
-                <div className="bg-[#2121214b] middle:h-[223px] middle:w-[223px] text-white">
-                  <div className="absolute top-[40%] left-[35%] text-center">
-                    <p className="font-bold mb-3">CLOTHS</p>
-                    <p className="text-sm">5 Items</p>
+                <Link to={`/shopping/:${gender}/:${title}`}>
+                  <div className="bg-[#2121214b] middle:h-[223px] middle:w-[223px] text-white">
+                    <div className="absolute top-[40%] left-[35%] text-center">
+                      <p className="font-bold mb-3">{title}</p>
+                    </div>
                   </div>
-                </div>
+                </Link>
               </div>
             );
           })}
