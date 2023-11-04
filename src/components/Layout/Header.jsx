@@ -18,6 +18,13 @@ import { AiOutlineShoppingCart, AiOutlineHeart } from "react-icons/ai";
 import { HiOutlineBars3BottomRight } from "react-icons/hi2";
 
 const Header = () => {
+  window.addEventListener("blur", () => {
+    document.title = "Don't leave me :(";
+  });
+  window.addEventListener("focus", () => {
+    document.title = "Welcome to Bandage";
+  });
+
   const userLoginData = useSelector((store) => store.user.user);
   const dispatch = useDispatch();
 

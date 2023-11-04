@@ -14,13 +14,6 @@ import Login from "./components/Page/Login";
 import Error from "./components/Page/Error";
 import { fetchCategories } from "./store/actions/globalRedAction";
 function App() {
-  window.addEventListener("blur", () => {
-    document.title = "Don't leave me :(";
-  });
-  window.addEventListener("focus", () => {
-    document.title = "Welcome to Bandage";
-  });
-
   const dispatch = useDispatch();
 
   useEffect(() => {
