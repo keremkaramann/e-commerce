@@ -119,10 +119,11 @@ const Header = () => {
                         WOMAN
                       </h2>
                       {navList.map((list) => {
-                        const { gender, title } = list;
+                        const { gender, title, id } = list;
                         if (gender === "k") {
                           return (
                             <NavLink
+                              key={id}
                               to="/products"
                               className="font-normal ml-1 hover:text-primary-blue duration-200 ease-in-out border 
                               border-transparent hover:border-b-primary-blue"
@@ -138,10 +139,11 @@ const Header = () => {
                         MAN
                       </h2>
                       {navList.map((list) => {
-                        const { gender, title } = list;
+                        const { gender, title, id } = list;
                         if (gender === "e") {
                           return (
                             <NavLink
+                              key={id}
                               to="/products"
                               className="font-normal ml-1 hover:text-primary-blue duration-200 ease-in-out border 
                               border-transparent hover:border-b-primary-blue"

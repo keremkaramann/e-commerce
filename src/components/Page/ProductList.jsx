@@ -59,7 +59,6 @@ const ProductList = () => {
           <h1 className="text-dark-navy text-2xl font-bold xs:mb-10 mdCstm:mb-0">
             Shop
           </h1>
-          <div></div>
           <div className="flex gap-3">
             <NavLink className="text-dark-navy text-sm font-bold" to="/">
               Home
