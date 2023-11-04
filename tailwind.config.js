@@ -29,6 +29,11 @@ module.exports = withMT({
     gridTemplateColumns: {
       products: "grid-template-columns: repeat(4, minmax(auto,auto));",
     },
+    variants: {
+      extend: {
+        display: ["group-hover"],
+      },
+    },
   },
   plugins: [],
 });

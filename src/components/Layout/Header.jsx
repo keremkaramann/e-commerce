@@ -16,17 +16,21 @@ import {
 } from "react-icons/bs";
 import { AiOutlineShoppingCart, AiOutlineHeart } from "react-icons/ai";
 import { HiOutlineBars3BottomRight } from "react-icons/hi2";
+import { useEffect, useState } from "react";
+import { fetchCategories } from "../../store/actions/globalRedAction";
 
 const Header = () => {
+  const [showNav, setShowNav] = useState(false);
+  const dispatch = useDispatch();
+  const navList = useSelector((store) => store.global.categories);
+  const userLoginData = useSelector((store) => store.user.user);
+
   window.addEventListener("blur", () => {
     document.title = "Don't leave me :(";
   });
   window.addEventListener("focus", () => {
     document.title = "Welcome to Bandage";
   });
-
-  const userLoginData = useSelector((store) => store.user.user);
-  const dispatch = useDispatch();
 
   const navHandler = () => {
     const nav = document.querySelector(".mobile-nav");
@@ -37,11 +41,17 @@ const Header = () => {
     }
   };
 
+  const toggleMenu = () => {
+    setShowNav(!showNav);
+  };
+
   const logoutHandler = () => {
     dispatch(handleLogout());
     renewAPI();
   };
-
+  useEffect(() => {
+    dispatch(fetchCategories());
+  }, []);
   return (
     <>
       <header>
@@ -90,9 +100,58 @@ const Header = () => {
             </div>
             <div className="font-bold text-sm text-secondary-text flex gap-3 flex-wrap">
               <NavLink to="/">Home</NavLink>
-              <NavLink to="/products" className="flex gap-1">
-                Shop <FiChevronDown className="text-lg" />
-              </NavLink>
+              <div className="relative group">
+                <button
+                  to="/products"
+                  className="flex gap-1"
+                  onClick={toggleMenu}
+                >
+                  Shop <FiChevronDown className="text-lg" />
+                </button>
+                {showNav && (
+                  <div
+                    className="absolute z-20 bg-white pl-2 pr-24 py-3 shadow-xl
+                 border-gray-400 border-[1px] rounded-lg top-[31px]"
+                  >
+                    <div className="flex flex-col leading-8 mb-2">
+                      <h2 className="text-dark-navy text-xl font-normal">
+                        WOMAN
+                      </h2>
+                      {navList.map((list) => {
+                        const { gender, title } = list;
+                        if (gender === "k") {
+                          return (
+                            <NavLink
+                              to="/products"
+                              className="font-normal ml-1"
+                            >
+                              {title}
+                            </NavLink>
+                          );
+                        }
+                      })}
+                    </div>
+                    <div className="flex flex-col leading-8">
+                      <h2 className="text-dark-navy text-xl font-normal">
+                        MAN
+                      </h2>
+                      {navList.map((list) => {
+                        const { gender, title } = list;
+                        if (gender === "e") {
+                          return (
+                            <NavLink
+                              to="/products"
+                              className="font-normal ml-1"
+                            >
+                              {title}
+                            </NavLink>
+                          );
+                        }
+                      })}
+                    </div>
+                  </div>
+                )}
+              </div>
               <NavLink to="/about">About</NavLink>
               <NavLink to="/team">Team</NavLink>
               <NavLink to="/contact">Contact</NavLink>
@@ -133,7 +192,9 @@ const Header = () => {
         <nav className="xs:block middle:hidden">
           <div className="flex justify-between items-center px-5 py-4">
             <div>
-              <h1 className="text-2xl font-bold text-dark-navy">Bandage</h1>
+              <NavLink to="/">
+                <h1 className="text-2xl font-bold text-dark-navy">Bandage</h1>
+              </NavLink>
             </div>
             <div className="flex gap-5 text-2xl font-bold text-dark-navy">
               <BsSearch />
