@@ -20,8 +20,8 @@ import { useEffect, useState } from "react";
 import { fetchCategories } from "../../store/actions/globalRedAction";
 
 const Header = () => {
-  const [showNav, setShowNav] = useState(false);
   const dispatch = useDispatch();
+  const [showNav, setShowNav] = useState(false);
   const navList = useSelector((store) => store.global.categories);
   const userLoginData = useSelector((store) => store.user.user);
 
@@ -52,6 +52,7 @@ const Header = () => {
   useEffect(() => {
     dispatch(fetchCategories());
   }, []);
+
   return (
     <>
       <header>
@@ -110,7 +111,7 @@ const Header = () => {
                 </button>
                 {showNav && (
                   <div
-                    className="absolute z-20 bg-white pl-2 pr-24 py-3 shadow-xl
+                    className="absolute z-20 bg-white pl-3 pr-24 py-3 shadow-xl
                  border-gray-400 border-[1px] rounded-lg top-[31px]"
                   >
                     <div className="flex flex-col leading-8 mb-2">
@@ -123,7 +124,8 @@ const Header = () => {
                           return (
                             <NavLink
                               to="/products"
-                              className="font-normal ml-1"
+                              className="font-normal ml-1 hover:text-primary-blue duration-200 ease-in-out border 
+                              border-transparent hover:border-b-primary-blue"
                             >
                               {title}
                             </NavLink>
@@ -131,7 +133,7 @@ const Header = () => {
                         }
                       })}
                     </div>
-                    <div className="flex flex-col leading-8">
+                    <div className="flex flex-col leading-10">
                       <h2 className="text-dark-navy text-xl font-normal">
                         MAN
                       </h2>
@@ -141,7 +143,8 @@ const Header = () => {
                           return (
                             <NavLink
                               to="/products"
-                              className="font-normal ml-1"
+                              className="font-normal ml-1 hover:text-primary-blue duration-200 ease-in-out border 
+                              border-transparent hover:border-b-primary-blue"
                             >
                               {title}
                             </NavLink>
