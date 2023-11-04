@@ -2,6 +2,7 @@ import Header from "../Layout/Header";
 import Footer from "../Layout/Footer";
 import TeamCard from "../Repetitive/TeamCard";
 import { teamData } from "../../data/teamData";
+//icons
 import { BsChevronRight } from "react-icons/bs";
 import {
   AiOutlineInstagram,

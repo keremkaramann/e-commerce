@@ -1,10 +1,13 @@
+import { useEffect, useState } from "react";
 import { renewAPI } from "../../endpoint/instance";
 import { useSelector, useDispatch } from "react-redux";
+import { handleLogout } from "../../../src/store/actions/userAction";
+import { fetchCategories } from "../../store/actions/globalRedAction";
+import GravatarImage from "../Repetitive/Gravatar";
+import { NavLink, Link } from "react-router-dom";
+//icons
 import { TfiEmail } from "react-icons/tfi";
 import { FiChevronDown } from "react-icons/fi";
-import { NavLink, Link } from "react-router-dom";
-import GravatarImage from "../Repetitive/Gravatar";
-import { handleLogout } from "../../../src/store/actions/userAction";
 import {
   BsInstagram,
   BsYoutube,
@@ -16,8 +19,6 @@ import {
 } from "react-icons/bs";
 import { AiOutlineShoppingCart, AiOutlineHeart } from "react-icons/ai";
 import { HiOutlineBars3BottomRight } from "react-icons/hi2";
-import { useEffect, useState } from "react";
-import { fetchCategories } from "../../store/actions/globalRedAction";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -111,11 +112,11 @@ const Header = () => {
                 </button>
                 {showNav && (
                   <div
-                    className="absolute z-20 bg-white pl-3 pr-24 py-3 shadow-xl
-                 border-gray-400 border-[1px] rounded-lg top-[31px]"
+                    className="absolute z-20 bg-white pl-6 pr-16 py-3 shadow-xl
+                 border-gray-400 border-[1px] rounded-lg top-[30px] flex gap-16 justify-center"
                   >
                     <div className="flex flex-col leading-8 mb-2">
-                      <h2 className="text-dark-navy text-xl font-normal">
+                      <h2 className="text-dark-navy text-2xl font-normal">
                         WOMAN
                       </h2>
                       {navList.map((list) => {
@@ -134,8 +135,9 @@ const Header = () => {
                         }
                       })}
                     </div>
+                    <div className="border-l-[1px]"></div>
                     <div className="flex flex-col leading-10">
-                      <h2 className="text-dark-navy text-xl font-normal">
+                      <h2 className="text-dark-navy text-2xl font-normal">
                         MAN
                       </h2>
                       {navList.map((list) => {
@@ -145,7 +147,7 @@ const Header = () => {
                             <NavLink
                               key={id}
                               to="/products"
-                              className="font-normal ml-1 hover:text-primary-blue duration-200 ease-in-out border 
+                              className="font-normal ml-1 hover:text-primary-blue duration-500 ease-in-out border 
                               border-transparent hover:border-b-primary-blue"
                             >
                               {title}

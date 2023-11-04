@@ -2,10 +2,12 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { handleLogin } from "../../store/actions/userAction";
+//pages
 import Footer from "../Layout/Footer";
 import Header from "../Layout/Header";
+//icons
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
-import { handleLogin } from "../../store/actions/userAction";
 
 const Login = () => {
   const history = useHistory();

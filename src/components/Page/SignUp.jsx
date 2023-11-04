@@ -1,13 +1,16 @@
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
+//redux
 import { useSelector, useDispatch } from "react-redux";
-import { toast } from "react-toastify";
-import Footer from "../Layout/Footer";
-import Header from "../Layout/Header";
-import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { API } from "../../endpoint/instance";
 import { fetchRoles } from "../../store/actions/globalRedAction";
+import { toast } from "react-toastify";
+//pages
+import Footer from "../Layout/Footer";
+import Header from "../Layout/Header";
+//icons
+import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 
 const SignUp = () => {
   const history = useHistory();

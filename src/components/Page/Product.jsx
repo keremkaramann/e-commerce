@@ -1,8 +1,14 @@
-import Header from "../Layout/Header";
-import Footer from "../Layout/Footer";
-import Brands from "../Repetitive/Brands";
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useParams } from "react-router-dom";
+//pages
+import Brands from "../Repetitive/Brands";
+import Header from "../Layout/Header";
+import Footer from "../Layout/Footer";
+import BestSellerCard from "../Repetitive/BestSellerProductCard";
+import ProductCarousel from "../Repetitive/ProductCaoursel";
+import bestSellerData from "../../data/bestseller";
+//icons
 import { BsChevronRight } from "react-icons/bs";
 import {
   AiFillStar,
@@ -11,10 +17,6 @@ import {
   AiFillEye,
   AiOutlineShoppingCart,
 } from "react-icons/ai";
-import ProductCarousel from "../Repetitive/ProductCaoursel";
-import { useState } from "react";
-import bestSellerData from "../../data/bestseller";
-import BestSellerCard from "../Repetitive/BestSellerProductCard";
 
 const Product = () => {
   const { id } = useParams();
