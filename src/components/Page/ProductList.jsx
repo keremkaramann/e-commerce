@@ -47,13 +47,7 @@ const ProductList = () => {
     setListClicked(true);
     setGridClicked(false);
   };
-  const imgCover = [
-    "/src/assets/cardContentImg/1.jpg",
-    "/src/assets/cardContentImg/2.jpg",
-    "/src/assets/cardContentImg/3.jpg",
-    "/src/assets/cardContentImg/4.jpg",
-    "/src/assets/cardContentImg/5.jpg",
-  ];
+
   useEffect(() => {
     dispatch(fetchCategories());
   }, []);
