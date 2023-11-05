@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
-import { useParams } from "react-router-dom";
+import { NavLink, useLocation, useParams } from "react-router-dom";
 //pages
 import Brands from "../Repetitive/Brands";
 import Header from "../Layout/Header";
@@ -49,6 +48,9 @@ const Product = () => {
       setSelectedColor(color);
     }
   };
+
+  const location = useLocation();
+  const description = location.state.description;
 
   return (
     <section>

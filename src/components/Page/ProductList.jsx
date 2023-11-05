@@ -177,7 +177,16 @@ const ProductList = () => {
               ?.map((product) => {
                 const { images, name, description, id, price } = product;
                 return (
-                  <Link to={`/product/${id}`} key={id}>
+                  <Link
+                    to={`/product/${id}`}
+                    key={id}
+                    state={{
+                      description: description,
+                      images: images,
+                      name: name,
+                      price: price,
+                    }}
+                  >
                     <ProductCard
                       images={images}
                       name={name}
