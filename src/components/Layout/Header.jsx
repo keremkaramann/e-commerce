@@ -5,6 +5,7 @@ import { handleLogout } from "../../../src/store/actions/userAction";
 import { fetchCategories } from "../../store/actions/globalRedAction";
 import GravatarImage from "../Repetitive/Gravatar";
 import { NavLink, Link } from "react-router-dom";
+import ScrollToTop from "../Page/ScrollToTop";
 //icons
 import { TfiEmail } from "react-icons/tfi";
 import { FiChevronDown } from "react-icons/fi";
@@ -223,6 +224,7 @@ const Header = () => {
           </div>
         </nav>
       </header>
+      <ScrollToTop />
     </>
   );
 };
