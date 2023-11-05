@@ -38,7 +38,6 @@ export const fetchRoles = () => (dispatch) => {
 export const fetchCategories = () => (dispatch) => {
   API.get("categories")
     .then((res) => {
-      console.log("categor", res.data);
       dispatch(categories(res.data));
     })
     .catch((err) => {

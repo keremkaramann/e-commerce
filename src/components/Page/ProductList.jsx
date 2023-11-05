@@ -13,6 +13,7 @@ import { BsChevronRight } from "react-icons/bs";
 import { HiViewGrid } from "react-icons/hi";
 import { BsListCheck } from "react-icons/bs";
 import { IconButton, ButtonGroup } from "@material-tailwind/react";
+import { fetchProducts } from "../../store/actions/productAction";
 
 const ProductList = () => {
   const dispatch = useDispatch();
@@ -55,6 +56,7 @@ const ProductList = () => {
 
   useEffect(() => {
     dispatch(fetchCategories());
+    dispatch(fetchProducts());
   }, []);
   return (
     <div>
