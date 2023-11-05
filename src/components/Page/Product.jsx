@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { NavLink, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 //pages
@@ -57,6 +57,10 @@ const Product = () => {
       setSelectedColor(color);
     }
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <section>
