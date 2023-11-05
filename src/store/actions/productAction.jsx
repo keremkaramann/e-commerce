@@ -19,3 +19,13 @@ export const failed = (id) => ({
   type: FAILED,
   payload: id,
 });
+
+export const fetchProducts = () => (dispatch) => {
+  API.get("products")
+    .then((res) => {
+      dispatch(fetching(res.data));
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
