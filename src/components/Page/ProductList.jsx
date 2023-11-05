@@ -174,7 +174,7 @@ const ProductList = () => {
                   .toLocaleLowerCase()
                   .includes(filterText.toLocaleLowerCase())
               )
-              ?.map((product, index) => {
+              ?.map((product) => {
                 const { images, name, description, id, price } = product;
                 return (
                   <Link to={`/product/${id}`} key={id}>
