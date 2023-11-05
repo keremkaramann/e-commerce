@@ -1,13 +1,19 @@
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchProducts } from "../../store/actions/productAction";
 import ProductCard from "../Repetitive/ProductCard";
 import ReusableSwiper from "../Repetitive/ReusableCarouse";
 import productData from "../../data/data";
 import Posts from "../Repetitive/Posts";
 import { imagePosts } from "../../data/postsData";
 const PageContent = () => {
+  const dispatch = useDispatch();
   const productData = useSelector((store) => store.product.productList);
-
+  const listProducts = productData.products?.sort(
+    (a, b) => b.sell_count - a.sell_count
+  );
+  const slicedProducts = listProducts?.slice(0, 8);
   const imagePaths = [
     "/src/assets/carouselImg/shop-hero-1-product-slide-1.jpg",
     "/src/assets/carouselImg/shop-hero-2-product-slide-2.png",
@@ -18,7 +24,9 @@ const PageContent = () => {
     "/src/assets/carouselImg/shop-hero-2-product-slide-2.png",
     "/src/assets/carouselImg/shop-hero-1-product-slide-1.jpg",
   ];
-
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, []);
   return (
     <>
       <ReusableSwiper imagePaths={imagePaths} />
@@ -110,7 +118,7 @@ const PageContent = () => {
         </div>
 
         <div className="flex gap-5 justify-center px-30 flex-wrap max-w-[1060px] my-0 mx-auto">
-          {productData.map((product, index) => {
+          {slicedProducts?.map((product, index) => {
             const { images, name, description, id, price } = product;
             return (
               <Link to={`/product/${id}`} key={id}>
