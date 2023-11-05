@@ -20,12 +20,9 @@ import {
 
 const Product = () => {
   const { id } = useParams();
-  console.log("id", id);
+
   const productData = useSelector((store) => store.product.productList);
-  console.log(
-    "buRA",
-    productData.products?.find((product) => product.id)
-  );
+
   function getProductById(id) {
     return productData.products?.find((product) => product.id == id);
   }
@@ -82,49 +79,63 @@ const Product = () => {
         <div>
           <ProductCarousel id={id} />
         </div>
-        <div className=" xs:w-full middle:w-[40%] xs:p-10 middle:p-0">
-          <h4 className="dark-navy text-lg mb-3 mt-3">{product?.name} </h4>
-          <div className="flex items-center gap-2 text-2xl text-[#F3CD03] mb-4">
-            <AiFillStar />
-            <AiFillStar />
-            <AiFillStar />
-            <AiFillStar />
-            <AiOutlineStar />
-            <p className="text-secondary-text font-bold text-sm">10 Reviews</p>
+        {product === "" ? (
+          <div>
+            <h1>There is no product to show!!</h1>
           </div>
-          <p className="text-2xl font-bold text-dark-navy mb-2">
-            {product?.price} ₺
-          </p>
-          <p className="text-sm font-bold text-secondary-text mb-7">
-            Availability :{" "}
-            <span className="text-primary-blue">
-              In Stock ({product?.stock})
-            </span>
-          </p>
-          <p className="text-[#858585] text-sm mb-5">{product?.description}</p>
-          <div className="border-b-2 border-muted-color w-3/4 mb-8"></div>
-          <ul className="flex gap-2 xs:mb-14 middle:mb-20">
-            {colorOptions.map((colorOption, index) => (
-              <li
-                key={index}
-                className={`color-option ${colorOption.className} ${
-                  selectedColor === colorOption.name
-                    ? "border-solid border-2 border-black"
-                    : ""
-                }`}
-                onClick={() => handleColorClick(colorOption.name)}
-              ></li>
-            ))}
-          </ul>
-          <div className="flex items-center gap-3 xs:flex-wrap middle:flex-nowrap">
-            <button className="px-4 py-2 rounded border-[1px] bg-primary-blue border-primary-blue text-white hover:bg-white hover:text-primary-blue duration-500">
-              Select Options
-            </button>
-            <AiOutlineHeart className="addToChart" />
-            <AiOutlineShoppingCart className="addToChart" />
-            <AiFillEye className="addToChart" />
+        ) : (
+          <div className=" xs:w-full middle:w-[40%] xs:p-10 middle:p-0">
+            <h4 className="dark-navy text-lg mb-3 mt-3">{product?.name} </h4>
+            <div className="flex items-center gap-2 text-2xl text-[#F3CD03] mb-4">
+              {Array(5)
+                .fill(null)
+                .map((_, index) =>
+                  index < Math.ceil(product?.rating) ? (
+                    <AiFillStar key={index} />
+                  ) : (
+                    <AiOutlineStar key={index} />
+                  )
+                )}
+              <p className="text-secondary-text font-bold text-sm">
+                {product?.sell_count} Reviews
+              </p>
+            </div>
+            <p className="text-2xl font-bold text-dark-navy mb-2">
+              {product?.price} ₺
+            </p>
+            <p className="text-sm font-bold text-secondary-text mb-7">
+              Availability :{" "}
+              <span className="text-primary-blue">
+                In Stock ({product?.stock})
+              </span>
+            </p>
+            <p className="text-[#858585] text-sm mb-5">
+              {product?.description}
+            </p>
+            <div className="border-b-2 border-muted-color w-3/4 mb-8"></div>
+            <ul className="flex gap-2 xs:mb-14 middle:mb-20">
+              {colorOptions.map((colorOption, index) => (
+                <li
+                  key={index}
+                  className={`color-option ${colorOption.className} ${
+                    selectedColor === colorOption.name
+                      ? "border-solid border-2 border-black"
+                      : ""
+                  }`}
+                  onClick={() => handleColorClick(colorOption.name)}
+                ></li>
+              ))}
+            </ul>
+            <div className="flex items-center gap-3 xs:flex-wrap middle:flex-nowrap">
+              <button className="px-4 py-2 rounded border-[1px] bg-primary-blue border-primary-blue text-white hover:bg-white hover:text-primary-blue duration-500">
+                Select Options
+              </button>
+              <AiOutlineHeart className="addToChart" />
+              <AiOutlineShoppingCart className="addToChart" />
+              <AiFillEye className="addToChart" />
+            </div>
           </div>
-        </div>
+        )}
       </div>
 
       <div className="bg-white pb-14">
@@ -133,7 +144,7 @@ const Product = () => {
           <p className="font-bold">Additional Information</p>
           <div className="flex gap-1">
             <p className="font-bold">Reviews</p>
-            <p>(0)</p>
+            <p>({product?.sell_count})</p>
           </div>
         </div>
         <div className="xs:hidden middle:block">
