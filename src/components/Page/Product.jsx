@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { NavLink, useLocation, useParams } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 //pages
 import Brands from "../Repetitive/Brands";
 import Header from "../Layout/Header";
@@ -19,6 +20,17 @@ import {
 
 const Product = () => {
   const { id } = useParams();
+  console.log("id", id);
+  const productData = useSelector((store) => store.product.productList);
+  console.log(
+    "buRA",
+    productData.products?.find((product) => product.id)
+  );
+  function getProductById(id) {
+    return productData.products?.find((product) => product.id == id);
+  }
+
+  const product = getProductById(id);
 
   const colorOptions = [
     {
@@ -49,9 +61,6 @@ const Product = () => {
     }
   };
 
-  const location = useLocation();
-  const description = location.state.description;
-
   return (
     <section>
       <Header />
@@ -74,7 +83,7 @@ const Product = () => {
           <ProductCarousel id={id} />
         </div>
         <div className=" xs:w-full middle:w-[40%] xs:p-10 middle:p-0">
-          <h4 className="dark-navy text-lg mb-3 mt-3">Floating Phone</h4>
+          <h4 className="dark-navy text-lg mb-3 mt-3">{product?.name} </h4>
           <div className="flex items-center gap-2 text-2xl text-[#F3CD03] mb-4">
             <AiFillStar />
             <AiFillStar />
@@ -83,15 +92,16 @@ const Product = () => {
             <AiOutlineStar />
             <p className="text-secondary-text font-bold text-sm">10 Reviews</p>
           </div>
-          <p className="text-2xl font-bold text-dark-navy mb-2">$1,139.33</p>
+          <p className="text-2xl font-bold text-dark-navy mb-2">
+            {product?.price} ₺
+          </p>
           <p className="text-sm font-bold text-secondary-text mb-7">
-            Availability : <span className="text-primary-blue">In Stock </span>
+            Availability :{" "}
+            <span className="text-primary-blue">
+              In Stock ({product?.stock})
+            </span>
           </p>
-          <p className="text-[#858585] text-sm mb-5">
-            Met minim Mollie non desert Alamo est sit cliquey dolor <br /> do
-            met sent. RELIT official consequent door ENIM RELIT Mollie. <br />
-            Excitation venial consequent sent nostrum met.
-          </p>
+          <p className="text-[#858585] text-sm mb-5">{product?.description}</p>
           <div className="border-b-2 border-muted-color w-3/4 mb-8"></div>
           <ul className="flex gap-2 xs:mb-14 middle:mb-20">
             {colorOptions.map((colorOption, index) => (
