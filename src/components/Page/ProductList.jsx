@@ -177,9 +177,8 @@ const ProductList = () => {
               ?.map((product, index) => {
                 const { images, name, description, id, price } = product;
                 return (
-                  <Link to={`/product/${id}`} key={index}>
+                  <Link to={`/product/${id}`} key={id}>
                     <ProductCard
-                      key={id}
                       images={images}
                       name={name}
                       desc={description}
