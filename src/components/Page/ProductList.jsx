@@ -23,13 +23,14 @@ const ProductList = () => {
   const slicedCategories = sortedCategories.slice(0, 5);
 
   //products
-  const productData = useSelector((store) => store.product.productList);
   const fetched = useSelector((store) => store.product.fetchState);
+  const productData = useSelector((store) => store.product.productList);
 
   const [filterText, setFilterText] = useState("");
-  const [filteredProduct, setFilteredProduct] = useState();
+  const [filteredProduct, setFilteredProduct] = useState([]);
   const [isGridClicked, setGridClicked] = useState(true);
   const [isListClicked, setListClicked] = useState(false);
+  const [selectedSortOption, setSelectedSortOption] = useState("popularity");
 
   const [active, setActive] = useState(1);
 
@@ -61,9 +62,49 @@ const ProductList = () => {
     setGridClicked(false);
   };
 
+  let sortedPro = [];
+  if (productData?.products) {
+    sortedPro = [...productData.products];
+  }
+  const handleMostExp = () => {
+    const listProducts = sortedPro.sort((a, b) => b.price - a.price);
+    setFilteredProduct([...listProducts]);
+  };
+  const handleLeastExp = () => {
+    const listProducts = sortedPro.sort((a, b) => a.price - b.price);
+    setFilteredProduct([...listProducts]);
+  };
+  const handleMostViewed = () => {
+    const listProducts = sortedPro.sort((a, b) => b.sell_count - a.sell_count);
+    setFilteredProduct([...listProducts]);
+  };
+  const handleLeastViewed = () => {
+    const listProducts = sortedPro.sort((a, b) => a.sell_count - b.sell_count);
+    setFilteredProduct([...listProducts]);
+  };
+  const updateProductList = (sortingOption) => {
+    switch (sortingOption) {
+      case "mostViewed":
+        handleMostViewed();
+        break;
+      case "leastViewed":
+        handleLeastViewed();
+        break;
+      case "mostExp":
+        handleMostExp();
+        break;
+      case "leastExp":
+        handleLeastExp();
+        break;
+      default:
+        break;
+    }
+  };
+
   useEffect(() => {
     dispatch(fetchCategories());
     dispatch(fetchProducts());
+    handleMostViewed();
   }, []);
 
   return (
@@ -143,6 +184,7 @@ const ProductList = () => {
           </div>
           <div>
             <select
+              onChange={(e) => setSelectedSortOption(e.target.value)}
               id="popular"
               className="bg-[#F9F9F9] border-[1px] border-[#DDDDDD] rounded text-secondary-text px-2 py-4 text-sm mr-3"
             >
@@ -151,10 +193,11 @@ const ProductList = () => {
               </option>
               <option value="mostViewed">Most Viewed</option>
               <option value="leastViewed">Least Viewed</option>
-              <option value="most">Most Expensive</option>
-              <option value="least">Least Expensive</option>
+              <option value="mostExp">Most Expensive</option>
+              <option value="leastExp">Least Expensive</option>
             </select>
             <button
+              onClick={() => updateProductList(selectedSortOption)}
               type="submit"
               className="bg-primary-blue border-[1px] border-primary-blue text-white px-7 text-sm font-light rounded py-4 hover:bg-white hover:text-primary-blue duration-500"
             >
@@ -168,7 +211,7 @@ const ProductList = () => {
           }`}
         >
           {fetched === "Fetched" ? (
-            productData.products
+            filteredProduct
               ?.filter((p) =>
                 p.name
                   .toLocaleLowerCase()

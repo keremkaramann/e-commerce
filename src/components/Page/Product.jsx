@@ -26,7 +26,6 @@ const Product = () => {
   function getProductById(id) {
     return productData.products?.find((product) => product.id == id);
   }
-
   const product = getProductById(id);
 
   const colorOptions = [

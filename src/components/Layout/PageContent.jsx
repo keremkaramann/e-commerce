@@ -1,9 +1,13 @@
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 import ProductCard from "../Repetitive/ProductCard";
 import ReusableSwiper from "../Repetitive/ReusableCarouse";
 import productData from "../../data/data";
 import Posts from "../Repetitive/Posts";
 import { imagePosts } from "../../data/postsData";
 const PageContent = () => {
+  const productData = useSelector((store) => store.product.productList);
+
   const imagePaths = [
     "/src/assets/carouselImg/shop-hero-1-product-slide-1.jpg",
     "/src/assets/carouselImg/shop-hero-2-product-slide-2.png",
@@ -107,14 +111,16 @@ const PageContent = () => {
 
         <div className="flex gap-5 justify-center px-30 flex-wrap max-w-[1060px] my-0 mx-auto">
           {productData.map((product, index) => {
-            const { url, content, department } = product;
+            const { images, name, description, id, price } = product;
             return (
-              <ProductCard
-                key={index}
-                url={url}
-                content={content}
-                department={department}
-              />
+              <Link to={`/product/${id}`} key={id}>
+                <ProductCard
+                  images={images}
+                  name={name}
+                  desc={description}
+                  price={price}
+                />
+              </Link>
             );
           })}
         </div>
