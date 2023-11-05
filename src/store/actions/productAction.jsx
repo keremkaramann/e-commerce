@@ -25,9 +25,11 @@ export const failed = (id) => ({
 export const fetchProducts = () => (dispatch) => {
   API.get("products")
     .then((res) => {
-      dispatch(fetching(res.data));
+      dispatch(fetched(res.data));
+      dispatch(fetching("Fetched"));
     })
     .catch((err) => {
       console.log(err);
+      dispatch(fetching("NOT_FETCHED"));
     });
 };

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const ProductCard = ({ url, content, department, price }) => {
+const ProductCard = ({ images, name, desc, price }) => {
   const colorOptions = [
     {
       name: "Primary",
@@ -33,18 +33,16 @@ const ProductCard = ({ url, content, department, price }) => {
   return (
     <div>
       <img
-        src={url}
+        src={images}
         alt="product-img"
         className="xs:px-3 middle:px-0 xs:w-[340px] middle:w-full xs:max-h-[500px] middle:h-auto"
       />
       <div className="text-center mt-5 mb-20">
-        <p className="text-dark-navy font-bold">{content} </p>
         <p className="text-secondary-text font-bold text-sm mt-5 mb-5">
-          {department}
+          {name}
         </p>
         <div className="flex gap-2 justify-center mb-5">
-          <p className="text-[#BDBDBD] text-bold">$16.48</p>
-          <p className="text-bold text-[#23856D]">$6.48</p>
+          <p className="text-bold text-[#23856D]">${price}</p>
         </div>
         <div>
           <ul className="flex justify-center gap-2">

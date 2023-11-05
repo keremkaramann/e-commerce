@@ -17,6 +17,8 @@ const productReducer = (state = productInitialState, action) => {
   switch (action.type) {
     case FETCHED:
       return { ...state, productList: action.payload };
+    case FETCHING:
+      return { ...state, fetchState: action.payload };
     default:
       return state;
   }
