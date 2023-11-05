@@ -2,11 +2,13 @@ import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "../../store/actions/productAction";
+//pages and data
 import ProductCard from "../Repetitive/ProductCard";
 import ReusableSwiper from "../Repetitive/ReusableCarouse";
 import productData from "../../data/data";
 import Posts from "../Repetitive/Posts";
 import { imagePosts } from "../../data/postsData";
+
 const PageContent = () => {
   const dispatch = useDispatch();
   const productData = useSelector((store) => store.product.productList);
@@ -14,6 +16,7 @@ const PageContent = () => {
     (a, b) => b.sell_count - a.sell_count
   );
   const slicedProducts = listProducts?.slice(0, 8);
+
   const imagePaths = [
     "/src/assets/carouselImg/shop-hero-1-product-slide-1.jpg",
     "/src/assets/carouselImg/shop-hero-2-product-slide-2.png",
@@ -24,9 +27,11 @@ const PageContent = () => {
     "/src/assets/carouselImg/shop-hero-2-product-slide-2.png",
     "/src/assets/carouselImg/shop-hero-1-product-slide-1.jpg",
   ];
+
   useEffect(() => {
     dispatch(fetchProducts());
   }, []);
+
   return (
     <>
       <ReusableSwiper imagePaths={imagePaths} />
