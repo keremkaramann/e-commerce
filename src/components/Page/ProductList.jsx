@@ -9,11 +9,11 @@ import Footer from "../Layout/Footer";
 import Header from "../Layout/Header";
 import ProductCard from "../Repetitive/ProductCard";
 import Brands from "../Repetitive/Brands";
+import Pagination from "../Repetitive/Pagination";
 //icons
 import { BsChevronRight } from "react-icons/bs";
 import { HiViewGrid } from "react-icons/hi";
 import { BsListCheck } from "react-icons/bs";
-import { IconButton, ButtonGroup } from "@material-tailwind/react";
 
 const ProductList = () => {
   const dispatch = useDispatch();
@@ -55,26 +55,7 @@ const ProductList = () => {
   const [isListClicked, setListClicked] = useState(false);
   const [selectedSortOption, setSelectedSortOption] = useState("popularity");
 
-  const [active, setActive] = useState(1);
-
-  const getItemProps = (index) => ({
-    className:
-      active === index
-        ? "bg-primary-blue text-white px-6 py-9 border-[#BDBDBD]"
-        : "px-6 py-9 border-[#BDBDBD] text-primary-blue",
-    onClick: () => setActive(index),
-  });
-
-  const next = () => {
-    if (active === 3) return;
-    setActive(active + 1);
-  };
-
-  const prev = () => {
-    if (active === 1) return;
-    setActive(active - 1);
-  };
-
+  // show single product or 4
   const handleGridClick = () => {
     setGridClicked(true);
     setListClicked(false);
@@ -85,6 +66,7 @@ const ProductList = () => {
     setGridClicked(false);
   };
 
+  /*****  url params and sorting *******/
   let sortedPro = [];
   if (productData?.products) {
     sortedPro = [...productData.products];
@@ -139,9 +121,11 @@ const ProductList = () => {
     }
     handleMostViewed();
   }, []);
+
   useEffect(() => {
     updateURL(category, sort, filterText);
   }, [category, sort, filterText]);
+
   return (
     <div>
       <Header />
@@ -291,25 +275,7 @@ const ProductList = () => {
             </div>
           )}
         </div>
-        <div className="flex justify-center text-center mb-12">
-          <ButtonGroup variant="outlined" className="shadow-lg rounded ">
-            <IconButton
-              onClick={prev}
-              className="px-10 py-9 border-[#BDBDBD] text-muted-color bg-[#F3F3F3] "
-            >
-              <p>First</p>
-            </IconButton>
-            <IconButton {...getItemProps(1)}>1</IconButton>
-            <IconButton {...getItemProps(2)}>2</IconButton>
-            <IconButton {...getItemProps(3)}>3</IconButton>
-            <IconButton
-              onClick={next}
-              className="px-10 py-9 text-center border-[#BDBDBD] text-primary-blue"
-            >
-              <p> Next</p>
-            </IconButton>
-          </ButtonGroup>
-        </div>
+        <Pagination />
         <Brands />
       </section>
       <Footer />
