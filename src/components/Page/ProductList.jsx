@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link, useLocation, useHistory } from "react-router-dom";
+
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCategories } from "../../store/actions/globalRedAction";
 import { fetchProducts } from "../../store/actions/productAction";
@@ -7,7 +8,6 @@ import { fetchProducts } from "../../store/actions/productAction";
 import Footer from "../Layout/Footer";
 import Header from "../Layout/Header";
 import ProductCard from "../Repetitive/ProductCard";
-import productListData from "../../data/ProductList";
 import Brands from "../Repetitive/Brands";
 //icons
 import { BsChevronRight } from "react-icons/bs";
@@ -17,10 +17,33 @@ import { IconButton, ButtonGroup } from "@material-tailwind/react";
 
 const ProductList = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   //categories
   const categoriesData = useSelector((store) => store.global.categories);
   const sortedCategories = categoriesData.sort((a, b) => b.rating - a.rating);
   const slicedCategories = sortedCategories.slice(0, 5);
+
+  //params
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const category = queryParams.get("category");
+  const sort = queryParams.get("sort");
+  const updateURL = (category, sort) => {
+    const queryParams = new URLSearchParams();
+
+    if (category) {
+      queryParams.set("category", category);
+    }
+
+    if (sort) {
+      queryParams.set("sort", sort);
+    }
+    if (filterText) {
+      queryParams.set("filter", filterText);
+    }
+
+    history.push(`/products?${queryParams.toString()}`);
+  };
 
   //products
   const fetched = useSelector((store) => store.product.fetchState);
@@ -86,15 +109,19 @@ const ProductList = () => {
     switch (sortingOption) {
       case "mostViewed":
         handleMostViewed();
+        updateURL(null, "rating:desc");
         break;
       case "leastViewed":
         handleLeastViewed();
+        updateURL(null, "rating:asc");
         break;
       case "mostExp":
         handleMostExp();
+        updateURL(null, "price:desc");
         break;
       case "leastExp":
         handleLeastExp();
+        updateURL(null, "price:asc");
         break;
       default:
         break;
@@ -104,9 +131,17 @@ const ProductList = () => {
   useEffect(() => {
     dispatch(fetchCategories());
     dispatch(fetchProducts());
+    const queryParams = new URLSearchParams(location.search);
+    const filter = queryParams.get("filter");
+
+    if (filter) {
+      setFilterText(filter);
+    }
     handleMostViewed();
   }, []);
-
+  useEffect(() => {
+    updateURL(category, sort, filterText);
+  }, [category, sort, filterText]);
   return (
     <div>
       <Header />
@@ -179,7 +214,11 @@ const ProductList = () => {
               placeholder="Search Product..."
               className="bg-[#F9F9F9] border-[1px] border-[#DDDDDD] rounded text-secondary-text py-3 px-2"
               value={filterText}
-              onChange={(e) => setFilterText(e.target.value)}
+              onChange={(e) => {
+                const newText = e.target.value;
+                setFilterText(newText);
+                updateURL(category, sort, newText);
+              }}
             />
           </div>
           <div>
