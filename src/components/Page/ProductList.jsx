@@ -11,9 +11,8 @@ import ProductCard from "../Repetitive/ProductCard";
 import Brands from "../Repetitive/Brands";
 import Pagination from "../Repetitive/Pagination";
 //icons
-import { BsChevronRight } from "react-icons/bs";
+import { BsChevronRight, BsListCheck } from "react-icons/bs";
 import { HiViewGrid } from "react-icons/hi";
-import { BsListCheck } from "react-icons/bs";
 
 const ProductList = () => {
   const dispatch = useDispatch();
@@ -28,6 +27,7 @@ const ProductList = () => {
   const queryParams = new URLSearchParams(location.search);
   const category = queryParams.get("category");
   const sort = queryParams.get("sort");
+
   const updateURL = (category, sort) => {
     const queryParams = new URLSearchParams();
 
