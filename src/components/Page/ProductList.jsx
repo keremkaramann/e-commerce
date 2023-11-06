@@ -31,15 +31,18 @@ const ProductList = () => {
   const updateURL = (category, sort) => {
     const queryParams = new URLSearchParams();
 
-    if (category) {
-      queryParams.set("category", category);
-    }
-
-    if (sort) {
-      queryParams.set("sort", sort);
-    }
-    if (filterText) {
-      queryParams.set("filter", filterText);
+    switch (true) {
+      case category:
+        queryParams.set("category", category);
+        break;
+      case sort:
+        queryParams.set("sort", sort);
+        break;
+      case filterText:
+        queryParams.set("filter", filterText);
+        break;
+      default:
+      // other cases
     }
 
     history.push(`/products?${queryParams.toString()}`);
