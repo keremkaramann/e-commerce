@@ -31,18 +31,20 @@ const ProductList = () => {
   const updateURL = (category, sort) => {
     const queryParams = new URLSearchParams();
 
-    switch (true) {
-      case category:
-        queryParams.set("category", category);
-        break;
-      case sort:
-        queryParams.set("sort", sort);
-        break;
-      case filterText:
-        queryParams.set("filter", filterText);
-        break;
-      default:
-      // other cases
+    if (category) {
+      queryParams.set("category", category);
+    }
+
+    if (sort) {
+      if (sort.price) {
+        queryParams.set("sort[price]", sort.price);
+      }
+      if (sort.rating) {
+        queryParams.set("sort[rating]", sort.rating);
+      }
+    }
+    if (filterText) {
+      queryParams.set("filter", filterText);
     }
 
     history.push(`/products?${queryParams.toString()}`);
@@ -70,47 +72,35 @@ const ProductList = () => {
   };
 
   /*****  url params and sorting *******/
-  let sortedPro = [];
+  let sortedProducts = [];
   if (productData?.products) {
-    sortedPro = [...productData.products];
+    sortedProducts = [...productData.products];
   }
-  const handleMostExp = () => {
-    const listProducts = sortedPro.sort((a, b) => b.price - a.price);
-    setFilteredProduct([...listProducts]);
-  };
-  const handleLeastExp = () => {
-    const listProducts = sortedPro.sort((a, b) => a.price - b.price);
-    setFilteredProduct([...listProducts]);
-  };
-  const handleMostViewed = () => {
-    const listProducts = sortedPro.sort((a, b) => b.sell_count - a.sell_count);
-    setFilteredProduct([...listProducts]);
-  };
-  const handleLeastViewed = () => {
-    const listProducts = sortedPro.sort((a, b) => a.sell_count - b.sell_count);
-    setFilteredProduct([...listProducts]);
-  };
-  const updateProductList = (sortingOption) => {
+  const sortProducts = (sortingOption) => {
+    let sort = {};
     switch (sortingOption) {
-      case "mostViewed":
-        handleMostViewed();
-        updateURL(null, "rating:desc");
-        break;
-      case "leastViewed":
-        handleLeastViewed();
-        updateURL(null, "rating:asc");
-        break;
       case "mostExp":
-        handleMostExp();
-        updateURL(null, "price:desc");
+        sortedProducts.sort((a, b) => b.price - a.price);
+        sort.price = "desc";
         break;
       case "leastExp":
-        handleLeastExp();
-        updateURL(null, "price:asc");
+        sortedProducts.sort((a, b) => a.price - b.price);
+        sort.price = "asc";
+        break;
+      case "mostViewed":
+        sortedProducts.sort((a, b) => b.sell_count - a.sell_count);
+        sort.rating = "desc";
+        break;
+      case "leastViewed":
+        sortedProducts.sort((a, b) => a.sell_count - b.sell_count);
+        sort.rating = "asc";
         break;
       default:
-        break;
+      // No sorting
     }
+
+    setFilteredProduct([...sortedProducts]);
+    updateURL(category, sort);
   };
 
   useEffect(() => {
@@ -122,7 +112,7 @@ const ProductList = () => {
     if (filter) {
       setFilterText(filter);
     }
-    handleMostViewed();
+    sortProducts("mostViewed");
   }, []);
 
   useEffect(() => {
@@ -202,9 +192,9 @@ const ProductList = () => {
               className="bg-[#F9F9F9] border-[1px] border-[#DDDDDD] rounded text-secondary-text py-3 px-2"
               value={filterText}
               onChange={(e) => {
-                const newText = e.target.value;
-                setFilterText(newText);
-                updateURL(category, sort, newText);
+                const selectedText = e.target.value;
+                setFilterText(selectedText);
+                updateURL(category, sort, selectedText);
               }}
             />
           </div>
@@ -223,7 +213,7 @@ const ProductList = () => {
               <option value="leastExp">Least Expensive</option>
             </select>
             <button
-              onClick={() => updateProductList(selectedSortOption)}
+              onClick={() => sortProducts(selectedSortOption)}
               type="submit"
               className="bg-primary-blue border-[1px] border-primary-blue text-white px-7 text-sm font-light rounded py-4 hover:bg-white hover:text-primary-blue duration-500"
             >
