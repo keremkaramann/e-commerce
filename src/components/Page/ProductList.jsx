@@ -29,7 +29,7 @@ const ProductList = () => {
   const sort = queryParams.get("sort");
 
   const updateURL = (category, sort) => {
-    const queryParams = new URLSearchParams();
+    const queryParams = new URLSearchParams(location.search);
 
     if (category) {
       queryParams.set("category", category);
@@ -37,10 +37,12 @@ const ProductList = () => {
 
     if (sort) {
       if (sort.price) {
-        queryParams.set("sort[price]", sort.price);
+        queryParams.set("sort_price", sort.price);
+        queryParams.delete("sort_rating");
       }
       if (sort.rating) {
-        queryParams.set("sort[rating]", sort.rating);
+        queryParams.set("sort_rating", sort.rating);
+        queryParams.delete("sort_price");
       }
     }
     if (filterText) {
