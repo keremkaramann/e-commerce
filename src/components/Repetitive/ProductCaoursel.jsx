@@ -7,7 +7,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/effect-fade";
 
-export default function Example({ id }) {
+export default function Example({ id, images }) {
   const [swiperRef, setSwiperRef] = useState(null);
   const appendNumber = useRef(500);
   const prependNumber = useRef(1);
@@ -53,7 +53,7 @@ export default function Example({ id }) {
         spaceBetween={10}
       >
         <SwiperSlide>
-          <img src={mock} alt="" className="w-[510px] h-[400px]" />
+          <img src={images} alt="" className="w-[510px] h-[400px]" />
         </SwiperSlide>
         <SwiperSlide>
           <img
@@ -66,7 +66,7 @@ export default function Example({ id }) {
 
       <p className="append-buttons mt-4">
         <button onClick={() => slideTo(0)} className="prepend-2-slides mr-4">
-          <img src={mock} alt="" className="w-[100px] h-[75px]" />
+          <img src={images} alt="" className="w-[100px] h-[75px]" />
         </button>
         <button onClick={() => slideTo(2)} className="prepend-slide">
           <img src="/src/assets/product/single-product-1-thumb-2.jpg" alt="" />
