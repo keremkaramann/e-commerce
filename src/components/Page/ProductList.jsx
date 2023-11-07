@@ -120,7 +120,7 @@ const ProductList = () => {
   useEffect(() => {
     updateURL(category, sort, filterText);
   }, [category, sort, filterText]);
-  console.log(isFetched);
+
   return (
     <div>
       <Header />
