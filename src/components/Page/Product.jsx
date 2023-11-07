@@ -80,7 +80,7 @@ const Product = () => {
       </div>
       <div className="bg-[#FAFAFA] flex justify-center xs:gap-5 middle:gap-20 flex-wrap pb-12">
         <div>
-          <ProductCarousel id={id} />
+          <ProductCarousel images={product.images} />
         </div>
         {product === "" ? (
           <div>

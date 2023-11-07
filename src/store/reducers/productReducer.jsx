@@ -10,14 +10,16 @@ const productInitialState = {
   totalProductCount: 0,
   pageCount: 0,
   activePage: 0,
-  fetchState: NOT_FETCHED,
+  fetchState: "",
 };
 
 const productReducer = (state = productInitialState, action) => {
   switch (action.type) {
     case FETCHED:
-      return { ...state, productList: action.payload };
+      return { ...state, productList: action.payload, fetchState: action.type };
     case FETCHING:
+      return { ...state, fetchState: action.payload };
+    case FAILED:
       return { ...state, fetchState: action.payload };
     default:
       return state;

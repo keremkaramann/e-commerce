@@ -23,13 +23,13 @@ export const failed = (id) => ({
 });
 
 export const fetchProducts = () => (dispatch) => {
+  dispatch(fetching(FETCHING));
   API.get("products")
     .then((res) => {
       dispatch(fetched(res.data));
-      dispatch(fetching("Fetched"));
     })
     .catch((err) => {
       console.log(err);
-      dispatch(fetching("NOT_FETCHED"));
+      dispatch(failed(FAILED));
     });
 };

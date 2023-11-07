@@ -33,7 +33,7 @@ const ProductCard = ({ images, name, desc, price }) => {
   return (
     <div>
       <img
-        src={images}
+        src={images[0].url}
         alt="product-img"
         className="xs:px-3 middle:px-0 xs:w-[340px] middle:w-full xs:max-h-[500px] middle:h-auto"
       />

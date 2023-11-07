@@ -53,11 +53,11 @@ const ProductList = () => {
   };
 
   //products
-  const fetched = useSelector((store) => store.product.fetchState);
+  const isFetched = useSelector((store) => store.product.fetchState);
   const productData = useSelector((store) => store.product.productList);
 
   const [filterText, setFilterText] = useState("");
-  const [filteredProduct, setFilteredProduct] = useState([]);
+  const [filteredProduct, setFilteredProduct] = useState(productData?.products);
   const [isGridClicked, setGridClicked] = useState(true);
   const [isListClicked, setListClicked] = useState(false);
   const [selectedSortOption, setSelectedSortOption] = useState("popularity");
@@ -120,7 +120,7 @@ const ProductList = () => {
   useEffect(() => {
     updateURL(category, sort, filterText);
   }, [category, sort, filterText]);
-
+  console.log(isFetched);
   return (
     <div>
       <Header />
@@ -228,8 +228,11 @@ const ProductList = () => {
             isGridClicked ? "max-w-[1060px]" : "max-w-[490px]"
           }`}
         >
-          {fetched === "Fetched" ? (
-            filteredProduct
+          {isFetched === "FETCHED" ? (
+            (filteredProduct.length === 0
+              ? productData.products
+              : filteredProduct
+            )
               ?.filter((p) =>
                 p.name
                   .toLocaleLowerCase()
