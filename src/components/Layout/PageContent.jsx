@@ -5,7 +5,6 @@ import { fetchProducts } from "../../store/actions/productAction";
 //pages and data
 import ProductCard from "../Repetitive/ProductCard";
 import ReusableSwiper from "../Repetitive/ReusableCarouse";
-import productData from "../../data/data";
 import Posts from "../Repetitive/Posts";
 import { imagePosts } from "../../data/postsData";
 
