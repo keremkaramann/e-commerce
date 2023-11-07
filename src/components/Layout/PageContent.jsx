@@ -123,7 +123,7 @@ const PageContent = () => {
         </div>
 
         <div className="flex gap-5 justify-center px-30 flex-wrap max-w-[1060px] my-0 mx-auto">
-          {slicedProducts?.map((product, index) => {
+          {slicedProducts?.map((product) => {
             const { images, name, description, id, price } = product;
             return (
               <Link to={`/product/${id}`} key={id}>
