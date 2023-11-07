@@ -1,7 +1,6 @@
 import React, { useRef, useState } from "react";
 import { Virtual, Navigation, Pagination, EffectFade } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import productListData from "../../data/ProductList";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
@@ -32,13 +31,6 @@ export default function Example({ id, images }) {
   const slideTo = (index) => {
     swiperRef.slideTo(index - 1, 0);
   };
-
-  let mock;
-  productListData.forEach((data) => {
-    if (data.id === id) {
-      mock = data.url;
-    }
-  });
 
   return (
     <div className="xs:max-w-[320px] xs:w-full middle:max-w-[510px] w-full">
