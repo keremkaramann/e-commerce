@@ -52,7 +52,9 @@ const Header = () => {
     renewAPI();
   };
   useEffect(() => {
-    dispatch(fetchCategories());
+    if (navList.length === 0) {
+      dispatch(fetchCategories());
+    }
   }, []);
 
   return (

@@ -7,9 +7,9 @@ import { fetchProducts } from "../../store/actions/productAction";
 //pages
 import Footer from "../Layout/Footer";
 import Header from "../Layout/Header";
-import ProductCard from "../Repetitive/ProductCard";
 import Brands from "../Repetitive/Brands";
 import Pagination from "../Repetitive/Pagination";
+import ProductCard from "../Repetitive/ProductCard";
 //icons
 import { BsChevronRight, BsListCheck } from "react-icons/bs";
 import { HiViewGrid } from "react-icons/hi";
@@ -37,12 +37,12 @@ const ProductList = () => {
 
     if (sort) {
       if (sort.price) {
-        queryParams.set("sort_price", sort.price);
-        queryParams.delete("sort_rating");
+        queryParams.set("sort:price", sort.price);
+        queryParams.delete("sort:rating");
       }
       if (sort.rating) {
-        queryParams.set("sort_rating", sort.rating);
-        queryParams.delete("sort_price");
+        queryParams.set("sort:ating", sort.rating);
+        queryParams.delete("sort:price");
       }
     }
     if (filterText) {
