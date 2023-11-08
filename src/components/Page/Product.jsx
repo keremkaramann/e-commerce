@@ -72,7 +72,7 @@ const Product = () => {
               Home
             </NavLink>
             <BsChevronRight className="text-muted-color font-bold text-lg" />
-            <a href="/products" className="text-muted-color text-sm font-bold">
+            <a href="/shopping" className="text-muted-color text-sm font-bold">
               Shop
             </a>
           </div>

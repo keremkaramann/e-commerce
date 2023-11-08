@@ -107,7 +107,7 @@ const Header = () => {
               <NavLink to="/">Home</NavLink>
               <div className="relative group">
                 <button
-                  to="/products"
+                  to="/shopping"
                   className="flex gap-1"
                   onClick={toggleMenu}
                 >
@@ -128,7 +128,7 @@ const Header = () => {
                           return (
                             <NavLink
                               key={id}
-                              to="/products"
+                              to="/shopping"
                               className="font-normal ml-1 hover:text-primary-blue duration-200 ease-in-out border 
                               border-transparent hover:border-b-primary-blue"
                             >
@@ -149,7 +149,7 @@ const Header = () => {
                           return (
                             <NavLink
                               key={id}
-                              to="/products"
+                              to="/shopping"
                               className="font-normal ml-1 hover:text-primary-blue duration-500 ease-in-out border 
                               border-transparent hover:border-b-primary-blue"
                             >
@@ -218,7 +218,7 @@ const Header = () => {
           <div className="mobile-nav hidden duration-300 ease-in-out">
             <div className="flex items-center gap-8 text-secondary-text text-3xl flex-col py-14">
               <NavLink to="/">Home</NavLink>
-              <NavLink to="/products">Product</NavLink>
+              <NavLink to="/shopping">Product</NavLink>
               <NavLink to="/team">Team</NavLink>
               <NavLink to="/about">About</NavLink>
               <NavLink to="/contact">Contact</NavLink>

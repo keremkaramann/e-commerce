@@ -41,7 +41,7 @@ const ProductList = () => {
         queryParams.delete("sort:rating");
       }
       if (sort.rating) {
-        queryParams.set("sort:ating", sort.rating);
+        queryParams.set("sort:rating", sort.rating);
         queryParams.delete("sort:price");
       }
     }
@@ -49,7 +49,7 @@ const ProductList = () => {
       queryParams.set("filter", filterText);
     }
 
-    history.push(`/products?${queryParams.toString()}`);
+    history.push(`/shopping?${queryParams.toString()}`);
   };
 
   //products
@@ -134,7 +134,7 @@ const ProductList = () => {
               Home
             </NavLink>
             <BsChevronRight className="text-muted-color font-bold text-lg" />
-            <a href="/products" className="text-muted-color text-sm font-bold">
+            <a href="/shopping" className="text-muted-color text-sm font-bold">
               Shop
             </a>
           </div>
