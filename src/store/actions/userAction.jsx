@@ -48,7 +48,7 @@ export const handleLogin = (data, history) => (dispatch) => {
     })
     .catch((err) => {
       console.log("Login Error Msg:", err);
-      toast.error("Register First!!", {
+      toast.error("User Not Found!!", {
         position: "top-center",
         autoClose: 3000,
         hideProgressBar: false,
