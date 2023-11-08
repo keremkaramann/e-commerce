@@ -143,14 +143,20 @@ const ProductList = () => {
       <section>
         <div className="flex justify-center gap-3 flex-wrap bg-[#FAFAFA] pb-10">
           {slicedCategories?.map((categoryData) => {
-            const { id, img, title, gender } = categoryData;
+            const { id, img, title } = categoryData;
+            let gender = categoryData.gender;
+            if (gender === "k") {
+              gender = "kadın";
+            } else {
+              gender = "erkek";
+            }
             return (
               <div
                 key={id}
                 className="bg-cover bg-center middle:h-[223px] middle:w-[223px] xs:h-[300px] xs:w-4/5 bg-no-repeat relative"
                 style={{ backgroundImage: `url(${img})` }}
               >
-                <Link to={`/shopping/${gender}/${title}`}>
+                <Link to={`/shopping/${gender}/${title.toLocaleLowerCase()}`}>
                   <div className="bg-[#2121214b] middle:h-[223px] middle:w-[223px] text-white">
                     <div className="absolute top-[40%] left-[35%] text-center">
                       <p className="font-bold mb-3">{title}</p>
