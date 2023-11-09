@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { NavLink, Link, useLocation, useHistory } from "react-router-dom";
+import { NavLink, Link, useHistory } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCategories } from "../../store/actions/globalRedAction";
 import { fetchProducts } from "../../store/actions/productAction";
+import Lottie from "lottie-react";
+import emptyProduct from "../../lottie/noProduct.json";
 //pages
 import Footer from "../Layout/Footer";
 import Header from "../Layout/Header";
@@ -57,8 +59,9 @@ const ProductList = () => {
 
   const NoProducts = () => {
     return (
-      <div className="m-10 font-bold text-2xl text-dark-navy text-center">
-        <h1>There is no Product to Show...</h1>
+      <div className="font-bold text-2xl text-dark-navy text-center mb-20">
+        <h1 className="mb-3">There is no Product to Show...</h1>
+        <Lottie animationData={emptyProduct} loop={true} />
       </div>
     );
   };
