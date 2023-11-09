@@ -41,8 +41,6 @@ export const fetchProducts = (category, filter, sort) => (dispatch) => {
     productsEndpoint += `?${queryString}`;
   }
 
-  console.log("buraend", productsEndpoint);
-
   API.get(productsEndpoint)
     .then((res) => {
       dispatch(fetched(res.data));
