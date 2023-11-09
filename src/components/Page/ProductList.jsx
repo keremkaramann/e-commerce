@@ -16,50 +16,17 @@ import { HiViewGrid } from "react-icons/hi";
 
 const ProductList = () => {
   const dispatch = useDispatch();
-  const history = useHistory();
+
   //categories
   const categoriesData = useSelector((store) => store.global.categories);
   const sortedCategories = categoriesData.sort((a, b) => b.rating - a.rating);
   const slicedCategories = sortedCategories.slice(0, 5);
 
-  //params
-  /*   const location = useLocation();
-  const queryParams = new URLSearchParams(location.search);
-  const category = queryParams.get("category");
-  const sort = queryParams.get("sort");
-
-  const updateURL = (category, sort) => {
-    const queryParams = new URLSearchParams(location.search);
-
-    if (category) {
-      queryParams.set("category", category);
-    }
-
-    if (sort) {
-      if (sort.price) {
-        queryParams.set("sort?:price", sort.price);
-        queryParams.delete("sort?:rating");
-      }
-      if (sort.rating) {
-        queryParams.set("sort?:rating", sort.rating);
-        queryParams.delete("sort?:price");
-      }
-    }
-    if (filterText) {
-      queryParams.set("filter", filterText);
-    }
-
-    history.push(`/shopping?${queryParams.toString()}`);
-  }; */
-
   //products
   const isFetched = useSelector((store) => store.product.fetchState);
-  const productData = useSelector(
-    (store) => store.product.productList.products
-  );
+  const productData = useSelector((store) => store.product.productList);
 
   const [filterText, setFilterText] = useState("");
-  const [filteredProduct, setFilteredProduct] = useState(productData?.products);
   const [isGridClicked, setGridClicked] = useState(true);
   const [isListClicked, setListClicked] = useState(false);
   const [selectedSortOption, setSelectedSortOption] = useState("popularity");
@@ -74,38 +41,6 @@ const ProductList = () => {
     setListClicked(true);
     setGridClicked(false);
   };
-
-  /*****  url params and sorting *******/
-  /* let sortedProducts = [];
-  if (productData?.products) {
-    sortedProducts = [...productData.products];
-  }
-  const sortProducts = (sortingOption) => {
-    let sort = {};
-    switch (sortingOption) {
-      case "mostExp":
-        sortedProducts.sort((a, b) => b.price - a.price);
-        sort.price = "desc";
-        break;
-      case "leastExp":
-        sortedProducts.sort((a, b) => a.price - b.price);
-        sort.price = "asc";
-        break;
-      case "mostViewed":
-        sortedProducts.sort((a, b) => b.sell_count - a.sell_count);
-        sort.rating = "desc";
-        break;
-      case "leastViewed":
-        sortedProducts.sort((a, b) => a.sell_count - b.sell_count);
-        sort.rating = "asc";
-        break;
-      default:
-      // No sorting
-    }
-
-    setFilteredProduct([...sortedProducts]);
-    updateURL(category, sort);
-  }; */
 
   useEffect(() => {
     dispatch(fetchCategories());
@@ -225,8 +160,8 @@ const ProductList = () => {
             isGridClicked ? "max-w-[1060px]" : "max-w-[490px]"
           }`}
         >
-          {isFetched === "FETCHED" ? (
-            productData.map((product) => {
+          {isFetched === "FETsCHED" ? (
+            productData?.products.map((product) => {
               const { images, name, description, id, price } = product;
               return (
                 <Link to={`/product/${id}`} key={id}>
@@ -243,7 +178,7 @@ const ProductList = () => {
             <div role="status" className="flex justify-end mb-14">
               <svg
                 aria-hidden="true"
-                className="w-8 h-8 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
+                className="w-16 h-12 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
                 viewBox="0 0 100 101"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
