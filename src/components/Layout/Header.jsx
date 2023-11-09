@@ -135,7 +135,7 @@ const Header = () => {
                               key={id}
                               to={{
                                 pathname: `/shopping/${gender}/${title.toLowerCase()}`,
-                                state: { id, gender, title },
+                                state: { id },
                               }}
                               className="font-normal ml-1 hover:text-primary-blue duration-200 ease-in-out border 
                               border-transparent hover:border-b-primary-blue"
@@ -161,7 +161,7 @@ const Header = () => {
                               key={id}
                               to={{
                                 pathname: `/shopping/${gender}/${title.toLowerCase()}`,
-                                state: { id, gender, title },
+                                state: { id },
                               }}
                               className="font-normal ml-1 hover:text-primary-blue duration-500 ease-in-out border 
                               border-transparent hover:border-b-primary-blue"
