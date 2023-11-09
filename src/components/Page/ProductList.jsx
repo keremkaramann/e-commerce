@@ -50,11 +50,19 @@ const ProductList = () => {
     );
     dispatch(fetchProducts(null, null, selectedSortOption));
   };
-
+  const urlParams = new URLSearchParams(window.location.search);
+  const paramCategoryId = urlParams.get("category");
+  console.log(paramCategoryId);
   useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const paramCategoryId = urlParams.get("category");
+    const paramGender = urlParams.get("gender");
+    const paramTitle = urlParams.get("title");
+
     dispatch(fetchCategories());
+
     dispatch(fetchProducts());
-    history.push(`/shopping`);
+    history.push(`/shopping/${paramGender}/${paramTitle}`);
   }, []);
 
   //error page

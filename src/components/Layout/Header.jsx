@@ -123,14 +123,17 @@ const Header = () => {
                         WOMAN
                       </h2>
                       {navList.map((list) => {
-                        const { title, id } = list;
+                        const { id } = list;
+                        let title = list.title.toLowerCase();
                         let gender = list.gender;
                         if (gender === "k") {
                           gender = "kadın";
                           return (
                             <NavLink
                               key={id}
-                              to={`/shopping?category=${id}&gender=${gender}`}
+                              to={`/shopping?category=${id}&gender=${gender}&title=${encodeURIComponent(
+                                title.toLowerCase()
+                              )}`}
                               className="font-normal ml-1 hover:text-primary-blue duration-200 ease-in-out border 
                               border-transparent hover:border-b-primary-blue"
                             >
@@ -153,7 +156,9 @@ const Header = () => {
                           return (
                             <NavLink
                               key={id}
-                              to={`/shopping`}
+                              to={`/shopping?category=${id}&gender=${gender}&title=${encodeURIComponent(
+                                title.toLowerCase()
+                              )}`}
                               className="font-normal ml-1 hover:text-primary-blue duration-500 ease-in-out border 
                               border-transparent hover:border-b-primary-blue"
                             >
