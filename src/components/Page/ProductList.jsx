@@ -57,6 +57,7 @@ const ProductList = () => {
     history.push(`/shopping`);
   }, []);
 
+  //error page
   const NoProducts = () => {
     return (
       <div className="font-bold text-2xl text-dark-navy text-center mb-20">
