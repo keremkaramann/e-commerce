@@ -20,7 +20,7 @@ const ProductList = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const location = useLocation();
-  const { id, gender, title } = location.state || {};
+  const { id } = location.state || {};
   //categories
   const categoriesData = useSelector((store) => store.global.categories);
   const sortedCategories = categoriesData.sort((a, b) => b.rating - a.rating);
@@ -58,9 +58,6 @@ const ProductList = () => {
       dispatch(fetchProducts(id, null, null));
     }
     dispatch(fetchCategories());
-    if (id && gender && title) {
-      history.push(`/shopping/${gender}/${title}`);
-    }
   }, [id]);
 
   //error page
