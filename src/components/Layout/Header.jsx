@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import { renewAPI } from "../../endpoint/instance";
 import { useSelector, useDispatch } from "react-redux";
 import { handleLogout } from "../../../src/store/actions/userAction";
@@ -23,6 +24,7 @@ import { HiOutlineBars3BottomRight } from "react-icons/hi2";
 
 const Header = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const [showNav, setShowNav] = useState(false);
   const navList = useSelector((store) => store.global.categories);
   const userLoginData = useSelector((store) => store.user.user);
@@ -131,9 +133,10 @@ const Header = () => {
                           return (
                             <NavLink
                               key={id}
-                              to={`/shopping?category=${id}&gender=${gender}&title=${encodeURIComponent(
-                                title.toLowerCase()
-                              )}`}
+                              to={{
+                                pathname: `/shopping/${gender}/${title.toLowerCase()}`,
+                                state: { id, gender, title },
+                              }}
                               className="font-normal ml-1 hover:text-primary-blue duration-200 ease-in-out border 
                               border-transparent hover:border-b-primary-blue"
                             >
@@ -156,9 +159,10 @@ const Header = () => {
                           return (
                             <NavLink
                               key={id}
-                              to={`/shopping?category=${id}&gender=${gender}&title=${encodeURIComponent(
-                                title.toLowerCase()
-                              )}`}
+                              to={{
+                                pathname: `/shopping/${gender}/${title.toLowerCase()}`,
+                                state: { id, gender, title },
+                              }}
                               className="font-normal ml-1 hover:text-primary-blue duration-500 ease-in-out border 
                               border-transparent hover:border-b-primary-blue"
                             >

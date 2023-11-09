@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { NavLink, Link, useHistory } from "react-router-dom";
+import { NavLink, Link, useHistory, useLocation } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCategories } from "../../store/actions/globalRedAction";
@@ -19,6 +19,8 @@ import { HiViewGrid } from "react-icons/hi";
 const ProductList = () => {
   const dispatch = useDispatch();
   const history = useHistory();
+  const location = useLocation();
+  const { id, gender, title } = location.state || {};
   //categories
   const categoriesData = useSelector((store) => store.global.categories);
   const sortedCategories = categoriesData.sort((a, b) => b.rating - a.rating);
@@ -52,17 +54,14 @@ const ProductList = () => {
   };
 
   useEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const paramCategoryId = urlParams.get("category");
-    const paramGender = urlParams.get("gender");
-    const paramTitle = urlParams.get("title");
-
-    if (paramCategoryId) {
-      dispatch(fetchProducts(paramCategoryId, null, null));
+    if (id) {
+      dispatch(fetchProducts(id, null, null));
     }
     dispatch(fetchCategories());
-    history.push(`/shopping/${paramGender}/${paramTitle}`);
-  }, []);
+    if (id && gender && title) {
+      history.push(`/shopping/${gender}/${title}`);
+    }
+  }, [id]);
 
   //error page
   const NoProducts = () => {
