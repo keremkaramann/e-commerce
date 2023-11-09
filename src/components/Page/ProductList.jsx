@@ -55,6 +55,14 @@ const ProductList = () => {
     history.push(`/shopping`);
   }, []);
 
+  const NoProducts = () => {
+    return (
+      <div className="m-10 font-bold text-3xl text-dark-navy text-center">
+        <h1>There is no Product to Show...</h1>
+      </div>
+    );
+  };
+
   return (
     <div>
       <Header />
@@ -90,7 +98,14 @@ const ProductList = () => {
                 className="bg-cover bg-center middle:h-[223px] middle:w-[223px] xs:h-[300px] xs:w-4/5 bg-no-repeat relative hover:scale-[1.06] duration-300"
                 style={{ backgroundImage: `url(${img})` }}
               >
-                <Link to={`/shopping/${gender}/${title.toLocaleLowerCase()}`}>
+                <Link
+                  to={`/shopping/${gender}/${title.toLocaleLowerCase()}`}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    history.push(`/shopping/products?category=${id}`);
+                    dispatch(fetchProducts(id, null, selectedSortOption));
+                  }}
+                >
                   <div className="bg-[#2121214b] middle:h-[223px] middle:w-[223px] text-white">
                     <div className="absolute top-[40%] left-[35%] text-center">
                       <p className="font-bold mb-3">{title}</p>
@@ -168,25 +183,30 @@ const ProductList = () => {
             </button>
           </div>
         </div>
+
         <div
           className={`flex justify-center flex-wrap gap-6 mt-10 my-0 mx-auto ${
             isGridClicked ? "max-w-[1060px]" : "max-w-[490px]"
           }`}
         >
           {isFetched === "FETCHED" ? (
-            productData?.products.map((product) => {
-              const { images, name, description, id, price } = product;
-              return (
-                <Link to={`/product/${id}`} key={id}>
-                  <ProductCard
-                    images={images}
-                    name={name}
-                    desc={description}
-                    price={price}
-                  />
-                </Link>
-              );
-            })
+            productData?.products.length > 0 ? (
+              productData?.products.map((product) => {
+                const { images, name, description, id, price } = product;
+                return (
+                  <Link to={`/product/${id}`} key={id}>
+                    <ProductCard
+                      images={images}
+                      name={name}
+                      desc={description}
+                      price={price}
+                    />
+                  </Link>
+                );
+              })
+            ) : (
+              <NoProducts />
+            )
           ) : (
             <div role="status" className="flex justify-end mb-14">
               <svg
@@ -209,6 +229,7 @@ const ProductList = () => {
             </div>
           )}
         </div>
+
         <Pagination />
         <Brands />
       </section>

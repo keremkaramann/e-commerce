@@ -21,7 +21,6 @@ export const failed = (id) => ({
   type: FAILED,
   payload: id,
 });
-
 export const fetchProducts = (category, filter, sort) => (dispatch) => {
   dispatch(fetching(FETCHING));
   const queryParams = {
@@ -41,6 +40,8 @@ export const fetchProducts = (category, filter, sort) => (dispatch) => {
     const queryString = new URLSearchParams(filteredParams).toString();
     productsEndpoint += `?${queryString}`;
   }
+
+  console.log("buraend", productsEndpoint);
 
   API.get(productsEndpoint)
     .then((res) => {
