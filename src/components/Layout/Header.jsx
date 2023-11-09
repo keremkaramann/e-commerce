@@ -130,7 +130,7 @@ const Header = () => {
                           return (
                             <NavLink
                               key={id}
-                              to={`/shopping`}
+                              to={`/shopping?category=${id}&gender=${gender}`}
                               className="font-normal ml-1 hover:text-primary-blue duration-200 ease-in-out border 
                               border-transparent hover:border-b-primary-blue"
                             >
