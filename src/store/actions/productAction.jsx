@@ -29,16 +29,20 @@ export const fetchProducts = (category, filter, sort) => (dispatch) => {
     filter,
     sort,
   };
+  const filteredParams = Object.fromEntries(
+    Object.entries(queryParams).filter(
+      ([_, value]) => value !== undefined && value !== null
+    )
+  );
+  const hasParams = Object.keys(filteredParams).length > 0;
+  let productsEndpoint = "products";
 
-  const currentSort = queryParams.sort;
-
-  if (currentSort && currentSort !== sort) {
-    const updateSort = sort;
+  if (hasParams) {
+    const queryString = new URLSearchParams(filteredParams).toString();
+    productsEndpoint += `?${queryString}`;
   }
-  const queryString = new URLSearchParams(queryParams).toString();
-  const productsEndpoint = `products?${queryString}`;
 
-  API.get("products")
+  API.get(productsEndpoint)
     .then((res) => {
       dispatch(fetched(res.data));
     })

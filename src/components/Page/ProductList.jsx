@@ -16,7 +16,7 @@ import { HiViewGrid } from "react-icons/hi";
 
 const ProductList = () => {
   const dispatch = useDispatch();
-
+  const history = useHistory();
   //categories
   const categoriesData = useSelector((store) => store.global.categories);
   const sortedCategories = categoriesData.sort((a, b) => b.rating - a.rating);
@@ -29,7 +29,7 @@ const ProductList = () => {
   const [filterText, setFilterText] = useState("");
   const [isGridClicked, setGridClicked] = useState(true);
   const [isListClicked, setListClicked] = useState(false);
-  const [selectedSortOption, setSelectedSortOption] = useState("popularity");
+  const [selectedSortOption, setSelectedSortOption] = useState();
 
   // show single product or 4
   const handleGridClick = () => {
@@ -43,11 +43,16 @@ const ProductList = () => {
   };
 
   const sortProducts = (selectedSortOption) => {
+    history.push(
+      `/shopping/products?sort=${encodeURIComponent(selectedSortOption)}`
+    );
     dispatch(fetchProducts(null, null, selectedSortOption));
   };
+
   useEffect(() => {
     dispatch(fetchCategories());
     dispatch(fetchProducts());
+    history.push(`/shopping`);
   }, []);
 
   return (
@@ -129,9 +134,14 @@ const ProductList = () => {
               className="bg-[#F9F9F9] border-[1px] border-[#DDDDDD] rounded text-secondary-text py-3 px-2"
               value={filterText}
               onChange={(e) => {
-                const selectedText = e.target.value;
-                setFilterText(selectedText);
-                updateURL(category, sort, selectedText);
+                const filteredText = e.target.value;
+                setFilterText(filteredText);
+                history.push(
+                  `/shopping/products?filter=${encodeURIComponent(
+                    filteredText
+                  )}`
+                );
+                dispatch(fetchProducts(null, filteredText, selectedSortOption));
               }}
             />
           </div>
@@ -144,10 +154,10 @@ const ProductList = () => {
               <option value="popularity" hidden>
                 Popularity
               </option>
-              <option value="rating:asc">Most Viewed</option>
-              <option value="rating:desc">Least Viewed</option>
-              <option value="price:asc">Most Expensive</option>
-              <option value="price:desc">Least Expensive</option>
+              <option value="rating:desc">Most Viewed</option>
+              <option value="rating:asc">Least Viewed</option>
+              <option value="price:desc">Most Expensive</option>
+              <option value="price:asc">Least Expensive</option>
             </select>
             <button
               onClick={() => sortProducts(selectedSortOption)}
