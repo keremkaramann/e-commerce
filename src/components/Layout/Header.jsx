@@ -125,8 +125,7 @@ const Header = () => {
                         WOMAN
                       </h2>
                       {navList.map((list) => {
-                        const { id } = list;
-                        let title = list.title.toLowerCase();
+                        const { id, title } = list;
                         let gender = list.gender;
                         if (gender === "k") {
                           gender = "kadın";
