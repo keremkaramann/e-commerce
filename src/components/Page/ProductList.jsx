@@ -57,7 +57,7 @@ const ProductList = () => {
 
   const NoProducts = () => {
     return (
-      <div className="m-10 font-bold text-3xl text-dark-navy text-center">
+      <div className="m-10 font-bold text-2xl text-dark-navy text-center">
         <h1>There is no Product to Show...</h1>
       </div>
     );
