@@ -106,7 +106,9 @@ const ProductList = () => {
                   to={`/shopping/${gender}/${title.toLocaleLowerCase()}`}
                   onClick={(e) => {
                     e.preventDefault();
-                    history.push(`/shopping/products?category=${id}`);
+                    history.push(
+                      `/shopping/${gender}/${title.toLocaleLowerCase()}`
+                    );
                     dispatch(fetchProducts(id, null, selectedSortOption));
                   }}
                 >
