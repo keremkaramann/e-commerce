@@ -31,7 +31,7 @@ const ProductCard = ({ images, name, desc, price }) => {
   };
 
   return (
-    <div>
+    <div className="shadow-md hover:scale-[1.04] duration-300">
       <img
         src={images[0].url}
         alt="product-img"
@@ -45,7 +45,7 @@ const ProductCard = ({ images, name, desc, price }) => {
           <p className="text-bold text-[#23856D]">${price}</p>
         </div>
         <div>
-          <ul className="flex justify-center gap-2">
+          <ul className="flex justify-center gap-2 pb-5">
             {colorOptions.map((colorOption, index) => (
               <li
                 key={index}

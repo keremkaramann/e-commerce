@@ -79,7 +79,7 @@ const ProductList = () => {
             return (
               <div
                 key={id}
-                className="bg-cover bg-center middle:h-[223px] middle:w-[223px] xs:h-[300px] xs:w-4/5 bg-no-repeat relative"
+                className="bg-cover bg-center middle:h-[223px] middle:w-[223px] xs:h-[300px] xs:w-4/5 bg-no-repeat relative hover:scale-[1.06] duration-300"
                 style={{ backgroundImage: `url(${img})` }}
               >
                 <Link to={`/shopping/${gender}/${title.toLocaleLowerCase()}`}>
@@ -156,11 +156,11 @@ const ProductList = () => {
           </div>
         </div>
         <div
-          className={`flex justify-center flex-wrap gap-4 mt-10 my-0 mx-auto ${
+          className={`flex justify-center flex-wrap gap-6 mt-10 my-0 mx-auto ${
             isGridClicked ? "max-w-[1060px]" : "max-w-[490px]"
           }`}
         >
-          {isFetched === "FETsCHED" ? (
+          {isFetched === "FETCHED" ? (
             productData?.products.map((product) => {
               const { images, name, description, id, price } = product;
               return (
