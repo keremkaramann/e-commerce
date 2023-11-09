@@ -23,7 +23,7 @@ const ProductList = () => {
   const slicedCategories = sortedCategories.slice(0, 5);
 
   //params
-  const location = useLocation();
+  /*   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const category = queryParams.get("category");
   const sort = queryParams.get("sort");
@@ -50,11 +50,13 @@ const ProductList = () => {
     }
 
     history.push(`/shopping?${queryParams.toString()}`);
-  };
+  }; */
 
   //products
   const isFetched = useSelector((store) => store.product.fetchState);
-  const productData = useSelector((store) => store.product.productList);
+  const productData = useSelector(
+    (store) => store.product.productList.products
+  );
 
   const [filterText, setFilterText] = useState("");
   const [filteredProduct, setFilteredProduct] = useState(productData?.products);
@@ -74,7 +76,7 @@ const ProductList = () => {
   };
 
   /*****  url params and sorting *******/
-  let sortedProducts = [];
+  /* let sortedProducts = [];
   if (productData?.products) {
     sortedProducts = [...productData.products];
   }
@@ -103,23 +105,12 @@ const ProductList = () => {
 
     setFilteredProduct([...sortedProducts]);
     updateURL(category, sort);
-  };
+  }; */
 
   useEffect(() => {
     dispatch(fetchCategories());
     dispatch(fetchProducts());
-    const queryParams = new URLSearchParams(location.search);
-    const filter = queryParams.get("filter");
-
-    if (filter) {
-      setFilterText(filter);
-    }
-    sortProducts("mostViewed");
   }, []);
-
-  useEffect(() => {
-    updateURL(category, sort, filterText);
-  }, [category, sort, filterText]);
 
   return (
     <div>
@@ -235,28 +226,19 @@ const ProductList = () => {
           }`}
         >
           {isFetched === "FETCHED" ? (
-            (filteredProduct.length === 0
-              ? productData.products
-              : filteredProduct
-            )
-              ?.filter((p) =>
-                p.name
-                  .toLocaleLowerCase()
-                  .includes(filterText.toLocaleLowerCase())
-              )
-              ?.map((product) => {
-                const { images, name, description, id, price } = product;
-                return (
-                  <Link to={`/product/${id}`} key={id}>
-                    <ProductCard
-                      images={images}
-                      name={name}
-                      desc={description}
-                      price={price}
-                    />
-                  </Link>
-                );
-              })
+            productData.map((product) => {
+              const { images, name, description, id, price } = product;
+              return (
+                <Link to={`/product/${id}`} key={id}>
+                  <ProductCard
+                    images={images}
+                    name={name}
+                    desc={description}
+                    price={price}
+                  />
+                </Link>
+              );
+            })
           ) : (
             <div role="status" className="flex justify-end mb-14">
               <svg
