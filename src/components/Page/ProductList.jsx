@@ -42,6 +42,9 @@ const ProductList = () => {
     setGridClicked(false);
   };
 
+  const sortProducts = (selectedSortOption) => {
+    dispatch(fetchProducts(null, null, selectedSortOption));
+  };
   useEffect(() => {
     dispatch(fetchCategories());
     dispatch(fetchProducts());
@@ -141,10 +144,10 @@ const ProductList = () => {
               <option value="popularity" hidden>
                 Popularity
               </option>
-              <option value="mostViewed">Most Viewed</option>
-              <option value="leastViewed">Least Viewed</option>
-              <option value="mostExp">Most Expensive</option>
-              <option value="leastExp">Least Expensive</option>
+              <option value="rating:asc">Most Viewed</option>
+              <option value="rating:desc">Least Viewed</option>
+              <option value="price:asc">Most Expensive</option>
+              <option value="price:desc">Least Expensive</option>
             </select>
             <button
               onClick={() => sortProducts(selectedSortOption)}
