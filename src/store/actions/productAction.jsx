@@ -22,8 +22,22 @@ export const failed = (id) => ({
   payload: id,
 });
 
-export const fetchProducts = () => (dispatch) => {
+export const fetchProducts = (category, filter, sort) => (dispatch) => {
   dispatch(fetching(FETCHING));
+  const queryParams = {
+    category,
+    filter,
+    sort,
+  };
+
+  const currentSort = queryParams.sort;
+
+  if (currentSort && currentSort !== sort) {
+    const updateSort = sort;
+  }
+  const queryString = new URLSearchParams(queryParams).toString();
+  const productsEndpoint = `products?${queryString}`;
+
   API.get("products")
     .then((res) => {
       dispatch(fetched(res.data));

@@ -37,12 +37,12 @@ const ProductList = () => {
 
     if (sort) {
       if (sort.price) {
-        queryParams.set("sort:price", sort.price);
-        queryParams.delete("sort:rating");
+        queryParams.set("sort?:price", sort.price);
+        queryParams.delete("sort?:rating");
       }
       if (sort.rating) {
-        queryParams.set("sort:rating", sort.rating);
-        queryParams.delete("sort:price");
+        queryParams.set("sort?:rating", sort.rating);
+        queryParams.delete("sort?:price");
       }
     }
     if (filterText) {
