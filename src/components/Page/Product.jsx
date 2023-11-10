@@ -72,9 +72,12 @@ const Product = () => {
               Home
             </NavLink>
             <BsChevronRight className="text-muted-color font-bold text-lg" />
-            <a href="/shopping" className="text-muted-color text-sm font-bold">
+            <NavLink
+              className="text-muted-color text-sm font-bold"
+              to="/shopping"
+            >
               Shop
-            </a>
+            </NavLink>
           </div>
         </div>
       </div>
