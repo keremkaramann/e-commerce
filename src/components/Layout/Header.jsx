@@ -241,17 +241,39 @@ const Header = () => {
           </div>
           <div className="mobile-nav hidden duration-300 ease-in-out">
             <div className="flex items-center gap-8 text-secondary-text text-3xl flex-col py-14">
-              <NavLink to="/">Home</NavLink>
-              <NavLink to="/shopping">Product</NavLink>
-              <NavLink to="/team">Team</NavLink>
-              <NavLink to="/about">About</NavLink>
-              <NavLink to="/contact">Contact</NavLink>
+              <NavLink to="/" className="hover:text-primary-blue duration-300">
+                Home
+              </NavLink>
+              <NavLink
+                to="/shopping"
+                className="hover:text-primary-blue duration-300"
+              >
+                Product
+              </NavLink>
+              <NavLink
+                to="/team"
+                className="hover:text-primary-blue duration-300"
+              >
+                Team
+              </NavLink>
+              <NavLink
+                to="/about"
+                className="hover:text-primary-blue duration-300"
+              >
+                About
+              </NavLink>
+              <NavLink
+                to="/contact"
+                className="hover:text-primary-blue duration-300"
+              >
+                Contact
+              </NavLink>
               {userLoginData && userLoginData.name ? (
                 <div className="flex items-center gap-2">
                   <FiLogOut />
                   <p
                     onClick={logoutHandler}
-                    className="text-2xl text-secondary-text cursor-pointer font-bold"
+                    className="text-2xl text-secondary-text cursor-pointer font-bold hover:text-primary-blue duration-300"
                   >
                     Logout
                   </p>
@@ -259,8 +281,17 @@ const Header = () => {
               ) : (
                 <div className="flex items-center font-bold text-2xl">
                   <BsPerson className="mr-2" />
-                  <NavLink to="/login">Login /</NavLink>
-                  <NavLink className="ml-2" to="/signup">
+                  <NavLink
+                    to="/login"
+                    className="hover:text-primary-blue duration-300 mr-2"
+                  >
+                    Login
+                  </NavLink>
+                  <p>/</p>
+                  <NavLink
+                    className="ml-2 hover:text-primary-blue duration-300"
+                    to="/signup"
+                  >
                     Register
                   </NavLink>
                 </div>
