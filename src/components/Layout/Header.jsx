@@ -8,7 +8,7 @@ import { NavLink, Link } from "react-router-dom";
 import ScrollToTop from "../Page/ScrollToTop";
 //icons
 import { TfiEmail } from "react-icons/tfi";
-import { FiChevronDown } from "react-icons/fi";
+import { FiChevronDown, FiLogOut } from "react-icons/fi";
 import {
   BsInstagram,
   BsYoutube,
@@ -246,6 +246,25 @@ const Header = () => {
               <NavLink to="/team">Team</NavLink>
               <NavLink to="/about">About</NavLink>
               <NavLink to="/contact">Contact</NavLink>
+              {userLoginData && userLoginData.name ? (
+                <div className="flex items-center gap-2">
+                  <FiLogOut />
+                  <p
+                    onClick={logoutHandler}
+                    className="text-2xl text-secondary-text cursor-pointer font-bold"
+                  >
+                    Logout
+                  </p>
+                </div>
+              ) : (
+                <div className="flex items-center font-bold text-2xl">
+                  <BsPerson className="mr-2" />
+                  <NavLink to="/login">Login /</NavLink>
+                  <NavLink className="ml-2" to="/signup">
+                    Register
+                  </NavLink>
+                </div>
+              )}
             </div>
           </div>
         </nav>
