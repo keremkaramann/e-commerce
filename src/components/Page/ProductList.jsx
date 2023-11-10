@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { NavLink, Link, useHistory, useLocation } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
-import { fetchCategories } from "../../store/actions/globalRedAction";
 import { fetchProducts } from "../../store/actions/productAction";
 import Lottie from "lottie-react";
 import emptyProduct from "../../lottie/noProduct.json";
@@ -188,7 +187,6 @@ const ProductList = () => {
             </button>
           </div>
         </div>
-
         <div
           className={`flex justify-center flex-wrap gap-6 mt-10 my-0 mx-auto ${
             isGridClicked ? "max-w-[1060px]" : "max-w-[490px]"
@@ -234,7 +232,6 @@ const ProductList = () => {
             </div>
           )}
         </div>
-
         <Pagination />
         <Brands />
       </section>
