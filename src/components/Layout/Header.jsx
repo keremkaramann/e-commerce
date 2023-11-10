@@ -241,30 +241,34 @@ const Header = () => {
           </div>
           <div className="mobile-nav hidden duration-300 ease-in-out">
             <div className="flex items-center gap-8 text-secondary-text text-3xl flex-col py-14">
-              <NavLink to="/" className="hover:text-primary-blue duration-300">
+              <NavLink
+                to="/"
+                className="hover:text-primary-blue duration-300 ease-in-out"
+              >
                 Home
               </NavLink>
               <NavLink
                 to="/shopping"
-                className="hover:text-primary-blue duration-300"
+                className="hover:text-primary-blue duration-300 ease-in-out"
               >
                 Product
               </NavLink>
               <NavLink
                 to="/team"
-                className="hover:text-primary-blue duration-300"
+                className="hover:text-primary-blue duration-300 ease-in-out"
               >
                 Team
               </NavLink>
+
               <NavLink
                 to="/about"
-                className="hover:text-primary-blue duration-300"
+                className="hover:text-primary-blue duration-300 ease-in-out"
               >
                 About
               </NavLink>
               <NavLink
                 to="/contact"
-                className="hover:text-primary-blue duration-300"
+                className="hover:text-primary-blue duration-300 ease-in-out"
               >
                 Contact
               </NavLink>
@@ -273,7 +277,7 @@ const Header = () => {
                   <FiLogOut />
                   <p
                     onClick={logoutHandler}
-                    className="text-2xl text-secondary-text cursor-pointer font-bold hover:text-primary-blue duration-300"
+                    className="text-2xl text-secondary-text cursor-pointer font-bold hover:text-primary-blue duration-300 ease-in-out"
                   >
                     Logout
                   </p>
@@ -283,13 +287,13 @@ const Header = () => {
                   <BsPerson className="mr-2" />
                   <NavLink
                     to="/login"
-                    className="hover:text-primary-blue duration-300 mr-2"
+                    className="hover:text-primary-blue duration-300 mr-2 ease-in-out"
                   >
                     Login
                   </NavLink>
                   <p>/</p>
                   <NavLink
-                    className="ml-2 hover:text-primary-blue duration-300"
+                    className="ml-2 hover:text-primary-blue duration-300 ease-in-out"
                     to="/signup"
                   >
                     Register
