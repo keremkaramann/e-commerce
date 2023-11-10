@@ -34,11 +34,14 @@ export const fetchProducts = (category, filter, sort) => (dispatch) => {
     )
   );
 
+  const hasParams = Object.keys(filteredParams).length > 0;
   let productsEndpoint = "products";
+  if (hasParams) {
+    const queryString = new URLSearchParams(filteredParams).toString();
+    productsEndpoint += `?${queryString}`;
+  }
 
-  const queryString = new URLSearchParams(filteredParams).toString();
-  productsEndpoint += `?${queryString}`;
-
+  console.log(productsEndpoint);
   API.get(productsEndpoint)
     .then((res) => {
       dispatch(fetched(res.data));

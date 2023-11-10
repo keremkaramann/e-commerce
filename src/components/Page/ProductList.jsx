@@ -25,7 +25,6 @@ const ProductList = () => {
   const categoriesData = useSelector((store) => store.global.categories);
   const sortedCategories = categoriesData.sort((a, b) => b.rating - a.rating);
   const slicedCategories = sortedCategories.slice(0, 5);
-
   //products
   const isFetched = useSelector((store) => store.product.fetchState);
   const productData = useSelector((store) => store.product.productList);
@@ -46,11 +45,16 @@ const ProductList = () => {
     setGridClicked(false);
   };
 
-  const sortProducts = (selectedSortOption) => {
-    history.push(
-      `/shopping/products?sort=${encodeURIComponent(selectedSortOption)}`
-    );
-    dispatch(fetchProducts(null, null, selectedSortOption));
+  const sortProducts = (filterText, selectedSortOption) => {
+    const filterParam = filterText
+      ? `filter=${encodeURIComponent(filterText)}`
+      : "";
+    const sortParam = selectedSortOption
+      ? `&sort=${encodeURIComponent(selectedSortOption)}`
+      : "";
+
+    history.push(`/shopping?${filterParam}${sortParam}`);
+    dispatch(fetchProducts(null, filterText, selectedSortOption));
   };
 
   useEffect(() => {
@@ -111,7 +115,7 @@ const ProductList = () => {
                     history.push(
                       `/shopping/${gender}/${title.toLocaleLowerCase()}`
                     );
-                    dispatch(fetchProducts(id, null, selectedSortOption));
+                    dispatch(fetchProducts(id, filterText, selectedSortOption));
                   }}
                 >
                   <div className="bg-[#2121214b] middle:h-[223px] middle:w-[223px] text-white">
@@ -157,14 +161,7 @@ const ProductList = () => {
               className="bg-[#F9F9F9] border-[1px] border-[#DDDDDD] rounded text-secondary-text py-3 px-2"
               value={filterText}
               onChange={(e) => {
-                const filteredText = e.target.value;
-                setFilterText(filteredText);
-                history.push(
-                  `/shopping/products?filter=${encodeURIComponent(
-                    filteredText
-                  )}`
-                );
-                dispatch(fetchProducts(null, filteredText, selectedSortOption));
+                setFilterText(e.target.value);
               }}
             />
           </div>
@@ -183,7 +180,7 @@ const ProductList = () => {
               <option value="price:asc">Least Expensive</option>
             </select>
             <button
-              onClick={() => sortProducts(selectedSortOption)}
+              onClick={() => sortProducts(filterText, selectedSortOption)}
               type="submit"
               className="bg-primary-blue border-[1px] border-primary-blue text-white px-7 text-sm font-light rounded py-4 hover:bg-white hover:text-primary-blue duration-500"
             >

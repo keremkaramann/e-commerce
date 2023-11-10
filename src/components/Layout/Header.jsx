@@ -51,11 +51,13 @@ const Header = () => {
     dispatch(handleLogout());
     renewAPI();
   };
+
   useEffect(() => {
     if (navList.length === 0) {
       dispatch(fetchCategories());
     }
   }, []);
+
   useEffect(() => {
     const handleClick = (event) => {
       const elementClasses = event.target.classList;
@@ -68,6 +70,7 @@ const Header = () => {
       document.body.removeEventListener("click", handleClick);
     };
   }, [setShowNav]);
+
   return (
     <>
       <header>
