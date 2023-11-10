@@ -54,10 +54,10 @@ const ProductList = () => {
   };
 
   useEffect(() => {
+    console.log(id);
     if (id) {
       dispatch(fetchProducts(id, null, null));
     }
-    dispatch(fetchCategories());
   }, [id]);
 
   //error page

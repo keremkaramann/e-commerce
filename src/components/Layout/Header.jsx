@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useEffect, useState, useRef } from "react";
 import { renewAPI } from "../../endpoint/instance";
 import { useSelector, useDispatch } from "react-redux";
 import { handleLogout } from "../../../src/store/actions/userAction";
@@ -23,8 +22,8 @@ import { AiOutlineShoppingCart, AiOutlineHeart } from "react-icons/ai";
 import { HiOutlineBars3BottomRight } from "react-icons/hi2";
 
 const Header = () => {
+  const navListRef = useRef(null);
   const dispatch = useDispatch();
-  const history = useHistory();
   const [showNav, setShowNav] = useState(false);
   const navList = useSelector((store) => store.global.categories);
   const userLoginData = useSelector((store) => store.user.user);
@@ -44,7 +43,11 @@ const Header = () => {
       nav.classList.add("hidden");
     }
   };
-
+  const handleClickOutside = (event) => {
+    if (navListRef.current && !navListRef.current.contains(event.target)) {
+      setShowNav(!showNav);
+    }
+  };
   const toggleMenu = () => {
     setShowNav(!showNav);
   };
@@ -58,7 +61,13 @@ const Header = () => {
       dispatch(fetchCategories());
     }
   }, []);
+  useEffect(() => {
+    document.addEventListener("click", handleClickOutside);
 
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
   return (
     <>
       <header>
@@ -117,6 +126,7 @@ const Header = () => {
                 </button>
                 {showNav && (
                   <div
+                    ref={navListRef}
                     className="absolute z-20 bg-white pl-6 pr-16 py-3 shadow-xl
                  border-gray-400 border-[1px] rounded-lg top-[30px] flex gap-16 justify-center"
                   >

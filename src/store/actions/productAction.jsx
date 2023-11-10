@@ -33,13 +33,11 @@ export const fetchProducts = (category, filter, sort) => (dispatch) => {
       ([_, value]) => value !== undefined && value !== null
     )
   );
-  const hasParams = Object.keys(filteredParams).length > 0;
+
   let productsEndpoint = "products";
 
-  if (hasParams) {
-    const queryString = new URLSearchParams(filteredParams).toString();
-    productsEndpoint += `?${queryString}`;
-  }
+  const queryString = new URLSearchParams(filteredParams).toString();
+  productsEndpoint += `?${queryString}`;
 
   API.get(productsEndpoint)
     .then((res) => {
