@@ -14,7 +14,7 @@ const PageContent = () => {
   const listProducts = productData.products?.sort(
     (a, b) => b.sell_count - a.sell_count
   );
-  const slicedProducts = listProducts?.slice(0, 8);
+  const slicedProducts = listProducts?.slice(0, 9);
 
   const imagePaths = [
     "/src/assets/carouselImg/shop-hero-1-product-slide-1.jpg",
