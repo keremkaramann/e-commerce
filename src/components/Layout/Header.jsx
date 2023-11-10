@@ -118,11 +118,16 @@ const Header = () => {
               </Link>
             </div>
             <div className="font-bold text-sm text-secondary-text flex gap-3 flex-wrap">
-              <NavLink to="/">Home</NavLink>
+              <NavLink
+                to="/"
+                className="hover:text-primary-blue duration-300 ease-in-out"
+              >
+                Home
+              </NavLink>
               <div className="relative group">
                 <button
                   to="/shopping"
-                  className="flex gap-1 nav-active"
+                  className="flex gap-1 nav-active hover:text-primary-blue duration-300 ease-in-out"
                   onClick={toggleMenu}
                 >
                   Shop <FiChevronDown className="text-lg" />
@@ -186,9 +191,24 @@ const Header = () => {
                   </div>
                 )}
               </div>
-              <NavLink to="/about">About</NavLink>
-              <NavLink to="/team">Team</NavLink>
-              <NavLink to="/contact">Contact</NavLink>
+              <NavLink
+                to="/about"
+                className="hover:text-primary-blue duration-300 ease-in-out"
+              >
+                About
+              </NavLink>
+              <NavLink
+                to="/team"
+                className="hover:text-primary-blue duration-300 ease-in-out"
+              >
+                Team
+              </NavLink>
+              <NavLink
+                to="/contact"
+                className="hover:text-primary-blue duration-300 ease-in-out"
+              >
+                Contact
+              </NavLink>
             </div>
             <div className="flex gap-5 text-primary-blue items-center font-bold">
               <div className="flex items-center gap-1">
@@ -198,11 +218,12 @@ const Header = () => {
                     <p className="text-sm text-secondary-text italic mr-2">
                       {userLoginData?.name}
                     </p>
+                    <FiLogOut className="text-lg text-secondary-text" />
                     <p
                       onClick={logoutHandler}
-                      className="text-sm text-secondary-text cursor-pointer"
+                      className="text-sm text-secondary-text cursor-pointer hover:text-primary-blue duration-300 ease-in-out"
                     >
-                      / Logout
+                      Logout
                     </p>
                   </>
                 ) : (
