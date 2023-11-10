@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import { renewAPI } from "../../endpoint/instance";
 import { useSelector, useDispatch } from "react-redux";
 import { handleLogout } from "../../../src/store/actions/userAction";
@@ -22,7 +22,6 @@ import { AiOutlineShoppingCart, AiOutlineHeart } from "react-icons/ai";
 import { HiOutlineBars3BottomRight } from "react-icons/hi2";
 
 const Header = () => {
-  const navListRef = useRef(null);
   const dispatch = useDispatch();
   const [showNav, setShowNav] = useState(false);
   const navList = useSelector((store) => store.global.categories);
@@ -43,11 +42,7 @@ const Header = () => {
       nav.classList.add("hidden");
     }
   };
-  const handleClickOutside = (event) => {
-    if (navListRef.current && !navListRef.current.contains(event.target)) {
-      setShowNav(!showNav);
-    }
-  };
+
   const toggleMenu = () => {
     setShowNav(!showNav);
   };
@@ -62,12 +57,17 @@ const Header = () => {
     }
   }, []);
   useEffect(() => {
-    document.addEventListener("click", handleClickOutside);
-
-    return () => {
-      document.removeEventListener("click", handleClickOutside);
+    const handleClick = (event) => {
+      const elementClasses = event.target.classList;
+      if (elementClasses.length > 0 && !elementClasses.contains("nav-active")) {
+        setShowNav(false);
+      }
     };
-  }, []);
+    document.body.addEventListener("click", handleClick);
+    return () => {
+      document.body.removeEventListener("click", handleClick);
+    };
+  }, [setShowNav]);
   return (
     <>
       <header>
@@ -119,14 +119,13 @@ const Header = () => {
               <div className="relative group">
                 <button
                   to="/shopping"
-                  className="flex gap-1"
+                  className="flex gap-1 nav-active"
                   onClick={toggleMenu}
                 >
                   Shop <FiChevronDown className="text-lg" />
                 </button>
                 {showNav && (
                   <div
-                    ref={navListRef}
                     className="absolute z-20 bg-white pl-6 pr-16 py-3 shadow-xl
                  border-gray-400 border-[1px] rounded-lg top-[30px] flex gap-16 justify-center"
                   >
