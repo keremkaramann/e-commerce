@@ -31,11 +31,11 @@ const ProductCard = ({ images, name, desc, price }) => {
   };
 
   return (
-    <div className="shadow-md hover:scale-[1.04] duration-300">
+    <div className="xs:mx-5 middle:mx-0 shadow-md hover:scale-[1.04] duration-300">
       <img
         src={images[0].url}
         alt="product-img"
-        className="xs:px-3 middle:px-0 xs:w-[340px] middle:w-full xs:max-h-[500px] middle:h-auto"
+        className="xs:w-full middle:w-full xs:max-h-[600px] middle:h-[500px]"
       />
       <div className="text-center mt-5 mb-20">
         <p className="text-secondary-text font-bold text-sm mt-5 mb-5">
