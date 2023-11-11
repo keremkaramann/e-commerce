@@ -5,12 +5,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "../../store/actions/productAction";
 import Lottie from "lottie-react";
 import emptyProduct from "../../lottie/noProduct.json";
+//paginators
+import ReactPaginate from "react-paginate";
+import { AiFillLeftCircle, AiFillRightCircle } from "react-icons/ai";
+import "../Repetitive/css/pagination.css";
 //pages
 import Footer from "../Layout/Footer";
 import Header from "../Layout/Header";
 import Brands from "../Repetitive/Brands";
-import Pagination from "../Repetitive/Pagination";
 import ProductCard from "../Repetitive/ProductCard";
+import Deneme from "../Repetitive/Deneme";
 //icons
 import { BsChevronRight, BsListCheck } from "react-icons/bs";
 import { HiViewGrid } from "react-icons/hi";
@@ -44,7 +48,7 @@ const ProductList = () => {
     setGridClicked(false);
   };
 
-  const sortProducts = (filterText, selectedSortOption) => {
+  const sortProducts = (id, filterText, selectedSortOption) => {
     const filterParam = filterText
       ? `filter=${encodeURIComponent(filterText)}`
       : "";
@@ -53,12 +57,20 @@ const ProductList = () => {
       : "";
 
     history.push(`/shopping?${filterParam}${sortParam}`);
-    dispatch(fetchProducts(null, filterText, selectedSortOption));
+    dispatch(fetchProducts(id, filterText, selectedSortOption));
   };
+  //pagination
+  const [currentPage, setCurrentPage] = useState(0);
 
+  const handlePageChange = (selectedPage) => {
+    setCurrentPage(selectedPage.selected);
+    const offset = selectedPage.selected * 27;
+    dispatch(fetchProducts(id, filterText, selectedSortOption, offset));
+  };
   useEffect(() => {
     if (id) {
-      dispatch(fetchProducts(id, null, null));
+      const offset = currentPage * 27;
+      dispatch(fetchProducts(id, filterText, selectedSortOption, offset));
     }
   }, [id]);
 
@@ -179,7 +191,7 @@ const ProductList = () => {
               <option value="price:asc">Least Expensive</option>
             </select>
             <button
-              onClick={() => sortProducts(filterText, selectedSortOption)}
+              onClick={() => sortProducts(id, filterText, selectedSortOption)}
               type="submit"
               className="bg-primary-blue border-[1px] border-primary-blue text-white px-7 text-sm font-light rounded py-4 hover:bg-white hover:text-primary-blue duration-500"
             >
@@ -232,7 +244,25 @@ const ProductList = () => {
             </div>
           )}
         </div>
-        <Pagination />
+        <div className="text-center">
+          <div className="flex justify-center">
+            <ReactPaginate
+              containerClassName={"pagination"}
+              activeClassName={"active_pagination "}
+              pageClassName={"page-item"}
+              onPageChange={handlePageChange}
+              breakLabel="..."
+              pageCount={Math.ceil(productData.total / 27)}
+              previousLabel={
+                <AiFillLeftCircle className="text-5xl text-dark-navy" />
+              }
+              nextLabel={
+                <AiFillRightCircle className="text-5xl text-dark-navy" />
+              }
+              className="border-[1px] flex flex-row items-center p-3 gap-1 shadow-lg rounded-lg mb-10 mt-10"
+            />
+          </div>
+        </div>
         <Brands />
       </section>
       <Footer />

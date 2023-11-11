@@ -21,33 +21,37 @@ export const failed = (id) => ({
   type: FAILED,
   payload: id,
 });
-export const fetchProducts = (category, filter, sort) => (dispatch) => {
-  dispatch(fetching(FETCHING));
-  const queryParams = {
-    category,
-    filter,
-    sort,
+export const fetchProducts =
+  (category, filter, sort, offset, limit = 27) =>
+  (dispatch) => {
+    dispatch(fetching(FETCHING));
+    const queryParams = {
+      category,
+      filter,
+      sort,
+      limit,
+      offset,
+    };
+    const filteredParams = Object.fromEntries(
+      Object.entries(queryParams).filter(
+        ([_, value]) => value !== undefined && value !== null
+      )
+    );
+
+    const hasParams = Object.keys(filteredParams).length > 0;
+    let productsEndpoint = "products";
+    if (hasParams) {
+      const queryString = new URLSearchParams(filteredParams).toString();
+      productsEndpoint += `?${queryString}`;
+    }
+
+    console.log(productsEndpoint);
+    API.get(productsEndpoint)
+      .then((res) => {
+        dispatch(fetched(res.data));
+      })
+      .catch((err) => {
+        console.log(err);
+        dispatch(failed(FAILED));
+      });
   };
-  const filteredParams = Object.fromEntries(
-    Object.entries(queryParams).filter(
-      ([_, value]) => value !== undefined && value !== null
-    )
-  );
-
-  const hasParams = Object.keys(filteredParams).length > 0;
-  let productsEndpoint = "products";
-  if (hasParams) {
-    const queryString = new URLSearchParams(filteredParams).toString();
-    productsEndpoint += `?${queryString}`;
-  }
-
-  console.log(productsEndpoint);
-  API.get(productsEndpoint)
-    .then((res) => {
-      dispatch(fetched(res.data));
-    })
-    .catch((err) => {
-      console.log(err);
-      dispatch(failed(FAILED));
-    });
-};
