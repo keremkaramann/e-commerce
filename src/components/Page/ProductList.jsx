@@ -61,10 +61,31 @@ const ProductList = () => {
   //pagination
   const [currentPage, setCurrentPage] = useState(0);
 
-  const handlePageChange = (selectedPage) => {
+  const handlePageChange = (
+    selectedPage,
+    filterText,
+    selectedSortOption,
+    id
+  ) => {
     setCurrentPage(selectedPage.selected);
     const offset = selectedPage.selected * 27;
-    dispatch(fetchProducts(id, filterText, selectedSortOption, offset));
+    const filterParam = filterText
+      ? `filter=${encodeURIComponent(filterText)}`
+      : "";
+    const sortParam = selectedSortOption
+      ? `&sort=${encodeURIComponent(selectedSortOption)}`
+      : "";
+    if (id) {
+      history.push(
+        `/shopping?id=${id}${filterParam}${sortParam}&limit=${27}&offset=${offset}`
+      );
+      dispatch(fetchProducts(id, filterText, selectedSortOption, offset));
+    } else {
+      history.push(
+        `/shopping?${filterParam}${sortParam}&limit=${27}&offset=${offset}`
+      );
+      dispatch(fetchProducts(null, filterText, selectedSortOption, offset));
+    }
   };
   useEffect(() => {
     if (id) {
@@ -249,7 +270,14 @@ const ProductList = () => {
               containerClassName={"pagination"}
               activeClassName={"active_pagination "}
               pageClassName={"page-item"}
-              onPageChange={handlePageChange}
+              onPageChange={(selectedPage) =>
+                handlePageChange(
+                  selectedPage,
+                  filterText,
+                  selectedSortOption,
+                  id
+                )
+              }
               breakLabel="..."
               pageCount={Math.ceil(productData.total / 27)}
               previousLabel={
