@@ -14,7 +14,6 @@ import Footer from "../Layout/Footer";
 import Header from "../Layout/Header";
 import Brands from "../Repetitive/Brands";
 import ProductCard from "../Repetitive/ProductCard";
-import Deneme from "../Repetitive/Deneme";
 //icons
 import { BsChevronRight, BsListCheck } from "react-icons/bs";
 import { HiViewGrid } from "react-icons/hi";
