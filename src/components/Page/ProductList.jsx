@@ -87,6 +87,7 @@ const ProductList = () => {
       dispatch(fetchProducts(null, filterText, selectedSortOption, offset));
     }
   };
+
   useEffect(() => {
     if (id) {
       const offset = currentPage * 27;
@@ -264,31 +265,24 @@ const ProductList = () => {
             </div>
           )}
         </div>
-        <div className="text-center">
-          <div className="flex justify-center">
-            <ReactPaginate
-              containerClassName={"pagination"}
-              activeClassName={"active_pagination "}
-              pageClassName={"page-item"}
-              onPageChange={(selectedPage) =>
-                handlePageChange(
-                  selectedPage,
-                  filterText,
-                  selectedSortOption,
-                  id
-                )
-              }
-              breakLabel="..."
-              pageCount={Math.ceil(productData.total / 27)}
-              previousLabel={
-                <AiFillLeftCircle className="text-5xl text-dark-navy" />
-              }
-              nextLabel={
-                <AiFillRightCircle className="text-5xl text-dark-navy" />
-              }
-              className="border-[1px] flex flex-row items-center p-3 gap-1 shadow-lg rounded-lg mb-10 mt-10"
-            />
-          </div>
+        <div className="flex justify-center">
+          <ReactPaginate
+            containerClassName={"pagination"}
+            activeClassName={"active_pagination "}
+            pageClassName={"page-item"}
+            onPageChange={(selectedPage) =>
+              handlePageChange(selectedPage, filterText, selectedSortOption, id)
+            }
+            breakLabel="..."
+            pageCount={Math.ceil(productData.total / 27)}
+            previousLabel={
+              <AiFillLeftCircle className="text-5xl text-dark-navy" />
+            }
+            nextLabel={
+              <AiFillRightCircle className="text-5xl text-dark-navy" />
+            }
+            className="border-[1px] flex flex-row items-center p-3 gap-1 shadow-lg rounded-lg mb-10 mt-10"
+          />
         </div>
         <Brands />
       </section>
