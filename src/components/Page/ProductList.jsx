@@ -61,9 +61,9 @@ const ProductList = () => {
   //pagination
   const [currentPage, setCurrentPage] = useState(0);
 
-  const handlePageChange = (selectedPage) => {
-    setCurrentPage(selectedPage.selected);
-    const offset = selectedPage.selected * 27;
+  const handlePageChange = (event) => {
+    setCurrentPage(event.selected);
+    const offset = event.selected * 27;
     dispatch(fetchProducts(id, filterText, selectedSortOption, offset));
   };
   useEffect(() => {
