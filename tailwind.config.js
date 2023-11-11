@@ -1,6 +1,6 @@
-/** @type {import('tailwindcss').Config} */
-const withMT = require("@material-tailwind/react/utils/withMT");
-module.exports = withMT({
+// tailwind.config.js
+
+module.exports = {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
@@ -27,7 +27,7 @@ module.exports = withMT({
       mdCstm: "1120px",
     },
     gridTemplateColumns: {
-      products: "grid-template-columns: repeat(4, minmax(auto,auto));",
+      products: "repeat(4, minmax(auto, auto))", // Adjusted line
     },
     variants: {
       extend: {
@@ -36,4 +36,4 @@ module.exports = withMT({
     },
   },
   plugins: [],
-});
+};
