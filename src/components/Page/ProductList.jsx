@@ -33,7 +33,6 @@ const ProductList = () => {
   const productData = useSelector((store) => store.product.productList);
   const getCategoryId = useSelector((store) => store.product.fetchCategory);
 
-  console.log(getCategoryId);
   const [filterText, setFilterText] = useState("");
   const [isGridClicked, setGridClicked] = useState(true);
   const [isListClicked, setListClicked] = useState(false);
