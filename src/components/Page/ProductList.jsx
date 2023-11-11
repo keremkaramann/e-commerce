@@ -23,6 +23,7 @@ const ProductList = () => {
   const history = useHistory();
   const location = useLocation();
   const { id } = location.state || {};
+
   //categories
   const categoriesData = useSelector((store) => store.global.categories);
   const sortedCategories = categoriesData.sort((a, b) => b.rating - a.rating);
@@ -30,7 +31,9 @@ const ProductList = () => {
   //products
   const isFetched = useSelector((store) => store.product.fetchState);
   const productData = useSelector((store) => store.product.productList);
+  const getCategoryId = useSelector((store) => store.product.fetchCategory);
 
+  console.log(getCategoryId);
   const [filterText, setFilterText] = useState("");
   const [isGridClicked, setGridClicked] = useState(true);
   const [isListClicked, setListClicked] = useState(false);
@@ -65,7 +68,7 @@ const ProductList = () => {
     selectedPage,
     filterText,
     selectedSortOption,
-    id
+    getCategoryId
   ) => {
     setCurrentPage(selectedPage.selected);
     const offset = selectedPage.selected * 27;
@@ -75,11 +78,14 @@ const ProductList = () => {
     const sortParam = selectedSortOption
       ? `&sort=${encodeURIComponent(selectedSortOption)}`
       : "";
-    if (id) {
+
+    if (getCategoryId) {
       history.push(
-        `/shopping?id=${id}${filterParam}${sortParam}&limit=${27}&offset=${offset}`
+        `/shopping?id=${getCategoryId}${filterParam}${sortParam}&limit=${27}&offset=${offset}`
       );
-      dispatch(fetchProducts(id, filterText, selectedSortOption, offset));
+      dispatch(
+        fetchProducts(getCategoryId, filterText, selectedSortOption, offset)
+      );
     } else {
       history.push(
         `/shopping?${filterParam}${sortParam}&limit=${27}&offset=${offset}`
@@ -142,8 +148,7 @@ const ProductList = () => {
               >
                 <Link
                   to={`/shopping/${gender}/${title.toLocaleLowerCase()}`}
-                  onClick={(e) => {
-                    e.preventDefault();
+                  onClick={() => {
                     history.push(
                       `/shopping/${gender}/${title.toLocaleLowerCase()}`
                     );
@@ -271,7 +276,12 @@ const ProductList = () => {
             activeClassName={"active_pagination "}
             pageClassName={"page-item"}
             onPageChange={(selectedPage) =>
-              handlePageChange(selectedPage, filterText, selectedSortOption, id)
+              handlePageChange(
+                selectedPage,
+                filterText,
+                selectedSortOption,
+                getCategoryId
+              )
             }
             breakLabel="..."
             pageCount={Math.ceil(productData.total / 27)}

@@ -3,6 +3,7 @@ import {
   FETCHING,
   FETCHED,
   FAILED,
+  CATID,
 } from "../actions/productAction";
 
 const productInitialState = {
@@ -11,6 +12,7 @@ const productInitialState = {
   pageCount: 0,
   activePage: 0,
   fetchState: "",
+  fetchCategory: 0,
 };
 
 const productReducer = (state = productInitialState, action) => {
@@ -21,6 +23,8 @@ const productReducer = (state = productInitialState, action) => {
       return { ...state, fetchState: action.payload };
     case FAILED:
       return { ...state, fetchState: action.payload };
+    case CATID:
+      return { ...state, fetchCategory: action.payload };
     default:
       return state;
   }

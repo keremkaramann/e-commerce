@@ -4,6 +4,7 @@ export const NOT_FETCHED = "NOT_FETCHED";
 export const FETCHING = "FETCHING";
 export const FETCHED = "FETCHED";
 export const FAILED = "FAILED";
+export const CATID = "CATID";
 
 export const notFetched = (id) => ({
   type: NOT_FETCHED,
@@ -19,6 +20,10 @@ export const fetched = (id) => ({
 });
 export const failed = (id) => ({
   type: FAILED,
+  payload: id,
+});
+export const fetchCategoriId = (id) => ({
+  type: CATID,
   payload: id,
 });
 export const fetchProducts =
@@ -37,6 +42,10 @@ export const fetchProducts =
         ([_, value]) => value !== undefined && value !== null
       )
     );
+
+    if (category) {
+      dispatch(fetchCategoriId(category));
+    }
 
     const hasParams = Object.keys(filteredParams).length > 0;
     let productsEndpoint = "products";
