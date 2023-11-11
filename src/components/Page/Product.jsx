@@ -90,7 +90,7 @@ const Product = () => {
             <h1>There is no product to show!!</h1>
           </div>
         ) : (
-          <div className=" xs:w-full middle:w-[40%] xs:p-10 middle:p-0">
+          <div className=" xs:w-full middle:w-[40%] xs:p-5 middle:p-0">
             <h4 className="dark-navy text-lg mb-3 mt-3">{product?.name} </h4>
             <div className="flex items-center gap-2 text-2xl text-[#F3CD03] mb-4">
               {Array(5)
@@ -132,8 +132,8 @@ const Product = () => {
                 ></li>
               ))}
             </ul>
-            <div className="flex items-center gap-3 xs:flex-wrap middle:flex-nowrap">
-              <button className="px-4 py-2 rounded border-[1px] bg-primary-blue border-primary-blue text-white hover:bg-white hover:text-primary-blue duration-500">
+            <div className="flex items-center xs:gap-1 middle:gap-3 xs:flex-wrap middle:flex-nowrap">
+              <button className="xs:px-2 xs:py-2 middle:px-4 middle:py-2 rounded border-[1px] bg-primary-blue border-primary-blue text-white hover:bg-white hover:text-primary-blue duration-500">
                 Select Options
               </button>
               <AiOutlineHeart className="addToChart" />
