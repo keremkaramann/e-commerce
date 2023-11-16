@@ -49,16 +49,17 @@ const ProductList = () => {
     setGridClicked(false);
   };
 
-  const sortProducts = (id, filterText, selectedSortOption) => {
+  const sortProducts = (getCategoryId, filterText, selectedSortOption) => {
     const filterParam = filterText
-      ? `filter=${encodeURIComponent(filterText)}`
+      ? `&filter=${encodeURIComponent(filterText)}`
       : "";
     const sortParam = selectedSortOption
       ? `&sort=${encodeURIComponent(selectedSortOption)}`
       : "";
+    const sortedCategories = getCategoryId ? `id=${getCategoryId}` : "";
 
-    history.push(`/shopping?${filterParam}${sortParam}`);
-    dispatch(fetchProducts(id, filterText, selectedSortOption));
+    history.push(`/shopping?${sortedCategories}${filterParam}${sortParam}`);
+    dispatch(fetchProducts(getCategoryId, filterText, selectedSortOption));
   };
   //pagination
   const [currentPage, setCurrentPage] = useState(0);
@@ -216,7 +217,9 @@ const ProductList = () => {
               <option value="price:asc">Least Expensive</option>
             </select>
             <button
-              onClick={() => sortProducts(id, filterText, selectedSortOption)}
+              onClick={() =>
+                sortProducts(getCategoryId, filterText, selectedSortOption)
+              }
               type="submit"
               className="bg-primary-blue border-[1px] border-primary-blue text-white px-7 text-sm font-light rounded py-4 hover:bg-white hover:text-primary-blue duration-500"
             >
