@@ -60,6 +60,9 @@ const ProductList = () => {
 
     history.push(`/shopping?${sortedCategories}${filterParam}${sortParam}`);
     dispatch(fetchProducts(getCategoryId, filterText, selectedSortOption));
+
+    setFilterText("");
+    setSelectedSortOption("");
   };
   //pagination
   const [currentPage, setCurrentPage] = useState(0);
