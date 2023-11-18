@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { NavLink, useParams } from "react-router-dom";
+import { NavLink, useParams, useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 //pages
@@ -21,6 +21,11 @@ import {
 
 const Product = () => {
   const { id } = useParams();
+  const history = useHistory();
+
+  const goPrev = () => {
+    history.goBack();
+  };
 
   const productData = useSelector((store) => store.product.productList);
 
@@ -80,6 +85,9 @@ const Product = () => {
               Shop
             </NavLink>
           </div>
+        </div>
+        <div>
+          <button onClick={goPrev}>Go Back</button>
         </div>
       </div>
       <div className="bg-[#FAFAFA] flex justify-center xs:gap-5 middle:gap-20 flex-wrap pb-12">
