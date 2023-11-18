@@ -29,7 +29,7 @@ function App() {
         <Route path="/shopping">
           <ProductList />
         </Route>
-        <Route path="/product/:id">
+        <Route path="/product/:categoryId/:id/:productNameSlug">
           <Product />
         </Route>
         <Route path="/team">

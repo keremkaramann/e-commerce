@@ -25,6 +25,7 @@ const ProductList = () => {
   const { id } = location.state || {};
 
   //categories
+
   const categoriesData = useSelector((store) => store.global.categories);
   const sortedCategories = categoriesData.sort((a, b) => b.rating - a.rating);
   const slicedCategories = sortedCategories.slice(0, 5);
@@ -32,6 +33,11 @@ const ProductList = () => {
   const isFetched = useSelector((store) => store.product.fetchState);
   const productData = useSelector((store) => store.product.productList);
   const getCategoryId = useSelector((store) => store.product.fetchCategory);
+
+  //category name for params
+  const findCategoryName = categoriesData.find(
+    (category) => category.id == getCategoryId
+  );
 
   const [filterText, setFilterText] = useState("");
   const [isGridClicked, setGridClicked] = useState(true);
@@ -237,7 +243,12 @@ const ProductList = () => {
               productData?.products.map((product) => {
                 const { images, name, description, id, price } = product;
                 return (
-                  <Link to={`/product/${id}`} key={id}>
+                  <Link
+                    to={`/product/${findCategoryName.title.toLocaleLowerCase()}/${id}/${name
+                      ?.toLocaleLowerCase()
+                      .trim()}`}
+                    key={id}
+                  >
                     <ProductCard
                       images={images}
                       name={name}

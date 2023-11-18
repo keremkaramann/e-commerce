@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { NavLink, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
+
 //pages
 import Brands from "../Repetitive/Brands";
 import Header from "../Layout/Header";
