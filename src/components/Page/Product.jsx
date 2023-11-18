@@ -11,6 +11,7 @@ import ProductCarousel from "../Repetitive/ProductCaoursel";
 import bestSellerData from "../../data/bestseller";
 //icons
 import { BsChevronRight } from "react-icons/bs";
+import { TbArrowBackUp } from "react-icons/tb";
 import {
   AiFillStar,
   AiOutlineStar,
@@ -86,8 +87,17 @@ const Product = () => {
             </NavLink>
           </div>
         </div>
-        <div>
-          <button onClick={goPrev}>Go Back</button>
+        <div className="flex w-full max-w-[400px] justify-center">
+          <button
+            className="border-[1px] border-dark-navy bg-dark-navy text-white px-3 py-1 
+            rounded-3xl flex items-center gap-3 hover:bg-white hover:text-dark-navy duration-500 ease-in-out"
+            onClick={goPrev}
+          >
+            Go Back
+            <div className="bg-white rounded-full p-2">
+              <TbArrowBackUp className="text-black" />
+            </div>
+          </button>
         </div>
       </div>
       <div className="bg-[#FAFAFA] flex justify-center xs:gap-5 middle:gap-20 flex-wrap pb-12">
