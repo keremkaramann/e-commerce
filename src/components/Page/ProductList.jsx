@@ -244,9 +244,10 @@ const ProductList = () => {
                 const { images, name, description, id, price } = product;
                 return (
                   <Link
-                    to={`/product/${findCategoryName.title.toLocaleLowerCase()}/${id}/${name
-                      ?.toLocaleLowerCase()
-                      .trim()}`}
+                    to={`/${findCategoryName?.title.toLocaleLowerCase()}/${id}/${name
+                      ?.split(" ")
+                      .join("-")
+                      .toLocaleLowerCase()}`}
                     key={id}
                   >
                     <ProductCard
