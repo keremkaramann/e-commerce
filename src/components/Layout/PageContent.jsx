@@ -114,7 +114,13 @@ const PageContent = () => {
           {slicedProducts?.map((product) => {
             const { images, name, description, id, price } = product;
             return (
-              <Link to={`/product/${id}`} key={id}>
+              <Link
+                to={`/${price}/${id}/${name
+                  ?.split(" ")
+                  .join("-")
+                  .toLocaleLowerCase()}`}
+                key={id}
+              >
                 <ProductCard
                   images={images}
                   name={name}

@@ -3,17 +3,22 @@ import Footer from "../Layout/Footer";
 import Counter from "../Repetitive/Counter";
 import TeamCard from "../Repetitive/TeamCard";
 import Brands from "../Repetitive/Brands";
-
+//img path
+import team1 from "/src/assets/teamsHeader/teamCard/team-1-user-3 (1).jpg";
+import team2 from "/src/assets/teamsHeader/teamCard/team-1-user-1 (2).jpg";
+import team3 from "/src/assets/teamsHeader/teamCard/team-1-user-1 (1).jpg";
+import person from "/src/assets/about/none.png";
+import person2 from "/src/assets/about/unsplash_vjMgqUkS8q8.png";
 const About = () => {
   const TeamCardData = [
     {
-      url: "/src/assets/teamsHeader/teamCard/team-1-user-3 (1).jpg",
+      url: team1,
     },
     {
-      url: "/src/assets/teamsHeader/teamCard/team-1-user-1 (2).jpg",
+      url: team2,
     },
     {
-      url: "/src/assets/teamsHeader/teamCard/team-1-user-1 (1).jpg",
+      url: team3,
     },
   ];
   return (
@@ -38,7 +43,7 @@ const About = () => {
           </button>
         </div>
         <div className="xs:mt-20 middle:mt-0">
-          <img src="/src/assets/about/none.png" alt="" />
+          <img src={person} alt="" />
         </div>
       </section>
       <section className="flex items-center justify-evenly xs:mt-12 middle:mt-24 mb-24 xs:flex-wrap middle:flex-nowrap">
@@ -137,7 +142,7 @@ const About = () => {
             </div>
           </div>
           <div className="xs:hidden middle:block">
-            <img src="/src/assets/about/unsplash_vjMgqUkS8q8.png" alt="" />
+            <img src={person2} alt="" />
           </div>
         </div>
       </section>

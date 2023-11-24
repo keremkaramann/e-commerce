@@ -10,6 +10,9 @@ import {
 import { BsTelephone } from "react-icons/bs";
 import { ImLocation } from "react-icons/im";
 import { IoIosMail } from "react-icons/io";
+//img path
+import contact from "/src/assets/contactgb.png";
+import arrow from "/src/assets/contactArrow.png";
 const Contact = () => {
   return (
     <section>
@@ -45,7 +48,7 @@ const Contact = () => {
           </div>
         </div>
         <div className="xs:p-4 middle:p-0">
-          <img src="/src/assets/contactgb.png" alt="" />
+          <img src={contact} alt="" />
         </div>
       </div>
       <div className="mb-20 mt-20 xs:bg-[#F6F6F6] middle:bg-white xs:pt-20 xs:pb-0 xs:px-2  middle:pt-0 middle:px-0">
@@ -108,7 +111,7 @@ const Contact = () => {
       </div>
       <div className="text-center mt-10 mb-32">
         <div className="flex justify-center mb-5 mt-5">
-          <img src="/src/assets/contactArrow.png" alt="" />
+          <img src={arrow} alt="" />
         </div>
         <div className="font-bold text-dark-navy">
           <h5 className="mb-5">WE Can't WAIT TO MEET YOU</h5>

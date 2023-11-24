@@ -10,6 +10,17 @@ import {
   AiFillFacebook,
   AiFillLinkedin,
 } from "react-icons/ai";
+//img path
+import teams1 from "/src/assets/teamsHeader/teams1.png";
+import teams2 from "/src/assets/teamsHeader/teams2.png";
+import teams3 from "/src/assets/teamsHeader/teams4.png";
+import teams4 from "/src/assets/teamsHeader/teams3.png";
+import teams5 from "/src/assets/teamsHeader/teams5.png";
+import teams6 from "/src/assets/teamsHeader/responsiveImg/team1mb.png";
+import teams7 from "/src/assets/teamsHeader/responsiveImg/team2mb.png";
+import teams8 from "/src/assets/teamsHeader/responsiveImg/unsplash_PSmDDeXaEWE.png";
+import teams9 from "/src/assets/teamsHeader/responsiveImg/unsplash_1-aA2Fadydc.png";
+import teams10 from "/src/assets/teamsHeader/responsiveImg/unsplash_mcSDtbWXUZU.png";
 
 const Team = () => {
   return (
@@ -32,44 +43,29 @@ const Team = () => {
       </section>
       <section className="xs:hidden middle:block">
         <div className="mb-16 flex gap-2">
-          <img src="/src/assets/teamsHeader/teams1.png" alt="teams" />
+          <img src={teams1} alt="teams" />
           <div className="flex gap-2">
             <div className="flex middle:flex-col xs:flex-row gap-4">
-              <img src="/src/assets/teamsHeader/teams2.png" alt="" />
-              <img src="/src/assets/teamsHeader/teams4.png" alt="" />
+              <img src={teams2} alt="" />
+              <img src={teams3} alt="" />
             </div>
             <div className="flex flex-col gap-4">
-              <img src="/src/assets/teamsHeader/teams3.png" alt="" />
-              <img src="/src/assets/teamsHeader/teams5.png" alt="" />
+              <img src={teams4} alt="" />
+              <img src={teams5} alt="" />
             </div>
           </div>
         </div>
       </section>
       <section className="xs:block middle:hidden">
         <div className="mb-16 flex flex-col justify-center">
-          <img
-            src="/src/assets/teamsHeader/responsiveImg/team1mb.png"
-            alt="teams"
-          />
+          <img src={teams6} alt="teams" />
           <div className="flex justify-center flex-wrap mx-auto gap-1 mt-3">
-            <img
-              src="/src/assets/teamsHeader/responsiveImg/team2mb.png"
-              alt="teams"
-            />
-            <img
-              src="/src/assets/teamsHeader/responsiveImg/unsplash_PSmDDeXaEWE.png"
-              alt=""
-            />
+            <img src={teams7} alt="teams" />
+            <img src={teams8} alt="" />
           </div>
           <div className="flex justify-center flex-wrap gap-1 mt-3 mx-auto">
-            <img
-              src="/src/assets/teamsHeader/responsiveImg/unsplash_1-aA2Fadydc.png"
-              alt=""
-            />
-            <img
-              src="/src/assets/teamsHeader/responsiveImg/unsplash_mcSDtbWXUZU.png"
-              alt=""
-            />
+            <img src={teams9} alt="" />
+            <img src={teams10} alt="" />
           </div>
         </div>
       </section>
