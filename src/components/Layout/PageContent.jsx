@@ -10,6 +10,16 @@ import { imagePosts } from "../../data/postsData";
 //img paths
 import swiper1 from "/src/assets/carouselImg/shop-hero-1-product-slide-1.jpg";
 import swiper2 from "/src/assets/carouselImg/shop-hero-2-product-slide-2.png";
+import editorsChoice from "/src/assets/editorImg/filter.png";
+import editorsChoiceMb from "/src/assets/editorImg/1mobile.png";
+import editor2 from "/src/assets/editorImg/filter (1).png";
+import editor3 from "/src/assets/editorImg/2mobile.png";
+import editor4 from "/src/assets/editorImg/filter (2).png";
+import editor4Mb from "/src/assets/editorImg/3mobil.png";
+import editor5 from "/src/assets/editorImg/filter (3).png";
+import editor5Mb from "/src/assets/editorImg/4mobile.png";
+import asWomen from "/src/assets/generalImg/asian-woman-man-with-winter-clothes 1.png";
+import asWomen2 from "/src/assets/generalImg/asian-woman-man-with-winter-clothes 2.png";
 
 const PageContent = () => {
   const dispatch = useDispatch();
@@ -41,12 +51,12 @@ const PageContent = () => {
         <div className="flex gap-4 justify-center flex-wrap">
           <div className="relative xs:px-2 middle:px-0">
             <img
-              src="/src/assets/editorImg/filter.png"
+              src={editorsChoice}
               alt=""
               className="xs:hidden middle:block"
             />
             <img
-              src="/src/assets/editorImg/1mobile.png"
+              src={editorsChoiceMb}
               alt=""
               className="xs:block middle:hidden"
             />
@@ -55,16 +65,8 @@ const PageContent = () => {
             </button>
           </div>
           <div className="relative xs:px-2 middle:px-0">
-            <img
-              src="/src/assets/editorImg/filter (1).png"
-              alt=""
-              className="xs:hidden middle:block"
-            />
-            <img
-              src="/src/assets/editorImg/2mobile.png"
-              alt=""
-              className="xs:block middle:hidden"
-            />
+            <img src={editor2} alt="" className="xs:hidden middle:block" />
+            <img src={editor3} alt="" className="xs:block middle:hidden" />
             <button className="px-9 py-3 bg-white font-bold absolute bottom-7 left-5">
               WOMEN
             </button>
@@ -72,12 +74,12 @@ const PageContent = () => {
           <div>
             <div className="relative xs:px-2 middle:px-0">
               <img
-                src="/src/assets/editorImg/filter (2).png"
+                src={editor4}
                 alt=""
                 className="mb-4 xs:hidden middle:block"
               />
               <img
-                src="/src/assets/editorImg/3mobil.png"
+                src={editor4Mb}
                 alt=""
                 className="mb-4 xs:block middle:hidden"
               />
@@ -86,16 +88,8 @@ const PageContent = () => {
               </button>
             </div>
             <div className="relative xs:px-2 middle:px-0">
-              <img
-                src="/src/assets/editorImg/filter (3).png"
-                alt=""
-                className="xs:hidden middle:block"
-              />
-              <img
-                src="/src/assets/editorImg/4mobile.png"
-                alt=""
-                className="xs:block middle:hidden"
-              />
+              <img src={editor5} alt="" className="xs:hidden middle:block" />
+              <img src={editor5Mb} alt="" className="xs:block middle:hidden" />
               <button className="px-10 py-3 bg-white font-bold absolute bottom-7 left-5">
                 KIDS
               </button>
@@ -134,16 +128,10 @@ const PageContent = () => {
         <ReusableSwiper imagePaths={imagePaths2} />
         <div className="flex justify-evenly gap-5 flex-wrap">
           <div className="xs:order-last mdCstm:order-1 xs:p-5 mdCstm:p-0 xs:hidden mdCstm:block">
-            <img
-              src="/src/assets/generalImg/asian-woman-man-with-winter-clothes 1.png"
-              alt=""
-            />
+            <img src={asWomen} alt="" />
           </div>
           <div className="xs:order-last mdCstm:order-0 xs:p-5 mdCstm:p-0 xs:block mdCstm:hidden">
-            <img
-              src="/src/assets/generalImg/asian-woman-man-with-winter-clothes 2.png"
-              alt=""
-            />
+            <img src={asWomen2} alt="" />
           </div>
           <div className="mt-20 p-5 xs:leading-[2.5rem] mdCstm:leading-[4rem] flex flex-col justify-center xs:order-1 mdCstm:order-0 xs:text-center mdCstm:text-left">
             <h5 className="text-muted-color text-bold">SUMMER 2020</h5>
