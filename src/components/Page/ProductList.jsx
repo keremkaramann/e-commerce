@@ -287,7 +287,7 @@ const ProductList = () => {
         <div className="flex justify-center">
           <ReactPaginate
             containerClassName={"pagination"}
-            activeClassName={"active_pagination "}
+            activeClassName={"active_pagination"}
             pageClassName={"page-item"}
             onPageChange={(selectedPage) =>
               handlePageChange(
