@@ -7,6 +7,9 @@ import ProductCard from "../Repetitive/ProductCard";
 import ReusableSwiper from "../Repetitive/ReusableCarouse";
 import Posts from "../Repetitive/Posts";
 import { imagePosts } from "../../data/postsData";
+//img paths
+import swiper1 from "/src/assets/carouselImg/shop-hero-1-product-slide-1.jpg";
+import swiper2 from "/src/assets/carouselImg/shop-hero-2-product-slide-2.png";
 
 const PageContent = () => {
   const dispatch = useDispatch();
@@ -16,16 +19,8 @@ const PageContent = () => {
   );
   const slicedProducts = listProducts?.slice(0, 9);
 
-  const imagePaths = [
-    "/src/assets/carouselImg/shop-hero-1-product-slide-1.jpg",
-    "/src/assets/carouselImg/shop-hero-2-product-slide-2.png",
-  ];
-  const imagePaths2 = [
-    "/src/assets/carouselImg/shop-hero-2-product-slide-2.png",
-    "/src/assets/carouselImg/shop-hero-1-product-slide-1.jpg",
-    "/src/assets/carouselImg/shop-hero-2-product-slide-2.png",
-    "/src/assets/carouselImg/shop-hero-1-product-slide-1.jpg",
-  ];
+  const imagePaths = [swiper1, swiper2];
+  const imagePaths2 = [swiper1, swiper2, swiper1, swiper2];
 
   useEffect(() => {
     dispatch(fetchProducts());
