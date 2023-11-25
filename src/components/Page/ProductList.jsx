@@ -56,15 +56,23 @@ const ProductList = () => {
   };
 
   const sortProducts = (getCategoryId, filterText, selectedSortOption) => {
+    let gender = findCategoryName.gender;
+    if (findCategoryName?.gender == "k") {
+      gender = "kadın";
+    } else {
+      gender = "erkek";
+    }
     const filterParam = filterText
-      ? `&filter=${encodeURIComponent(filterText)}`
+      ? `filter=${encodeURIComponent(filterText)}`
       : "";
     const sortParam = selectedSortOption
       ? `&sort=${encodeURIComponent(selectedSortOption)}`
       : "";
     const sortedCategories = getCategoryId ? `id=${getCategoryId}` : "";
 
-    history.push(`/shopping?${sortedCategories}${filterParam}${sortParam}`);
+    history.push(
+      `/shopping/${gender}/${findCategoryName.title.toLocaleLowerCase()}?${filterParam}${sortParam}`
+    );
     dispatch(fetchProducts(getCategoryId, filterText, selectedSortOption));
   };
   //pagination
