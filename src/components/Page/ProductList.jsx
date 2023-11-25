@@ -242,9 +242,15 @@ const ProductList = () => {
             productData?.products.length > 0 ? (
               productData?.products.map((product) => {
                 const { images, name, description, id, price } = product;
+                let gender = findCategoryName.gender;
+                if (findCategoryName?.gender == "k") {
+                  gender = "kadın";
+                } else {
+                  gender = "erkek";
+                }
                 return (
                   <Link
-                    to={`/${findCategoryName?.title.toLocaleLowerCase()}/${id}/${name
+                    to={`/${gender}/${findCategoryName?.title.toLocaleLowerCase()}/${id}/${name
                       ?.split(" ")
                       .join("-")
                       .toLocaleLowerCase()}`}
