@@ -163,7 +163,7 @@ const Header = () => {
                       })}
                     </div>
                     <div className="border-l-[1px]"></div>
-                    <div className="flex flex-col leading-10">
+                    <div className="flex flex-col leading-8">
                       <h2 className="text-dark-navy text-2xl font-normal">
                         MAN
                       </h2>
