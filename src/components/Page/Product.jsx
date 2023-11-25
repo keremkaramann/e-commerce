@@ -19,6 +19,8 @@ import {
   AiFillEye,
   AiOutlineShoppingCart,
 } from "react-icons/ai";
+//img path
+import cover from "/src/assets/productImg.png";
 
 const Product = () => {
   const { id } = useParams();
@@ -178,7 +180,7 @@ const Product = () => {
         <div className="max-w-[1170px] w-full mx-auto">
           <div className="flex gap-8 xs:flex-wrap xs:justify-center middle:justify-normal xs:p-6 middle:p-2">
             <div>
-              <img src="/src/assets/productImg.png" alt="" />
+              <img src={cover} alt="" />
             </div>
             <div className="middle:w-[28%] xs:w-full">
               <h3 className="text-dark-navy font-bold text-2xl mb-8">
