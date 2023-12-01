@@ -245,6 +245,47 @@ const Header = () => {
                 <p className="text-white absolute text-xs bg-red-700 rounded-full px-1.5 top-[-10px] left-3">
                   {itemCount.length}
                 </p>
+                <div
+                  className="bg-white absolute top-[30px] right-0 z-20 rounded-md py-4 px-3 shadow-xl
+                 border-gray-400 border-[1px] flex flex-col gap-4 w-[400px]"
+                >
+                  <div>
+                    <h3 className="text-dark-navy">Your Cart: {1} Item</h3>
+                  </div>
+                  <div>
+                    {itemCount?.map((item) => {
+                      return (
+                        <div
+                          key={item.id}
+                          className="flex gap-3 border-b-[1px] border-muted-color pb-3"
+                        >
+                          <img
+                            src={item?.product.images[0].url}
+                            alt=""
+                            className="w-[30%]"
+                          />
+                          <div className="leading-10">
+                            <p className=" text-dark-navy">
+                              {item?.product.name}
+                            </p>
+                            <p className="text-muted-color text-sm">
+                              {item?.product?.description}
+                            </p>
+                            <p className="text-dark-navy text-xs mt-2">
+                              Quantity:{" "}
+                              <span className="text-muted-color ">
+                                {item?.count}
+                              </span>
+                            </p>
+                            <p className="text-primary-blue">
+                              ${item?.product?.price}
+                            </p>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
               </div>
 
               <AiOutlineHeart className="text-normal" />
