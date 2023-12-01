@@ -31,7 +31,7 @@ const ProductCard = ({ images, name, desc, price }) => {
   };
 
   return (
-    <div className="xs:mx-5 middle:mx-0 shadow-md hover:scale-[1.04] duration-300">
+    <div className="xs:mx-5 middle:mx-0 shadow-md xs:scale-1 middle:hover:scale-[1.04] duration-300">
       <img
         src={images[0].url}
         alt="product-img"
