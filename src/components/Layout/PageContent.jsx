@@ -24,10 +24,13 @@ import asWomen2 from "/src/assets/generalImg/asian-woman-man-with-winter-clothes
 const PageContent = () => {
   const dispatch = useDispatch();
   const productData = useSelector((store) => store.product.productList);
+
   const listProducts = productData.products?.sort(
     (a, b) => b.sell_count - a.sell_count
   );
+
   const slicedProducts = listProducts?.slice(0, 9);
+  console.log(productData);
 
   const imagePaths = [swiper1, swiper2];
   const imagePaths2 = [swiper1, swiper2, swiper1, swiper2];
@@ -113,9 +116,10 @@ const PageContent = () => {
         <div className="flex gap-5 justify-center px-30 flex-wrap max-w-[1060px] my-0 mx-auto">
           {slicedProducts?.map((product) => {
             const { images, name, description, id, price } = product;
+
             return (
               <Link
-                to={`/${price}/${id}/${name
+                to={`/kadın/tişört/${id}/${name
                   ?.split(" ")
                   .join("-")
                   .toLocaleLowerCase()}`}
