@@ -56,7 +56,7 @@ const ProductList = () => {
   };
 
   const sortProducts = (getCategoryId, filterText, selectedSortOption) => {
-    let gender = findCategoryName.gender;
+    let gender = findCategoryName?.gender;
     if (findCategoryName?.gender == "k") {
       gender = "kadın";
     } else {
@@ -148,7 +148,7 @@ const ProductList = () => {
         <div className="flex justify-center gap-3 flex-wrap bg-[#FAFAFA] pb-10">
           {slicedCategories?.map((categoryData) => {
             const { id, img, title } = categoryData;
-            let gender = categoryData.gender;
+            let gender = categoryData?.gender;
             if (gender === "k") {
               gender = "kadın";
             } else {
@@ -250,7 +250,7 @@ const ProductList = () => {
             productData?.products.length > 0 ? (
               productData?.products.map((product) => {
                 const { images, name, description, id, price } = product;
-                let gender = findCategoryName.gender;
+                let gender = findCategoryName?.gender;
                 if (findCategoryName?.gender == "k") {
                   gender = "kadın";
                 } else {
