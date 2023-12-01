@@ -64,3 +64,15 @@ export const fetchProducts =
         dispatch(failed(FAILED));
       });
   };
+export const fetchProductById = (id) => (dispatch) => {
+  dispatch(fetching(id));
+
+  API.get(`products/${id}`)
+    .then((res) => {
+      dispatch(fetched(res.data));
+    })
+    .catch((err) => {
+      console.log(err);
+      dispatch(failed(id));
+    });
+};

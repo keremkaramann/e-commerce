@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { NavLink, useParams, useHistory } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { addCart } from "../../store/actions/shoppingCartAction";
 
 //pages
 import Brands from "../Repetitive/Brands";
@@ -21,13 +22,19 @@ import {
 } from "react-icons/ai";
 //img path
 import cover from "/src/assets/productImg.png";
+import { fetchProductById } from "../../store/actions/productAction";
 
 const Product = () => {
   const { id } = useParams();
   const history = useHistory();
+  const dispatch = useDispatch();
 
   const goPrev = () => {
     history.goBack();
+  };
+
+  const addToCart = (product) => {
+    dispatch(addCart(product));
   };
 
   const productData = useSelector((store) => store.product.productList);
@@ -67,8 +74,11 @@ const Product = () => {
   };
 
   useEffect(() => {
+    if (!productData || !productData.products) {
+      dispatch(fetchProductById(id));
+    }
     window.scrollTo(0, 0);
-  }, []);
+  }, [product, id]);
 
   return (
     <section>
@@ -104,7 +114,17 @@ const Product = () => {
       </div>
       <div className="bg-[#FAFAFA] flex justify-center xs:gap-5 middle:gap-20 flex-wrap pb-12">
         <div>
-          <ProductCarousel images={product?.images[0].url} />
+          <ProductCarousel
+            images={
+              product && product.images && product.images.length > 0
+                ? product.images[0].url
+                : productData &&
+                  productData.images &&
+                  productData.images.length > 0
+                ? productData.images[0].url
+                : null
+            }
+          />
         </div>
         {product?.name === "" ? (
           <div>
@@ -112,32 +132,54 @@ const Product = () => {
           </div>
         ) : (
           <div className=" xs:w-full middle:w-[40%] xs:p-5 middle:p-0">
-            <h4 className="dark-navy text-lg mb-3 mt-3">{product?.name} </h4>
+            <h4 className="dark-navy text-lg mb-3 mt-3">
+              {" "}
+              {product?.name ||
+                (productData && productData.name) ||
+                "Default Name"}
+            </h4>
             <div className="flex items-center gap-2 text-2xl text-[#F3CD03] mb-4">
               {Array(5)
                 .fill(null)
                 .map((_, index) =>
-                  index < Math.ceil(product?.rating) ? (
+                  index <
+                  Math.ceil(
+                    product?.rating ||
+                      (productData && productData.rating) ||
+                      "Default Name"
+                  ) ? (
                     <AiFillStar key={index} />
                   ) : (
                     <AiOutlineStar key={index} />
                   )
                 )}
               <p className="text-secondary-text font-bold text-sm">
-                {product?.sell_count} Reviews
+                {product?.sell_count ||
+                  (productData && productData.sell_count) ||
+                  "Default Name"}{" "}
+                Reviews
               </p>
             </div>
             <p className="text-2xl font-bold text-dark-navy mb-2">
-              {product?.price} ₺
+              {product?.price ||
+                (productData && productData.price) ||
+                "Default Name"}{" "}
+              ₺
             </p>
             <p className="text-sm font-bold text-secondary-text mb-7">
               Availability :{" "}
               <span className="text-primary-blue">
-                In Stock ({product?.stock})
+                In Stock (
+                {product?.stock ||
+                  (productData && productData.stock) ||
+                  "Default Name"}
+                )
               </span>
             </p>
             <p className="text-[#858585] text-sm mb-5">
-              {product?.description}
+              {product?.description ||
+                (productData && productData.description) ||
+                "Default Name"}
             </p>
             <div className="border-b-2 border-muted-color w-3/4 mb-8"></div>
             <ul className="flex gap-2 xs:mb-14 middle:mb-20">
@@ -158,7 +200,10 @@ const Product = () => {
                 Select Options
               </button>
               <AiOutlineHeart className="addToChart" />
-              <AiOutlineShoppingCart className="addToChart" />
+              <AiOutlineShoppingCart
+                className="addToChart"
+                onClick={() => addToCart(product)}
+              />
               <AiFillEye className="addToChart" />
             </div>
           </div>
@@ -171,7 +216,13 @@ const Product = () => {
           <p className="font-bold">Additional Information</p>
           <div className="flex gap-1">
             <p className="font-bold">Reviews</p>
-            <p>({product?.sell_count})</p>
+            <p>
+              (
+              {product?.sell_count ||
+                (productData && productData.sell_count) ||
+                "Default Name"}
+              )
+            </p>
           </div>
         </div>
         <div className="xs:hidden middle:block">
