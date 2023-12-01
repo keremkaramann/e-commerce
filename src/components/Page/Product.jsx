@@ -33,8 +33,17 @@ const Product = () => {
     history.goBack();
   };
 
-  const addToCart = (product) => {
-    dispatch(addCart(product));
+  const addToCart = (item) => {
+    const productToAdd =
+      item && typeof item === "object"
+        ? item
+        : item
+        ? getProductById(item)
+        : productData;
+
+    if (productToAdd) {
+      dispatch(addCart(productToAdd));
+    }
   };
 
   const productData = useSelector((store) => store.product.productList);

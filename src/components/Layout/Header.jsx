@@ -26,7 +26,8 @@ const Header = () => {
   const [showNav, setShowNav] = useState(false);
   const navList = useSelector((store) => store.global.categories);
   const userLoginData = useSelector((store) => store.user.user);
-
+  const itemCount = useSelector((store) => store.cart.cart);
+  console.log(itemCount);
   window.addEventListener("blur", () => {
     document.title = "Don't leave me :(";
   });
@@ -239,7 +240,13 @@ const Header = () => {
                 )}
               </div>
               <BsSearch className="text-normal" />
-              <AiOutlineShoppingCart className="text-normal" />
+              <div className="relative">
+                <AiOutlineShoppingCart className="text-xl" />
+                <p className="text-white absolute text-xs bg-red-700 rounded-full px-1.5 top-[-10px] left-3">
+                  {itemCount.length}
+                </p>
+              </div>
+
               <AiOutlineHeart className="text-normal" />
             </div>
           </div>

@@ -12,11 +12,30 @@ const shoppingCartReducer = (state = shoppingInitialState, action) => {
       if (action.payload === undefined) {
         return { ...state };
       }
-
-      if (action.payload.id === cart.id) {
+      const existingProduct = state.cart.find(
+        (item) => item.product.id === action.payload.id
+      );
+      if (existingProduct) {
+        const upDateCart = state.cart.map((item) =>
+          item.product.id === action.payload.id
+            ? { ...item, count: item.count < 10 ? item.count + 1 : item.count }
+            : item
+        );
         return {
           ...state,
-          cart: [...state.cart, { count: 1, checked: true, ...action.payload }],
+          cart: upDateCart,
+        };
+      } else {
+        return {
+          ...state,
+          cart: [
+            ...state.cart,
+            {
+              count: 1,
+              checked: true,
+              product: { ...action.payload },
+            },
+          ],
         };
       }
     default:
