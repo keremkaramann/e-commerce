@@ -30,7 +30,6 @@ const PageContent = () => {
   );
 
   const slicedProducts = listProducts?.slice(0, 9);
-  console.log(productData);
 
   const imagePaths = [swiper1, swiper2];
   const imagePaths2 = [swiper1, swiper2, swiper1, swiper2];
