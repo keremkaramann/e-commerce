@@ -157,7 +157,8 @@ const ProductList = () => {
             return (
               <div
                 key={id}
-                className="bg-cover bg-center middle:h-[223px] middle:w-[223px] xs:h-[300px] xs:w-4/5 bg-no-repeat relative middle:hover:scale-[1.06] xs:hover:scale-1 duration-300"
+                className="bg-cover bg-center middle:h-[223px] middle:w-[223px] xs:h-[300px]
+                 xs:w-4/5 bg-no-repeat relative middle:hover:scale-[1.06] xs:hover:scale-1 duration-300"
                 style={{ backgroundImage: `url(${img})`, cursor: "pointer" }}
               >
                 <Link
