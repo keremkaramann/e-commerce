@@ -276,7 +276,9 @@ const Header = () => {
                  border-gray-400 border-[1px] flex flex-col gap-3 w-[400px] cart-active"
                   >
                     <div>
-                      <h3 className="text-dark-navy">Your Cart: {1} Item</h3>
+                      <h3 className="text-dark-navy">
+                        Your Cart: {itemCount.length} Item
+                      </h3>
                     </div>
                     <div className="overflow-y-auto h-[198px]">
                       {itemCount?.map((item) => {
