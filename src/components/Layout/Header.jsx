@@ -6,6 +6,7 @@ import { fetchCategories } from "../../store/actions/globalRedAction";
 import GravatarImage from "../Repetitive/Gravatar";
 import { NavLink, Link } from "react-router-dom";
 import ScrollToTop from "../Page/ScrollToTop";
+
 //icons
 import { TfiEmail } from "react-icons/tfi";
 import { FiChevronDown, FiLogOut } from "react-icons/fi";
@@ -24,16 +25,21 @@ import { HiOutlineBars3BottomRight } from "react-icons/hi2";
 const Header = () => {
   const dispatch = useDispatch();
   const [showNav, setShowNav] = useState(false);
+  const [showCart, setShowCart] = useState(false);
   const navList = useSelector((store) => store.global.categories);
   const userLoginData = useSelector((store) => store.user.user);
   const itemCount = useSelector((store) => store.cart.cart);
-  console.log(itemCount);
+
   window.addEventListener("blur", () => {
     document.title = "Don't leave me :(";
   });
   window.addEventListener("focus", () => {
     document.title = "Welcome to Bandage";
   });
+
+  const toggleCart = () => {
+    setShowCart(!showCart);
+  };
 
   const navHandler = () => {
     const nav = document.querySelector(".mobile-nav");
@@ -58,6 +64,22 @@ const Header = () => {
       dispatch(fetchCategories());
     }
   }, []);
+
+  useEffect(() => {
+    const handleClick = (event) => {
+      const elementClasses = event.target.classList;
+      if (
+        elementClasses.length > 0 &&
+        !elementClasses.contains("cart-active")
+      ) {
+        setShowCart(false);
+      }
+    };
+    document.body.addEventListener("click", handleClick);
+    return () => {
+      document.body.removeEventListener("click", handleClick);
+    };
+  }, [setShowCart]);
 
   useEffect(() => {
     const handleClick = (event) => {
@@ -241,53 +263,65 @@ const Header = () => {
               </div>
               <BsSearch className="text-normal" />
               <div className="relative">
-                <AiOutlineShoppingCart className="text-xl" />
+                <AiOutlineShoppingCart
+                  className="text-xl cursor-pointer cart-active"
+                  onClick={toggleCart}
+                />
                 <p className="text-white absolute text-xs bg-red-700 rounded-full px-1.5 top-[-10px] left-3">
                   {itemCount.length}
                 </p>
-                <div
-                  className="bg-white absolute top-[30px] right-0 z-20 rounded-md py-4 px-3 shadow-xl
-                 border-gray-400 border-[1px] flex flex-col gap-4 w-[400px]"
-                >
-                  <div>
-                    <h3 className="text-dark-navy">Your Cart: {1} Item</h3>
-                  </div>
-                  <div>
-                    {itemCount?.map((item) => {
-                      return (
-                        <div
-                          key={item.id}
-                          className="flex gap-3 border-b-[1px] border-muted-color pb-3"
-                        >
-                          <img
-                            src={item?.product.images[0].url}
-                            alt=""
-                            className="w-[30%]"
-                          />
-                          <div className="leading-10">
-                            <p className=" text-dark-navy">
-                              {item?.product.name}
-                            </p>
-                            <p className="text-muted-color text-sm">
-                              {item?.product?.description}
-                            </p>
-                            <p className="text-dark-navy text-xs mt-2">
-                              Quantity:{" "}
-                              <span className="text-muted-color ">
-                                {item?.count}
-                              </span>
-                            </p>
-                            <p className="text-primary-blue">
-                              ${item?.product?.price}
-                            </p>
+                {showCart && (
+                  <div
+                    className="bg-white absolute top-[30px] right-0 z-20 rounded-md py-4 px-3 shadow-xl
+                 border-gray-400 border-[1px] flex flex-col gap-3 w-[400px] cart-active"
+                  >
+                    <div>
+                      <h3 className="text-dark-navy">Your Cart: {1} Item</h3>
+                    </div>
+                    <div className="overflow-y-auto h-[198px]">
+                      {itemCount?.map((item) => {
+                        return (
+                          <div
+                            key={item.id}
+                            className="flex gap-3 border-b-[1px] border-muted-color pb-3 pt-3 "
+                          >
+                            <img
+                              src={item?.product.images[0].url}
+                              alt=""
+                              className="w-[30%]"
+                            />
+                            <div className="leading-10">
+                              <p className=" text-dark-navy">
+                                {item?.product.name}
+                              </p>
+                              <p className="text-muted-color text-xs">
+                                {item?.product?.description}
+                              </p>
+                              <p className="text-dark-navy text-xs mt-2">
+                                Quantity:{" "}
+                                <span className="text-muted-color ">
+                                  {item?.count}
+                                </span>
+                              </p>
+                              <p className="text-primary-blue">
+                                ${item?.product?.price}
+                              </p>
+                            </div>
                           </div>
-                        </div>
-                      );
-                    })}
+                        );
+                      })}
+                    </div>
+                    <div className="flex gap-3 justify-center">
+                      <button className="text-dark-navy bg-white px-8 py-2 border-[1px] rounded-md hover:text-white hover:bg-dark-navy duration-500 ease-in-out">
+                        View Order
+                      </button>
+                      <button className="text-white bg-primary-blue px-8 py-2 border-[1px] rounded-md hover:bg-dark-navy duration-500 ease-in-out">
+                        Checkout
+                      </button>
+                    </div>
                   </div>
-                </div>
+                )}
               </div>
-
               <AiOutlineHeart className="text-normal" />
             </div>
           </div>
