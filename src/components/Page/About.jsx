@@ -125,7 +125,7 @@ const About = () => {
           </p>
         </div>
         <Brands />
-        <div className="xs:flex-none middle:flex">
+        <div className="xs:flex-none middle:flex justify-center">
           <div className="bg-[#297dc8] text-white max-w-[900px] w-full mx-auto flex justify-center items-center">
             <div className="xs:p-12 middle:p-5 xs:text-center middle:text-left">
               <h5 className="font-bold mb-5">WORK WITH US</h5>

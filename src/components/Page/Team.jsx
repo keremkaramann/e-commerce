@@ -42,7 +42,7 @@ const Team = () => {
         </div>
       </section>
       <section className="xs:hidden middle:block">
-        <div className="mb-16 flex gap-2">
+        <div className="mb-16 flex gap-2 justify-center flex-wrap">
           <img src={teams1} alt="teams" />
           <div className="flex gap-2">
             <div className="flex middle:flex-col xs:flex-row gap-4">
