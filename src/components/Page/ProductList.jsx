@@ -243,8 +243,8 @@ const ProductList = () => {
           </div>
         </div>
         <div
-          className={`flex justify-center flex-wrap gap-6 mt-10 my-0 mx-auto ${
-            isGridClicked ? "max-w-[1060px]" : "max-w-[490px]"
+          className={`flex justify-center flex-wrap gap-12 mt-10 my-0 mx-auto ${
+            isGridClicked ? "max-w-[1160px]" : "max-w-[490px]"
           }`}
         >
           {isFetched === "FETCHED" ? (
