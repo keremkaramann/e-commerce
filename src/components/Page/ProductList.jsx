@@ -248,7 +248,7 @@ const ProductList = () => {
           }`}
         >
           {isFetched === "FETCHED" ? (
-            productData?.products.length > 0 ? (
+            productData?.products?.length > 0 ? (
               productData?.products.map((product) => {
                 const { images, name, description, id, price } = product;
                 let gender = findCategoryName?.gender;

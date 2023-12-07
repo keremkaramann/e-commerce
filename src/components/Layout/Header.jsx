@@ -280,6 +280,7 @@ const Header = () => {
                         Your Cart: {itemCount.length} Item
                       </h3>
                     </div>
+
                     <div className="overflow-y-auto h-[198px]">
                       {itemCount?.map((item) => {
                         return (
@@ -288,13 +289,13 @@ const Header = () => {
                             className="flex gap-3 border-b-[1px] border-muted-color pb-3 pt-3 "
                           >
                             <img
-                              src={item?.product.images[0].url}
+                              src={item?.product?.images[0].url}
                               alt=""
                               className="w-[30%]"
                             />
                             <div className="leading-10">
                               <p className=" text-dark-navy">
-                                {item?.product.name}
+                                {item?.product?.name}
                               </p>
                               <p className="text-muted-color text-xs">
                                 {item?.product?.description}
@@ -337,7 +338,12 @@ const Header = () => {
             </div>
             <div className="flex gap-5 text-2xl font-bold text-dark-navy">
               <BsSearch />
-              <AiOutlineShoppingCart />
+              <div className="relative">
+                <AiOutlineShoppingCart />
+                <p className="text-white absolute text-xs bg-red-700 rounded-full px-1.5 top-[-8px] left-3">
+                  {itemCount.length}
+                </p>
+              </div>
               <HiOutlineBars3BottomRight
                 className="text-2xl font-bold text-dark-navy cursor-pointer"
                 onClick={navHandler}
