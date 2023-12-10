@@ -342,7 +342,9 @@ const Header = () => {
             <div className="flex gap-5 text-2xl font-bold text-dark-navy">
               <BsSearch />
               <div className="relative">
-                <AiOutlineShoppingCart />
+                <NavLink to="/summary">
+                  <AiOutlineShoppingCart />
+                </NavLink>
                 <p className="text-white absolute text-xs bg-red-700 rounded-full px-1.5 top-[-8px] left-3">
                   {itemCount.length}
                 </p>
