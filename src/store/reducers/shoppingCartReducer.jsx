@@ -7,8 +7,10 @@ import {
   DECREASE_COUNT,
 } from "../actions/shoppingCartAction";
 
+const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
+
 const shoppingInitialState = {
-  cart: [],
+  cart: storedCart,
   payment: {},
   address: {},
 };
@@ -28,7 +30,7 @@ const shoppingCartReducer = (state = shoppingInitialState, action) => {
             ? { ...item, count: item.count < 10 ? item.count + 1 : item.count }
             : item
         );
-        localStorage.setItem("cart", JSON.stringify(existingProduct));
+        localStorage.setItem("cart", JSON.stringify(upDateCart));
         return {
           ...state,
           cart: upDateCart,
@@ -49,9 +51,13 @@ const shoppingCartReducer = (state = shoppingInitialState, action) => {
         };
       }
     case REMOVE_CART:
+      const updatedCart = state.cart.filter(
+        (f) => f.product.id !== action.payload
+      );
+      localStorage.setItem("cart", JSON.stringify(updatedCart));
       return {
         ...state,
-        cart: state.cart.filter((f) => f.product.id !== action.payload),
+        cart: updatedCart,
       };
     case INCREASE_COUNT:
       return {
