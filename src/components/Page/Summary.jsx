@@ -13,6 +13,7 @@ import {
 const Summary = () => {
   const cartItems = useSelector((store) => store.cart.cart);
   const dispatch = useDispatch();
+
   //error page
   const NoProducts = () => {
     return (
@@ -25,17 +26,13 @@ const Summary = () => {
     );
   };
 
-  const removeProduct = (id) => {
-    dispatch(removeCart(id));
-  };
-
   return (
     <>
       <Header />
       {cartItems.length <= 0 ? (
         <NoProducts />
       ) : (
-        <section className="my-5 p-8 w-[1100px]">
+        <section className="my-5 p-8 w-[1200px] mx-auto">
           <h1 className="font-bold text-2xl mb-10">
             Your Cart {cartItems.length} Item
           </h1>
@@ -43,7 +40,7 @@ const Summary = () => {
             return (
               <div
                 key={item?.product?.id}
-                className="flex items-center justify-between gap-10 shadow-lg border-[1px] border-muted-color p-7 mb-7"
+                className="flex items-center justify-between gap-10 shadow-xl border-[1px] border-muted-color p-7 mb-7"
               >
                 <input type="checkbox" className="text-2xl p-2" checked />
                 <img
