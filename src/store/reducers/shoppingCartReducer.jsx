@@ -1,4 +1,9 @@
-import { ADD_CART, PAYMENT, ADDRESS } from "../actions/shoppingCartAction";
+import {
+  ADD_CART,
+  PAYMENT,
+  ADDRESS,
+  REMOVE_CART,
+} from "../actions/shoppingCartAction";
 
 const shoppingInitialState = {
   cart: [],
@@ -21,23 +26,31 @@ const shoppingCartReducer = (state = shoppingInitialState, action) => {
             ? { ...item, count: item.count < 10 ? item.count + 1 : item.count }
             : item
         );
+        localStorage.setItem("cart", JSON.stringify(existingProduct));
         return {
           ...state,
           cart: upDateCart,
         };
       } else {
+        const newCart = [
+          ...state.cart,
+          {
+            count: 1,
+            checked: true,
+            product: { ...action.payload },
+          },
+        ];
+        localStorage.setItem("cart", JSON.stringify(newCart));
         return {
           ...state,
-          cart: [
-            ...state.cart,
-            {
-              count: 1,
-              checked: true,
-              product: { ...action.payload },
-            },
-          ],
+          cart: newCart,
         };
       }
+    case REMOVE_CART:
+      return {
+        ...state,
+        cart: state.cart.filter((f) => f.product.id !== action.payload),
+      };
     default:
       return state;
   }

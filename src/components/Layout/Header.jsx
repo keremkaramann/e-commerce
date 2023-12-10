@@ -268,7 +268,7 @@ const Header = () => {
                   onClick={toggleCart}
                 />
                 <p className="text-white absolute text-xs bg-red-700 rounded-full px-1.5 top-[-10px] left-3">
-                  {itemCount.length}
+                  {itemCount?.length}
                 </p>
                 {showCart && (
                   <div
@@ -277,24 +277,23 @@ const Header = () => {
                   >
                     <div>
                       <h3 className="text-dark-navy">
-                        Your Cart: {itemCount.length} Item
+                        Your Cart: {itemCount && itemCount?.length} Item
                       </h3>
                     </div>
-
                     <div className="overflow-y-auto h-[198px]">
-                      {itemCount?.map((item) => {
-                        return (
+                      {itemCount && itemCount.length > 0 ? (
+                        itemCount.map((item) => (
                           <div
-                            key={item.id}
+                            key={item?.product.id}
                             className="flex gap-3 border-b-[1px] border-muted-color pb-3 pt-3 "
                           >
                             <img
-                              src={item?.product?.images[0].url}
+                              src={item?.product?.images[0]?.url}
                               alt=""
                               className="w-[30%]"
                             />
                             <div className="leading-10">
-                              <p className=" text-dark-navy">
+                              <p className="text-dark-navy">
                                 {item?.product?.name}
                               </p>
                               <p className="text-muted-color text-xs">
@@ -311,12 +310,16 @@ const Header = () => {
                               </p>
                             </div>
                           </div>
-                        );
-                      })}
+                        ))
+                      ) : (
+                        <p className="text-red-600">
+                          No product in your cart...
+                        </p>
+                      )}
                     </div>
                     <div className="flex gap-3 justify-center">
                       <button className="text-dark-navy bg-white px-8 py-2 border-[1px] rounded-md hover:text-white hover:bg-dark-navy duration-500 ease-in-out">
-                        View Order
+                        <NavLink to="/summary">View Order</NavLink>
                       </button>
                       <button className="text-white bg-primary-blue px-8 py-2 border-[1px] rounded-md hover:bg-dark-navy duration-500 ease-in-out">
                         Checkout
