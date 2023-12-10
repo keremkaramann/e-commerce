@@ -3,6 +3,8 @@ import {
   PAYMENT,
   ADDRESS,
   REMOVE_CART,
+  INCREASE_COUNT,
+  DECREASE_COUNT,
 } from "../actions/shoppingCartAction";
 
 const shoppingInitialState = {
@@ -50,6 +52,25 @@ const shoppingCartReducer = (state = shoppingInitialState, action) => {
       return {
         ...state,
         cart: state.cart.filter((f) => f.product.id !== action.payload),
+      };
+    case INCREASE_COUNT:
+      return {
+        ...state,
+        cart: state.cart.map((item) =>
+          item.product.id === action.payload
+            ? { ...item, count: item.count < 10 ? item.count + 1 : item.count }
+            : item
+        ),
+      };
+
+    case DECREASE_COUNT:
+      return {
+        ...state,
+        cart: state.cart.map((item) =>
+          item.product.id === action.payload
+            ? { ...item, count: item.count > 1 ? item.count - 1 : 1 }
+            : item
+        ),
       };
     default:
       return state;

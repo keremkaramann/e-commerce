@@ -4,7 +4,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import Lottie from "lottie-react";
 import emptyProduct from "../../lottie/noProduct.json";
-import { removeCart } from "../../store/actions/shoppingCartAction";
+import {
+  removeCart,
+  increaseCount,
+  decreaseCount,
+} from "../../store/actions/shoppingCartAction";
 
 const Summary = () => {
   const cartItems = useSelector((store) => store.cart.cart);
@@ -57,14 +61,24 @@ const Summary = () => {
                   </p>
                 </div>
                 <div className="flex gap-3 border-[1px]">
-                  <button className="py-3 px-4 bg-muted-color">-</button>
+                  <button
+                    className="py-3 px-4 bg-muted-color"
+                    onClick={() => dispatch(decreaseCount(item?.product?.id))}
+                  >
+                    -
+                  </button>
                   <p className="py-3 px-3 text-dark-navy">{item?.count}</p>
-                  <button className="py-3 px-4 bg-primary-blue">+</button>
+                  <button
+                    className="py-3 px-4 bg-primary-blue"
+                    onClick={() => dispatch(increaseCount(item?.product?.id))}
+                  >
+                    +
+                  </button>
                 </div>
                 <p>${item?.product?.price}</p>
                 <RiDeleteBin5Line
                   className="text-4xl cursor-pointer"
-                  onClick={() => removeProduct(item?.product?.id)}
+                  onClick={() => dispatch(removeCart(item?.product?.id))}
                 />
               </div>
             );
