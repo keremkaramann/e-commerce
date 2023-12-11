@@ -62,16 +62,16 @@ const Summary = () => {
                 <div className="flex items-center gap-5">
                   <div className="flex items-center xs:gap-2 middle:gap-3 border-[1px]">
                     <button
-                      className="xs:py-2 xs:px-2 middle:py-3 middle:px-4 bg-muted-color"
+                      className="xs:py-2 xs:px-3 middle:py-3 middle:px-4 bg-muted-color"
                       onClick={() => dispatch(decreaseCount(item?.product?.id))}
                     >
                       -
                     </button>
-                    <p className="xs:py-1 xs:px-1 middle:py-3 middle:px-4 text-dark-navy">
+                    <p className="xs:py-1 xs:px-2 middle:py-3 middle:px-4 text-dark-navy">
                       {item?.count}
                     </p>
                     <button
-                      className="xs:py-2 xs:px-2 middle:py-3 middle:px-4 bg-primary-blue"
+                      className="xs:py-2 xs:px-3 middle:py-3 middle:px-4 bg-primary-blue"
                       onClick={() => dispatch(increaseCount(item?.product?.id))}
                     >
                       +
