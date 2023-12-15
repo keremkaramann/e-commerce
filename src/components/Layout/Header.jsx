@@ -305,7 +305,7 @@ const Header = () => {
                               <p className="text-dark-navy text-sm">
                                 {item?.product?.name}
                               </p>
-                              <p className="text-muted-color text-xs">
+                              <p className="text-secondary-text text-xs font-normal">
                                 {item?.product?.description}
                               </p>
                               <p className="text-dark-navy text-xs mt-1 mb-1 flex items-center gap-2">
