@@ -44,7 +44,7 @@ const Summary = () => {
               <div
                 key={item?.product?.id}
                 className="flex items-center xs:flex-wrap middle:flex-nowrap xs:justify-center 
-                middle:justify-between xs:gap-3 middle:gap-10 shadow-lg border-[1px] border-muted-color p-3 mb-5"
+                middle:justify-between xs:gap-3 middle:gap-10 shadow-lg border-[1px] border-muted-color p-2 mb-5"
               >
                 <div className="flex gap-4 items-center">
                   <input type="checkbox" className="text-2xl p-2" />
@@ -66,22 +66,22 @@ const Summary = () => {
                 <div className="flex items-center gap-5">
                   <div className="flex items-center xs:gap-2 middle:gap-3 border-[1px]">
                     <button
-                      className="xs:py-2 xs:px-3 middle:py-3 middle:px-4 bg-slate-500"
+                      className="xs:py-2 xs:px-3 middle:py-2 middle:px-3 bg-slate-500"
                       onClick={() => dispatch(decreaseCount(item?.product?.id))}
                     >
                       -
                     </button>
-                    <p className="xs:py-1 xs:px-2 middle:py-3 middle:px-4 text-dark-navy">
+                    <p className="xs:py-1 xs:px-2 middle:py-2 middle:px-2 text-dark-navy">
                       {item?.count}
                     </p>
                     <button
-                      className="xs:py-2 xs:px-3 middle:py-3 middle:px-4 bg-primary-blue"
+                      className="xs:py-2 xs:px-3 middle:py-2 middle:px-3 bg-primary-blue"
                       onClick={() => dispatch(increaseCount(item?.product?.id))}
                     >
                       +
                     </button>
                   </div>
-                  <p className="xs:text-sm middle:text-lg">
+                  <p className="xs:text-sm middle:text-lg font-bold">
                     ${(item?.product?.price * item?.count).toFixed(2)}
                   </p>
                   <div>
