@@ -310,7 +310,7 @@ const Header = () => {
                               </p>
                               <p className="text-dark-navy text-xs mt-1 mb-1 flex items-center gap-2">
                                 Quantity:{" "}
-                                <div className="border-[1px]">
+                                <span className="border-[1px]">
                                   <span className="text-muted-color">
                                     <button
                                       className="px-2 py-1 bg-slate-500 cart-active"
@@ -336,7 +336,7 @@ const Header = () => {
                                       +
                                     </button>
                                   </span>
-                                </div>
+                                </span>
                               </p>
                               <p className="text-primary-blue">
                                 $
