@@ -21,6 +21,8 @@ import {
 } from "react-icons/bs";
 import { AiOutlineShoppingCart, AiOutlineHeart } from "react-icons/ai";
 import { HiOutlineBars3BottomRight } from "react-icons/hi2";
+import { FaTrashCan } from "react-icons/fa6";
+import { removeCart } from "../../store/actions/shoppingCartAction";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -285,29 +287,37 @@ const Header = () => {
                         itemCount.map((item) => (
                           <div
                             key={item?.product.id}
-                            className="flex gap-3 border-b-[1px] border-muted-color pb-3 pt-3 "
+                            className="flex justify-between items-center gap-3 border-b-[1px] border-muted-color pb-2 pt-2"
                           >
                             <img
                               src={item?.product?.images[0]?.url}
                               alt=""
-                              className="w-[30%]"
+                              className="w-[20%]"
                             />
-                            <div className="leading-10">
-                              <p className="text-dark-navy">
+                            <div className="leading-6">
+                              <p className="text-dark-navy text-sm">
                                 {item?.product?.name}
                               </p>
                               <p className="text-muted-color text-xs">
                                 {item?.product?.description}
                               </p>
-                              <p className="text-dark-navy text-xs mt-2">
+                              <p className="text-dark-navy text-xs mt-1 mb-1">
                                 Quantity:{" "}
-                                <span className="text-muted-color ">
+                                <span className="text-muted-color">
                                   {item?.count}
                                 </span>
                               </p>
                               <p className="text-primary-blue">
                                 ${item?.product?.price}
                               </p>
+                            </div>
+                            <div>
+                              <FaTrashCan
+                                className="text-dark-navy cursor-pointer mr-5"
+                                onClick={() =>
+                                  dispatch(removeCart(item?.product?.id))
+                                }
+                              />
                             </div>
                           </div>
                         ))
