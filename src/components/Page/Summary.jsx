@@ -33,8 +33,11 @@ const Summary = () => {
         <NoProducts />
       ) : (
         <section className="my-5 p-8 max-w-[1000px] w-full mx-auto">
-          <h1 className="font-bold text-2xl mb-8">
-            Your Cart {cartItems.length} Item
+          <h1 className="font-bold text-2xl mb-8 text-dark-navy">
+            Your Cart{" "}
+            <span className="text-secondary-text font-thin">
+              ({cartItems.length} Item)
+            </span>
           </h1>
           {cartItems?.map((item) => {
             return (
