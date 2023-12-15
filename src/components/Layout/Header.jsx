@@ -283,7 +283,10 @@ const Header = () => {
                   >
                     <div>
                       <h3 className="text-dark-navy">
-                        Your Cart: {itemCount && itemCount?.length} Item
+                        Your Cart:{" "}
+                        <span className="text-secondary-text font-thin">
+                          ({itemCount && itemCount?.length} Item)
+                        </span>
                       </h3>
                     </div>
                     <div className="overflow-y-auto h-[198px]">
