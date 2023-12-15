@@ -32,7 +32,7 @@ const Summary = () => {
       {cartItems.length <= 0 ? (
         <NoProducts />
       ) : (
-        <section className="my-5 p-8 max-w-[1000px] w-full mx-auto">
+        <section className="my-5 p-8 max-w-[920px] w-full mx-auto">
           <h1 className="font-bold text-2xl mb-8 text-dark-navy">
             Your Cart{" "}
             <span className="text-secondary-text font-thin">
@@ -44,24 +44,24 @@ const Summary = () => {
               <div
                 key={item?.product?.id}
                 className="flex items-center xs:flex-wrap middle:flex-nowrap xs:justify-center 
-                middle:justify-between xs:gap-3 middle:gap-10 shadow-lg border-[1px] border-muted-color p-2 mb-5"
+                middle:justify-around xs:gap-3 middle:gap-10 shadow-lg border-[1px] border-muted-color py-2 px-3 mb-5"
               >
-                <div className="flex gap-4 items-center">
+                <div className="flex gap-3 justify-center">
                   <input type="checkbox" className="text-2xl p-2" />
                   <img
                     src={item?.product?.images[0]?.url}
                     alt="product-img"
-                    className="xs:w-3/12 middle:w-2/12"
+                    className="xs:w-3/12 middle:w-[100px]"
                   />
-                  <div>
-                    <p className="text-dark-navy font-bold xs:text-xs middle:text-lg">
-                      {item?.product?.name}
-                    </p>
-                    <p className="text-secondary-text text-xs">
-                      {" "}
-                      {item?.product?.description}
-                    </p>
-                  </div>
+                </div>
+                <div>
+                  <p className="text-dark-navy font-bold xs:text-xs middle:text-lg">
+                    {item?.product?.name}
+                  </p>
+                  <p className="text-secondary-text text-xs">
+                    {" "}
+                    {item?.product?.description}
+                  </p>
                 </div>
                 <div className="flex items-center gap-5">
                   <div className="flex items-center xs:gap-2 middle:gap-3 border-[1px]">
@@ -84,12 +84,12 @@ const Summary = () => {
                   <p className="xs:text-sm middle:text-lg font-bold">
                     ${(item?.product?.price * item?.count).toFixed(2)}
                   </p>
-                  <div>
-                    <BsFillTrash3Fill
-                      className=" text-2xl cursor-pointer"
-                      onClick={() => dispatch(removeCart(item?.product?.id))}
-                    />
-                  </div>
+                </div>
+                <div className="">
+                  <BsFillTrash3Fill
+                    className=" text-2xl cursor-pointer"
+                    onClick={() => dispatch(removeCart(item?.product?.id))}
+                  />
                 </div>
               </div>
             );
