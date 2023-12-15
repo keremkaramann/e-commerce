@@ -33,7 +33,7 @@ const Summary = () => {
         <NoProducts />
       ) : (
         <section className="my-5 p-8 max-w-[1000px] w-full mx-auto">
-          <h1 className="font-bold text-2xl mb-10">
+          <h1 className="font-bold text-2xl mb-8">
             Your Cart {cartItems.length} Item
           </h1>
           {cartItems?.map((item) => {
@@ -41,7 +41,7 @@ const Summary = () => {
               <div
                 key={item?.product?.id}
                 className="flex items-center xs:flex-wrap middle:flex-nowrap xs:justify-center 
-                middle:justify-between xs:gap-3 middle:gap-10 shadow-lg border-[1px] border-muted-color p-3 mb-7"
+                middle:justify-between xs:gap-3 middle:gap-10 shadow-lg border-[1px] border-muted-color p-3 mb-5"
               >
                 <div className="flex gap-4 items-center">
                   <input type="checkbox" className="text-2xl p-2" />
