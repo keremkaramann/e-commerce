@@ -22,7 +22,11 @@ import {
 import { AiOutlineShoppingCart, AiOutlineHeart } from "react-icons/ai";
 import { HiOutlineBars3BottomRight } from "react-icons/hi2";
 import { FaTrashCan } from "react-icons/fa6";
-import { removeCart } from "../../store/actions/shoppingCartAction";
+import {
+  decreaseCount,
+  increaseCount,
+  removeCart,
+} from "../../store/actions/shoppingCartAction";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -275,7 +279,7 @@ const Header = () => {
                 {showCart && (
                   <div
                     className="bg-white absolute top-[30px] right-0 z-20 rounded-md py-4 px-3 shadow-xl
-                 border-gray-400 border-[1px] flex flex-col gap-3 w-[400px] cart-active"
+                 border-gray-400 border-[1px] flex flex-col gap-2 w-[400px] cart-active"
                   >
                     <div>
                       <h3 className="text-dark-navy">
@@ -287,7 +291,7 @@ const Header = () => {
                         itemCount.map((item) => (
                           <div
                             key={item?.product.id}
-                            className="flex justify-between items-center gap-3 border-b-[1px] border-muted-color pb-2 pt-2"
+                            className="flex items-center gap-5 border-b-[1px] border-muted-color pb-2 pt-2"
                           >
                             <img
                               src={item?.product?.images[0]?.url}
@@ -301,14 +305,41 @@ const Header = () => {
                               <p className="text-muted-color text-xs">
                                 {item?.product?.description}
                               </p>
-                              <p className="text-dark-navy text-xs mt-1 mb-1">
+                              <p className="text-dark-navy text-xs mt-1 mb-1 flex items-center gap-2">
                                 Quantity:{" "}
-                                <span className="text-muted-color">
-                                  {item?.count}
-                                </span>
+                                <div className="border-[1px]">
+                                  <span className="text-muted-color">
+                                    <button
+                                      className="px-3 py-1 bg-slate-500 cart-active"
+                                      onClick={() =>
+                                        dispatch(
+                                          decreaseCount(item?.product?.id)
+                                        )
+                                      }
+                                    >
+                                      -
+                                    </button>
+                                    <span className="px-3 py-1 bg-white">
+                                      {item?.count}
+                                    </span>
+                                    <button
+                                      className="px-3 py-1 bg-primary-blue cart-active"
+                                      onClick={() =>
+                                        dispatch(
+                                          increaseCount(item?.product?.id)
+                                        )
+                                      }
+                                    >
+                                      +
+                                    </button>
+                                  </span>
+                                </div>
                               </p>
                               <p className="text-primary-blue">
-                                ${item?.product?.price}
+                                $
+                                {(item?.product?.price * item?.count).toFixed(
+                                  2
+                                )}
                               </p>
                             </div>
                             <div>

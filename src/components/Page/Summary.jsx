@@ -32,7 +32,7 @@ const Summary = () => {
       {cartItems.length <= 0 ? (
         <NoProducts />
       ) : (
-        <section className="my-5 p-8 max-w-[1200px] w-full mx-auto">
+        <section className="my-5 p-8 max-w-[1000px] w-full mx-auto">
           <h1 className="font-bold text-2xl mb-10">
             Your Cart {cartItems.length} Item
           </h1>
@@ -40,7 +40,8 @@ const Summary = () => {
             return (
               <div
                 key={item?.product?.id}
-                className="flex items-center xs:flex-wrap middle:flex-nowrap xs:justify-center middle:justify-between xs:gap-3 middle:gap-10 shadow-lg border-[1px] border-muted-color p-5 mb-7"
+                className="flex items-center xs:flex-wrap middle:flex-nowrap xs:justify-center 
+                middle:justify-between xs:gap-3 middle:gap-10 shadow-lg border-[1px] border-muted-color p-5 mb-7"
               >
                 <div className="flex gap-4 items-center">
                   <input type="checkbox" className="text-2xl p-2" />
@@ -62,7 +63,7 @@ const Summary = () => {
                 <div className="flex items-center gap-5">
                   <div className="flex items-center xs:gap-2 middle:gap-3 border-[1px]">
                     <button
-                      className="xs:py-2 xs:px-3 middle:py-3 middle:px-4 bg-muted-color"
+                      className="xs:py-2 xs:px-3 middle:py-3 middle:px-4 bg-slate-500"
                       onClick={() => dispatch(decreaseCount(item?.product?.id))}
                     >
                       -
@@ -78,7 +79,7 @@ const Summary = () => {
                     </button>
                   </div>
                   <p className="xs:text-sm middle:text-lg">
-                    ${item?.product?.price}
+                    ${(item?.product?.price * item?.count).toFixed(2)}
                   </p>
                   <div>
                     <BsFillTrash3Fill
