@@ -310,7 +310,7 @@ const Header = () => {
                                 <div className="border-[1px]">
                                   <span className="text-muted-color">
                                     <button
-                                      className="px-3 py-1 bg-slate-500 cart-active"
+                                      className="px-2 py-1 bg-slate-500 cart-active"
                                       onClick={() =>
                                         dispatch(
                                           decreaseCount(item?.product?.id)
@@ -319,11 +319,11 @@ const Header = () => {
                                     >
                                       -
                                     </button>
-                                    <span className="px-3 py-1 bg-white">
+                                    <span className="px-2 py-1 bg-white">
                                       {item?.count}
                                     </span>
                                     <button
-                                      className="px-3 py-1 bg-primary-blue cart-active"
+                                      className="px-2 py-1 bg-primary-blue cart-active"
                                       onClick={() =>
                                         dispatch(
                                           increaseCount(item?.product?.id)
