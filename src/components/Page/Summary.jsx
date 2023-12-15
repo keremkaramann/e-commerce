@@ -41,7 +41,7 @@ const Summary = () => {
               <div
                 key={item?.product?.id}
                 className="flex items-center xs:flex-wrap middle:flex-nowrap xs:justify-center 
-                middle:justify-between xs:gap-3 middle:gap-10 shadow-lg border-[1px] border-muted-color p-5 mb-7"
+                middle:justify-between xs:gap-3 middle:gap-10 shadow-lg border-[1px] border-muted-color p-3 mb-7"
               >
                 <div className="flex gap-4 items-center">
                   <input type="checkbox" className="text-2xl p-2" />
