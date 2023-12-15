@@ -58,7 +58,7 @@ const Summary = () => {
                   <p className="text-dark-navy font-bold xs:text-xs middle:text-lg">
                     {item?.product?.name}
                   </p>
-                  <p className="text-secondary-text text-xs">
+                  <p className="text-secondary-text text-xs w-[160px]">
                     {" "}
                     {item?.product?.description}
                   </p>
