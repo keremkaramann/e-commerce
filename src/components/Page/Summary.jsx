@@ -162,10 +162,10 @@ const Summary = () => {
                   <span className="font-thin text-secondary-text text-sm flex items-center gap-1">
                     <FaShippingFast className="font-medium" />
                     {totalPrice.toFixed(2) > 500
-                      ? "Free shipping for orders over $500"
-                      : `Add $${(500 - totalPrice).toFixed(
+                      ? "Free shipping over $500!"
+                      : `Only $${(500 - totalPrice).toFixed(
                           2
-                        )} more for free shipping`}
+                        )} left from free shipping!`}
                   </span>
                 </div>
                 <p>
