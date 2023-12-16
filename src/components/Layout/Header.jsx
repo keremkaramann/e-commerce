@@ -362,9 +362,11 @@ const Header = () => {
                       )}
                     </div>
                     <div className="flex gap-3 justify-center">
-                      <button className="text-dark-navy bg-white px-8 py-2 border-[1px] rounded-md hover:text-white hover:bg-dark-navy duration-500 ease-in-out">
-                        <NavLink to="/summary">View Order</NavLink>
-                      </button>
+                      <NavLink to="/summary">
+                        <button className="text-dark-navy bg-white px-8 py-2 border-[1px] rounded-md hover:text-white hover:bg-dark-navy duration-500 ease-in-out">
+                          View Order
+                        </button>
+                      </NavLink>
                       <button className="text-white bg-primary-blue px-8 py-2 border-[1px] rounded-md hover:bg-dark-navy duration-500 ease-in-out">
                         Checkout
                       </button>

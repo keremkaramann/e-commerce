@@ -23,6 +23,19 @@ const Summary = () => {
         <div className="w-1/4 mx-auto">
           <Lottie animationData={emptyProduct} loop={true} />
         </div>
+        <div className="flex justify-center pt-8">
+          <NavLink
+            to="shopping"
+            className="text-primary-blue font-medium text-end"
+          >
+            <p
+              className="bg-sky-200 border-[1px] border-sky-200 hover:bg-white 
+            ease-in-out duration-500 px-2 py-2"
+            >
+              Continue Shopping
+            </p>
+          </NavLink>
+        </div>
       </div>
     );
   };
@@ -40,12 +53,17 @@ const Summary = () => {
               ({cartItems.length} Item)
             </span>
           </h1>
-          {cartItems?.map((item) => {
+          {cartItems?.map((item, index) => {
             return (
               <div
                 key={item?.product?.id}
-                className="flex items-center xs:flex-wrap middle:flex-nowrap xs:justify-center 
-                middle:justify-around xs:gap-3 middle:gap-10 shadow-lg border-[1px] border-muted-color py-2 px-3 mb-5"
+                className={`flex items-center xs:flex-wrap middle:flex-nowrap 
+                            xs:justify-center middle:justify-around 
+                            ${
+                              index === 0
+                                ? ""
+                                : "border-t-[1px] border-muted-color"
+                            } py-2 px-3`}
               >
                 <div className="flex gap-3 justify-center">
                   <input type="checkbox" className="text-2xl p-2" />
@@ -95,7 +113,7 @@ const Summary = () => {
               </div>
             );
           })}
-          <div className="flex justify-end">
+          <div className="flex justify-end pt-5 border-t-[1px] border-muted-color">
             <NavLink
               to="shopping"
               className="text-primary-blue font-medium text-end"
