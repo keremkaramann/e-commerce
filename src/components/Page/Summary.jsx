@@ -165,7 +165,7 @@ const Summary = () => {
                       ? "Free shipping over $500!"
                       : `Only $${(500 - totalPrice).toFixed(
                           2
-                        )} left from free shipping!`}
+                        )} left for free shipping!`}
                   </span>
                 </div>
                 <p>
