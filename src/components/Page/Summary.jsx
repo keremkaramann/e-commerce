@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import Footer from "../Layout/Footer";
 import Header from "../Layout/Header";
 import { useSelector, useDispatch } from "react-redux";
@@ -13,6 +14,7 @@ import {
 } from "../../store/actions/shoppingCartAction";
 
 const Summary = () => {
+  const [totalPrice, setTotalPrice] = useState(0);
   const cartItems = useSelector((store) => store.cart.cart);
   const dispatch = useDispatch();
   const shippingCost = 50;
@@ -41,6 +43,16 @@ const Summary = () => {
       </div>
     );
   };
+
+  useEffect(() => {
+    let sum = 0;
+
+    cartItems.forEach((item) => {
+      sum += item.product.price * item.count;
+    });
+
+    setTotalPrice(sum);
+  }, [cartItems]);
 
   return (
     <>
@@ -141,7 +153,7 @@ const Summary = () => {
               </h1>
               <div className="flex justify-between gap-5 text-lg m-2">
                 <p className="font-medium">SubTotal:</p>
-                <p> ${123.99}</p>
+                <p> ${totalPrice.toFixed(2)}</p>
               </div>
               <div className="flex justify-between gap-5 text-lg m-2">
                 <div className="flex flex-col mb-3">
@@ -150,7 +162,12 @@ const Summary = () => {
                     Free shipping for orders over $500
                   </span>
                 </div>
-                <p> ${shippingCost}</p>
+                <p>
+                  {" "}
+                  {totalPrice.toFixed(2) > 500
+                    ? "-$" + shippingCost
+                    : "$" + shippingCost}
+                </p>
               </div>
               <div className="flex text-lg m-2 flex-wrap xs:justify-center middle:justify-normal mb-5">
                 <p
@@ -167,7 +184,13 @@ const Summary = () => {
               </div>
               <div className="flex justify-between gap-5 text-lg m-2 font-bold">
                 <p className="font-bold">Total:</p>
-                <p> $</p>
+                <p>
+                  {" "}
+                  $
+                  {totalPrice.toFixed(2) > 500
+                    ? totalPrice.toFixed(2) - 50
+                    : totalPrice.toFixed(2)}
+                </p>
               </div>
               <NavLink to="">
                 <div
