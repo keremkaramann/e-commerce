@@ -7,6 +7,7 @@ import Lottie from "lottie-react";
 import emptyProduct from "../../lottie/noProduct.json";
 import { NavLink } from "react-router-dom";
 import { FiChevronsRight } from "react-icons/fi";
+import { FaShippingFast } from "react-icons/fa";
 import {
   removeCart,
   increaseCount,
@@ -156,10 +157,15 @@ const Summary = () => {
                 <p> ${totalPrice.toFixed(2)}</p>
               </div>
               <div className="flex justify-between gap-5 text-lg m-2">
-                <div className="flex flex-col mb-3">
-                  <p className="font-medium">Shipping:</p>
-                  <span className="font-thin text-secondary-text text-sm">
-                    Free shipping for orders over $500
+                <div className="flex flex-col mb-2">
+                  <p className="font-medium mb-2">Shipping:</p>
+                  <span className="font-thin text-secondary-text text-sm flex items-center gap-1">
+                    <FaShippingFast />
+                    {totalPrice.toFixed(2) > 500
+                      ? "Free shipping for orders over $500"
+                      : `Add $${(500 - totalPrice).toFixed(
+                          2
+                        )} more for free shipping`}
                   </span>
                 </div>
                 <p>
