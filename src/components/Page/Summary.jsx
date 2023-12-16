@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { BsFillTrash3Fill } from "react-icons/bs";
 import Lottie from "lottie-react";
 import emptyProduct from "../../lottie/noProduct.json";
+import { NavLink } from "react-router-dom";
 import {
   removeCart,
   increaseCount,
@@ -94,6 +95,19 @@ const Summary = () => {
               </div>
             );
           })}
+          <div className="flex justify-end">
+            <NavLink
+              to="shopping"
+              className="text-primary-blue font-medium text-end"
+            >
+              <p
+                className="bg-sky-200 border-[1px] border-sky-200 hover:bg-white 
+            ease-in-out duration-500 px-2 py-2"
+              >
+                Continue Shopping
+              </p>
+            </NavLink>
+          </div>
         </section>
       )}
       <Footer />
