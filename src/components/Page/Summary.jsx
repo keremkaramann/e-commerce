@@ -134,8 +134,8 @@ const Summary = () => {
               </NavLink>
             </div>
           </div>
-          <div className="flex items-start mt-20">
-            <div className="border-[1px] border-muted-color xs:w-[300px] middle:w-[400px] p-5 leading-10 text-dark-navy">
+          <div className="flex items-start mt-20 xs-p-3 middle:p-0">
+            <div className="border-[1px] border-muted-color xs:w-[290px] middle:w-[400px] p-5 leading-10 text-dark-navy">
               <h1 className="text-dark-navy font-bold text-xl mb-10 mt-2">
                 Order Summary
               </h1>
@@ -144,10 +144,26 @@ const Summary = () => {
                 <p> ${123.99}</p>
               </div>
               <div className="flex justify-between gap-5 text-lg m-2">
-                <div>
+                <div className="flex flex-col mb-3">
                   <p className="font-medium">Shipping:</p>
+                  <span className="font-thin text-secondary-text text-sm">
+                    Free shipping for orders over $500
+                  </span>
                 </div>
                 <p> ${shippingCost}</p>
+              </div>
+              <div className="flex text-lg m-2 flex-wrap xs:justify-center middle:justify-normal mb-5">
+                <p
+                  className=" text-primary-blue font-medium 
+                cursor-pointer border-[1px] bg-sky-200 xs:px-[3.3rem] xs:py-1 middle:py-1 middle:px-4"
+                >
+                  Apply
+                </p>
+                <input
+                  type="text"
+                  placeholder="Promo Code"
+                  className="border-[1px] p-1 xs:w-40 text-muted-color bg-slate-100"
+                />
               </div>
               <div className="flex justify-between gap-5 text-lg m-2 font-bold">
                 <p className="font-bold">Total:</p>
