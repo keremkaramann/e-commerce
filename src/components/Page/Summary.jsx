@@ -163,7 +163,6 @@ const Summary = () => {
                   </span>
                 </div>
                 <p>
-                  {" "}
                   {totalPrice.toFixed(2) > 500
                     ? "-$" + shippingCost
                     : "$" + shippingCost}
@@ -185,11 +184,10 @@ const Summary = () => {
               <div className="flex justify-between gap-5 text-lg m-2 font-bold">
                 <p className="font-bold">Total:</p>
                 <p>
-                  {" "}
                   $
                   {totalPrice.toFixed(2) > 500
-                    ? totalPrice.toFixed(2) - 50
-                    : totalPrice.toFixed(2)}
+                    ? (totalPrice - 50).toFixed(2)
+                    : (totalPrice + 50).toFixed(2)}
                 </p>
               </div>
               <NavLink to="">
