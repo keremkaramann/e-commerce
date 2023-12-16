@@ -74,7 +74,7 @@ const Summary = () => {
                 <div
                   key={item?.product?.id}
                   className={`flex items-center xs:flex-wrap middle:flex-nowrap 
-                            xs:justify-center middle:justify-around gap-3
+                            xs:justify-center middle:justify-around gap-10
                             ${
                               index === 0
                                 ? ""
@@ -160,7 +160,7 @@ const Summary = () => {
                 <div className="flex flex-col mb-2">
                   <p className="font-medium mb-2">Shipping:</p>
                   <span className="font-thin text-secondary-text text-sm flex items-center gap-1">
-                    <FaShippingFast />
+                    <FaShippingFast className="font-medium" />
                     {totalPrice.toFixed(2) > 500
                       ? "Free shipping for orders over $500"
                       : `Add $${(500 - totalPrice).toFixed(
