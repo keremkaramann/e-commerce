@@ -61,7 +61,7 @@ const Summary = () => {
       {cartItems.length <= 0 ? (
         <NoProducts />
       ) : (
-        <section className=" mb-5 p-5 flex justify-around flex-wrap">
+        <section className=" mb-5 p-5 flex justify-evenly flex-wrap">
           <div>
             <h1 className="font-bold text-2xl mb-8 text-dark-navy">
               Your Cart{" "}
