@@ -41,19 +41,19 @@ function App() {
         <Route path="/checkout" exact>
           <ProtectedPage PageComponent={Checkout} fromUrl={"/checkout"} />
         </Route>
-        <Route path="/team">
+        <Route path="/team" exact>
           <Team />
         </Route>
-        <Route path="/about">
+        <Route path="/about" exact>
           <About />
         </Route>
-        <Route path="/contact">
+        <Route path="/contact" exact>
           <Contact />
         </Route>
-        <Route path="/signup">
+        <Route path="/signup" exact>
           <SignUp />
         </Route>
-        <Route path="/login">
+        <Route path="/login" exact>
           <Login />
         </Route>
         <Route path="*">

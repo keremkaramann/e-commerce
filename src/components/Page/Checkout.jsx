@@ -5,6 +5,7 @@ const Checkout = () => {
   return (
     <>
       <Header />
+      <section className="m-10 text-clip"></section>
       <Footer />
     </>
   );
