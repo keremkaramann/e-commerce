@@ -1,17 +1,16 @@
 import Footer from "../Layout/Footer";
-import Header from "../Layout/Header";
 import { useSelector, useDispatch } from "react-redux";
+import Header from "../Layout/Header";
+import OrderSummary from "../Repetitive/OrderSummary";
 import { BsFillTrash3Fill } from "react-icons/bs";
 import Lottie from "lottie-react";
 import emptyProduct from "../../lottie/noProduct.json";
 import { NavLink } from "react-router-dom";
-
 import {
   removeCart,
   increaseCount,
   decreaseCount,
 } from "../../store/actions/shoppingCartAction";
-import OrderSummary from "../Repetitive/OrderSummary";
 
 const Summary = () => {
   const cartItems = useSelector((store) => store.cart.cart);

@@ -273,7 +273,7 @@ const Header = () => {
                   className="text-xl cursor-pointer cart-active"
                   onClick={toggleCart}
                 />
-                <p className="text-white absolute text-xs bg-red-700 rounded-full px-1.5 top-[-10px] left-3">
+                <p className="text-white absolute text-xs bg-red-700 rounded-[50%] px-1.5 top-[-8px] left-3">
                   {itemCount?.length}
                 </p>
                 {showCart && (
@@ -393,7 +393,7 @@ const Header = () => {
                 <NavLink to="/summary">
                   <AiOutlineShoppingCart />
                 </NavLink>
-                <p className="text-white absolute text-xs bg-red-700 rounded-full px-1.5 top-[-8px] left-3">
+                <p className="text-white absolute text-xs bg-red-700 rounded-[50%] px-1.5 top-[-8px] left-3">
                   {itemCount.length}
                 </p>
               </div>
