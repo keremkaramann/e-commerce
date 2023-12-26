@@ -36,6 +36,9 @@ function App() {
         <Route path="/summary" exact>
           <Summary />
         </Route>
+        <Route path="/checkout" exact>
+          <Checkout />
+        </Route>
         <Route path="/team">
           <Team />
         </Route>
