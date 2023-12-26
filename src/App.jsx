@@ -14,6 +14,7 @@ import Login from "./components/Page/Login";
 import Error from "./components/Page/Error";
 import Summary from "./components/Page/Summary";
 import Checkout from "./components/Page/Checkout";
+import ProtectedPage from "./components/Page/ProtectedPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -38,7 +39,7 @@ function App() {
           <Summary />
         </Route>
         <Route path="/checkout" exact>
-          <Checkout />
+          <ProtectedPage PageComponent={Checkout} fromUrl={"/checkout"} />
         </Route>
         <Route path="/team">
           <Team />

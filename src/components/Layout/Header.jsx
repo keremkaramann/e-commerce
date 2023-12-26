@@ -367,9 +367,11 @@ const Header = () => {
                           View Order
                         </button>
                       </NavLink>
-                      <button className="text-white bg-primary-blue px-8 py-2 border-[1px] rounded-md hover:bg-dark-navy duration-500 ease-in-out">
-                        Checkout
-                      </button>
+                      <NavLink to="/checkout">
+                        <button className="text-white bg-primary-blue px-8 py-2 border-[1px] rounded-md hover:bg-dark-navy duration-500 ease-in-out">
+                          Checkout
+                        </button>
+                      </NavLink>
                     </div>
                   </div>
                 )}
