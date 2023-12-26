@@ -196,7 +196,7 @@ const Summary = () => {
                     : (totalPrice + 50).toFixed(2)}
                 </p>
               </div>
-              <NavLink to="">
+              <NavLink to="/checkout">
                 <div
                   className="flex items-center justify-center mt-5
                 gap-2 bg-dark-navy py-2 text-white font-medium"
