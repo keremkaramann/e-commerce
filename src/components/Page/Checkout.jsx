@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import Footer from "../Layout/Footer";
 import Header from "../Layout/Header";
+import cityList from "../../data/cityList";
 import OrderSummary from "../Repetitive/OrderSummary";
 import { FaPlus } from "react-icons/fa6";
 import { AiOutlineClose } from "react-icons/ai";
@@ -95,7 +96,7 @@ const Checkout = () => {
         {showAddressInput && (
           <div className="block">
             <div className="fixed align-middle z-50 top-0 left-0 w-full h-full overflow-scroll bg-slate-300/50">
-              <div className="bg-white m-auto overflow-x-hidden overflow-y-auto max-w-[520px] rounded-lg">
+              <div className="bg-white mx-auto my-14 overflow-x-hidden overflow-y-auto max-w-[520px] max-h-[620px] rounded-lg">
                 <div className="flex flex-row justify-between border-b-[1px] border-muted-color p-3">
                   <h2 className="font-bold text-dark-navy text-lg">
                     Add New Address
@@ -104,7 +105,7 @@ const Checkout = () => {
                     <AiOutlineClose className="text-2xl" />
                   </button>
                 </div>
-                <div className="p-3 flex justify-around gap-5">
+                <div className="p-3 flex justify-around gap-2 flex-wrap">
                   <div className="flex flex-col">
                     <label
                       htmlFor="name"
@@ -166,10 +167,10 @@ const Checkout = () => {
                     )}
                   </div>
                 </div>
-                <div className="p-3 flex justify-around gap-5">
+                <div className="p-3 flex justify-around gap-2 flex-wrap">
                   <div className="flex flex-col">
                     <label
-                      htmlFor="name"
+                      htmlFor="phone"
                       className="text-dark-navy font-bold mb-2"
                     >
                       Phone*
@@ -204,28 +205,164 @@ const Checkout = () => {
                     >
                       City*
                     </label>
-                    <input
-                      type="text"
+                    <select
                       id="city"
                       {...register("city", {
-                        required: "city is Required!",
-                        minLength: {
-                          value: 3,
-                          message: "At least 3 characters!",
-                        },
-                        pattern: {
-                          value: /^[A-Za-zıöÖİğĞşŞçÇ ]+$/,
-                          message: "Please enter only letters (A-Z, a-z).",
-                        },
+                        required: "City is required!",
                       })}
-                      className="bg-gray-200/50 focus:bg-white p-2 rounded-lg"
-                      placeholder="city"
-                    />
+                      className="bg-gray-200/50 focus:bg-white p-2 w-[194px] h-[40px] rounded-lg"
+                    >
+                      <option value="" disabled>
+                        Select a city
+                      </option>
+                      {cityList.map((city, id) => {
+                        return (
+                          <option key={id} value={city.name}>
+                            {city.name}
+                          </option>
+                        );
+                      })}
+                    </select>
                     {errors.city && (
                       <p className="text-red-600 font-medium text-sm animate-shake">
                         {errors.city?.message}
                       </p>
                     )}
+                  </div>
+                </div>
+                <div className="p-3 flex justify-around gap-2 flex-wrap">
+                  <div className="flex flex-col">
+                    <label
+                      htmlFor="district"
+                      className="text-dark-navy font-bold mb-2"
+                    >
+                      District*
+                    </label>
+                    <input
+                      type="text"
+                      id="district"
+                      {...register("district", {
+                        required: "District is Required!",
+                        minLength: {
+                          value: 4,
+                          message: "Enter valid district",
+                        },
+                        pattern: {
+                          value: /^[A-Za-z]{4,}$/,
+                          message: "Please enter more than 4 characters!",
+                        },
+                      })}
+                      className="bg-gray-200/50 focus:bg-white p-2 rounded-lg"
+                      placeholder="District"
+                    />
+                    {errors.district && (
+                      <p className="text-red-600 font-medium text-sm animate-shake">
+                        {errors.district?.message}
+                      </p>
+                    )}
+                  </div>
+                  <div className="flex flex-col">
+                    <label
+                      htmlFor="neighborhood"
+                      className="text-dark-navy font-bold mb-2"
+                    >
+                      Neighborhood*
+                    </label>
+                    <input
+                      type="text"
+                      id="neighborhood"
+                      {...register("neighborhood", {
+                        required: "Neighborhood is Required!",
+                        minLength: {
+                          value: 4,
+                          message: "Enter valid neighborhood",
+                        },
+                        pattern: {
+                          value: /^[A-Za-z]{4,}$/,
+                          message: "Please enter more than 4 characters!",
+                        },
+                      })}
+                      className="bg-gray-200/50 focus:bg-white p-2 rounded-lg"
+                      placeholder="Neighborhood"
+                    />
+                    {errors.neighborhood && (
+                      <p className="text-red-600 font-medium text-sm animate-shake">
+                        {errors.neighborhood?.message}
+                      </p>
+                    )}
+                  </div>
+                </div>
+                <div className="p-3 ml-5 mr-5">
+                  <div className="">
+                    <label
+                      htmlFor="address"
+                      className="text-dark-navy font-bold mb-2"
+                    >
+                      Address*
+                    </label>
+                    <textarea
+                      id="address"
+                      {...register("address", {
+                        required: "Address is Required!",
+                        minLength: {
+                          value: 4,
+                          message: "Enter valid Address",
+                        },
+                        pattern: {
+                          value: /^[A-Za-z]{4,}$/,
+                          message: "Please enter more than 4 characters!",
+                        },
+                      })}
+                      className="bg-gray-200/50 focus:bg-white p-2 rounded-lg w-full"
+                      placeholder="Address"
+                    />
+                    {errors.address && (
+                      <p className="text-red-600 font-medium text-sm animate-shake">
+                        {errors.address?.message}
+                      </p>
+                    )}
+                  </div>
+                </div>
+                <div className="p-3 ml-5 mr-5">
+                  <div className="">
+                    <label
+                      htmlFor="title"
+                      className="text-dark-navy font-bold mb-2"
+                    >
+                      Address Title*
+                    </label>
+                    <input
+                      type="input"
+                      id="title"
+                      {...register("title", {
+                        required: "Title is Required!",
+                        minLength: {
+                          value: 4,
+                          message: "Enter valid title",
+                        },
+                        pattern: {
+                          value: /^[A-Za-z]{4,}$/,
+                          message: "Please enter more than 4 characters!",
+                        },
+                      })}
+                      className="bg-gray-200/50 focus:bg-white p-2 rounded-lg w-full"
+                      placeholder="Title"
+                    />
+                    {errors.title && (
+                      <p className="text-red-600 font-medium text-sm animate-shake">
+                        {errors.title?.message}
+                      </p>
+                    )}
+                  </div>
+                </div>
+                <div className="p-3 ml-5 mr-5">
+                  <div className="flex justify-center">
+                    <button
+                      className="font-bold text-white px-36 
+                    py-3 bg-primary-blue hover:bg-black duration-500 ease-in-out rounded-md"
+                    >
+                      Add
+                    </button>
                   </div>
                 </div>
               </div>
