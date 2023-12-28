@@ -1,3 +1,5 @@
+import { API } from "../../endpoint/instance";
+
 export const ADD_CART = "ADD_CART";
 export const REMOVE_CART = "REMOVE_CART";
 export const PAYMENT = "PAYMENT";
@@ -32,13 +34,19 @@ export const decreaseCount = (productId) => ({
 });
 
 export const saveAddress = (data) => (dispatch) => {
-  console.log(data);
-  API.post("user/address", data)
+  const getToken = localStorage.getItem("token");
+
+  const headers = getToken
+    ? {
+        Authorization: `${getToken}`,
+      }
+    : {};
+
+  API.post("user/address", data, { headers })
     .then((res) => {
       dispatch(address(res.data));
     })
     .catch((err) => {
       console.log(err);
-      dispatch(failed(id));
     });
 };

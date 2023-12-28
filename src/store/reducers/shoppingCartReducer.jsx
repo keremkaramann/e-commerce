@@ -81,7 +81,7 @@ const shoppingCartReducer = (state = shoppingInitialState, action) => {
     case ADDRESS:
       return {
         ...state,
-        address: action.payload,
+        address: { ...state.address, ...action.payload },
       };
     default:
       return state;
