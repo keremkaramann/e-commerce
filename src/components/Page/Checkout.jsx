@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
+import { saveAddress } from "../../store/actions/shoppingCartAction";
 import Footer from "../Layout/Footer";
 import Header from "../Layout/Header";
 import cityList from "../../data/cityList";
@@ -32,7 +33,9 @@ const Checkout = () => {
   const handleAddNewAddress = () => {
     setShowAddressInput(!showAddressInput);
   };
-  const handleForm = (data) => {};
+  const handleForm = (data) => {
+    dispatch(saveAddress(data));
+  };
 
   return (
     <>

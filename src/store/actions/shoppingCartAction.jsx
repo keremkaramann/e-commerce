@@ -32,7 +32,8 @@ export const decreaseCount = (productId) => ({
 });
 
 export const saveAddress = (data) => (dispatch) => {
-  API.post(`/user/address`, data)
+  console.log(data);
+  API.post("user/address", data)
     .then((res) => {
       dispatch(address(res.data));
     })
