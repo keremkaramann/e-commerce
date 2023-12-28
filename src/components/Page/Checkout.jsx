@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
 import Footer from "../Layout/Footer";
 import Header from "../Layout/Header";
 import cityList from "../../data/cityList";
@@ -9,7 +10,7 @@ import { FaPlus } from "react-icons/fa6";
 import { AiOutlineClose } from "react-icons/ai";
 const Checkout = () => {
   const [showAddressInput, setShowAddressInput] = useState(false);
-
+  const dispatch = useDispatch();
   const {
     register,
     handleSubmit,

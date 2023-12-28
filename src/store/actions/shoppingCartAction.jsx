@@ -30,3 +30,14 @@ export const decreaseCount = (productId) => ({
   type: DECREASE_COUNT,
   payload: productId,
 });
+
+export const saveAddress = (data) => (dispatch) => {
+  API.post(`/user/address`, data)
+    .then((res) => {
+      dispatch(address(res.data));
+    })
+    .catch((err) => {
+      console.log(err);
+      dispatch(failed(id));
+    });
+};
