@@ -17,9 +17,9 @@ export const payment = (id) => ({
   type: PAYMENT,
   payload: id,
 });
-export const address = (id) => ({
+export const address = (data) => ({
   type: ADDRESS,
-  payload: id,
+  payload: data,
 });
 export const increaseCount = (productId) => ({
   type: INCREASE_COUNT,
