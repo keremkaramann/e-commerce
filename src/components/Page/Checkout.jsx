@@ -87,7 +87,7 @@ const Checkout = () => {
         </div>
         <div className="flex justify-center pt-8">
           <NavLink
-            to="shopping"
+            to="/shopping"
             className="text-primary-blue font-medium text-end"
           >
             <p
