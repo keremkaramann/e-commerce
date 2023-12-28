@@ -37,7 +37,7 @@ const Login = () => {
       <Header />
       <section className="xs:w-3/4 middle:w-[22%]  xs:p-1 middle:p-0 mx-auto mt-20 mb-20">
         <h2 className="mb-10 font-bold text-4xl text-dark-navy">Login</h2>
-        <form onSubmit={handleSubmit(handleForm)} className="">
+        <form onSubmit={handleSubmit(handleForm)}>
           <div className="flex gap-2 flex-col mb-6">
             <label htmlFor="email" className="text-dark-navy font-bold ">
               Email
