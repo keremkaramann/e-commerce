@@ -41,7 +41,7 @@ const Checkout = () => {
   };
 
   useEffect(() => {
-    dispatch(fetchAddress);
+    dispatch(fetchAddress());
   }, []);
   return (
     <>

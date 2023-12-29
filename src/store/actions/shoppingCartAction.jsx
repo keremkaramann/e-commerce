@@ -56,6 +56,13 @@ export const saveAddress = (data) => (dispatch) => {
     });
 };
 export const fetchAddress = () => (dispatch) => {
+  const getToken = localStorage.getItem("token");
+
+  const headers = getToken
+    ? {
+        Authorization: `${getToken}`,
+      }
+    : {};
   API.get("user/address", { headers })
     .then((res) => {
       dispatch(getAddress(res.data));
