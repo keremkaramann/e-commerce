@@ -4,6 +4,7 @@ export const ADD_CART = "ADD_CART";
 export const REMOVE_CART = "REMOVE_CART";
 export const PAYMENT = "PAYMENT";
 export const ADDRESS = "ADDRESS";
+export const GET_ADDRESS = "GET_ADDRESS";
 export const INCREASE_COUNT = "INCREASE_COUNT";
 export const DECREASE_COUNT = "DECREASE_COUNT";
 
@@ -33,6 +34,10 @@ export const decreaseCount = (productId) => ({
   payload: productId,
 });
 
+export const getAddress = (data) => ({
+  type: GET_ADDRESS,
+  payload: data,
+});
 export const saveAddress = (data) => (dispatch) => {
   const getToken = localStorage.getItem("token");
 
@@ -48,5 +53,14 @@ export const saveAddress = (data) => (dispatch) => {
     })
     .catch((err) => {
       console.log(err);
+    });
+};
+export const fetchAddress = () => (dispatch) => {
+  API.get("user/address", { headers })
+    .then((res) => {
+      dispatch(getAddress(res.data));
+    })
+    .catch((err) => {
+      console.error("Error fetching address: ", err);
     });
 };

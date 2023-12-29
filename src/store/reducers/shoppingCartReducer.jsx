@@ -5,6 +5,7 @@ import {
   REMOVE_CART,
   INCREASE_COUNT,
   DECREASE_COUNT,
+  GET_ADDRESS,
 } from "../actions/shoppingCartAction";
 
 const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
