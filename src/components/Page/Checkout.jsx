@@ -16,7 +16,7 @@ const Checkout = () => {
   const [shipToSameAddress, setShipToSameAddress] = useState(true);
   const addressStore = useSelector((store) => store.cart.address);
   const billingAddress = useSelector((store) => store.cart.billing);
-  console.log(billingAddress.title);
+
   const dispatch = useDispatch();
 
   const handleAddNewAddress = () => {
@@ -90,7 +90,7 @@ const Checkout = () => {
                             type="radio"
                             id="titleAddress"
                             name="titleAddress"
-                            checked
+                            defaultChecked
                           />
                           <label htmlFor="titleAddress">
                             {address?.title
@@ -147,7 +147,7 @@ const Checkout = () => {
                       </button>
                     </div>
                   </div>
-                  {billingAddress && (
+                  {billingAddress && billingAddress > 0 && (
                     <div className="ml-4">
                       <div className="flex justify-between mb-2">
                         <div className="flex gap-1">
@@ -155,7 +155,7 @@ const Checkout = () => {
                             type="radio"
                             id="titleAddress"
                             name="titleAddress"
-                            checked
+                            defaultChecked
                           />
                           <label htmlFor="titleAddress">
                             {billingAddress?.title
