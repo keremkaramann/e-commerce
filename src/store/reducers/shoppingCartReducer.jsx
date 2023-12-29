@@ -15,7 +15,7 @@ const shoppingInitialState = {
   cart: storedCart,
   payment: {},
   address: {},
-  billing: {},
+  billing: [],
 };
 
 const shoppingCartReducer = (state = shoppingInitialState, action) => {
@@ -92,9 +92,14 @@ const shoppingCartReducer = (state = shoppingInitialState, action) => {
         address: { ...state.address, ...action.payload },
       };
     case SAVE_BILLING:
+      const newBillingEntry = {
+        ...action.payload,
+        id: Date.now() + Math.random(),
+      };
+      const updatedBilling = [...state.billing, newBillingEntry];
       return {
         ...state,
-        billing: { ...state.billing, ...action.payload },
+        billing: updatedBilling,
       };
     default:
       return state;

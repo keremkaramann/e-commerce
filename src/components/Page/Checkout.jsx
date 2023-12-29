@@ -16,7 +16,7 @@ const Checkout = () => {
   const [shipToSameAddress, setShipToSameAddress] = useState(true);
   const addressStore = useSelector((store) => store.cart.address);
   const billingAddress = useSelector((store) => store.cart.billing);
-
+  console.log(billingAddress);
   const dispatch = useDispatch();
 
   const handleAddNewAddress = () => {
@@ -70,7 +70,7 @@ const Checkout = () => {
                   Shipping Address
                 </h1>
                 <div className="mb-10">
-                  <div className="bg-slate-200 px-16 rounded-md">
+                  <div className="bg-slate-200 px-16 rounded-md flex justify-center">
                     <button
                       className="flex flex-col items-center gap-3 text-xl p-4"
                       onClick={handleAddNewAddress}
@@ -83,7 +83,7 @@ const Checkout = () => {
                 {Object.keys(addressStore)?.map((key, index) => {
                   let address = addressStore[key];
                   return (
-                    <div key={index}>
+                    <div key={index} className="mb-5">
                       <div className="flex justify-between mb-2">
                         <div className="flex gap-1">
                           <input
@@ -105,7 +105,7 @@ const Checkout = () => {
                           </span>
                         </div>
                       </div>
-                      <div className="bg-sky-200/50 border-2 border-primary-blue px-3 py-5 rounded-md">
+                      <div className="bg-sky-200/50 border-2 border-primary-blue px-3 py-5 rounded-md xs:w-full middle:w-[338px]">
                         <div>
                           <div className="flex justify-between text-xs font-bold">
                             <div className="flex items-center gap-1">
@@ -137,7 +137,7 @@ const Checkout = () => {
                     Bill Address
                   </h1>
                   <div className="px-3 mb-10">
-                    <div className="bg-slate-200 px-16 rounded-md">
+                    <div className="bg-slate-200 px-16 rounded-md flex justify-center">
                       <button
                         className="flex flex-col items-center gap-3 text-xl p-4"
                         onClick={handleBilling}
@@ -147,55 +147,58 @@ const Checkout = () => {
                       </button>
                     </div>
                   </div>
-                  {billingAddress && billingAddress > 0 && (
-                    <div className="ml-4">
-                      <div className="flex justify-between mb-2">
-                        <div className="flex gap-1">
-                          <input
-                            type="radio"
-                            id="titleAddress"
-                            name="titleAddress"
-                            defaultChecked
-                          />
-                          <label htmlFor="titleAddress">
-                            {billingAddress?.title
-                              ? billingAddress.title.charAt(0).toUpperCase() +
-                                billingAddress.title.slice(1)
-                              : ""}
-                          </label>
-                        </div>
-                        <div>
-                          <span className="border-b-[2px] border-dark-navy cursor-pointer text-sm">
-                            Edit
-                          </span>
-                        </div>
-                      </div>
-                      <div className="bg-sky-200/50 border-2 border-primary-blue px-3 py-5 rounded-md">
-                        <div>
-                          <div className="flex justify-between text-xs font-bold">
-                            <div className="flex items-center gap-1">
-                              <IoMdPerson className="text-xl" />
-                              <span>
-                                {billingAddress?.name} {billingAddress?.surname}
-                              </span>
-                            </div>
-                            <div className="flex items-center">
-                              <IoIosPhonePortrait className="text-xl" />
-                              <span>
-                                {formatPhoneNumber(billingAddress?.phone)}
-                              </span>
-                            </div>
+                  {billingAddress?.map((billAddress, index) => {
+                    console.log(billAddress);
+                    return (
+                      <div className="ml-4" key={index}>
+                        <div className="flex justify-between mb-2">
+                          <div className="flex gap-1">
+                            <input
+                              type="radio"
+                              id="titleAddress"
+                              name="titleAddress"
+                              defaultChecked
+                            />
+                            <label htmlFor="titleAddress">
+                              {billAddress?.title
+                                ? billAddress.title.charAt(0).toUpperCase() +
+                                  billAddress.title.slice(1)
+                                : ""}
+                            </label>
                           </div>
-                          <div className="text-sm mt-5 font-bold">
-                            <p>{billingAddress?.address}</p>
-                            <p>
-                              {billingAddress?.district}/{billingAddress?.city}
-                            </p>
+                          <div>
+                            <span className="border-b-[2px] border-dark-navy cursor-pointer text-sm">
+                              Edit
+                            </span>
                           </div>
                         </div>
+                        <div className="bg-sky-200/50 border-2 border-primary-blue px-3 py-5 rounded-md xs:w-full middle:w-[338px]">
+                          <div>
+                            <div className="flex justify-between text-xs font-bold">
+                              <div className="flex items-center gap-1">
+                                <IoMdPerson className="text-xl" />
+                                <span>
+                                  {billAddress?.name} {billAddress?.surname}
+                                </span>
+                              </div>
+                              <div className="flex items-center">
+                                <IoIosPhonePortrait className="text-xl" />
+                                <span>
+                                  {formatPhoneNumber(billAddress?.phone)}
+                                </span>
+                              </div>
+                            </div>
+                            <div className="text-sm mt-5 font-bold">
+                              <p>{billAddress?.address}</p>
+                              <p>
+                                {billAddress?.district}/{billAddress?.city}
+                              </p>
+                            </div>
+                          </div>
+                        </div>
                       </div>
-                    </div>
-                  )}
+                    );
+                  })}
                 </div>
               )}
             </div>
