@@ -61,6 +61,7 @@ const Checkout = () => {
   useEffect(() => {
     dispatch(fetchAddress);
   }, []);
+
   return (
     <>
       <Header />
@@ -83,10 +84,10 @@ const Checkout = () => {
                 <h1 className="text-2xl font-bold mb-10 text-left mt-10 pl-5">
                   Shipping Address
                 </h1>
-                <div className="px-3 mb-10">
-                  <div className="bg-slate-200 px-16">
+                <div className="mb-10">
+                  <div className="bg-slate-200 px-16 rounded-md">
                     <button
-                      className="flex flex-col items-center gap-3 text-xl p-4 "
+                      className="flex flex-col items-center gap-3 text-xl p-4"
                       onClick={handleAddNewAddress}
                     >
                       <FaPlus />
@@ -94,41 +95,49 @@ const Checkout = () => {
                     </button>
                   </div>
                 </div>
-                <div>
-                  <div className="flex justify-between mb-2">
-                    <div className="flex gap-1">
-                      <input
-                        type="radio"
-                        id="titleAddress"
-                        name="titleAddress"
-                      />
-                      <label htmlFor="titleAddress">Ev</label>
-                    </div>
-                    <div>
-                      <span className="border-b-[2px] border-dark-navy cursor-pointer">
-                        Edit
-                      </span>
-                    </div>
-                  </div>
-                  <div className="bg-sky-200/50 px-3 py-5 rounded-md">
-                    <div>
-                      <div className="flex justify-between text-xs font-bold">
-                        <div className="flex items-center gap-1">
-                          <IoMdPerson className="text-xl" />
-                          <span>kerem karaman</span>
-                        </div>
-                        <div className="flex items-center">
-                          <IoIosPhonePortrait className="text-xl" />
-                          <span>{formatPhoneNumber("05555555555")}</span>
-                        </div>
+                {addressStore.length > 0 && (
+                  <div>
+                    <div className="flex justify-between mb-2">
+                      <div className="flex gap-1">
+                        <input
+                          type="radio"
+                          id="titleAddress"
+                          name="titleAddress"
+                        />
+                        <label htmlFor="titleAddress">
+                          {addressStore?.title?.toUpperCase()}
+                        </label>
                       </div>
-                      <div className="text-sm mt-5 font-bold">
-                        <p>Sancak Mah 552. SOKAK 5\8 YILDIZ</p>
-                        <p>Çankaya/Ankara</p>
+                      <div>
+                        <span className="border-b-[2px] border-dark-navy cursor-pointer text-sm">
+                          Edit
+                        </span>
                       </div>
                     </div>
+                    <div className="bg-sky-200/50 border-2 border-primary-blue px-3 py-5 rounded-md">
+                      <div>
+                        <div className="flex justify-between text-xs font-bold">
+                          <div className="flex items-center gap-1">
+                            <IoMdPerson className="text-xl" />
+                            <span>
+                              {addressStore?.name} {addressStore?.surname}
+                            </span>
+                          </div>
+                          <div className="flex items-center">
+                            <IoIosPhonePortrait className="text-xl" />
+                            <span>{formatPhoneNumber(addressStore.phone)}</span>
+                          </div>
+                        </div>
+                        <div className="text-sm mt-5 font-bold">
+                          <p>{addressStore?.address}</p>
+                          <p>
+                            {addressStore?.district}/{addressStore?.city}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                </div>
+                )}
               </div>
               {!shipToSameAddress && (
                 <div className="text-dark-navy mt-5">
@@ -136,7 +145,7 @@ const Checkout = () => {
                     Bill Address
                   </h1>
                   <div className="px-3 mb-10">
-                    <div className="bg-slate-200 px-16">
+                    <div className="bg-slate-200 px-16 rounded-md">
                       <button className="flex flex-col items-center gap-3 text-xl p-4">
                         <FaPlus />
                         Add New Address
