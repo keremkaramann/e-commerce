@@ -1,17 +1,24 @@
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { useDispatch } from "react-redux";
-import { saveAddress } from "../../store/actions/shoppingCartAction";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  fetchAddress,
+  saveAddress,
+} from "../../store/actions/shoppingCartAction";
 import Footer from "../Layout/Footer";
 import Header from "../Layout/Header";
 import cityList from "../../data/cityList";
 import OrderSummary from "../Repetitive/OrderSummary";
 import { FaPlus } from "react-icons/fa6";
 import { AiOutlineClose } from "react-icons/ai";
+import { IoMdPerson, IoIosPhonePortrait } from "react-icons/io";
+import { useEffect } from "react";
 const Checkout = () => {
   const [showAddressInput, setShowAddressInput] = useState(false);
   const [shipToSameAddress, setShipToSameAddress] = useState(true);
+  const addressStore = useSelector((store) => store.cart.address);
+  console.log(addressStore);
   const dispatch = useDispatch();
   const {
     register,
@@ -41,6 +48,19 @@ const Checkout = () => {
     dispatch(saveAddress(data));
   };
 
+  const formatPhoneNumber = (phoneNumber) => {
+    const formattedNumber =
+      "(" +
+      phoneNumber.slice(1, 4) +
+      ") " +
+      phoneNumber.slice(4, 7) +
+      " *** ** " +
+      phoneNumber.slice(9);
+    return formattedNumber;
+  };
+  useEffect(() => {
+    dispatch(fetchAddress);
+  }, []);
   return (
     <>
       <Header />
@@ -72,6 +92,41 @@ const Checkout = () => {
                       <FaPlus />
                       Add New Address
                     </button>
+                  </div>
+                </div>
+                <div>
+                  <div className="flex justify-between mb-2">
+                    <div className="flex gap-1">
+                      <input
+                        type="radio"
+                        id="titleAddress"
+                        name="titleAddress"
+                      />
+                      <label htmlFor="titleAddress">Ev</label>
+                    </div>
+                    <div>
+                      <span className="border-b-[2px] border-dark-navy cursor-pointer">
+                        Edit
+                      </span>
+                    </div>
+                  </div>
+                  <div className="bg-sky-200/50 px-3 py-5 rounded-md">
+                    <div>
+                      <div className="flex justify-between text-xs font-bold">
+                        <div className="flex items-center gap-1">
+                          <IoMdPerson className="text-xl" />
+                          <span>kerem karaman</span>
+                        </div>
+                        <div className="flex items-center">
+                          <IoIosPhonePortrait className="text-xl" />
+                          <span>{formatPhoneNumber("05555555555")}</span>
+                        </div>
+                      </div>
+                      <div className="text-sm mt-5 font-bold">
+                        <p>Sancak Mah 552. SOKAK 5\8 YILDIZ</p>
+                        <p>Çankaya/Ankara</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
