@@ -25,9 +25,6 @@ const Checkout = () => {
   const handleCheckboxChange = () => {
     setShipToSameAddress(!shipToSameAddress);
   };
-  const handleForm = (data) => {
-    dispatch(saveAddress(data));
-  };
 
   const formatPhoneNumber = (phoneNumber) => {
     const formattedNumber =
@@ -43,6 +40,7 @@ const Checkout = () => {
   useEffect(() => {
     dispatch(fetchAddress());
   }, []);
+
   return (
     <>
       <Header />
