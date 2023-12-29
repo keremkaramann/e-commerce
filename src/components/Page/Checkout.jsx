@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -8,36 +8,17 @@ import {
 } from "../../store/actions/shoppingCartAction";
 import Footer from "../Layout/Footer";
 import Header from "../Layout/Header";
-import cityList from "../../data/cityList";
-import OrderSummary from "../Repetitive/OrderSummary";
 import { FaPlus } from "react-icons/fa6";
-import { AiOutlineClose } from "react-icons/ai";
-import { IoMdPerson, IoIosPhonePortrait } from "react-icons/io";
-import { useEffect } from "react";
+import OrderSummary from "../Repetitive/OrderSummary";
 import AddressField from "../Repetitive/AddressField";
+import { IoMdPerson, IoIosPhonePortrait } from "react-icons/io";
+
 const Checkout = () => {
   const [showAddressInput, setShowAddressInput] = useState(false);
   const [shipToSameAddress, setShipToSameAddress] = useState(true);
   const addressStore = useSelector((store) => store.cart.address);
-  console.log(addressStore);
+
   const dispatch = useDispatch();
-  const {
-    register,
-    handleSubmit,
-    formState: { errors, isValid },
-  } = useForm({
-    defaultValues: {
-      title: "",
-      name: "",
-      surname: "",
-      phone: "",
-      city: "",
-      district: "",
-      neighborhood: "",
-      address: "",
-    },
-    mode: "all",
-  });
 
   const handleAddNewAddress = () => {
     setShowAddressInput(!showAddressInput);
