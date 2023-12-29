@@ -11,6 +11,7 @@ import { FaPlus } from "react-icons/fa6";
 import { AiOutlineClose } from "react-icons/ai";
 const Checkout = () => {
   const [showAddressInput, setShowAddressInput] = useState(false);
+  const [shipToSameAddress, setShipToSameAddress] = useState(true);
   const dispatch = useDispatch();
   const {
     register,
@@ -33,6 +34,9 @@ const Checkout = () => {
   const handleAddNewAddress = () => {
     setShowAddressInput(!showAddressInput);
   };
+  const handleCheckboxChange = () => {
+    setShipToSameAddress(!shipToSameAddress);
+  };
   const handleForm = (data) => {
     dispatch(saveAddress(data));
   };
@@ -44,7 +48,12 @@ const Checkout = () => {
         <div className="flex xs:justify-center middle:justify-around flex-wrap ">
           <div className="border-y-[1px] border-muted-color gap-4">
             <div className="flex flex-row gap-2 cursor-pointer justify-end mt-10">
-              <input type="checkbox" id="sameAddressCheckbox" />
+              <input
+                type="checkbox"
+                id="sameAddressCheckbox"
+                checked={shipToSameAddress}
+                onChange={handleCheckboxChange}
+              />
               <label htmlFor="sameAddressCheckbox">
                 Ship to the same address as billing
               </label>
@@ -66,19 +75,21 @@ const Checkout = () => {
                   </div>
                 </div>
               </div>
-              <div className="text-dark-navy mt-5">
-                <h1 className="text-2xl font-bold mb-10 text-left mt-10 pl-5">
-                  Bill Address
-                </h1>
-                <div className="px-3 mb-10">
-                  <div className="bg-slate-200 px-16">
-                    <button className="flex flex-col items-center gap-3 text-xl p-4">
-                      <FaPlus />
-                      Add New Address
-                    </button>
+              {!shipToSameAddress && (
+                <div className="text-dark-navy mt-5">
+                  <h1 className="text-2xl font-bold mb-10 text-left mt-10 pl-5">
+                    Bill Address
+                  </h1>
+                  <div className="px-3 mb-10">
+                    <div className="bg-slate-200 px-16">
+                      <button className="flex flex-col items-center gap-3 text-xl p-4">
+                        <FaPlus />
+                        Add New Address
+                      </button>
+                    </div>
                   </div>
                 </div>
-              </div>
+              )}
             </div>
           </div>
           <div>
