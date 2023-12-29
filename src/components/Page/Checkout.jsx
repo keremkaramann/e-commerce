@@ -8,22 +8,31 @@ import { FaPlus } from "react-icons/fa6";
 import OrderSummary from "../Repetitive/OrderSummary";
 import AddressField from "../Repetitive/AddressField";
 import { IoMdPerson, IoIosPhonePortrait } from "react-icons/io";
+import BillingField from "../Repetitive/BillingField";
 
 const Checkout = () => {
   const [showAddressInput, setShowAddressInput] = useState(false);
+  const [showBilling, setShowBilling] = useState(false);
   const [shipToSameAddress, setShipToSameAddress] = useState(true);
   const addressStore = useSelector((store) => store.cart.address);
-
+  const billingAddress = useSelector((store) => store.cart.billing);
+  console.log(billingAddress.title);
   const dispatch = useDispatch();
 
   const handleAddNewAddress = () => {
     setShowAddressInput(!showAddressInput);
+  };
+  const handleBilling = () => {
+    setShowBilling(!showBilling);
   };
   const handleCheckboxChange = () => {
     setShipToSameAddress(!shipToSameAddress);
   };
 
   const formatPhoneNumber = (phoneNumber) => {
+    if (phoneNumber == null) {
+      return;
+    }
     const formattedNumber =
       "(" +
       phoneNumber.slice(1, 4) +
@@ -55,7 +64,7 @@ const Checkout = () => {
                 Ship to the same address as billing
               </label>
             </div>
-            <div className="flex flex-wrap middle:justify-normal xs:justify-center mb-10">
+            <div className="flex flex-wrap middle:justify-normal xs:justify-center mb-10 gap-3">
               <div className="text-dark-navy mt-5">
                 <h1 className="text-2xl font-bold mb-10 text-left mt-10 pl-5">
                   Shipping Address
@@ -129,12 +138,64 @@ const Checkout = () => {
                   </h1>
                   <div className="px-3 mb-10">
                     <div className="bg-slate-200 px-16 rounded-md">
-                      <button className="flex flex-col items-center gap-3 text-xl p-4">
+                      <button
+                        className="flex flex-col items-center gap-3 text-xl p-4"
+                        onClick={handleBilling}
+                      >
                         <FaPlus />
                         Add New Address
                       </button>
                     </div>
                   </div>
+                  {billingAddress && (
+                    <div className="ml-4">
+                      <div className="flex justify-between mb-2">
+                        <div className="flex gap-1">
+                          <input
+                            type="radio"
+                            id="titleAddress"
+                            name="titleAddress"
+                            checked
+                          />
+                          <label htmlFor="titleAddress">
+                            {billingAddress?.title
+                              ? billingAddress.title.charAt(0).toUpperCase() +
+                                billingAddress.title.slice(1)
+                              : ""}
+                          </label>
+                        </div>
+                        <div>
+                          <span className="border-b-[2px] border-dark-navy cursor-pointer text-sm">
+                            Edit
+                          </span>
+                        </div>
+                      </div>
+                      <div className="bg-sky-200/50 border-2 border-primary-blue px-3 py-5 rounded-md">
+                        <div>
+                          <div className="flex justify-between text-xs font-bold">
+                            <div className="flex items-center gap-1">
+                              <IoMdPerson className="text-xl" />
+                              <span>
+                                {billingAddress?.name} {billingAddress?.surname}
+                              </span>
+                            </div>
+                            <div className="flex items-center">
+                              <IoIosPhonePortrait className="text-xl" />
+                              <span>
+                                {formatPhoneNumber(billingAddress?.phone)}
+                              </span>
+                            </div>
+                          </div>
+                          <div className="text-sm mt-5 font-bold">
+                            <p>{billingAddress?.address}</p>
+                            <p>
+                              {billingAddress?.district}/{billingAddress?.city}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
                 </div>
               )}
             </div>
@@ -159,6 +220,7 @@ const Checkout = () => {
         {showAddressInput && (
           <AddressField handleAddNewAddress={handleAddNewAddress} />
         )}
+        {showBilling && <BillingField handleBilling={handleBilling} />}
       </section>
       <Footer />
     </>

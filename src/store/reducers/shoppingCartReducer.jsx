@@ -6,6 +6,7 @@ import {
   INCREASE_COUNT,
   DECREASE_COUNT,
   GET_ADDRESS,
+  SAVE_BILLING,
 } from "../actions/shoppingCartAction";
 
 const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -14,6 +15,7 @@ const shoppingInitialState = {
   cart: storedCart,
   payment: {},
   address: {},
+  billing: {},
 };
 
 const shoppingCartReducer = (state = shoppingInitialState, action) => {
@@ -88,6 +90,11 @@ const shoppingCartReducer = (state = shoppingInitialState, action) => {
       return {
         ...state,
         address: { ...state.address, ...action.payload },
+      };
+    case SAVE_BILLING:
+      return {
+        ...state,
+        billing: { ...state.billing, ...action.payload },
       };
     default:
       return state;

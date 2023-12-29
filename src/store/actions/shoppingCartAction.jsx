@@ -7,7 +7,7 @@ export const ADDRESS = "ADDRESS";
 export const GET_ADDRESS = "GET_ADDRESS";
 export const INCREASE_COUNT = "INCREASE_COUNT";
 export const DECREASE_COUNT = "DECREASE_COUNT";
-
+export const SAVE_BILLING = "SAVE_BILLING";
 export const addCart = (id) => ({
   type: ADD_CART,
   payload: id,
@@ -36,6 +36,10 @@ export const decreaseCount = (productId) => ({
 
 export const getAddress = (data) => ({
   type: GET_ADDRESS,
+  payload: data,
+});
+export const saveBillingAddress = (data) => ({
+  type: SAVE_BILLING,
   payload: data,
 });
 export const saveAddress = (data) => (dispatch) => {
