@@ -166,7 +166,7 @@ const SignUp = () => {
             )}
           </div>
           <div className="flex gap-2 flex-col mb-6 relative">
-            <label htmlFor="password" className="text-dark-navy font-bold">
+            <label htmlFor="password" className="text-dark-navy font-bold ">
               Password
             </label>
             <input
@@ -187,7 +187,7 @@ const SignUp = () => {
             {showPassword ? (
               <button
                 type="button"
-                className="text-2xl absolute top-[54%] right-3 text-red-600"
+                className="text-2xl absolute top-11 right-3 text-red-600"
                 onClick={() => setShowPassword(!showPassword)}
               >
                 <AiFillEye />
@@ -195,7 +195,7 @@ const SignUp = () => {
             ) : (
               <button
                 type="button"
-                className="text-2xl absolute top-[54%] right-3 text-dark-navy"
+                className="text-2xl absolute top-11 right-3 text-dark-navy"
                 onClick={() => setShowPassword(!showPassword)}
               >
                 <AiFillEyeInvisible />

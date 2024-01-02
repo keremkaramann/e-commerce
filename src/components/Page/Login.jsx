@@ -77,7 +77,7 @@ const Login = () => {
             {showPassword ? (
               <button
                 type="button"
-                className="text-2xl absolute top-[54%] right-3 text-red-600"
+                className="text-2xl absolute top-11 right-3 text-red-600"
                 onClick={() => useShowPassword(!showPassword)}
               >
                 <AiFillEye />
@@ -85,7 +85,7 @@ const Login = () => {
             ) : (
               <button
                 type="button"
-                className="text-2xl absolute top-[54%] right-3 text-dark-navy"
+                className="text-2xl absolute top-11 right-3 text-dark-navy"
                 onClick={() => useShowPassword(!showPassword)}
               >
                 <AiFillEyeInvisible />
