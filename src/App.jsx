@@ -15,6 +15,7 @@ import Error from "./components/Page/Error";
 import Summary from "./components/Page/Summary";
 import Checkout from "./components/Page/Checkout";
 import ProtectedPage from "./components/Page/ProtectedPage";
+import CreditCard from "./components/Page/CreditCard";
 
 function App() {
   const dispatch = useDispatch();
@@ -40,6 +41,9 @@ function App() {
         </Route>
         <Route path="/checkout" exact>
           <ProtectedPage PageComponent={Checkout} fromUrl={"/checkout"} />
+        </Route>
+        <Route path="/last" exact>
+          <ProtectedPage PageComponent={CreditCard} fromUrl={"/last"} />
         </Route>
         <Route path="/team" exact>
           <Team />
