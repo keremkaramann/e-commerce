@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 
 const ProtectedPage = ({ PageComponent, fromUrl }) => {
   const history = useHistory();
-  const [counter, setCounter] = useState(4);
+  const [counter, setCounter] = useState(3);
 
   const checkUserLoggedIn = () => {
     if (localStorage.getItem("token")) {
@@ -15,7 +15,7 @@ const ProtectedPage = ({ PageComponent, fromUrl }) => {
           pathname: "/login",
           state: { referrer: fromUrl },
         });
-      }, 4000);
+      }, 3000);
       return (
         <section className="bg-dark-navy h-screen xs:pt-10 xs:px-10 middle:pt-20 middle:px-20">
           <div

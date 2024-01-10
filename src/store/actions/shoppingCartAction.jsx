@@ -100,7 +100,7 @@ export const saveCard = (data) => (dispatch) => {
       }
     : {};
 
-  API.post("/card", data, { headers })
+  API.post("card", data, { headers })
     .then((res) => {
       dispatch(payment(res.data));
     })
