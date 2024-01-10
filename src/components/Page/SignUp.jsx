@@ -112,7 +112,7 @@ const SignUp = () => {
   return (
     <>
       <Header />
-      <section className="xs:w-3/4 middle:w-[22%]  xs:p-4 middle:p-0 mx-auto mt-20 mb-20">
+      <section className="xs:w-3/4 middle:w-[23%]  xs:p-4 middle:p-0 mx-auto mt-20 mb-20">
         <h2 className="mb-10 font-bold text-4xl text-dark-navy">Sign Up</h2>
         <form onSubmit={handleSubmit(handleForm)}>
           <div className="flex gap-2 flex-col mb-6">
