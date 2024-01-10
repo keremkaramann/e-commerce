@@ -13,7 +13,7 @@ const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
 
 const shoppingInitialState = {
   cart: storedCart,
-  payment: {},
+  payment: [],
   address: [],
   billing: [],
 };
@@ -100,6 +100,11 @@ const shoppingCartReducer = (state = shoppingInitialState, action) => {
       return {
         ...state,
         billing: updatedBilling,
+      };
+    case PAYMENT:
+      return {
+        ...state,
+        payment: action.payload,
       };
     default:
       return state;

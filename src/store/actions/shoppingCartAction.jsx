@@ -16,9 +16,9 @@ export const removeCart = (id) => ({
   type: REMOVE_CART,
   payload: id,
 });
-export const payment = (id) => ({
+export const payment = (data) => ({
   type: PAYMENT,
-  payload: id,
+  payload: data,
 });
 export const address = (data) => ({
   type: ADDRESS,
@@ -73,5 +73,38 @@ export const fetchAddress = () => (dispatch) => {
     })
     .catch((err) => {
       console.error("Error fetching address: ", err);
+    });
+};
+export const fetchCreditCard = () => (dispatch) => {
+  const getToken = localStorage.getItem("token");
+
+  const headers = getToken
+    ? {
+        Authorization: `${getToken}`,
+      }
+    : {};
+  API.get("/card", { headers })
+    .then((res) => {
+      dispatch(payment(res.data));
+    })
+    .catch((err) => {
+      console.error("Error fetching address: ", err);
+    });
+};
+export const saveCard = (data) => (dispatch) => {
+  const getToken = localStorage.getItem("token");
+
+  const headers = getToken
+    ? {
+        Authorization: `${getToken}`,
+      }
+    : {};
+
+  API.post("/card", data, { headers })
+    .then((res) => {
+      dispatch(payment(res.data));
+    })
+    .catch((err) => {
+      console.error("Error saving card:", err);
     });
 };

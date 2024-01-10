@@ -1,32 +1,42 @@
 import { NavLink } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchAddress } from "../../store/actions/shoppingCartAction";
+import {
+  fetchAddress,
+  fetchCreditCard,
+  saveCard,
+} from "../../store/actions/shoppingCartAction";
 import Footer from "../Layout/Footer";
 import Header from "../Layout/Header";
-import { FaPlus } from "react-icons/fa6";
-import AddressField from "../Repetitive/AddressField";
-import { IoMdPerson, IoIosPhonePortrait } from "react-icons/io";
-import BillingField from "../Repetitive/BillingField";
+import { IoIosPhonePortrait } from "react-icons/io";
+import { FaAddressBook, FaRegCreditCard } from "react-icons/fa";
 import OrderSumForCheckout from "../Repetitive/OrderSumForCheckout";
 
 const CreditCard = () => {
   const [showAddressInput, setShowAddressInput] = useState(false);
-  const [showBilling, setShowBilling] = useState(false);
-  const [shipToSameAddress, setShipToSameAddress] = useState(true);
   const addressStore = useSelector((store) => store.cart.address);
-  const billingAddress = useSelector((store) => store.cart.billing);
-  console.log(billingAddress);
+  const creditCards = useSelector((store) => store.cart.payment);
+  let singleAddress = addressStore[0];
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isValid },
+  } = useForm({
+    defaultValues: {
+      card: "",
+      month: "",
+      year: "",
+      cvv: "",
+    },
+    mode: "all",
+  });
+
   const dispatch = useDispatch();
 
   const handleAddNewAddress = () => {
     setShowAddressInput(!showAddressInput);
-  };
-  const handleBilling = () => {
-    setShowBilling(!showBilling);
-  };
-  const handleCheckboxChange = () => {
-    setShipToSameAddress(!shipToSameAddress);
   };
 
   const formatPhoneNumber = (phoneNumber) => {
@@ -44,163 +54,197 @@ const CreditCard = () => {
   };
 
   useEffect(() => {
+    dispatch(fetchCreditCard());
     dispatch(fetchAddress());
   }, []);
 
+  const handleForm = (data) => {
+    dispatch(saveCard(data));
+  };
   return (
     <>
       <Header />
       <section className="m-10 text-clip mb-20">
-        <div className="flex xs:justify-center middle:justify-around flex-wrap ">
+        <div className="flex xs:justify-center middle:justify-around flex-wrap">
           <div className="border-y-[1px] border-muted-color gap-4">
-            <div className="flex flex-row gap-2 cursor-pointer justify-end mt-10">
-              <input
-                type="checkbox"
-                id="sameAddressCheckbox"
-                checked={shipToSameAddress}
-                onChange={handleCheckboxChange}
-              />
-              <label htmlFor="sameAddressCheckbox">
-                Ship to the same address as billing
-              </label>
-            </div>
             <div className="flex flex-wrap middle:justify-normal xs:justify-center mb-10 gap-3">
-              <div className="text-dark-navy mt-5">
-                <h1 className="text-2xl font-bold mb-10 text-left mt-10 pl-5">
-                  Shipping Address
-                </h1>
-                <div className="mb-10">
-                  <div className="bg-slate-200 px-16 rounded-md flex justify-center">
-                    <button
-                      className="flex flex-col items-center gap-3 text-xl p-4"
-                      onClick={handleAddNewAddress}
-                    >
-                      <FaPlus />
-                      Add New Address
-                    </button>
-                  </div>
-                </div>
-                {Object.keys(addressStore)?.map((key, index) => {
-                  let address = addressStore[key];
-                  return (
-                    <div key={index} className="mb-5">
-                      <div className="flex justify-between mb-2">
-                        <div className="flex gap-1">
-                          <input
-                            type="radio"
-                            id="titleAddress"
-                            name="titleAddress"
-                            defaultChecked
-                          />
-                          <label htmlFor="titleAddress">
-                            {address?.title
-                              ? address.title.charAt(0).toUpperCase() +
-                                address.title.slice(1)
-                              : ""}
-                          </label>
-                        </div>
-                        <div>
-                          <span className="border-b-[2px] border-dark-navy cursor-pointer text-sm">
-                            Edit
-                          </span>
-                        </div>
-                      </div>
-                      <div className="bg-sky-200/50 border-2 border-primary-blue px-3 py-5 rounded-md xs:w-full middle:w-[338px]">
-                        <div>
-                          <div className="flex justify-between text-xs font-bold">
-                            <div className="flex items-center gap-1">
-                              <IoMdPerson className="text-xl" />
-                              <span>
-                                {address?.name} {address?.surname}
-                              </span>
-                            </div>
-                            <div className="flex items-center">
-                              <IoIosPhonePortrait className="text-xl" />
-                              <span>{formatPhoneNumber(address.phone)}</span>
-                            </div>
-                          </div>
-                          <div className="text-sm mt-5 font-bold">
-                            <p>{address?.address}</p>
-                            <p>
-                              {address?.district}/{address?.city}
-                            </p>
-                          </div>
-                        </div>
+              <div className="text-dark-navy">
+                <div className="flex">
+                  <div className="mb-1 border-[1px] bg-slate-400/20 p-5">
+                    <h1 className="text-xl font-bold mb-5 mt-5 flex items-center gap-2">
+                      Shipping Address
+                      <FaAddressBook />
+                    </h1>
+                    <div className="flex justify-between mb-2">
+                      <div className="flex gap-1">
+                        <p className="font-bold">
+                          {singleAddress?.title
+                            ? singleAddress.title.charAt(0).toUpperCase() +
+                              singleAddress.title.slice(1)
+                            : ""}
+                        </p>
                       </div>
                     </div>
-                  );
-                })}
-              </div>
-              {!shipToSameAddress && (
-                <div className="text-dark-navy mt-5">
-                  <h1 className="text-2xl font-bold mb-10 text-left mt-10 pl-5">
-                    Bill Address
-                  </h1>
-                  <div className="px-3 mb-10">
-                    <div className="bg-slate-200 px-16 rounded-md flex justify-center">
-                      <button
-                        className="flex flex-col items-center gap-3 text-xl p-4"
-                        onClick={handleBilling}
-                      >
-                        <FaPlus />
-                        Add New Address
-                      </button>
-                    </div>
-                  </div>
-                  {billingAddress?.map((billAddress, index) => {
-                    console.log(billAddress);
-                    return (
-                      <div className="ml-4" key={index}>
-                        <div className="flex justify-between mb-2">
-                          <div className="flex gap-1">
-                            <input
-                              type="radio"
-                              id="titleAddress"
-                              name="titleAddress"
-                              defaultChecked
-                            />
-                            <label htmlFor="titleAddress">
-                              {billAddress?.title
-                                ? billAddress.title.charAt(0).toUpperCase() +
-                                  billAddress.title.slice(1)
-                                : ""}
-                            </label>
+                    <div className="xs:w-full middle:w-[338px]">
+                      <div>
+                        <div className="flex text-sm font-bold gap-8">
+                          <div className="flex items-center gap-1">
+                            <span>
+                              {singleAddress?.name} {singleAddress?.surname}
+                            </span>
                           </div>
-                          <div>
-                            <span className="border-b-[2px] border-dark-navy cursor-pointer text-sm">
-                              Edit
+                          <div className="flex items-center">
+                            <IoIosPhonePortrait className="text-xl" />
+                            <span>
+                              {formatPhoneNumber(singleAddress?.phone)}
                             </span>
                           </div>
                         </div>
-                        <div className="bg-sky-200/50 border-2 border-primary-blue px-3 py-5 rounded-md xs:w-full middle:w-[338px]">
-                          <div>
-                            <div className="flex justify-between text-xs font-bold">
-                              <div className="flex items-center gap-1">
-                                <IoMdPerson className="text-xl" />
-                                <span>
-                                  {billAddress?.name} {billAddress?.surname}
-                                </span>
-                              </div>
-                              <div className="flex items-center">
-                                <IoIosPhonePortrait className="text-xl" />
-                                <span>
-                                  {formatPhoneNumber(billAddress?.phone)}
-                                </span>
-                              </div>
-                            </div>
-                            <div className="text-sm mt-5 font-bold">
-                              <p>{billAddress?.address}</p>
-                              <p>
-                                {billAddress?.district}/{billAddress?.city}
-                              </p>
-                            </div>
-                          </div>
+                        <div className="text-sm mt-5 font-bold">
+                          <p>{singleAddress?.address}</p>
+                          <p>
+                            {singleAddress?.district}/{singleAddress?.city}
+                          </p>
                         </div>
                       </div>
-                    );
-                  })}
+                    </div>
+                  </div>
+                  <div className="mb-1 border-[1px] border-b-[5px] p-5 w-[352px] border-b-primary-blue/70 shadow-xl">
+                    <h1 className="text-xl font-bold mb-5 mt-5 text-primary-blue flex items-center gap-2">
+                      Payment Options
+                      <FaRegCreditCard />
+                    </h1>
+                    <div>
+                      <p className="text-sm">
+                        You can make payment via{" "}
+                        <span className="font-bold">BANK AND CREDIT CARD</span>{" "}
+                        OR <span className="font-bold">SHOPPING CREDIT</span>
+                      </p>
+                    </div>
+                  </div>
                 </div>
-              )}
+                <h1 className="text-2xl font-bold mb-10 text-left mt-10 pl-5">
+                  Credit Card Information
+                </h1>
+                <div className="mb-10 flex">
+                  <div className="px-16 rounded-md border-r-[1px]">
+                    <label htmlFor="card" className="font-medium">
+                      Credit Card Number*
+                    </label>
+                    <form onSubmit={handleSubmit(handleForm)}>
+                      <div>
+                        <input
+                          type="text"
+                          id="card"
+                          name="card"
+                          className="bg-slate-400/20 w-60 py-2 rounded-md mt-2 px-3"
+                          {...register("card", {
+                            required: "Card field is required!",
+                            pattern: {
+                              value: /^[0-9]+$/,
+                              message: "Please enter a valid credit card.",
+                            },
+                          })}
+                        />
+                        {errors.card && (
+                          <p className="text-red-600 font-bold text-xs animate-shake mt-1">
+                            {errors.card?.message}
+                          </p>
+                        )}
+                      </div>
+
+                      <div className="flex gap-5">
+                        <div className="">
+                          <p className="mt-2 font-medium">Expire Date*</p>
+                          <select
+                            id="month"
+                            name="month"
+                            className="bg-slate-400/20 w-20 py-2 rounded-md mt-2 mr-3"
+                            {...register("month", {
+                              required: "Month*",
+                            })}
+                          >
+                            <option value="" defaultValue>
+                              Month
+                            </option>
+                            {[...Array(12).keys()].map((month) => (
+                              <option
+                                key={month + 1}
+                                value={String(month + 1).padStart(2, "0")}
+                              >
+                                {String(month + 1).padStart(2, "0")}
+                              </option>
+                            ))}
+                          </select>
+                          {errors?.month && (
+                            <p className="text-red-600 font-bold text-xs animate-shake mt-1">
+                              {errors.month?.message}
+                            </p>
+                          )}
+                          <select
+                            id="year"
+                            name="year"
+                            className="bg-slate-400/20 w-20 py-2 rounded-md mt-2"
+                            {...register("year", {
+                              required: "Year*",
+                            })}
+                          >
+                            <option value="" disabled selected>
+                              Year
+                            </option>
+                            {[...Array(15).keys()].map((index) => {
+                              const startYear = 2023;
+                              const nextYear = startYear + index;
+                              return (
+                                <option key={nextYear} value={nextYear}>
+                                  {nextYear}
+                                </option>
+                              );
+                            })}
+                          </select>
+                          {errors.year && (
+                            <p className="text-red-600 font-bold text-xs animate-shake mt-1">
+                              {errors.year?.message}
+                            </p>
+                          )}
+                        </div>
+                        <div className="mt-2">
+                          <p className="font-medium">CVV*</p>
+                          <input
+                            type="text"
+                            id="cvv"
+                            name="cvv"
+                            className="bg-slate-400/20 w-12 py-2 rounded-md mt-2 px-2"
+                            {...register("cvv", {
+                              required: "CVV*",
+                              pattern: {
+                                value: /^[0-9]{3}$/,
+                                message: "CVV*",
+                              },
+                            })}
+                          />
+                          {errors.cvv && (
+                            <p className="text-red-600 font-bold text-xs animate-shake mt-1">
+                              {errors.cvv?.message}
+                            </p>
+                          )}
+                        </div>
+                      </div>
+                      <div className="flex justify-end mt-10">
+                        <button
+                          className="flex flex-col items-center gap-3 text-xl
+                        bg-primary-blue px-5 py-2 rounded-md text-white  border-[2px] border-sky-200 hover:bg-black
+                            ease-in-out duration-500"
+                          disabled={!isValid}
+                        >
+                          SAVE
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                  <div className="text-sm ml-10">Taksit miktarı Seçiniz</div>
+                </div>
+              </div>
             </div>
           </div>
           <div>
@@ -220,10 +264,6 @@ const CreditCard = () => {
             </p>
           </NavLink>
         </div>
-        {showAddressInput && (
-          <AddressField handleAddNewAddress={handleAddNewAddress} />
-        )}
-        {showBilling && <BillingField handleBilling={handleBilling} />}
       </section>
       <Footer />
     </>
