@@ -14,7 +14,7 @@ const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
 const shoppingInitialState = {
   cart: storedCart,
   payment: {},
-  address: {},
+  address: [],
   billing: [],
 };
 
@@ -84,12 +84,12 @@ const shoppingCartReducer = (state = shoppingInitialState, action) => {
     case ADDRESS:
       return {
         ...state,
-        address: { ...state.address, ...action.payload },
+        address: action.payload,
       };
     case GET_ADDRESS:
       return {
         ...state,
-        address: { ...state.address, ...action.payload },
+        address: action.payload,
       };
     case SAVE_BILLING:
       const newBillingEntry = {

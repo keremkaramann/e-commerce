@@ -16,7 +16,7 @@ const Checkout = () => {
   const [shipToSameAddress, setShipToSameAddress] = useState(true);
   const addressStore = useSelector((store) => store.cart.address);
   const billingAddress = useSelector((store) => store.cart.billing);
-  console.log(billingAddress);
+
   const dispatch = useDispatch();
 
   const handleAddNewAddress = () => {
@@ -80,8 +80,7 @@ const Checkout = () => {
                     </button>
                   </div>
                 </div>
-                {Object.keys(addressStore)?.map((key, index) => {
-                  let address = addressStore[key];
+                {addressStore?.map((address, index) => {
                   return (
                     <div key={index} className="mb-5">
                       <div className="flex justify-between mb-2">
@@ -148,7 +147,6 @@ const Checkout = () => {
                     </div>
                   </div>
                   {billingAddress?.map((billAddress, index) => {
-                    console.log(billAddress);
                     return (
                       <div className="ml-4" key={index}>
                         <div className="flex justify-between mb-2">
