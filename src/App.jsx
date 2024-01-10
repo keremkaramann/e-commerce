@@ -42,8 +42,8 @@ function App() {
         <Route path="/checkout" exact>
           <ProtectedPage PageComponent={Checkout} fromUrl={"/checkout"} />
         </Route>
-        <Route path="/last" exact>
-          <ProtectedPage PageComponent={CreditCard} fromUrl={"/last"} />
+        <Route path="/card" exact>
+          <ProtectedPage PageComponent={CreditCard} fromUrl={"/card"} />
         </Route>
         <Route path="/team" exact>
           <Team />

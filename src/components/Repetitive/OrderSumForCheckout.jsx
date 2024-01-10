@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import { FaShippingFast } from "react-icons/fa";
 import { FiChevronsRight } from "react-icons/fi";
 
-const OrderSummary = () => {
+const OrderSumForCheckout = () => {
   const [totalPrice, setTotalPrice] = useState(0);
   const cartItems = useSelector((store) => store.cart.cart);
   const shippingCost = 50;
@@ -69,7 +69,7 @@ const OrderSummary = () => {
               : (totalPrice + 50).toFixed(2)}
           </p>
         </div>
-        <NavLink to="/checkout">
+        <NavLink to="/card">
           <div
             className="flex items-center justify-center mt-5
                 gap-2 bg-dark-navy py-2 text-white font-medium"
@@ -82,4 +82,4 @@ const OrderSummary = () => {
     </div>
   );
 };
-export default OrderSummary;
+export default OrderSumForCheckout;

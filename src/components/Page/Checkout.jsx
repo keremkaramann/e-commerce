@@ -5,10 +5,10 @@ import { fetchAddress } from "../../store/actions/shoppingCartAction";
 import Footer from "../Layout/Footer";
 import Header from "../Layout/Header";
 import { FaPlus } from "react-icons/fa6";
-import OrderSummary from "../Repetitive/OrderSummary";
 import AddressField from "../Repetitive/AddressField";
 import { IoMdPerson, IoIosPhonePortrait } from "react-icons/io";
 import BillingField from "../Repetitive/BillingField";
+import OrderSumForCheckout from "../Repetitive/OrderSumForCheckout";
 
 const Checkout = () => {
   const [showAddressInput, setShowAddressInput] = useState(false);
@@ -204,7 +204,7 @@ const Checkout = () => {
             </div>
           </div>
           <div>
-            <OrderSummary />
+            <OrderSumForCheckout />
           </div>
         </div>
         <div className="flex justify-center pt-8">
