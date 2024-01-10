@@ -11,13 +11,31 @@ import Footer from "../Layout/Footer";
 import Header from "../Layout/Header";
 import { IoIosPhonePortrait } from "react-icons/io";
 import { FaAddressBook, FaRegCreditCard } from "react-icons/fa";
-import OrderSumForCheckout from "../Repetitive/OrderSumForCheckout";
+import OrderNow from "../Repetitive/Order";
 
 const CreditCard = () => {
   const [showAddressInput, setShowAddressInput] = useState(false);
   const addressStore = useSelector((store) => store.cart.address);
   const creditCards = useSelector((store) => store.cart.payment);
   let singleAddress = addressStore[0];
+
+  const [totalPrice, setTotalPrice] = useState(0);
+  const cartItems = useSelector((store) => store.cart.cart);
+  const shippingCost = 50;
+  const lastPrice =
+    totalPrice.toFixed(2) > 500
+      ? totalPrice.toFixed(2)
+      : (Number(totalPrice.toFixed(2)) + shippingCost).toFixed(2);
+
+  useEffect(() => {
+    let sum = 0;
+
+    cartItems.forEach((item) => {
+      sum += item.product.price * item.count;
+    });
+
+    setTotalPrice(sum);
+  }, [cartItems]);
 
   const {
     register,
@@ -233,7 +251,7 @@ const CreditCard = () => {
                       <div className="flex justify-end mt-10">
                         <button
                           className="flex flex-col items-center gap-3 text-xl
-                        bg-primary-blue px-5 py-2 rounded-md text-white  border-[2px] border-sky-200 hover:bg-black
+                        bg-primary-blue px-5 py-2 rounded-md text-white hover:bg-dark-navy
                             ease-in-out duration-500"
                           disabled={!isValid}
                         >
@@ -242,13 +260,74 @@ const CreditCard = () => {
                       </div>
                     </form>
                   </div>
-                  <div className="text-sm ml-10">Taksit miktarı Seçiniz</div>
+                  <div className="ml-10">
+                    <p className="font-medium">Select Installment Amount</p>
+                    <div className="flex text-sm justify-between gap-20 mb-4">
+                      <div className="border-b-[2px] border-dark-navy py-2">
+                        <p>Installments</p>
+                      </div>
+                      <div className="border-b-[2px] border-dark-navy  py-2">
+                        <p>Monthly Payments</p>
+                      </div>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <div className="mt-2 flex gap-3">
+                        <input
+                          type="radio"
+                          id="singlePayment"
+                          name="installmentAmount"
+                          value="123"
+                          defaultChecked
+                        />
+                        <label htmlFor="singlePayment">Single Payment</label>
+                      </div>
+                      <label htmlFor="singlePayment">{lastPrice}$</label>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <div className="mt-2 flex gap-3">
+                        <input
+                          type="radio"
+                          id="two"
+                          name="installmentAmount"
+                          value="123"
+                        />
+                        <label htmlFor="two">2</label>
+                      </div>
+                      <label htmlFor="two">{(lastPrice / 2).toFixed(2)}$</label>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <div className="mt-2 flex gap-3">
+                        <input
+                          type="radio"
+                          id="four"
+                          name="installmentAmount"
+                          value="123"
+                        />
+                        <label htmlFor="four">4</label>
+                      </div>
+                      <label htmlFor="four">
+                        {(lastPrice / 4).toFixed(2)}$
+                      </label>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <div className="mt-2 flex gap-3">
+                        <input
+                          type="radio"
+                          id="six"
+                          name="installmentAmount"
+                          value="123"
+                        />
+                        <label htmlFor="six">6</label>
+                      </div>
+                      <label htmlFor="six">{(lastPrice / 6).toFixed(2)}$</label>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
           <div>
-            <OrderSumForCheckout />
+            <OrderNow />
           </div>
         </div>
         <div className="flex justify-center pt-8">
