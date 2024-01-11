@@ -165,7 +165,7 @@ const CreditCard = () => {
                           type="text"
                           id="card"
                           name="card"
-                          className="bg-slate-400/20 w-64 py-2 rounded-md mt-2 px-3"
+                          className="bg-slate-400/20 w-72 py-2 rounded-md mt-2 px-3"
                           {...register("card", {
                             required: "Card field is required!",
                             pattern: {
@@ -211,7 +211,7 @@ const CreditCard = () => {
                           <select
                             id="year"
                             name="year"
-                            className="bg-slate-400/20 w-20 py-2 rounded-md mt-2 px-2"
+                            className="bg-slate-400/20 w-24 py-2 rounded-md mt-2 px-2"
                             {...register("year", {
                               required: "Year*",
                             })}
@@ -241,7 +241,7 @@ const CreditCard = () => {
                             type="text"
                             id="cvv"
                             name="cvv"
-                            className="bg-slate-400/20 w-12 py-2 rounded-md mt-2 px-2"
+                            className="bg-slate-400/20 w-14 py-2 rounded-md mt-2 px-2"
                             {...register("cvv", {
                               required: "CVV*",
                               pattern: {
