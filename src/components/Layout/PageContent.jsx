@@ -112,7 +112,7 @@ const PageContent = () => {
           </p>
         </div>
 
-        <div className="flex gap-5 justify-center px-30 flex-wrap max-w-[1060px] my-0 mx-auto">
+        <div className="flex gap-12 justify-center px-30 flex-wrap max-w-[1500px] my-0 mx-auto">
           {slicedProducts?.map((product) => {
             const { images, name, description, id, price } = product;
             return (
