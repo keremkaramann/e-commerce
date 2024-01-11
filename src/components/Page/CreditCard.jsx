@@ -160,12 +160,12 @@ const CreditCard = () => {
                       Credit Card Number*
                     </label>
                     <form onSubmit={handleSubmit(handleForm)}>
-                      <div>
+                      <div className="mb-2">
                         <input
                           type="text"
                           id="card"
                           name="card"
-                          className="bg-slate-400/20 w-60 py-2 rounded-md mt-2 px-3"
+                          className="bg-slate-400/20 w-64 py-2 rounded-md mt-2 px-3"
                           {...register("card", {
                             required: "Card field is required!",
                             pattern: {
@@ -186,7 +186,7 @@ const CreditCard = () => {
                           <select
                             id="month"
                             name="month"
-                            className="bg-slate-400/20 w-20 py-2 rounded-md mt-2 mr-3 px-1"
+                            className="bg-slate-400/20 w-24 py-2 rounded-md mt-2 mr-3 px-1"
                             {...register("month", {
                               required: "Month*",
                             })}
