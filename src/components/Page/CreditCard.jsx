@@ -14,10 +14,10 @@ import { FaAddressBook, FaRegCreditCard } from "react-icons/fa";
 import OrderNow from "../Repetitive/Order";
 
 const CreditCard = () => {
-  const [showAddressInput, setShowAddressInput] = useState(false);
   const addressStore = useSelector((store) => store.cart.address);
   const creditCards = useSelector((store) => store.cart.payment);
   const cart = useSelector((store) => store.cart.cart);
+  const dispatch = useDispatch();
   let singleAddress = addressStore[0];
   let addressId = addressStore[0]?.id;
 
@@ -67,12 +67,6 @@ const CreditCard = () => {
     },
     mode: "all",
   });
-
-  const dispatch = useDispatch();
-
-  const handleAddNewAddress = () => {
-    setShowAddressInput(!showAddressInput);
-  };
 
   const formatPhoneNumber = (phoneNumber) => {
     if (phoneNumber == null) {
