@@ -17,7 +17,24 @@ const CreditCard = () => {
   const [showAddressInput, setShowAddressInput] = useState(false);
   const addressStore = useSelector((store) => store.cart.address);
   const creditCards = useSelector((store) => store.cart.payment);
+  const cart = useSelector((store) => store.cart.cart);
   let singleAddress = addressStore[0];
+  let addressId = addressStore[0]?.id;
+
+  const productData = cart.map((product) => {
+    const {
+      count,
+      product: { id: product_id },
+    } = product;
+    return { count, product_id };
+  });
+
+  const orderData = {
+    products: productData,
+    address_id: addressId,
+  };
+
+  console.log(orderData);
 
   const [totalPrice, setTotalPrice] = useState(0);
   const cartItems = useSelector((store) => store.cart.cart);
@@ -87,7 +104,7 @@ const CreditCard = () => {
           <div className="gap-4">
             <div className="flex flex-wrap middle:justify-normal xs:justify-center mb-10 gap-3">
               <div className="text-dark-navy">
-                <div className="flex">
+                <div className="flex flex-wrap xs:justify-center middle:justify-normal">
                   <div className="mb-1 border-[1px] bg-slate-400/20 p-5">
                     <h1 className="text-xl font-bold mb-5 mt-5 flex items-center gap-2">
                       Shipping Address
@@ -144,7 +161,7 @@ const CreditCard = () => {
                 <h1 className="text-2xl font-bold mb-10 text-left mt-10 pl-5">
                   Credit Card Information
                 </h1>
-                <div className="mb-10 flex">
+                <div className="mb-10 flex flex-wrap xs:justify-center middle:justify-normal">
                   <div className="px-16 rounded-md border-r-[1px]">
                     <label htmlFor="card" className="font-medium">
                       Credit Card Number*
@@ -170,7 +187,6 @@ const CreditCard = () => {
                           </p>
                         )}
                       </div>
-
                       <div className="flex gap-5">
                         <div className="">
                           <p className="mt-2 font-medium">Expire Date*</p>
