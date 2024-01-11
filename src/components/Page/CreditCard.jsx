@@ -84,7 +84,7 @@ const CreditCard = () => {
       <Header />
       <section className="m-10 text-clip mb-20">
         <div className="flex xs:justify-center middle:justify-around flex-wrap">
-          <div className="border-y-[1px] border-muted-color gap-4">
+          <div className="gap-4">
             <div className="flex flex-wrap middle:justify-normal xs:justify-center mb-10 gap-3">
               <div className="text-dark-navy">
                 <div className="flex">
