@@ -1,3 +1,4 @@
+import OrderNow from "../../components/Repetitive/Order";
 import { API } from "../../endpoint/instance";
 
 export const ADD_CART = "ADD_CART";
@@ -8,6 +9,12 @@ export const GET_ADDRESS = "GET_ADDRESS";
 export const INCREASE_COUNT = "INCREASE_COUNT";
 export const DECREASE_COUNT = "DECREASE_COUNT";
 export const SAVE_BILLING = "SAVE_BILLING";
+export const ORDER = "ORDER";
+
+export const finalOrder = (data) => ({
+  type: ORDER,
+  payload: data,
+});
 export const addCart = (id) => ({
   type: ADD_CART,
   payload: id,
@@ -103,6 +110,24 @@ export const saveCard = (data) => (dispatch) => {
   API.post("card", data, { headers })
     .then((res) => {
       dispatch(payment(res.data));
+    })
+    .catch((err) => {
+      console.error("Error saving card:", err);
+    });
+};
+export const order = (data) => (dispatch) => {
+  const getToken = localStorage.getItem("token");
+
+  const headers = getToken
+    ? {
+        Authorization: `${getToken}`,
+      }
+    : {};
+
+  API.post("order", data, { headers })
+    .then((res) => {
+      console.log(res.data);
+      dispatch(OrderNow(data));
     })
     .catch((err) => {
       console.error("Error saving card:", err);

@@ -18,6 +18,7 @@ const CreditCard = () => {
   const creditCards = useSelector((store) => store.cart.payment);
   const cart = useSelector((store) => store.cart.cart);
   const dispatch = useDispatch();
+
   let singleAddress = addressStore[0];
   let addressId = addressStore[0]?.id;
 
@@ -33,8 +34,6 @@ const CreditCard = () => {
     products: productData,
     address_id: addressId,
   };
-
-  console.log(orderData);
 
   const [totalPrice, setTotalPrice] = useState(0);
   const cartItems = useSelector((store) => store.cart.cart);
@@ -370,7 +369,7 @@ const CreditCard = () => {
             </div>
           </div>
           <div>
-            <OrderNow />
+            <OrderNow orderData={orderData} />
           </div>
         </div>
         <div className="flex justify-center pt-8">

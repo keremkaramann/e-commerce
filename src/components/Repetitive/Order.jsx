@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { FaShippingFast } from "react-icons/fa";
 import { FiChevronsRight } from "react-icons/fi";
+import { order } from "../../store/actions/shoppingCartAction";
 
-const OrderNow = () => {
+const OrderNow = ({ orderData }) => {
   const [totalPrice, setTotalPrice] = useState(0);
   const cartItems = useSelector((store) => store.cart.cart);
+  const dispatch = useDispatch();
   const shippingCost = 50;
 
   useEffect(() => {
@@ -18,6 +20,10 @@ const OrderNow = () => {
 
     setTotalPrice(sum);
   }, [cartItems]);
+
+  const handleOrder = () => {
+    dispatch(order(orderData));
+  };
 
   return (
     <div className="flex items-start mt-20 xs-p-3 middle:p-0">
@@ -69,15 +75,14 @@ const OrderNow = () => {
               : (totalPrice + 50).toFixed(2)}
           </p>
         </div>
-        <NavLink to="/card">
-          <div
-            className="flex items-center justify-center mt-5
-                gap-2 bg-dark-navy py-2 text-white font-medium"
-          >
-            <button>ORDER</button>
-            <FiChevronsRight />
-          </div>
-        </NavLink>
+
+        <div
+          className="flex items-center justify-center mt-5
+                gap-2 bg-dark-navy py-2 text-white font-medium cursor-pointer"
+        >
+          <button onClick={handleOrder}>ORDER</button>
+          <FiChevronsRight />
+        </div>
       </div>
     </div>
   );
