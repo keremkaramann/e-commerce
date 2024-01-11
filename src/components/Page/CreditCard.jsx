@@ -323,7 +323,9 @@ const CreditCard = () => {
                         />
                         <label htmlFor="singlePayment">Single Payment</label>
                       </div>
-                      <label htmlFor="singlePayment">{lastPrice}$</label>
+                      <label htmlFor="singlePayment" className="mt-3">
+                        {lastPrice}$
+                      </label>
                     </div>
                     <div className="flex justify-between items-center">
                       <div className="mt-2 flex gap-3">
