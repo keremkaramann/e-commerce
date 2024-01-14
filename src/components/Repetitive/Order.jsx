@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { NavLink } from "react-router-dom";
 import { FaShippingFast } from "react-icons/fa";
 import { FiChevronsRight } from "react-icons/fi";
 import { order } from "../../store/actions/shoppingCartAction";
