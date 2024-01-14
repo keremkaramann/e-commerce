@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAddress } from "../../../store/actions/shoppingCartAction";
 //pages
+import EditField from "./EditField";
 import Footer from "../../Layout/Footer";
 import Header from "../../Layout/Header";
 import AddressField from "./AddressField";
@@ -13,9 +14,12 @@ import { FaPlus } from "react-icons/fa6";
 import { IoMdPerson, IoIosPhonePortrait } from "react-icons/io";
 
 const Checkout = () => {
-  const [showAddressInput, setShowAddressInput] = useState(false);
+  const [showEdit, setShowEdit] = useState(false);
+  const [addressId, setAddressId] = useState(0);
   const [showBilling, setShowBilling] = useState(false);
+  const [showAddressInput, setShowAddressInput] = useState(false);
   const [shipToSameAddress, setShipToSameAddress] = useState(true);
+
   const addressStore = useSelector((store) => store.cart.address);
   const billingAddress = useSelector((store) => store.cart.billing);
 
@@ -23,6 +27,10 @@ const Checkout = () => {
 
   const handleAddNewAddress = () => {
     setShowAddressInput(!showAddressInput);
+  };
+  const handleEdit = (id) => {
+    setShowEdit(!showEdit);
+    setAddressId(id);
   };
   const handleBilling = () => {
     setShowBilling(!showBilling);
@@ -101,7 +109,10 @@ const Checkout = () => {
                           </label>
                         </div>
                         <div>
-                          <span className="border-b-[2px] border-dark-navy cursor-pointer text-sm">
+                          <span
+                            className="border-b-[2px] border-dark-navy cursor-pointer text-sm"
+                            onClick={() => handleEdit(address.id)}
+                          >
                             Edit
                           </span>
                         </div>
@@ -224,6 +235,9 @@ const Checkout = () => {
           <AddressField handleAddNewAddress={handleAddNewAddress} />
         )}
         {showBilling && <BillingField handleBilling={handleBilling} />}
+        {showEdit && (
+          <EditField handleEdit={handleEdit} addressId={addressId} />
+        )}
       </section>
       <Footer />
     </>

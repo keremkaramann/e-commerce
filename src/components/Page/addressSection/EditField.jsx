@@ -1,17 +1,33 @@
 import { useForm } from "react-hook-form";
-import { useDispatch } from "react-redux";
-import { AiOutlineClose } from "react-icons/ai";
-import cityList from "../../../data/cityList";
+import { useDispatch, useSelector } from "react-redux";
 import { saveAddress } from "../../../store/actions/shoppingCartAction";
-const EditField = ({ handleAddNewAddress }) => {
+import cityList from "../../../data/cityList";
+//icons
+import { AiOutlineClose } from "react-icons/ai";
+
+const EditField = ({ handleEdit, addressId }) => {
   const dispatch = useDispatch();
+  const addressList = useSelector((store) => store.cart.address);
+
+  const foundAddress = addressList.find((address) => address.id === addressId);
+
+  const existingData = {
+    title: foundAddress.title,
+    name: foundAddress.name,
+    surname: foundAddress.surname,
+    phone: foundAddress.phone,
+    city: foundAddress.city,
+    district: foundAddress.district,
+    neighborhood: foundAddress.neighborhood,
+    address: foundAddress.address,
+  };
 
   const {
     register,
     handleSubmit,
     formState: { errors, isValid },
   } = useForm({
-    defaultValues: {
+    defaultValues: existingData || {
       title: "",
       name: "",
       surname: "",
@@ -25,7 +41,7 @@ const EditField = ({ handleAddNewAddress }) => {
   });
   const handleForm = (data) => {
     dispatch(saveAddress(data));
-    handleAddNewAddress();
+    handleEdit();
   };
   return (
     <form onSubmit={handleSubmit(handleForm)}>
@@ -34,7 +50,7 @@ const EditField = ({ handleAddNewAddress }) => {
           <div className="bg-white mx-auto my-14 overflow-x-hidden overflow-y-auto max-w-[520px] max-h-[620px] rounded-lg">
             <div className="flex flex-row justify-between border-b-[1px] border-muted-color p-3">
               <h2 className="font-bold text-dark-navy text-lg">Edit Address</h2>
-              <button onClick={handleAddNewAddress}>
+              <button onClick={handleEdit}>
                 <AiOutlineClose className="text-2xl" />
               </button>
             </div>
