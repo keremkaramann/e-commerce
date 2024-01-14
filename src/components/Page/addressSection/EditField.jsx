@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
-import { saveAddress } from "../../../store/actions/shoppingCartAction";
+import { editAddress } from "../../../store/actions/shoppingCartAction";
 import cityList from "../../../data/cityList";
 //icons
 import { AiOutlineClose } from "react-icons/ai";
@@ -41,7 +41,7 @@ const EditField = ({ handleEdit, addressId }) => {
   });
 
   const handleForm = (data) => {
-    dispatch(saveAddress(data));
+    dispatch(editAddress(data));
     handleEdit();
   };
   return (
