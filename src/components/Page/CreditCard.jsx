@@ -1,5 +1,5 @@
-import { NavLink } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { NavLink } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -7,11 +7,14 @@ import {
   fetchCreditCard,
   saveCard,
 } from "../../store/actions/shoppingCartAction";
+//pages
 import Footer from "../Layout/Footer";
 import Header from "../Layout/Header";
+import OrderNow from "../Repetitive/Order";
+//icons
 import { IoIosPhonePortrait } from "react-icons/io";
 import { FaAddressBook, FaRegCreditCard } from "react-icons/fa";
-import OrderNow from "../Repetitive/Order";
+import CreditInstallment from "./CreditInstallment";
 
 const CreditCard = () => {
   const addressStore = useSelector((store) => store.cart.address);
@@ -302,70 +305,7 @@ const CreditCard = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="ml-10">
-                    <p className="font-medium">Select Installment Amount</p>
-                    <div className="flex text-sm justify-between gap-20 mb-4">
-                      <div className="border-b-[2px] border-dark-navy py-2">
-                        <p>Installments</p>
-                      </div>
-                      <div className="border-b-[2px] border-dark-navy  py-2">
-                        <p>Monthly Payments</p>
-                      </div>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <div className="mt-2 flex gap-3">
-                        <input
-                          type="radio"
-                          id="singlePayment"
-                          name="installmentAmount"
-                          value="123"
-                          defaultChecked
-                        />
-                        <label htmlFor="singlePayment">Single Payment</label>
-                      </div>
-                      <label htmlFor="singlePayment" className="mt-3">
-                        {lastPrice}$
-                      </label>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <div className="mt-2 flex gap-3">
-                        <input
-                          type="radio"
-                          id="two"
-                          name="installmentAmount"
-                          value="123"
-                        />
-                        <label htmlFor="two">2</label>
-                      </div>
-                      <label htmlFor="two">{(lastPrice / 2).toFixed(2)}$</label>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <div className="mt-2 flex gap-3">
-                        <input
-                          type="radio"
-                          id="four"
-                          name="installmentAmount"
-                          value="123"
-                        />
-                        <label htmlFor="four">4</label>
-                      </div>
-                      <label htmlFor="four">
-                        {(lastPrice / 4).toFixed(2)}$
-                      </label>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <div className="mt-2 flex gap-3">
-                        <input
-                          type="radio"
-                          id="six"
-                          name="installmentAmount"
-                          value="123"
-                        />
-                        <label htmlFor="six">6</label>
-                      </div>
-                      <label htmlFor="six">{(lastPrice / 6).toFixed(2)}$</label>
-                    </div>
-                  </div>
+                  <CreditInstallment />
                 </div>
               </div>
             </div>
