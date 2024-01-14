@@ -190,7 +190,7 @@ const EditField = ({ handleEdit, addressId }) => {
                   {...register("district", {
                     required: "District is Required!",
                     minLength: {
-                      value: 4,
+                      value: 3,
                       message: "Enter valid district",
                     },
                     pattern: {
@@ -220,7 +220,7 @@ const EditField = ({ handleEdit, addressId }) => {
                   {...register("neighborhood", {
                     required: "Neighborhood is Required!",
                     minLength: {
-                      value: 4,
+                      value: 3,
                       message: "Enter valid neighborhood",
                     },
                     pattern: {
@@ -283,7 +283,7 @@ const EditField = ({ handleEdit, addressId }) => {
                       message: "Enter valid title",
                     },
                     pattern: {
-                      value: /^[A-Za-zıöÖİğĞşŞçÇ]{2,20}$/,
+                      value: /^[A-Za-zıöÖİğĞşŞçÇ ]{2,20}$/,
                       message: "Please enter more than 4 characters!",
                     },
                   })}
