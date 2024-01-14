@@ -38,13 +38,7 @@ const CreditCard = () => {
     address_id: addressId,
   };
 
-  const [totalPrice, setTotalPrice] = useState(0);
   const cartItems = useSelector((store) => store.cart.cart);
-  const shippingCost = 50;
-  const lastPrice =
-    totalPrice.toFixed(2) > 500
-      ? totalPrice.toFixed(2)
-      : (Number(totalPrice.toFixed(2)) + shippingCost).toFixed(2);
 
   useEffect(() => {
     let sum = 0;
@@ -52,8 +46,6 @@ const CreditCard = () => {
     cartItems.forEach((item) => {
       sum += item.product.price * item.count;
     });
-
-    setTotalPrice(sum);
   }, [cartItems]);
 
   const {
