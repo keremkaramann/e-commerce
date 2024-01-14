@@ -76,6 +76,7 @@ export const handleVerify = () => (dispatch) => {
       })
       .catch((err) => {
         localStorage.removeItem("token");
+        console.error(err);
         renewAPI();
       });
   }
