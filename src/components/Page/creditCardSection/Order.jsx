@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { FaShippingFast } from "react-icons/fa";
 import { FiChevronsRight } from "react-icons/fi";
-import { order } from "../../store/actions/shoppingCartAction";
+import { order } from "../../../store/actions/shoppingCartAction";
 
 const OrderNow = ({ orderData }) => {
   const [totalPrice, setTotalPrice] = useState(0);
