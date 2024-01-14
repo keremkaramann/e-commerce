@@ -287,7 +287,7 @@ const AddressField = ({ handleAddNewAddress }) => {
                   className="font-bold text-white px-36 
                     py-3 bg-primary-blue hover:bg-black duration-500 ease-in-out rounded-md"
                 >
-                  Add
+                  ADD
                 </button>
               </div>
             </div>

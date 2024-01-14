@@ -95,7 +95,7 @@ export const editAddress = (data) => (dispatch) => {
         Authorization: `${getToken}`,
       }
     : {};
-  API.put("user/address", { headers })
+  API.put("user/address", data, { headers })
     .then((res) => {
       dispatch(editAddressDis(res.data));
     })

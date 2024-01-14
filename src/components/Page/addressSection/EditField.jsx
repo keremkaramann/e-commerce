@@ -12,6 +12,8 @@ const EditField = ({ handleEdit, addressId }) => {
   const foundAddress = addressList.find((address) => address.id === addressId);
 
   const existingData = {
+    id: foundAddress.id,
+    user_id: foundAddress.user_id,
     title: foundAddress.title,
     name: foundAddress.name,
     surname: foundAddress.surname,
@@ -302,7 +304,7 @@ const EditField = ({ handleEdit, addressId }) => {
                   className="font-bold text-white px-36 
                     py-3 bg-primary-blue hover:bg-black duration-500 ease-in-out rounded-md"
                 >
-                  Add
+                  EDIT
                 </button>
               </div>
             </div>
