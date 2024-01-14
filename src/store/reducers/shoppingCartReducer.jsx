@@ -84,7 +84,6 @@ const shoppingCartReducer = (state = shoppingInitialState, action) => {
         ),
       };
     case ADDRESS:
-      console.log("save", action.payload);
       return {
         ...state,
         address: [...state.address, ...action.payload],
