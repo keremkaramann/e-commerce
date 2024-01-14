@@ -6,11 +6,11 @@ import {
   fetchAddress,
   fetchCreditCard,
   saveCard,
-} from "../../store/actions/shoppingCartAction";
+} from "../../../store/actions/shoppingCartAction";
 //pages
-import Footer from "../Layout/Footer";
-import Header from "../Layout/Header";
-import OrderNow from "../Repetitive/Order";
+import Footer from "../../Layout/Footer";
+import Header from "../../Layout/Header";
+import OrderNow from "../../Repetitive/Order";
 //icons
 import { IoIosPhonePortrait } from "react-icons/io";
 import { FaAddressBook, FaRegCreditCard } from "react-icons/fa";

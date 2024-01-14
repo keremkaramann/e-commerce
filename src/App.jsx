@@ -15,7 +15,7 @@ import Error from "./components/Page/Error";
 import Summary from "./components/Page/Summary";
 import Checkout from "./components/Page/Checkout";
 import ProtectedPage from "./components/Page/ProtectedPage";
-import CreditCard from "./components/Page/CreditCard";
+import CreditCard from "./components/Page/creditCardSection/CreditCard";
 
 function App() {
   const dispatch = useDispatch();
