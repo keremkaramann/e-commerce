@@ -1,4 +1,3 @@
-import OrderNow from "../../components/Page/creditCardSection/Order";
 import { API } from "../../endpoint/instance";
 
 export const ADD_CART = "ADD_CART";

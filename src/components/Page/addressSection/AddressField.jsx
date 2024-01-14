@@ -5,6 +5,7 @@ import cityList from "../../../data/cityList";
 import { saveAddress } from "../../../store/actions/shoppingCartAction";
 const AddressField = ({ handleAddNewAddress }) => {
   const dispatch = useDispatch();
+
   const {
     register,
     handleSubmit,
@@ -24,6 +25,7 @@ const AddressField = ({ handleAddNewAddress }) => {
   });
   const handleForm = (data) => {
     dispatch(saveAddress(data));
+    handleAddNewAddress();
   };
   return (
     <form onSubmit={handleSubmit(handleForm)}>
