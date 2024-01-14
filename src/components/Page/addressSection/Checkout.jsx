@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchAddress } from "../../store/actions/shoppingCartAction";
+import { fetchAddress } from "../../../store/actions/shoppingCartAction";
 //pages
-import Footer from "../Layout/Footer";
-import Header from "../Layout/Header";
-import AddressField from "../Repetitive/AddressField";
-import BillingField from "../Repetitive/BillingField";
-import OrderSumForCheckout from "../Repetitive/OrderSumForCheckout";
+import Footer from "../../Layout/Footer";
+import Header from "../../Layout/Header";
+import AddressField from "./AddressField";
+import BillingField from "./BillingField";
+import OrderSumForCheckout from "./OrderSumForCheckout";
 //icons
 import { FaPlus } from "react-icons/fa6";
 import { IoMdPerson, IoIosPhonePortrait } from "react-icons/io";

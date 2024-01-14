@@ -13,9 +13,9 @@ import SignUp from "./components/Page/SignUp";
 import Login from "./components/Page/Login";
 import Error from "./components/Page/Error";
 import Summary from "./components/Page/Summary";
-import Checkout from "./components/Page/Checkout";
 import ProtectedPage from "./components/Page/ProtectedPage";
 import CreditCard from "./components/Page/creditCardSection/CreditCard";
+import Checkout from "./components/Page/addressSection/Checkout";
 
 function App() {
   const dispatch = useDispatch();

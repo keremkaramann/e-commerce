@@ -1,8 +1,8 @@
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { AiOutlineClose } from "react-icons/ai";
-import cityList from "../../data/cityList";
-import { saveAddress } from "../../store/actions/shoppingCartAction";
+import cityList from "../../../data/cityList";
+import { saveAddress } from "../../../store/actions/shoppingCartAction";
 const AddressField = ({ handleAddNewAddress }) => {
   const dispatch = useDispatch();
   const {

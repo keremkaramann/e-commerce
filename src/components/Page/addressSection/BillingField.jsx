@@ -1,8 +1,8 @@
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { AiOutlineClose } from "react-icons/ai";
-import cityList from "../../data/cityList";
-import { saveBillingAddress } from "../../store/actions/shoppingCartAction";
+import cityList from "../../../data/cityList";
+import { saveBillingAddress } from "../../../store/actions/shoppingCartAction";
 const BillingField = ({ handleBilling }) => {
   const dispatch = useDispatch();
   const {
