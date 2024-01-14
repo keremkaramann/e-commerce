@@ -45,7 +45,7 @@ const Checkout = () => {
 
   useEffect(() => {
     dispatch(fetchAddress());
-  }, []);
+  }, [dispatch]);
 
   return (
     <>
@@ -80,59 +80,56 @@ const Checkout = () => {
                     </button>
                   </div>
                 </div>
-                {addressStore && addressStore.length > 0 ? (
-                  addressStore?.map((address, index) => {
-                    return (
-                      <div key={index} className="mb-5">
-                        <div className="flex justify-between mb-2">
-                          <div className="flex gap-1">
-                            <input
-                              type="radio"
-                              id="titleAddress"
-                              name="titleAddress"
-                              defaultChecked
-                            />
-                            <label htmlFor="titleAddress">
-                              {address?.title
-                                ? address.title.charAt(0).toUpperCase() +
-                                  address.title.slice(1)
-                                : ""}
-                            </label>
-                          </div>
-                          <div>
-                            <span className="border-b-[2px] border-dark-navy cursor-pointer text-sm">
-                              Edit
-                            </span>
-                          </div>
+
+                {addressStore?.map((address, index) => {
+                  return (
+                    <div key={index} className="mb-5">
+                      <div className="flex justify-between mb-2">
+                        <div className="flex gap-1">
+                          <input
+                            type="radio"
+                            id="titleAddress"
+                            name="titleAddress"
+                            defaultChecked
+                          />
+                          <label htmlFor="titleAddress">
+                            {address?.title
+                              ? address.title.charAt(0).toUpperCase() +
+                                address.title.slice(1)
+                              : ""}
+                          </label>
                         </div>
-                        <div className="bg-sky-200/50 border-2 border-primary-blue px-3 py-5 rounded-md xs:w-full middle:w-[338px]">
-                          <div>
-                            <div className="flex justify-between text-xs font-bold">
-                              <div className="flex items-center gap-1">
-                                <IoMdPerson className="text-xl" />
-                                <span>
-                                  {address?.name} {address?.surname}
-                                </span>
-                              </div>
-                              <div className="flex items-center">
-                                <IoIosPhonePortrait className="text-xl" />
-                                <span>{formatPhoneNumber(address.phone)}</span>
-                              </div>
+                        <div>
+                          <span className="border-b-[2px] border-dark-navy cursor-pointer text-sm">
+                            Edit
+                          </span>
+                        </div>
+                      </div>
+                      <div className="bg-sky-200/50 border-2 border-primary-blue px-3 py-5 rounded-md xs:w-full middle:w-[338px]">
+                        <div>
+                          <div className="flex justify-between text-xs font-bold">
+                            <div className="flex items-center gap-1">
+                              <IoMdPerson className="text-xl" />
+                              <span>
+                                {address?.name} {address?.surname}
+                              </span>
                             </div>
-                            <div className="text-sm mt-5 font-bold">
-                              <p>{address?.address}</p>
-                              <p>
-                                {address?.district}/{address?.city}
-                              </p>
+                            <div className="flex items-center">
+                              <IoIosPhonePortrait className="text-xl" />
+                              <span>{formatPhoneNumber(address.phone)}</span>
                             </div>
+                          </div>
+                          <div className="text-sm mt-5 font-bold">
+                            <p>{address?.address}</p>
+                            <p>
+                              {address?.district}/{address?.city}
+                            </p>
                           </div>
                         </div>
                       </div>
-                    );
-                  })
-                ) : (
-                  <p>No addresses available</p>
-                )}
+                    </div>
+                  );
+                })}
               </div>
               {!shipToSameAddress && (
                 <div className="text-dark-navy mt-5">

@@ -5,7 +5,7 @@ import {
   REMOVE_CART,
   INCREASE_COUNT,
   DECREASE_COUNT,
-  GET_ADDRESS,
+  FETCH_ADDRESS,
   SAVE_BILLING,
   ORDER,
 } from "../actions/shoppingCartAction";
@@ -84,11 +84,12 @@ const shoppingCartReducer = (state = shoppingInitialState, action) => {
         ),
       };
     case ADDRESS:
+      console.log("save", action.payload);
       return {
         ...state,
-        address: action.payload,
+        address: [...state.address, ...action.payload],
       };
-    case GET_ADDRESS:
+    case FETCH_ADDRESS:
       return {
         ...state,
         address: action.payload,

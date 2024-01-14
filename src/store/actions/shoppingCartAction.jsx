@@ -5,7 +5,7 @@ export const ADD_CART = "ADD_CART";
 export const REMOVE_CART = "REMOVE_CART";
 export const PAYMENT = "PAYMENT";
 export const ADDRESS = "ADDRESS";
-export const GET_ADDRESS = "GET_ADDRESS";
+export const FETCH_ADDRESS = "FETCH_ADDRESS";
 export const INCREASE_COUNT = "INCREASE_COUNT";
 export const DECREASE_COUNT = "DECREASE_COUNT";
 export const SAVE_BILLING = "SAVE_BILLING";
@@ -42,13 +42,14 @@ export const decreaseCount = (productId) => ({
 });
 
 export const getAddress = (data) => ({
-  type: GET_ADDRESS,
+  type: FETCH_ADDRESS,
   payload: data,
 });
 export const saveBillingAddress = (data) => ({
   type: SAVE_BILLING,
   payload: data,
 });
+
 export const saveAddress = (data) => (dispatch) => {
   const getToken = localStorage.getItem("token");
 
@@ -57,10 +58,10 @@ export const saveAddress = (data) => (dispatch) => {
         Authorization: `${getToken}`,
       }
     : {};
-
   API.post("user/address", data, { headers })
     .then((res) => {
-      dispatch(address(res.data));
+      const addressesArray = Object.values(res.data);
+      dispatch(address(addressesArray));
     })
     .catch((err) => {
       console.log(err);
@@ -82,6 +83,7 @@ export const fetchAddress = () => (dispatch) => {
       console.error("Error fetching address: ", err);
     });
 };
+
 export const fetchCreditCard = () => (dispatch) => {
   const getToken = localStorage.getItem("token");
 
@@ -98,6 +100,7 @@ export const fetchCreditCard = () => (dispatch) => {
       console.error("Error fetching address: ", err);
     });
 };
+
 export const saveCard = (data) => (dispatch) => {
   const getToken = localStorage.getItem("token");
 
@@ -115,6 +118,7 @@ export const saveCard = (data) => (dispatch) => {
       console.error("Error saving card:", err);
     });
 };
+
 export const order = (data) => (dispatch) => {
   const getToken = localStorage.getItem("token");
 
@@ -127,7 +131,7 @@ export const order = (data) => (dispatch) => {
   API.post("order", data, { headers })
     .then((res) => {
       console.log(res.data);
-      dispatch(OrderNow(data));
+      dispatch(finalOrder(data));
     })
     .catch((err) => {
       console.error("Error saving card:", err);
