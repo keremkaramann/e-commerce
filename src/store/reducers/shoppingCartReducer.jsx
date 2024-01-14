@@ -95,7 +95,7 @@ const shoppingCartReducer = (state = shoppingInitialState, action) => {
         address: action.payload,
       };
     case EDIT_ADDRESS:
-      const editedAddress = action.payload;
+      const editedAddress = action.payload[0].id;
       return {
         ...state,
         address: state.address.map((addr) =>
