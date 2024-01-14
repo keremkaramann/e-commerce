@@ -1,14 +1,16 @@
-import { NavLink } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAddress } from "../../store/actions/shoppingCartAction";
+//pages
 import Footer from "../Layout/Footer";
 import Header from "../Layout/Header";
-import { FaPlus } from "react-icons/fa6";
 import AddressField from "../Repetitive/AddressField";
-import { IoMdPerson, IoIosPhonePortrait } from "react-icons/io";
 import BillingField from "../Repetitive/BillingField";
 import OrderSumForCheckout from "../Repetitive/OrderSumForCheckout";
+//icons
+import { FaPlus } from "react-icons/fa6";
+import { IoMdPerson, IoIosPhonePortrait } from "react-icons/io";
 
 const Checkout = () => {
   const [showAddressInput, setShowAddressInput] = useState(false);
@@ -80,7 +82,6 @@ const Checkout = () => {
                     </button>
                   </div>
                 </div>
-
                 {addressStore?.map((address, index) => {
                   return (
                     <div key={index} className="mb-5">
