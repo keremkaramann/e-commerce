@@ -12,8 +12,8 @@ import Footer from "../../Layout/Footer";
 import Header from "../../Layout/Header";
 import OrderNow from "./Order";
 //icons
-import { IoIosPhonePortrait } from "react-icons/io";
 import { FaAddressBook, FaRegCreditCard } from "react-icons/fa";
+import { IoIosPhonePortrait } from "react-icons/io";
 import CreditInstallment from "./CreditInstallment";
 import SavedCards from "./SavedCards";
 
