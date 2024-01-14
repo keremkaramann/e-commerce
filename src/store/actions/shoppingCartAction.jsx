@@ -5,6 +5,7 @@ export const REMOVE_CART = "REMOVE_CART";
 export const PAYMENT = "PAYMENT";
 export const ADDRESS = "ADDRESS";
 export const FETCH_ADDRESS = "FETCH_ADDRESS";
+export const EDIT_ADDRESS = "EDIT_ADDRESS";
 export const INCREASE_COUNT = "INCREASE_COUNT";
 export const DECREASE_COUNT = "DECREASE_COUNT";
 export const SAVE_BILLING = "SAVE_BILLING";
@@ -28,6 +29,10 @@ export const payment = (data) => ({
 });
 export const address = (data) => ({
   type: ADDRESS,
+  payload: data,
+});
+export const editAddressDis = (data) => ({
+  type: EDIT_ADDRESS,
   payload: data,
 });
 export const increaseCount = (productId) => ({
@@ -77,6 +82,22 @@ export const fetchAddress = () => (dispatch) => {
   API.get("user/address", { headers })
     .then((res) => {
       dispatch(getAddress(res.data));
+    })
+    .catch((err) => {
+      console.error("Error fetching address: ", err);
+    });
+};
+export const editAddress = (data) => (dispatch) => {
+  const getToken = localStorage.getItem("token");
+
+  const headers = getToken
+    ? {
+        Authorization: `${getToken}`,
+      }
+    : {};
+  API.put("user/address", { headers })
+    .then((res) => {
+      dispatch(editAddressDis(res.data));
     })
     .catch((err) => {
       console.error("Error fetching address: ", err);

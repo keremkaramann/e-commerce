@@ -6,6 +6,7 @@ import {
   INCREASE_COUNT,
   DECREASE_COUNT,
   FETCH_ADDRESS,
+  EDIT_ADDRESS,
   SAVE_BILLING,
   ORDER,
 } from "../actions/shoppingCartAction";
@@ -73,7 +74,6 @@ const shoppingCartReducer = (state = shoppingInitialState, action) => {
             : item
         ),
       };
-
     case DECREASE_COUNT:
       return {
         ...state,
@@ -93,6 +93,14 @@ const shoppingCartReducer = (state = shoppingInitialState, action) => {
       return {
         ...state,
         address: action.payload,
+      };
+    case EDIT_ADDRESS:
+      const editedAddress = action.payload;
+      return {
+        ...state,
+        address: state.address.map((addr) =>
+          addr.id === editedAddress.id ? editedAddress : addr
+        ),
       };
     case SAVE_BILLING:
       const newBillingEntry = {

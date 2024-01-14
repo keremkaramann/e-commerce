@@ -39,6 +39,7 @@ const EditField = ({ handleEdit, addressId }) => {
     },
     mode: "all",
   });
+
   const handleForm = (data) => {
     dispatch(saveAddress(data));
     handleEdit();
