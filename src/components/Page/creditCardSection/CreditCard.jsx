@@ -93,7 +93,7 @@ const CreditCard = () => {
           <div className="gap-4">
             <div className="flex flex-wrap middle:justify-normal xs:justify-center mb-10 gap-3">
               <div className="text-dark-navy">
-                <div className="flex flex-wrap xs:justify-center middle:justify-normal">
+                <div className="flex flex-wrap justify-center">
                   <div className="mb-1 border-[1px] bg-slate-400/20 p-5">
                     <h1 className="text-xl font-bold mb-5 mt-5 flex items-center gap-2">
                       Shipping Address

@@ -20,7 +20,7 @@ const OrderSumForCheckout = () => {
   }, [cartItems]);
 
   return (
-    <div className="flex items-start mt-20 xs-p-3 middle:p-0">
+    <div className="flex items-start mt-10 xs-p-3 middle:p-0">
       <div className="border-[1px] border-muted-color xs:w-[290px] middle:w-[400px] p-5 leading-10 text-dark-navy">
         <h1 className="text-dark-navy font-bold text-xl mb-10 mt-2">
           Order Summary
