@@ -280,7 +280,7 @@ const AddressField = ({ handleAddNewAddress }) => {
                 )}
               </div>
             </div>
-            <div className="p-3 ml-5 mr-5">
+            <div className="p-3 ml-5 mr-5 pb-10">
               <div className="flex justify-center">
                 <button
                   disabled={!isValid}

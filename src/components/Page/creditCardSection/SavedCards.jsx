@@ -18,11 +18,6 @@ const SavedCards = () => {
         <div>
           <div className="flex items-center justify-between gap-1">
             <img
-              src="https://cdn.freelogovectors.net/wp-content/uploads/2018/04/yapi_kredi_bankasi_logo.png"
-              alt="yapıkredi"
-              className="w-24 h-5"
-            />
-            <img
               src="https://www.freepnglogos.com/uploads/mastercard-png/mastercard-logo-logok-15.png"
               alt="mastercardlogo"
               className="w-24 h-12"

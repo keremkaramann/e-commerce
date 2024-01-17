@@ -112,7 +112,7 @@ export const fetchCreditCard = () => (dispatch) => {
         Authorization: `${getToken}`,
       }
     : {};
-  API.get("/card", { headers })
+  API.get("user/card", { headers })
     .then((res) => {
       dispatch(payment(res.data));
     })
@@ -130,7 +130,7 @@ export const saveCard = (data) => (dispatch) => {
       }
     : {};
 
-  API.post("card", data, { headers })
+  API.post("user/card", data, { headers })
     .then((res) => {
       dispatch(payment(res.data));
     })
