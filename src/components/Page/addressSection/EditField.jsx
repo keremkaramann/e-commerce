@@ -11,33 +11,22 @@ const EditField = ({ handleEdit, addressId }) => {
 
   const foundAddress = addressList.find((address) => address.id === addressId);
 
-  const existingData = {
-    id: foundAddress.id,
-    user_id: foundAddress.user_id,
-    title: foundAddress.title,
-    name: foundAddress.name,
-    surname: foundAddress.surname,
-    phone: foundAddress.phone,
-    city: foundAddress.city,
-    district: foundAddress.district,
-    neighborhood: foundAddress.neighborhood,
-    address: foundAddress.address,
-  };
-
   const {
     register,
     handleSubmit,
     formState: { errors, isValid },
   } = useForm({
-    defaultValues: existingData || {
-      title: "",
-      name: "",
-      surname: "",
-      phone: "",
-      city: "",
-      district: "",
-      neighborhood: "",
-      address: "",
+    defaultValues: {
+      id: foundAddress.id,
+      user_id: foundAddress.user_id,
+      title: foundAddress.title,
+      name: foundAddress.name,
+      surname: foundAddress.surname,
+      phone: foundAddress.phone,
+      city: foundAddress.city,
+      district: foundAddress.district,
+      neighborhood: foundAddress.neighborhood,
+      address: foundAddress.address,
     },
     mode: "all",
   });
