@@ -1,7 +1,16 @@
+import { useState } from "react";
 import { useSelector } from "react-redux";
+import EditCardFields from "./EditCardFields";
 
 const SavedCards = () => {
+  const [showEdit, setShowEdit] = useState(false);
+  const [cardId, setCardId] = useState(0);
   const creditCards = useSelector((store) => store.cart.payment);
+
+  const handleEdit = (id) => {
+    setShowEdit(!showEdit);
+    setCardId(id);
+  };
 
   return (
     <>
@@ -16,7 +25,7 @@ const SavedCards = () => {
                   <label htmlFor="titleAddress">asdsd</label>
                 </div>
                 <div className="border-b-2 border-dark-navy">
-                  <button>Edit</button>
+                  <button onClick={() => handleEdit(id)}>Edit</button>
                 </div>
               </div>
             </div>
@@ -43,6 +52,7 @@ const SavedCards = () => {
           </div>
         );
       })}
+      {showEdit && <EditCardFields handleEdit={handleEdit} cardId={cardId} />}
     </>
   );
 };
