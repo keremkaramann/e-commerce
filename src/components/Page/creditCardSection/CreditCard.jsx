@@ -152,16 +152,16 @@ const CreditCard = () => {
                 </h1>
                 <div className="mb-10 flex flex-wrap xs:justify-center middle:justify-normal">
                   <div className="px-16 rounded-md border-r-[1px]">
-                    <label htmlFor="card" className="font-medium">
-                      Credit Card Number*
-                    </label>
                     <form onSubmit={handleSubmit(handleForm)}>
-                      <div className="mb-2">
+                      <div className="mb-2 flex flex-col">
+                        <label htmlFor="card" className="font-medium">
+                          Credit Card Number*
+                        </label>
                         <input
                           type="text"
                           id="card"
                           name="card"
-                          className="bg-slate-400/20 w-72 py-2 rounded-md mt-2 px-3"
+                          className="bg-slate-400/20 py-2 rounded-md mt-2 px-3"
                           {...register("card_no", {
                             required: "Card field is required!",
                             pattern: {
@@ -184,7 +184,7 @@ const CreditCard = () => {
                           type="text"
                           id="name"
                           name="name"
-                          className="bg-slate-400/20 w-72 py-2 rounded-md mt-2 px-3"
+                          className="bg-slate-400/20 py-2 rounded-md mt-2 px-3"
                           {...register("name_on_card", {
                             required: "Name field is required!",
                             pattern: {
@@ -205,7 +205,7 @@ const CreditCard = () => {
                           <select
                             id="month"
                             name="month"
-                            className="bg-slate-400/20 w-24 py-2 rounded-md mt-2 mr-3 px-1"
+                            className="bg-slate-400/20 w-28 py-2 rounded-md mt-2 mr-3 px-1"
                             {...register("expire_month", {
                               required: "Month*",
                             })}
@@ -230,7 +230,7 @@ const CreditCard = () => {
                           <select
                             id="year"
                             name="year"
-                            className="bg-slate-400/20 w-24 py-2 rounded-md mt-2 px-2"
+                            className="bg-slate-400/20 w-28 py-2 rounded-md mt-2 px-2"
                             {...register("expire_year", {
                               required: "Year*",
                             })}
@@ -260,7 +260,7 @@ const CreditCard = () => {
                             type="text"
                             id="cvv"
                             name="cvv"
-                            className="bg-slate-400/20 w-14 py-2 rounded-md mt-2 px-2"
+                            className="bg-slate-400/20 w-20 py-2 rounded-md mt-2 px-2"
                           />
                           {errors.cvv && (
                             <p className="text-red-600 font-bold text-xs animate-shake mt-1">
