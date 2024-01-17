@@ -1,6 +1,8 @@
 import { useSelector } from "react-redux";
+
 const SavedCards = () => {
   const creditCards = useSelector((store) => store.cart.payment);
+
   return (
     <>
       {creditCards?.map((card) => {
@@ -10,12 +12,7 @@ const SavedCards = () => {
             <div className="mb-2">
               <div className="flex justify-between px-1">
                 <div>
-                  <input
-                    type="radio"
-                    id="titleAddress"
-                    name="titleAddress"
-                    defaultChecked
-                  />
+                  <input type="radio" id="titleAddress" name="titleAddress" />
                   <label htmlFor="titleAddress">asdsd</label>
                 </div>
                 <div className="border-b-2 border-dark-navy">

@@ -11,6 +11,7 @@ export const DECREASE_COUNT = "DECREASE_COUNT";
 export const SAVE_BILLING = "SAVE_BILLING";
 export const ORDER = "ORDER";
 export const FETCH_CREDIT_CARDS = " FETCH_CREDIT_CARDS";
+export const EDIT_CREDIT_CARD = "EDIT_CREDIT_CARD";
 
 export const finalOrder = (data) => ({
   type: ORDER,
@@ -30,6 +31,10 @@ export const payment = (data) => ({
 });
 export const fetchCredit = (data) => ({
   type: FETCH_CREDIT_CARDS,
+  payload: data,
+});
+export const editCreditCard = (data) => ({
+  type: EDIT_CREDIT_CARD,
   payload: data,
 });
 export const address = (data) => ({
@@ -140,6 +145,23 @@ export const saveCard = (data) => (dispatch) => {
     .then((res) => {
       const cardArray = Object.values(res.data);
       dispatch(payment(cardArray));
+    })
+    .catch((err) => {
+      console.error("Error saving card:", err);
+    });
+};
+export const editCard = (data) => (dispatch) => {
+  const getToken = localStorage.getItem("token");
+
+  const headers = getToken
+    ? {
+        Authorization: `${getToken}`,
+      }
+    : {};
+
+  API.put("user/card", data, { headers })
+    .then((res) => {
+      dispatch(editCreditCard(res.data));
     })
     .catch((err) => {
       console.error("Error saving card:", err);

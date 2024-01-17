@@ -10,6 +10,7 @@ import {
   SAVE_BILLING,
   ORDER,
   FETCH_CREDIT_CARDS,
+  EDIT_CREDIT_CARD,
 } from "../actions/shoppingCartAction";
 
 const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -121,6 +122,14 @@ const shoppingCartReducer = (state = shoppingInitialState, action) => {
       return {
         ...state,
         payment: action.payload,
+      };
+    case EDIT_CREDIT_CARD:
+      const editedCard = Object.values(action.payload)[0];
+      return {
+        ...state,
+        payment: state.payment.map((card) =>
+          card.id === editedCard.id ? editedCard : card
+        ),
       };
     case ORDER:
       return {
