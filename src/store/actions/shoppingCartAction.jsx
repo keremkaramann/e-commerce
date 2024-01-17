@@ -10,6 +10,7 @@ export const INCREASE_COUNT = "INCREASE_COUNT";
 export const DECREASE_COUNT = "DECREASE_COUNT";
 export const SAVE_BILLING = "SAVE_BILLING";
 export const ORDER = "ORDER";
+export const FETCH_CREDIT_CARDS = " FETCH_CREDIT_CARDS";
 
 export const finalOrder = (data) => ({
   type: ORDER,
@@ -25,6 +26,10 @@ export const removeCart = (id) => ({
 });
 export const payment = (data) => ({
   type: PAYMENT,
+  payload: data,
+});
+export const fetchCredit = (data) => ({
+  type: FETCH_CREDIT_CARDS,
   payload: data,
 });
 export const address = (data) => ({
@@ -114,7 +119,8 @@ export const fetchCreditCard = () => (dispatch) => {
     : {};
   API.get("user/card", { headers })
     .then((res) => {
-      dispatch(payment(res.data));
+      const cardArray = Object.values(res.data);
+      dispatch(fetchCredit(cardArray));
     })
     .catch((err) => {
       console.error("Error fetching address: ", err);

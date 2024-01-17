@@ -9,6 +9,7 @@ import {
   EDIT_ADDRESS,
   SAVE_BILLING,
   ORDER,
+  FETCH_CREDIT_CARDS,
 } from "../actions/shoppingCartAction";
 
 const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -115,6 +116,11 @@ const shoppingCartReducer = (state = shoppingInitialState, action) => {
       return {
         ...state,
         payment: [...state.payment, ...action.payload],
+      };
+    case FETCH_CREDIT_CARDS:
+      return {
+        ...state,
+        payment: action.payload,
       };
     case ORDER:
       return {
