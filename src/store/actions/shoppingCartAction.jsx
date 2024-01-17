@@ -132,7 +132,8 @@ export const saveCard = (data) => (dispatch) => {
 
   API.post("user/card", data, { headers })
     .then((res) => {
-      dispatch(payment(res.data));
+      const cardArray = Object.values(res.data);
+      dispatch(payment(cardArray));
     })
     .catch((err) => {
       console.error("Error saving card:", err);

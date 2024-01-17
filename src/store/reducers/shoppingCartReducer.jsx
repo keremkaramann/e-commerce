@@ -114,7 +114,7 @@ const shoppingCartReducer = (state = shoppingInitialState, action) => {
     case PAYMENT:
       return {
         ...state,
-        payment: action.payload,
+        payment: [...state.payment, ...action.payload],
       };
     case ORDER:
       return {

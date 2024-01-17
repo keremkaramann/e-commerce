@@ -54,10 +54,10 @@ const CreditCard = () => {
     formState: { errors, isValid },
   } = useForm({
     defaultValues: {
-      card: "",
-      month: "",
-      year: "",
-      cvv: "",
+      card_no: "",
+      expire_month: "",
+      expire_year: "",
+      name_on_card: "",
     },
     mode: "all",
   });
@@ -82,6 +82,7 @@ const CreditCard = () => {
   }, []);
 
   const handleForm = (data) => {
+    console.log(data);
     dispatch(saveCard(data));
   };
   return (
@@ -161,7 +162,7 @@ const CreditCard = () => {
                           id="card"
                           name="card"
                           className="bg-slate-400/20 w-72 py-2 rounded-md mt-2 px-3"
-                          {...register("card", {
+                          {...register("card_no", {
                             required: "Card field is required!",
                             pattern: {
                               value: /^[0-9]{16}$/,
@@ -169,9 +170,32 @@ const CreditCard = () => {
                             },
                           })}
                         />
-                        {errors.card && (
+                        {errors.card_no && (
                           <p className="text-red-600 font-bold text-xs animate-shake mt-1">
-                            {errors.card?.message}
+                            {errors.card_no?.message}
+                          </p>
+                        )}
+                      </div>
+                      <div className="mb-2 flex flex-col">
+                        <label htmlFor="name" className="font-medium">
+                          Full Name*
+                        </label>
+                        <input
+                          type="text"
+                          id="name"
+                          name="name"
+                          className="bg-slate-400/20 w-72 py-2 rounded-md mt-2 px-3"
+                          {...register("name_on_card", {
+                            required: "Name field is required!",
+                            pattern: {
+                              value: /^[a-zA-ZğĞüÜşŞıİöÖçÇ\s]+$/u,
+                              message: "Please enter a valid name!",
+                            },
+                          })}
+                        />
+                        {errors.name_on_card && (
+                          <p className="text-red-600 font-bold text-xs animate-shake mt-1">
+                            {errors.name_on_card?.message}
                           </p>
                         )}
                       </div>
@@ -182,7 +206,7 @@ const CreditCard = () => {
                             id="month"
                             name="month"
                             className="bg-slate-400/20 w-24 py-2 rounded-md mt-2 mr-3 px-1"
-                            {...register("month", {
+                            {...register("expire_month", {
                               required: "Month*",
                             })}
                           >
@@ -198,23 +222,23 @@ const CreditCard = () => {
                               </option>
                             ))}
                           </select>
-                          {errors?.month && (
+                          {errors?.expire_month && (
                             <p className="text-red-600 font-bold text-xs animate-shake mt-1">
-                              {errors.month?.message}
+                              {errors.expire_month?.message}
                             </p>
                           )}
                           <select
                             id="year"
                             name="year"
                             className="bg-slate-400/20 w-24 py-2 rounded-md mt-2 px-2"
-                            {...register("year", {
+                            {...register("expire_year", {
                               required: "Year*",
                             })}
                           >
                             <option value="" defaultValue>
                               Year
                             </option>
-                            {[...Array(15).keys()].map((index) => {
+                            {[...Array(10).keys()].map((index) => {
                               const startYear = 2023;
                               const nextYear = startYear + index;
                               return (
@@ -224,9 +248,9 @@ const CreditCard = () => {
                               );
                             })}
                           </select>
-                          {errors.year && (
+                          {errors.expire_year && (
                             <p className="text-red-600 font-bold text-xs animate-shake mt-1">
-                              {errors.year?.message}
+                              {errors.expire_year?.message}
                             </p>
                           )}
                         </div>
@@ -237,13 +261,6 @@ const CreditCard = () => {
                             id="cvv"
                             name="cvv"
                             className="bg-slate-400/20 w-14 py-2 rounded-md mt-2 px-2"
-                            {...register("cvv", {
-                              required: "CVV*",
-                              pattern: {
-                                value: /^[0-9]{3}$/,
-                                message: "CVV*",
-                              },
-                            })}
                           />
                           {errors.cvv && (
                             <p className="text-red-600 font-bold text-xs animate-shake mt-1">
