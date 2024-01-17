@@ -1,10 +1,7 @@
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  editAddress,
-  editCard,
-} from "../../../store/actions/shoppingCartAction";
-import cityList from "../../../data/cityList";
+import { editCard } from "../../../store/actions/shoppingCartAction";
+
 //icons
 import { AiOutlineClose } from "react-icons/ai";
 
