@@ -13,6 +13,7 @@ export const ORDER = "ORDER";
 export const FETCH_CREDIT_CARDS = " FETCH_CREDIT_CARDS";
 export const EDIT_CREDIT_CARD = "EDIT_CREDIT_CARD";
 export const RESET_CART = "RESET_CART";
+export const FETCH_PREV_ORDERS = "FETCH_PREV_ORDERS";
 
 export const finalOrder = (data) => ({
   type: ORDER,
@@ -65,6 +66,10 @@ export const getAddress = (data) => ({
 });
 export const saveBillingAddress = (data) => ({
   type: SAVE_BILLING,
+  payload: data,
+});
+export const fetchPrevOrders = (data) => ({
+  type: FETCH_PREV_ORDERS,
   payload: data,
 });
 
@@ -186,6 +191,23 @@ export const order = (data) => (dispatch) => {
       console.log(res.data);
       dispatch(finalOrder(data));
       dispatch(resetCart());
+    })
+    .catch((err) => {
+      console.error("Error saving card:", err);
+    });
+};
+export const getPrevOrder = () => (dispatch) => {
+  const getToken = localStorage.getItem("token");
+
+  const headers = getToken
+    ? {
+        Authorization: `${getToken}`,
+      }
+    : {};
+
+  API.get("order", { headers })
+    .then((res) => {
+      dispatch(fetchPrevOrders(res.data));
     })
     .catch((err) => {
       console.error("Error saving card:", err);

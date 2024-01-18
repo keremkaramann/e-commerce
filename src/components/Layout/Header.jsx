@@ -238,6 +238,14 @@ const Header = () => {
               >
                 Contact
               </NavLink>
+              {userLoginData && (
+                <NavLink
+                  to="/myorders"
+                  className="hover:text-primary-blue duration-300 ease-in-out"
+                >
+                  My Orders
+                </NavLink>
+              )}
             </div>
             <div className="flex gap-5 text-primary-blue items-center font-bold">
               <div className="flex items-center gap-1">

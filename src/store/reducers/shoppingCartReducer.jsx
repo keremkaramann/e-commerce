@@ -12,6 +12,7 @@ import {
   ORDER,
   FETCH_CREDIT_CARDS,
   EDIT_CREDIT_CARD,
+  FETCH_PREV_ORDERS,
 } from "../actions/shoppingCartAction";
 
 const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -22,6 +23,7 @@ const shoppingInitialState = {
   address: [],
   billing: [],
   myOrder: [],
+  prevOrders: [],
 };
 
 const shoppingCartReducer = (state = shoppingInitialState, action) => {

@@ -17,6 +17,7 @@ import ProtectedPage from "./components/Page/ProtectedPage";
 import CreditCard from "./components/Page/creditCardSection/CreditCard";
 import Checkout from "./components/Page/addressSection/Checkout";
 import SumOrder from "./components/Page/SumOrder";
+import MyOrders from "./components/Page/MyOrders";
 
 function App() {
   const dispatch = useDispatch();
@@ -48,6 +49,9 @@ function App() {
         </Route>
         <Route path="/successful" exact>
           <ProtectedPage PageComponent={SumOrder} fromUrl={"/successful"} />
+        </Route>
+        <Route path="/myorders" exact>
+          <ProtectedPage PageComponent={MyOrders} fromUrl={"/myorders"} />
         </Route>
         <Route path="/team" exact>
           <Team />
