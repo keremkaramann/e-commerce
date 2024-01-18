@@ -242,7 +242,7 @@ const Header = () => {
               >
                 Contact
               </NavLink>
-              {userLoginData && (
+              {userLoginData.name && (
                 <NavLink
                   to="/myorders"
                   className="hover:text-primary-blue duration-300 ease-in-out"

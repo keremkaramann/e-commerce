@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getPrevOrder } from "../../store/actions/shoppingCartAction";
+import Lottie from "lottie-react";
 import Header from "../Layout/Header";
 import Footer from "../Layout/Footer";
 const MyOrders = () => {
@@ -11,7 +12,15 @@ const MyOrders = () => {
   useEffect(() => {
     dispatch(getPrevOrder());
   }, []);
-
+  //error page
+  const NoProducts = () => {
+    return (
+      <div className="font-bold text-2xl text-dark-navy text-center mb-20">
+        <h1 className="mb-3">There is no Product to Show...</h1>
+        <Lottie animationData={emptyProduct} loop={true} />
+      </div>
+    );
+  };
   return (
     <>
       <Header />
