@@ -55,7 +55,6 @@ const CreditCard = () => {
     ),
     products: userProducts,
   };
-  console.log(orderData);
 
   useEffect(() => {
     let summary = 0;

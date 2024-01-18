@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import confetti from "canvas-confetti";
 import Lottie from "lottie-react";
@@ -46,9 +46,11 @@ const SumOrder = () => {
     spread: 120,
     startVelocity: 45,
   });
+
   useEffect(() => {
     fire();
   }, []);
+
   return (
     <>
       <Header />

@@ -12,6 +12,19 @@ const OrderNow = ({ orderData }) => {
   const shippingCost = 50;
   const history = useHistory();
 
+  const isValid =
+    orderData &&
+    orderData.address_id &&
+    orderData.order_date &&
+    orderData.card_no &&
+    orderData.card_name &&
+    orderData.card_expire_month &&
+    orderData.card_expire_year &&
+    orderData.card_ccv &&
+    orderData.price &&
+    orderData.products &&
+    orderData.products.length > 0;
+
   useEffect(() => {
     let sum = 0;
 
@@ -82,7 +95,9 @@ const OrderNow = ({ orderData }) => {
           className="flex items-center justify-center mt-5
                 gap-2 bg-dark-navy py-2 text-white font-medium cursor-pointer"
         >
-          <button onClick={handleOrder}>ORDER</button>
+          <button onClick={handleOrder} disabled={!isValid}>
+            ORDER
+          </button>
           <FiChevronsRight />
         </div>
       </div>
