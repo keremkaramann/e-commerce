@@ -22,7 +22,6 @@ const SavedCards = () => {
               <div className="flex justify-between px-1">
                 <div>
                   <input type="radio" id="titleAddress" name="titleAddress" />
-                  <label htmlFor="titleAddress">asdsd</label>
                 </div>
                 <div className="border-b-2 border-dark-navy">
                   <button onClick={() => handleEdit(id)}>Edit</button>
