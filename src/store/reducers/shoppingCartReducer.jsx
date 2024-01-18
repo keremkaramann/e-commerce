@@ -1,5 +1,6 @@
 import {
   ADD_CART,
+  RESET_CART,
   PAYMENT,
   ADDRESS,
   REMOVE_CART,
@@ -66,6 +67,12 @@ const shoppingCartReducer = (state = shoppingInitialState, action) => {
       return {
         ...state,
         cart: updatedCart,
+      };
+    case RESET_CART:
+      localStorage.removeItem("cart");
+      return {
+        ...state,
+        cart: [],
       };
     case INCREASE_COUNT:
       return {

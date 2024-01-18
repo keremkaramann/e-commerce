@@ -12,6 +12,7 @@ export const SAVE_BILLING = "SAVE_BILLING";
 export const ORDER = "ORDER";
 export const FETCH_CREDIT_CARDS = " FETCH_CREDIT_CARDS";
 export const EDIT_CREDIT_CARD = "EDIT_CREDIT_CARD";
+export const RESET_CART = "RESET_CART";
 
 export const finalOrder = (data) => ({
   type: ORDER,
@@ -20,6 +21,9 @@ export const finalOrder = (data) => ({
 export const addCart = (id) => ({
   type: ADD_CART,
   payload: id,
+});
+export const resetCart = () => ({
+  type: RESET_CART,
 });
 export const removeCart = (id) => ({
   type: REMOVE_CART,
@@ -181,7 +185,7 @@ export const order = (data) => (dispatch) => {
     .then((res) => {
       console.log(res.data);
       dispatch(finalOrder(data));
-      localStorage.removeItem("cart");
+      dispatch(resetCart());
     })
     .catch((err) => {
       console.error("Error saving card:", err);
