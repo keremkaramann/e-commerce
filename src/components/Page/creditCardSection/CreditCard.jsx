@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
@@ -18,35 +18,52 @@ import CreditInstallment from "./CreditInstallment";
 import SavedCards from "./SavedCards";
 
 const CreditCard = () => {
+  const [sum, setSum] = useState(0);
   const addressStore = useSelector((store) => store.cart.address);
   const cart = useSelector((store) => store.cart.cart);
+  const creditCard = useSelector((store) => store.cart.payment);
+
   const dispatch = useDispatch();
 
   let singleAddress = addressStore[0];
   let addressId = addressStore[0]?.id;
 
-  const productData = cart.map((product) => {
-    const {
-      count,
-      product: { id: product_id },
-    } = product;
-    return { count, product_id };
+  const currentDate = new Date();
+  const formattedDate = currentDate.toISOString().slice(0, 19);
+
+  const userProducts = cart?.map((item) => {
+    const { count } = item;
+    const { id, name } = item.product;
+
+    return { product_id: id, count, detail: name };
   });
 
   const orderData = {
-    products: productData,
     address_id: addressId,
+    order_date: formattedDate,
+    card_no: creditCard[0]?.card_no,
+    card_name: creditCard[0]?.name_on_card,
+    card_expire_month: parseInt(
+      String(creditCard[0]?.expire_month).padStart(2, "0")
+    ),
+    card_expire_year: creditCard[0]?.expire_year,
+    card_ccv: 123,
+    price: parseInt(
+      sum.toFixed(2) > 500
+        ? sum.toFixed(2)
+        : (Number(sum.toFixed(2)) + 50).toFixed(2)
+    ),
+    products: userProducts,
   };
-
-  const cartItems = useSelector((store) => store.cart.cart);
+  console.log(orderData);
 
   useEffect(() => {
-    let sum = 0;
-
-    cartItems.forEach((item) => {
-      sum += item.product.price * item.count;
+    let summary = 0;
+    cart.forEach((item) => {
+      summary += item.product.price * item.count;
     });
-  }, [cartItems]);
+    setSum(summary);
+  }, [cart]);
 
   const {
     register,
@@ -58,6 +75,7 @@ const CreditCard = () => {
       expire_month: "",
       expire_year: "",
       name_on_card: "",
+      card_ccv: "",
     },
     mode: "all",
   });
@@ -82,9 +100,15 @@ const CreditCard = () => {
   }, []);
 
   const handleForm = (data) => {
-    console.log(data);
-    dispatch(saveCard(data));
+    const card = {
+      card_no: data.card_no,
+      expire_month: data.expire_month,
+      expire_year: data.expire_year,
+      name_on_card: data.name_on_card,
+    };
+    dispatch(saveCard(card));
   };
+
   return (
     <>
       <Header />
@@ -261,10 +285,17 @@ const CreditCard = () => {
                             id="cvv"
                             name="cvv"
                             className="bg-slate-400/20 w-20 py-2 rounded-md mt-2 px-2"
+                            {...register("card_ccv", {
+                              required: "CCV*",
+                              pattern: {
+                                value: /^\d{3}$/,
+                                message: "CCV*",
+                              },
+                            })}
                           />
-                          {errors.cvv && (
+                          {errors.card_ccv && (
                             <p className="text-red-600 font-bold text-xs animate-shake mt-1">
-                              {errors.cvv?.message}
+                              {errors.card_ccv?.message}
                             </p>
                           )}
                         </div>
