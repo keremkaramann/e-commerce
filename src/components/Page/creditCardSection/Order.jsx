@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { FaShippingFast } from "react-icons/fa";
 import { FiChevronsRight } from "react-icons/fi";
+import { useHistory } from "react-router-dom";
 import { order } from "../../../store/actions/shoppingCartAction";
 
 const OrderNow = ({ orderData }) => {
@@ -9,6 +10,7 @@ const OrderNow = ({ orderData }) => {
   const cartItems = useSelector((store) => store.cart.cart);
   const dispatch = useDispatch();
   const shippingCost = 50;
+  const history = useHistory();
 
   useEffect(() => {
     let sum = 0;
@@ -21,7 +23,8 @@ const OrderNow = ({ orderData }) => {
   }, [cartItems]);
 
   const handleOrder = () => {
-    dispatch(order(orderData));
+    history.push("/successful");
+    //dispatch(order(orderData));
   };
 
   return (
