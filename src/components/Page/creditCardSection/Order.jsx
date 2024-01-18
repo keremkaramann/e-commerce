@@ -24,7 +24,7 @@ const OrderNow = ({ orderData }) => {
 
   const handleOrder = () => {
     history.push("/successful");
-    //dispatch(order(orderData));
+    dispatch(order(orderData));
   };
 
   return (

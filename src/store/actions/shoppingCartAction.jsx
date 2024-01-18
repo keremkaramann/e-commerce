@@ -181,6 +181,7 @@ export const order = (data) => (dispatch) => {
     .then((res) => {
       console.log(res.data);
       dispatch(finalOrder(data));
+      localStorage.removeItem("cart");
     })
     .catch((err) => {
       console.error("Error saving card:", err);
