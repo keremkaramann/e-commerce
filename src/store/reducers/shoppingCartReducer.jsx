@@ -130,7 +130,7 @@ const shoppingCartReducer = (state = shoppingInitialState, action) => {
     case FETCH_PREV_ORDERS:
       return {
         ...state,
-        prevOrders: [...state.prevOrders, ...action.payload],
+        prevOrders: action.payload,
       };
     case FETCH_CREDIT_CARDS:
       return {
