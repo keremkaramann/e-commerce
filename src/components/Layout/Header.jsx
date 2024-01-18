@@ -36,6 +36,10 @@ const Header = () => {
   const userLoginData = useSelector((store) => store.user.user);
   const itemCount = useSelector((store) => store.cart.cart);
 
+  console.log(
+    "Hi you can check out my github! -> https://github.com/keremkaramann"
+  );
+
   window.addEventListener("blur", () => {
     document.title = "Don't leave me :(";
   });
