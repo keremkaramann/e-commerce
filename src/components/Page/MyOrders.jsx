@@ -36,9 +36,12 @@ const MyOrders = () => {
             </h2>
           </div>
           <div className="flex flex-wrap gap-8 justify-center items-center mt-12 px-5 max-w-[1080px] w-full mx-auto">
-            {prevUserOrders?.map((items) => {
+            {prevUserOrders?.map((items, index) => {
               return (
-                <div className="shadow-xl shadow-slate-500 w-80 p-8 leading-8 border-4 border-primary-blue rounded-lg">
+                <div
+                  key={index}
+                  className="shadow-xl shadow-slate-500 w-80 p-8 leading-8 border-4 border-primary-blue rounded-lg"
+                >
                   <h1 className="font-bold">Order Summary</h1>
                   <div className="flex items-center justify-between">
                     <p className="font-semibold">Card No :</p>
