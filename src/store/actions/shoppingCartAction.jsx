@@ -188,7 +188,6 @@ export const order = (data) => (dispatch) => {
 
   API.post("order", data, { headers })
     .then((res) => {
-      console.log(res.data);
       dispatch(finalOrder(data));
       dispatch(resetCart());
     })

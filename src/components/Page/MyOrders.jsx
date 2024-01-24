@@ -11,6 +11,8 @@ import Footer from "../Layout/Footer";
 const MyOrders = () => {
   const dispatch = useDispatch();
   const prevUserOrders = useSelector((store) => store.cart.prevOrders);
+  const orders = useSelector((store) => store.cart.myOrder);
+  console.log(orders);
   console.log(prevUserOrders);
 
   useEffect(() => {
@@ -40,7 +42,7 @@ const MyOrders = () => {
               return (
                 <div
                   key={index}
-                  className="shadow-xl shadow-slate-500 w-80 p-8 leading-8 border-4 border-primary-blue rounded-lg"
+                  className="shadow-xl shadow-slate-500 p-8 leading-8 border-4 border-primary-blue rounded-lg"
                 >
                   <h1 className="font-bold">Order Summary</h1>
                   <div className="flex items-center justify-between">
@@ -66,13 +68,28 @@ const MyOrders = () => {
               );
             })}
           </div>
+          <div className="w-1/2 mx-auto mt-10 mb-10">
+            <div className="bg-muted-color/95 flex justify-center">
+              <div className="flex flex-col gap-3">
+                <p className="font-semibold">Order Date :</p>
+              </div>
+              <div className="flex">
+                <p className="font-semibold">Card No :</p>
+              </div>
+              <div className="flex">
+                <p className="font-semibold">Name on Card :</p>
+              </div>
+              <div className="flex">
+                <p className="font-semibold">Price :</p>
+              </div>
+            </div>
+          </div>
         </section>
       ) : (
         <div className="w-72 mx-auto mt-20">
           <NoProducts />
         </div>
       )}
-
       <Footer />
     </>
   );
