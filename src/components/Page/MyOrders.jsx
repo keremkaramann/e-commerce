@@ -44,7 +44,7 @@ const MyOrders = () => {
                   className="rounded-t-lg border-2 border-primary-blue flex xs:flex-col middle:flex-row justify-between p-5 mb-10"
                 >
                   <div className="flex flex-col gap-3 text-center">
-                    <p className="font-semibold text-secondary-text border-b-2 border-dark-navy">
+                    <p className="font-semibold text-secondary-text border-b-2 border-secondary-text">
                       Order Date
                     </p>
                     <p className="font-medium">
@@ -52,19 +52,19 @@ const MyOrders = () => {
                     </p>
                   </div>
                   <div className="flex flex-col gap-3 text-center">
-                    <p className="font-semibold text-secondary-text border-b-2 border-dark-navy">
+                    <p className="font-semibold text-secondary-text border-b-2 border-secondary-text">
                       Card No{" "}
                     </p>
                     <p className="font-medium">{items?.card_no}</p>
                   </div>
-                  <div className="flex flex-col gap-3">
-                    <p className="font-semibold text-secondary-text border-b-2 border-dark-navy">
+                  <div className="flex flex-col gap-3 text-center">
+                    <p className="font-semibold text-secondary-text border-b-2 border-secondary-text">
                       Name on Card
                     </p>
                     <p className="font-medium">{items?.card_name}</p>
                   </div>
                   <div className="flex flex-col gap-3">
-                    <p className="font-semibold text-secondary-text border-b-2 border-dark-navy">
+                    <p className="font-semibold text-secondary-text border-b-2 border-secondary-text">
                       Price{" "}
                     </p>
                     <p className="font-medium text-primary-blue">
@@ -72,7 +72,7 @@ const MyOrders = () => {
                     </p>
                   </div>
                   <div className="flex flex-col gap-3">
-                    <p className="font-semibold text-secondary-text border-b-2 border-dark-navy">
+                    <p className="font-semibold text-secondary-text border-b-2 border-secondary-text">
                       Order Status
                     </p>
                     <div className="flex items-center gap-2">
