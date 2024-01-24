@@ -48,27 +48,27 @@ const MyOrders = () => {
                       Order Date
                     </p>
                     <p className="font-medium">
-                      {items.order_date.replace("T", " ")}
+                      {items?.order_date?.replace("T", " ")}
                     </p>
                   </div>
                   <div className="flex flex-col gap-3 text-center">
                     <p className="font-semibold text-secondary-text border-b-2 border-dark-navy">
                       Card No{" "}
                     </p>
-                    <p className="font-medium">{items.card_no}</p>
+                    <p className="font-medium">{items?.card_no}</p>
                   </div>
                   <div className="flex flex-col gap-3">
                     <p className="font-semibold text-secondary-text border-b-2 border-dark-navy">
                       Name on Card
                     </p>
-                    <p className="font-medium">{items.card_name}</p>
+                    <p className="font-medium">{items?.card_name}</p>
                   </div>
                   <div className="flex flex-col gap-3">
                     <p className="font-semibold text-secondary-text border-b-2 border-dark-navy">
                       Price{" "}
                     </p>
                     <p className="font-medium text-primary-blue">
-                      {items.price}$
+                      {items?.price}$
                     </p>
                   </div>
                   <div className="flex flex-col gap-3">
