@@ -41,7 +41,7 @@ const MyOrders = () => {
               return (
                 <div
                   key={index}
-                  className="rounded-t-lg border-2 border-primary-blue flex xs:flex-col middle:flex-row justify-between p-5 mb-10"
+                  className="rounded-t-lg border-2 border-b-primary-blue flex xs:flex-col middle:flex-row justify-between p-5 mb-10"
                 >
                   <div className="flex flex-col gap-3 text-center">
                     <p className="font-semibold text-secondary-text border-b-2 border-secondary-text">
