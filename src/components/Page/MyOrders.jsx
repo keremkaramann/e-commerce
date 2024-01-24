@@ -36,39 +36,43 @@ const MyOrders = () => {
               My Orders :
             </h2>
           </div>
-          <div className="w-1/2 mx-auto mt-10 mb-10">
+          <div className="w-2/3 mx-auto mt-10 mb-10">
             {prevUserOrders?.map((items, index) => {
               return (
                 <div
                   key={index}
-                  className=" rounded-t-lg border-4 border-primary-blue flex justify-between p-5 mb-10"
+                  className=" rounded-t-lg border-2 border-primary-blue flex justify-between p-5 mb-10"
                 >
-                  <div className="flex flex-col gap-3">
-                    <p className="font-semibold text-secondary-text">
-                      Order Date{" "}
+                  <div className="flex flex-col gap-3 text-center">
+                    <p className="font-semibold text-secondary-text border-b-2 border-dark-navy">
+                      Order Date
                     </p>
                     <p className="font-medium">
                       {items.order_date.replace("T", " ")}
                     </p>
                   </div>
-                  <div className="flex flex-col gap-3">
-                    <p className="font-semibold text-secondary-text">
+                  <div className="flex flex-col gap-3 text-center">
+                    <p className="font-semibold text-secondary-text border-b-2 border-dark-navy">
                       Card No{" "}
                     </p>
                     <p className="font-medium">{items.card_no}</p>
                   </div>
                   <div className="flex flex-col gap-3">
-                    <p className="font-semibold text-secondary-text">
+                    <p className="font-semibold text-secondary-text border-b-2 border-dark-navy">
                       Name on Card
                     </p>
                     <p className="font-medium">{items.card_name}</p>
                   </div>
                   <div className="flex flex-col gap-3">
-                    <p className="font-semibold text-secondary-text">Price </p>
-                    <p className="font-medium">{items.price}$</p>
+                    <p className="font-semibold text-secondary-text border-b-2 border-dark-navy">
+                      Price{" "}
+                    </p>
+                    <p className="font-medium text-primary-blue">
+                      {items.price}$
+                    </p>
                   </div>
                   <div className="flex flex-col gap-3">
-                    <p className="font-semibold text-secondary-text">
+                    <p className="font-semibold text-secondary-text border-b-2 border-dark-navy">
                       Order Status
                     </p>
                     <div className="flex items-center gap-2">
