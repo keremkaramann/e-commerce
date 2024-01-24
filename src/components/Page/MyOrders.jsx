@@ -4,6 +4,8 @@ import { getPrevOrder } from "../../store/actions/shoppingCartAction";
 //lottie
 import Lottie from "lottie-react";
 import emptyProduct from "../../lottie/noProduct.json";
+import { LuPackageOpen } from "react-icons/lu";
+
 //pages
 import Header from "../Layout/Header";
 import Footer from "../Layout/Footer";
@@ -11,9 +13,6 @@ import Footer from "../Layout/Footer";
 const MyOrders = () => {
   const dispatch = useDispatch();
   const prevUserOrders = useSelector((store) => store.cart.prevOrders);
-  const orders = useSelector((store) => store.cart.myOrder);
-  console.log(orders);
-  console.log(prevUserOrders);
 
   useEffect(() => {
     dispatch(getPrevOrder());
@@ -37,52 +36,49 @@ const MyOrders = () => {
               My Orders :
             </h2>
           </div>
-          <div className="flex flex-wrap gap-8 justify-center items-center mt-12 px-5 max-w-[1080px] w-full mx-auto">
+          <div className="w-1/2 mx-auto mt-10 mb-10">
             {prevUserOrders?.map((items, index) => {
               return (
                 <div
                   key={index}
-                  className="shadow-xl shadow-slate-500 p-8 leading-8 border-4 border-primary-blue rounded-lg"
+                  className=" rounded-t-lg border-4 border-primary-blue flex justify-between p-5 mb-10"
                 >
-                  <h1 className="font-bold">Order Summary</h1>
-                  <div className="flex items-center justify-between">
-                    <p className="font-semibold">Card No :</p>
-                    <p className="font-medium">{items.card_no}</p>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <p className="font-semibold">Name on Card :</p>
-                    <p className="font-medium">{items.card_name}</p>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <p className="font-semibold">Date :</p>
-
+                  <div className="flex flex-col gap-3">
+                    <p className="font-semibold text-secondary-text">
+                      Order Date{" "}
+                    </p>
                     <p className="font-medium">
                       {items.order_date.replace("T", " ")}
                     </p>
                   </div>
-                  <div className="flex items-center justify-between">
-                    <p className="font-semibold">Price :</p>
+                  <div className="flex flex-col gap-3">
+                    <p className="font-semibold text-secondary-text">
+                      Card No{" "}
+                    </p>
+                    <p className="font-medium">{items.card_no}</p>
+                  </div>
+                  <div className="flex flex-col gap-3">
+                    <p className="font-semibold text-secondary-text">
+                      Name on Card
+                    </p>
+                    <p className="font-medium">{items.card_name}</p>
+                  </div>
+                  <div className="flex flex-col gap-3">
+                    <p className="font-semibold text-secondary-text">Price </p>
                     <p className="font-medium">{items.price}$</p>
+                  </div>
+                  <div className="flex flex-col gap-3">
+                    <p className="font-semibold text-secondary-text">
+                      Order Status
+                    </p>
+                    <div className="flex items-center gap-2">
+                      <p className="font-medium">Preparing...</p>
+                      <LuPackageOpen />
+                    </div>
                   </div>
                 </div>
               );
             })}
-          </div>
-          <div className="w-1/2 mx-auto mt-10 mb-10">
-            <div className="bg-muted-color/95 flex justify-center">
-              <div className="flex flex-col gap-3">
-                <p className="font-semibold">Order Date :</p>
-              </div>
-              <div className="flex">
-                <p className="font-semibold">Card No :</p>
-              </div>
-              <div className="flex">
-                <p className="font-semibold">Name on Card :</p>
-              </div>
-              <div className="flex">
-                <p className="font-semibold">Price :</p>
-              </div>
-            </div>
           </div>
         </section>
       ) : (
