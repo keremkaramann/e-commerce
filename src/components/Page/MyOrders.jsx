@@ -48,7 +48,7 @@ const MyOrders = () => {
                       Order Date
                     </p>
                     <p className="font-medium">
-                      {items?.order_date?.replace("T", " ")}
+                      {items?.order_date?.replace("T", " ").replace(/-/g, "/")}
                     </p>
                   </div>
                   <div className="flex flex-col gap-3 text-center">
@@ -61,7 +61,9 @@ const MyOrders = () => {
                     <p className="font-semibold text-secondary-text border-b-2 border-secondary-text">
                       Name on Card
                     </p>
-                    <p className="font-medium">{items?.card_name}</p>
+                    <p className="font-medium">
+                      {items?.card_name.toUpperCase()}
+                    </p>
                   </div>
                   <div className="flex flex-col gap-3">
                     <p className="font-semibold text-secondary-text border-b-2 border-secondary-text">
